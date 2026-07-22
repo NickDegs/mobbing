@@ -1,0 +1,102 @@
+name: iOS — TestFlight
+
+on:
+  push:
+    branches: [main]
+    paths: ["ios/**", "cards/**", ".github/workflows/ios.yml"]
+  workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  ios:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Xcode 26 seç (Liquid Glass)
+        run: |
+          BEST=""
+          for VER in 26 27 16 17; do
+            MATCH=$(ls /Applications/ | grep -E "^Xcode_${VER}" | sort -V | tail -1)
+            if [ -n "$MATCH" ]; then BEST="$MATCH"; break; fi
+          done
+          [ -z "$BEST" ] && BEST=$(ls /Applications/ | grep -E "^Xcode_[0-9]" | sort -V | tail -1)
+          sudo xcode-select -s "/Applications/$BEST/Contents/Developer"
+          echo "Xcode: $BEST"; xcodebuild -version
+
+      - name: Kartları güncelle + XcodeGen
+        working-directory: ios
+        run: |
+          cp ../cards/cards_core.json Mobbing/Resources/
+          cp ../cards/cards_ext.json  Mobbing/Resources/
+          brew install xcodegen
+          xcodegen generate
+          BN=${{ github.run_number }}
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $BN" Mobbing/Info.plist 2>/dev/null \
+            || /usr/libexec/PlistBuddy -c "Add :CFBundleVersion string $BN" Mobbing/Info.plist
+          echo "CFBundleVersion → $BN"
+
+      - name: Sertifika + ASC API anahtarı
+        run: |
+          mkdir -p ~/.appstoreconnect/private_keys
+          echo "${{ secrets.APPLE_ASC_API_KEY }}" > ~/.appstoreconnect/private_keys/AuthKey_${{ secrets.APPLE_ASC_KEY_ID }}.p8
+          chmod 600 ~/.appstoreconnect/private_keys/AuthKey_${{ secrets.APPLE_ASC_KEY_ID }}.p8
+          echo "${{ secrets.APPLE_DIST_P12_BASE64 }}" | base64 -d > /tmp/dist.p12
+          security create-keychain -p "ci-keychain" ci-build.keychain-db
+          security default-keychain -s ci-build.keychain-db
+          security unlock-keychain -p "ci-keychain" ci-build.keychain-db
+          security import /tmp/dist.p12 -k ci-build.keychain-db -P "${{ secrets.APPLE_P12_PASSWORD }}" -T /usr/bin/codesign -T /usr/bin/security
+          security set-key-partition-list -S apple-tool:,apple: -s -k "ci-keychain" ci-build.keychain-db
+          security list-keychain -d user -s ci-build.keychain-db login.keychain-db
+          rm /tmp/dist.p12
+          security find-identity -v -p codesigning ci-build.keychain-db | head -5
+
+      - name: Arşivle + TestFlight'a yükle
+        working-directory: ios
+        run: |
+          cat > ExportOptions.plist << 'PLIST'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0"><dict>
+            <key>method</key><string>app-store</string>
+            <key>destination</key><string>upload</string>
+            <key>teamID</key><string>SZF4T3P583</string>
+            <key>signingStyle</key><string>automatic</string>
+            <key>uploadSymbols</key><true/>
+          </dict></plist>
+          PLIST
+          xcodebuild -project Mobbing.xcodeproj -scheme Mobbing \
+            -destination 'generic/platform=iOS' -configuration Release -archivePath MB.xcarchive \
+            DEVELOPMENT_TEAM=SZF4T3P583 \
+            CURRENT_PROJECT_VERSION=${{ github.run_number }} \
+            TARGETED_DEVICE_FAMILY=1 \
+            CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" ONLY_ACTIVE_ARCH=NO \
+            archive
+          xcodebuild -exportArchive -archivePath MB.xcarchive \
+            -exportOptionsPlist ExportOptions.plist -exportPath ./ipa-out \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath ~/.appstoreconnect/private_keys/AuthKey_${{ secrets.APPLE_ASC_KEY_ID }}.p8 \
+            -authenticationKeyID ${{ secrets.APPLE_ASC_KEY_ID }} \
+            -authenticationKeyIssuerID ${{ secrets.APPLE_ASC_ISSUER_ID }}
+          echo "✅ TestFlight'a yüklendi"
+
+      - name: Build'i internal gruba ata
+        if: success()
+        env:
+          ASC_KEY_PATH: ${{ github.workspace }}/.asc_key.p8
+          ASC_KEY_ID: ${{ secrets.APPLE_ASC_KEY_ID }}
+          ASC_ISSUER: ${{ secrets.APPLE_ASC_ISSUER_ID }}
+          ASC_APP_ID: "6793382924"
+        run: |
+          echo "${{ secrets.APPLE_ASC_API_KEY }}" > "$ASC_KEY_PATH"
+          python3 ios/scripts/assign_beta.py
+          rm -f "$ASC_KEY_PATH"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mobbing-ios-ipa
+          path: ios/ipa-out/*.ipa
+          retention-days: 30

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tagline">企業サバイバル・シミュレーション</string>
+    <string name="start_shift">シフト開始</string>
+    <string name="info_corner">情報コーナー</string>
+    <string name="day_fmt">%1$d日目</string>
+    <string name="swipe_hint">◀ スワイプで決断 ▶</string>
+    <string name="restart">やり直す</string>
+    <string name="lasted_fmt">%1$d日間耐えた</string>
+    <string name="back">戻る</string>
+</resources>

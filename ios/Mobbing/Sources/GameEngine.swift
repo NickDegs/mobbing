@@ -1,0 +1,118 @@
+import Foundation
+
+// ---------------------------------------------------------------------------
+// Veri modeli — cards_*.json ile aynı şema
+// ---------------------------------------------------------------------------
+struct LocText: Codable {
+    let en: String
+    let tr: String?
+    func get(_ lang: String) -> String { lang == "tr" ? (tr ?? en) : en }
+}
+
+struct Choice: Codable {
+    let t: LocText
+    let fx: [Int]
+    let next: String?
+}
+
+struct Card: Codable, Identifiable {
+    let id: String
+    let cat: String
+    let ch: String
+    let minB: Int?
+    let t: LocText
+    let l: Choice
+    let r: Choice
+}
+
+struct CardFile: Codable { let cards: [Card] }
+
+struct Meters {
+    var b = 50, v = 50, e = 50, k = 50
+}
+
+enum Ending: String {
+    case b0, b100, v0, v100, e0, e100, k0, k100
+}
+
+// ---------------------------------------------------------------------------
+// Motor
+// ---------------------------------------------------------------------------
+final class GameEngine: ObservableObject {
+    @Published var meters = Meters()
+    @Published var day = 1
+    @Published var current: Card?
+    @Published var ended: Ending?
+
+    private let lang: String
+    private var allCards: [Card] = []
+    private var followupIds: Set<String> = []
+    private var deck: [Card] = []
+    private var queue: [String] = []
+
+    private let projects = ["Atlas", "Phoenix", "Nova", "Titan", "Orion", "Vega", "Zenith", "Delta-9"]
+    private let clients = ["GlobalCorp", "Meridian AŞ", "NorthBridge", "Vertex Ltd", "OmniTrade", "BlueRock"]
+
+    init(lang: String) {
+        self.lang = lang
+        for name in ["cards_core", "cards_ext"] {
+            if let url = Bundle.main.url(forResource: name, withExtension: "json"),
+               let data = try? Data(contentsOf: url),
+               let file = try? JSONDecoder().decode(CardFile.self, from: data) {
+                allCards += file.cards
+            }
+        }
+        followupIds = Set(allCards.flatMap { [$0.l.next, $0.r.next].compactMap { $0 } })
+        reshuffle()
+        drawNext()
+    }
+
+    private var mainPool: [Card] { allCards.filter { $0.minB == nil && !followupIds.contains($0.id) } }
+    private var pressurePool: [Card] { allCards.filter { ($0.minB ?? 999) <= meters.b } }
+    private func reshuffle() { deck = mainPool.shuffled() }
+
+    private func substitute(_ s: String) -> String {
+        var out = s
+        if out.contains("{P}") { out = out.replacingOccurrences(of: "{P}", with: projects.randomElement()!) }
+        if out.contains("{C}") { out = out.replacingOccurrences(of: "{C}", with: clients.randomElement()!) }
+        if out.contains("{X}") { out = out.replacingOccurrences(of: "{X}", with: String(Int.random(in: 5...40) * 10)) }
+        return out
+    }
+
+    func cardText(_ c: Card) -> String { substitute(c.t.get(lang)) }
+    func choiceText(_ ch: Choice) -> String { substitute(ch.t.get(lang)) }
+
+    private func drawNext() {
+        if !queue.isEmpty && Double.random(in: 0...1) < 0.6 {
+            let id = queue.removeFirst()
+            if let c = allCards.first(where: { $0.id == id }) { current = c; return }
+        }
+        if meters.b >= 75 && Double.random(in: 0...1) < 0.35, let c = pressurePool.randomElement() {
+            current = c; return
+        }
+        if deck.isEmpty { reshuffle() }
+        current = deck.removeLast()
+    }
+
+    func choose(left: Bool) {
+        guard let c = current else { return }
+        let ch = left ? c.l : c.r
+        let fx = ch.fx.map { $0 == 0 ? 0 : $0 + Int.random(in: -2...2) }
+        meters.b = clamp(meters.b + fx[0]); meters.v = clamp(meters.v + fx[1])
+        meters.e = clamp(meters.e + fx[2]); meters.k = clamp(meters.k + fx[3])
+        if let nx = ch.next, !queue.contains(nx) { queue.append(nx) }
+        day += 1
+        ended = checkEnd()
+        if ended == nil { drawNext() }
+    }
+
+    private func clamp(_ x: Int) -> Int { max(0, min(100, x)) }
+
+    private func checkEnd() -> Ending? {
+        if meters.b <= 0 { return .b0 };   if meters.b >= 100 { return .b100 }
+        if meters.v <= 0 { return .v0 };   if meters.v >= 100 { return .v100 }
+        if meters.e <= 0 { return .e0 };   if meters.e >= 100 { return .e100 }
+        if meters.k <= 0 { return .k0 };   if meters.k >= 100 { return .k100 }
+        return nil
+    }
+}

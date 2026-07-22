@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tagline">기업 생존 시뮬레이션</string>
+    <string name="start_shift">근무 시작</string>
+    <string name="info_corner">정보 코너</string>
+    <string name="day_fmt">%1$d일차</string>
+    <string name="swipe_hint">◀ 스와이프로 결정 ▶</string>
+    <string name="restart">다시 시작</string>
+    <string name="lasted_fmt">%1$d일 버텼습니다</string>
+    <string name="back">뒤로</string>
+</resources>

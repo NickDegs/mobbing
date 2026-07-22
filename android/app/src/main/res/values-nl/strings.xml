@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tagline">een simulatie van kantooroverleving</string>
+    <string name="start_shift">BEGIN JE DIENST</string>
+    <string name="info_corner">Info-hoek</string>
+    <string name="day_fmt">DAG %1$d</string>
+    <string name="swipe_hint">◀ veeg om te beslissen ▶</string>
+    <string name="restart">OPNIEUW BEGINNEN</string>
+    <string name="lasted_fmt">Je hield het %1$d dagen vol</string>
+    <string name="back">Terug</string>
+</resources>

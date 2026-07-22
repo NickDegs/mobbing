@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tagline">una simulazione di sopravvivenza aziendale</string>
+    <string name="start_shift">INIZIA IL TURNO</string>
+    <string name="info_corner">Angolo info</string>
+    <string name="day_fmt">GIORNO %1$d</string>
+    <string name="swipe_hint">◀ scorri per decidere ▶</string>
+    <string name="restart">RICOMINCIA</string>
+    <string name="lasted_fmt">Hai resistito %1$d giorni</string>
+    <string name="back">Indietro</string>
+</resources>

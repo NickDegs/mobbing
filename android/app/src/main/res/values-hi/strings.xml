@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tagline">कॉर्पोरेट उत्तरजीविता सिमुलेशन</string>
+    <string name="start_shift">शिफ्ट शुरू करें</string>
+    <string name="info_corner">जानकारी कोना</string>
+    <string name="day_fmt">दिन %1$d</string>
+    <string name="swipe_hint">◀ निर्णय के लिए स्वाइप करें ▶</string>
+    <string name="restart">फिर से शुरू करें</string>
+    <string name="lasted_fmt">आप %1$d दिन टिके</string>
+    <string name="back">वापस</string>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tagline">simulasi bertahan hidup korporat</string>
+    <string name="start_shift">MULAI SHIFT</string>
+    <string name="info_corner">Pojok Info</string>
+    <string name="day_fmt">HARI %1$d</string>
+    <string name="swipe_hint">◀ geser untuk memutuskan ▶</string>
+    <string name="restart">MULAI ULANG</string>
+    <string name="lasted_fmt">Kamu bertahan %1$d hari</string>
+    <string name="back">Kembali</string>
+</resources>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MOBBING</string>
+    <string name="tagline">kurumsal hayatta kalma simülasyonu</string>
+    <string name="start_shift">MESAİYE BAŞLA</string>
+    <string name="info_corner">Bilgi Köşesi</string>
+    <string name="menu_note">🏢 baskı · ❤️ vicdan · 👥 ekip · 📈 kariyer\nHerhangi bir gösterge boşalırsa da taşarsa da oyun biter.</string>
+    <string name="day_fmt">GÜN %1$d</string>
+    <string name="swipe_hint">◀ kaydır ve karar ver ▶</string>
+    <string name="restart">YENİDEN BAŞLA</string>
+    <string name="lasted_fmt">%1$d gün dayandın</string>
+    <string name="back">Geri</string>
+    <string name="info_title">Gerçek hayatta mobbinge mi maruz kalıyorsun?</string>
+    <string name="info_body">Mobbing, işyerinde sistematik psikolojik tacizdir: dışlama, aşağılama, imkansız iş yükleri, dedikodular.\n\nNe işe yarar:\n• Her olay için tarihli kayıt tut (ne oldu, kim, tanıklar).\n• E-posta ve mesajları sakla — kişisel bir adrese yönlendir.\n• Resmî kanallara YAZILI şikayette bulun.\n• Doktora git — sağlık etkileri gerçek ve belgelenebilir.\n• İş hukuku avukatına danış; mobbing birçok ülkede (Türkiye dahil) hukuken tanınıyor.\n• Yalnız değilsin ve bu senin suçun değil.\n\nBu oyun kurgu, ama örüntüler gerçek. Tanıdık geliyorsa ciddiye al.</string>
+    <string name="cat_ilt">iletişim</string>
+    <string name="cat_izo">izolasyon</string>
+    <string name="cat_itb">itibar</string>
+    <string name="cat_is">iş baskısı</string>
+    <string name="cat_sag">sağlık</string>
+    <string name="cat_sys">yönetim</string>
+    <string name="cat_you">sana karşı</string>
+    <string name="ch_ceo">CEO</string>
+    <string name="ch_gm">Genel Müdür</string>
+    <string name="ch_ik">İK Direktörü</string>
+    <string name="ch_tolga">Tolga · Rakip Müdür</string>
+    <string name="ch_ayse">Ayşe · Muhasebe</string>
+    <string name="ch_mehmet">Mehmet · Yazılım</string>
+    <string name="ch_selin">Selin · Ar-Ge</string>
+    <string name="ch_deniz">Deniz · Tasarım</string>
+    <string name="ch_kerem">Kerem · Ekip Lideri</string>
+    <string name="ch_ece">Ece · Stajyer</string>
+    <string name="ch_hekim">İşyeri Hekimi</string>
+    <string name="end_b0_t">YÖNETİMİN GÖZDESİ</string>
+    <string name="end_b0_b">Yönetim sana bayılıyor. Peki aynadaki kişiye sen bayılıyor musun? Artık yöntemleri sen öğretiyorsun.</string>
+    <string name="end_b100_t">KOVULDUN</string>
+    <string name="end_b100_b">“Kültüre uyum sağlayamadın.” Kutunu topla. Ama başın dik — onlardan biri olmadın.</string>
+    <string name="end_v0_t">KENDİNİ KAYBETTİN</string>
+    <string name="end_v0_b">Bir sabah aynada Genel Müdür\'ü gördün. Artık sesin bile ona benziyor. Teknik olarak hâlâ hayattasın.</string>
+    <string name="end_v100_t">BU YERE FAZLA İYİSİN</string>
+    <string name="end_v100_b">Vicdanın kazandı. İstifa ettin. Çıkarken ekip alkışladı. Belki de asıl kazanan sensin.</string>
+    <string name="end_e0_t">TOPLU İSTİFA</string>
+    <string name="end_e0_b">Kimse kalmadı. Boş ofiste tek başına oturuyorsun. Yönetim faturayı sana kesti.</string>
+    <string name="end_e100_t">“FAZLA SAMİMİ”</string>
+    <string name="end_e100_b">Ekip seni o kadar sevdi ki yönetim \'otorite kuramama\' tutanağı tuttu. Burada sevilmek de suç olabiliyor.</string>
+    <string name="end_k0_t">KARİYER BİTTİ</string>
+    <string name="end_k0_b">Dosyana \'sorunlu yönetici\' yazıldı. Sektörde adın çıktı. Ama hangi ad — o hep senin seçimindi.</string>
+    <string name="end_k100_t">TERFİ ETTİN</string>
+    <string name="end_k100_b">Artık üst yönetimdesin. Yarın masana bir dosya gelecek: \'Alt katlara baskı uygula.\' Çark dönüyor. Çark sensin.</string>
+    <string-array name="notif_bodies">
+        <item>🔔 Bir çalışan izin istedi.</item>
+        <item>🔔 İK seni görmek istiyor.</item>
+        <item>🔔 GM toplantı çağırdı.</item>
+        <item>🔔 Bir şikayet dilekçesi verildi.</item>
+        <item>🔔 Arşiv odasında biri ağlıyor.</item>
+        <item>🔔 Tolga \'kendi\' yeni fikrini sunuyor.</item>
+        <item>🔔 Deadline az önce değişti. Yaklaştı.</item>
+    </string-array>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tagline">محاكاة البقاء في الشركات</string>
+    <string name="start_shift">ابدأ المناوبة</string>
+    <string name="info_corner">ركن المعلومات</string>
+    <string name="day_fmt">اليوم %1$d</string>
+    <string name="swipe_hint">◀ اسحب لاتخاذ القرار ▶</string>
+    <string name="restart">ابدأ من جديد</string>
+    <string name="lasted_fmt">صمدت %1$d يومًا</string>
+    <string name="back">رجوع</string>
+</resources>

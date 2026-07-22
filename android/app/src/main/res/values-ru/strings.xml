@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tagline">симулятор корпоративного выживания</string>
+    <string name="start_shift">НАЧАТЬ СМЕНУ</string>
+    <string name="info_corner">Инфо-уголок</string>
+    <string name="day_fmt">ДЕНЬ %1$d</string>
+    <string name="swipe_hint">◀ свайп — решение ▶</string>
+    <string name="restart">НАЧАТЬ ЗАНОВО</string>
+    <string name="lasted_fmt">Вы продержались %1$d дней</string>
+    <string name="back">Назад</string>
+</resources>

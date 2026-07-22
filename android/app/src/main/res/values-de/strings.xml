@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tagline">eine Simulation des Büro-Überlebens</string>
+    <string name="start_shift">SCHICHT BEGINNEN</string>
+    <string name="info_corner">Info-Ecke</string>
+    <string name="day_fmt">TAG %1$d</string>
+    <string name="swipe_hint">◀ wischen und entscheiden ▶</string>
+    <string name="restart">NEU STARTEN</string>
+    <string name="lasted_fmt">Du hast %1$d Tage durchgehalten</string>
+    <string name="back">Zurück</string>
+</resources>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>MOBBING</title>
+<style>
+  :root{
+    --bg:#14171c; --panel:#1c2129; --panel2:#232a35; --ink:#e8eaee; --dim:#8a93a3;
+    --acid:#e8ff2b; --red:#ff4d5e; --ok:#39d98a; --card-r:22px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+  html,body{height:100%;overflow:hidden}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,'Segoe UI',Roboto,sans-serif;
+       display:flex;flex-direction:column;touch-action:none}
+  /* ---------- üst göstergeler ---------- */
+  #hud{display:flex;justify-content:space-around;padding:calc(env(safe-area-inset-top,0px) + 14px) 18px 10px}
+  .meter{display:flex;flex-direction:column;align-items:center;gap:5px;width:56px}
+  .meter .ico{font-size:20px;line-height:1}
+  .meter .bar{width:44px;height:5px;background:#2b323e;border-radius:3px;overflow:hidden;position:relative}
+  .meter .fill{position:absolute;left:0;top:0;bottom:0;background:var(--acid);border-radius:3px;transition:width .5s cubic-bezier(.2,.8,.2,1)}
+  .meter.danger .fill{background:var(--red)}
+  .meter .dot{width:7px;height:7px;border-radius:50%;background:transparent;transition:background .15s}
+  .meter .dot.on{background:var(--acid)}
+  .meter .dot.big{transform:scale(1.45)}
+  /* ---------- gün sayacı ---------- */
+  #day{text-align:center;font-size:12px;letter-spacing:3px;color:var(--dim);padding:2px 0 6px;text-transform:uppercase}
+  #day b{color:var(--acid);font-weight:700}
+  /* ---------- kart alanı ---------- */
+  #stage{flex:1;position:relative;display:flex;align-items:center;justify-content:center;padding:0 26px}
+  .card{position:absolute;width:min(84vw,340px);aspect-ratio:3/4.1;background:var(--panel);
+        border-radius:var(--card-r);box-shadow:0 18px 50px rgba(0,0,0,.5);
+        display:flex;flex-direction:column;overflow:hidden;cursor:grab;
+        border:1px solid #2c3440}
+  .card.under{transform:scale(.94) translateY(14px);filter:brightness(.6);pointer-events:none}
+  .card .top{flex:1.05;background:var(--panel2);display:flex;align-items:center;justify-content:center;position:relative}
+  .card .avatar{font-size:74px;filter:grayscale(.2)}
+  .card .cat{position:absolute;top:12px;left:14px;font-size:9px;letter-spacing:2px;color:var(--dim);
+             border:1px solid #39424f;padding:3px 8px;border-radius:10px;text-transform:uppercase}
+  .card .who{padding:13px 18px 4px;font-size:12px;letter-spacing:1.5px;color:var(--acid);text-transform:uppercase;font-weight:700}
+  .card .txt{padding:2px 18px 16px;font-size:15.5px;line-height:1.42;color:var(--ink);flex:1}
+  /* seçenek etiketleri */
+  .lbl{position:absolute;top:46%;font-size:13px;font-weight:700;padding:9px 14px;border-radius:12px;
+       opacity:0;transition:opacity .12s;max-width:44%;line-height:1.25;pointer-events:none;z-index:5}
+  #lblL{left:10px;background:var(--panel);border:1.5px solid var(--ok);color:var(--ok);transform:rotate(-4deg)}
+  #lblR{right:10px;background:var(--panel);border:1.5px solid var(--red);color:var(--red);transform:rotate(4deg);text-align:right}
+  /* ---------- alt bar ---------- */
+  #hint{text-align:center;color:var(--dim);font-size:11px;letter-spacing:1px;
+        padding:10px 0 calc(env(safe-area-inset-bottom,0px) + 16px)}
+  /* ---------- oyun sonu ---------- */
+  #over{position:fixed;inset:0;background:rgba(10,12,15,.94);display:none;flex-direction:column;
+        align-items:center;justify-content:center;text-align:center;padding:40px;z-index:50}
+  #over.show{display:flex}
+  #over .big{font-size:56px;margin-bottom:18px}
+  #over h1{font-size:22px;letter-spacing:2px;margin-bottom:14px;color:var(--acid);text-transform:uppercase}
+  #over p{color:var(--ink);font-size:15px;line-height:1.55;max-width:320px;margin-bottom:10px}
+  #over .score{color:var(--dim);font-size:13px;margin-bottom:30px}
+  #over button{background:var(--acid);color:#111;border:0;font-size:15px;font-weight:800;
+               padding:14px 38px;border-radius:14px;letter-spacing:1px;cursor:pointer}
+  /* ---------- intro ---------- */
+  #intro{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;
+         justify-content:center;text-align:center;padding:40px;z-index:60}
+  #intro h1{font-size:44px;letter-spacing:10px;color:var(--acid);font-weight:900;margin-bottom:6px}
+  #intro .sub{color:var(--dim);font-size:13px;letter-spacing:3px;margin-bottom:34px;text-transform:uppercase}
+  #intro p{color:var(--ink);font-size:14.5px;line-height:1.6;max-width:320px;margin-bottom:26px}
+  #intro button{background:var(--acid);color:#111;border:0;font-size:15px;font-weight:800;
+                padding:15px 42px;border-radius:14px;letter-spacing:1px;cursor:pointer}
+  #intro .note{margin-top:22px;color:var(--dim);font-size:11px;max-width:300px;line-height:1.5}
+</style>
+</head>
+<body>
+
+<div id="hud">
+  <div class="meter" id="m_b"><div class="dot"></div><div class="ico">🏢</div><div class="bar"><div class="fill"></div></div></div>
+  <div class="meter" id="m_v"><div class="dot"></div><div class="ico">❤️</div><div class="bar"><div class="fill"></div></div></div>
+  <div class="meter" id="m_e"><div class="dot"></div><div class="ico">👥</div><div class="bar"><div class="fill"></div></div></div>
+  <div class="meter" id="m_k"><div class="dot"></div><div class="ico">📈</div><div class="bar"><div class="fill"></div></div></div>
+</div>
+<div id="day">GÜN <b id="dayN">1</b></div>
+
+<div id="stage">
+  <div class="lbl" id="lblL"></div>
+  <div class="lbl" id="lblR"></div>
+</div>
+<div id="hint">◀ kaydır: karar ver ▶</div>
+
+<div id="intro">
+  <h1>MOBBING</h1>
+  <div class="sub">kurumsal hayatta kalma simülasyonu</div>
+  <p>Orta kademe yöneticisin. Üst yönetim "verimlilik" istiyor. Ekibin insanca muamele istiyor. Vicdanın da bir şeyler söylüyor.<br><br>Hepsini aynı anda memnun edemezsin.<br>Bakalım kaç gün dayanacaksın.</p>
+  <button onclick="startGame()">MESAİYE BAŞLA</button>
+  <div class="note">🏢 baskı · ❤️ vicdan · 👥 ekip · 📈 kariyer<br>Herhangi biri boşalırsa da taşarsa da oyun biter.</div>
+</div>
+
+<div id="over">
+  <div class="big" id="ovIco"></div>
+  <h1 id="ovTitle"></h1>
+  <p id="ovTxt"></p>
+  <div class="score" id="ovScore"></div>
+  <button onclick="startGame()">YENİDEN BAŞLA</button>
+</div>
+
+<script>
+/* ================= KART HAVUZU =================
+   Leymann LIPT-45 kategorileri:
+   ILT=iletişime saldırı · IZO=sosyal izolasyon · ITB=itibara saldırı
+   IS=iş durumuna saldırı · SAG=sağlığa saldırı · SYS=sistem/yönetim
+   fx: b=baskı v=vicdan e=ekip k=kariyer  (+/− delta)
+   next: bu seçim ileride şu id'li kartı tetikler */
+const CARDS=[
+/* ---- İŞ DURUMUNA SALDIRI (izin/zam/görev) ---- */
+{id:'ayse_izin',cat:'IS',av:'👩‍💼',who:'Ayşe · Muhasebe',txt:'Kızımın karne günü için yarım gün izin istiyorum. Aylardır izin kullanmadım.',
+ l:{t:'İzni onayla',fx:{b:+9,v:+4,e:+7,k:-4}},
+ r:{t:'"Dönem sonu, kimse izin alamaz"',fx:{b:-7,v:-8,e:-9,k:+5},next:'ayse_istifa'}},
+{id:'ayse_istifa',cat:'IS',av:'👩‍💼',who:'Ayşe · Muhasebe',txt:'İstifa dilekçemi getirdim. Karne gününe gelemeyen bir anne olmayacağım.',
+ l:{t:'İkna etmeye çalış, izin ver',fx:{b:+6,v:+5,e:+8,k:-3}},
+ r:{t:'"Kapı orada"',fx:{b:-4,v:-10,e:-13,k:+3}}},
+{id:'mehmet_zam',cat:'IS',av:'👨‍💻',who:'Mehmet · Yazılım',txt:'3 yıldır zam almadım. Piyasa araştırması yaptım, %40 altında maaş alıyorum.',
+ l:{t:'Yönetime zam öner',fx:{b:+10,v:+5,e:+8,k:-6}},
+ r:{t:'"Kapıda bekleyen bin kişi var"',fx:{b:-8,v:-9,e:-10,k:+4},next:'mehmet_teklif'}},
+{id:'mehmet_teklif',cat:'IS',av:'👨‍💻',who:'Mehmet · Yazılım',txt:'Başka şirketten teklif aldım. Karşı teklif vermezseniz ay sonunda yokum.',
+ l:{t:'Karşı teklif için savaş',fx:{b:+8,v:+4,e:+6,k:-5}},
+ r:{t:'"Giden gider"',fx:{b:-3,v:-6,e:-11,k:-4}}},
+{id:'deadline',cat:'IS',av:'🧑‍💼',who:'Genel Müdür',txt:'Bu projeyi 2 haftada bitirin. Normalde 2 ay mı sürer? Umurumda değil.',
+ l:{t:'"Ekip kaldıramaz, gerçekçi süre isterim"',fx:{b:-12,v:+6,e:+9,k:-7}},
+ r:{t:'"Emredersiniz" (ekibe duyur)',fx:{b:+10,v:-8,e:-12,k:+6},next:'deadline_kriz'}},
+{id:'deadline_kriz',cat:'SAG',av:'👨‍🔧',who:'Kerem · Ekip Lideri',txt:'3 kişi rapor aldı, biri tansiyondan hastanelik. Deadline hâlâ geçerli mi?',
+ l:{t:'Süreyi uzat, yönetime hesap ver',fx:{b:-10,v:+8,e:+10,k:-6}},
+ r:{t:'"Kalanlara dağıtın, devam"',fx:{b:+8,v:-12,e:-13,k:+4}}},
+{id:'anlamsiz',cat:'IS',av:'🧑‍💼',who:'Genel Müdür',txt:'Şu Selin var ya... ona bir süre fotokopi ve arşiv işleri ver. Biraz "haddi bildirilsin".',
+ l:{t:'"Selin mühendis, arşive koyamam"',fx:{b:-11,v:+7,e:+6,k:-6}},
+ r:{t:'Selin\'i arşive gönder',fx:{b:+9,v:-11,e:-9,k:+5},next:'selin_arsiv'}},
+{id:'selin_arsiv',cat:'IS',av:'👩‍🔬',who:'Selin · Ar-Ge',txt:'6 yıllık mühendisim ve 2 haftadır fotokopi çekiyorum. Bana neden bunu yapıyorsunuz?',
+ l:{t:'Görevine iade et, özür dile',fx:{b:+7,v:+8,e:+8,k:-5}},
+ r:{t:'"Her iş kıymetlidir Selin"',fx:{b:-5,v:-10,e:-8,k:+3}}},
+{id:'gorev_gasp',cat:'IS',av:'🧑‍💼',who:'Rakip Müdür Tolga',txt:'Senin ekipteki büyük müşteriyi ben devralıyorum. Genel Müdür de onayladı bile.',
+ l:{t:'Direniş göster, hakkını savun',fx:{b:-8,v:+3,e:+7,k:+5}},
+ r:{t:'Sessizce kabul et',fx:{b:+4,v:-6,e:-8,k:-9}}},
+/* ---- İLETİŞİME SALDIRI ---- */
+{id:'toplanti_bagirma',cat:'ILT',av:'🧑‍💼',who:'Genel Müdür',txt:'Toplantıda raporunu sunarken sözünü kesip herkesin önünde bağırıyor: "SAÇMALIYORSUN!"',
+ l:{t:'Sakin kal, veriyle savun',fx:{b:-6,v:+5,e:+4,k:+3}},
+ r:{t:'Sus ve toplantı sonrası ekibe yansıt',fx:{b:+3,v:-9,e:-10,k:+2}},min_b:0},
+{id:'elestiri',cat:'ILT',av:'🧑‍💼',who:'İK Direktörü',txt:'Ekipten Deniz\'in her e-postasına "cevaben" hata bulup tüm şirketi CC\'leyin talimatı geldi.',
+ l:{t:'"Geri bildirim özelden verilir"',fx:{b:-9,v:+6,e:+7,k:-4}},
+ r:{t:'Talimatı uygula, CC\'li rezil et',fx:{b:+8,v:-10,e:-9,k:+4}},},
+{id:'bagirma_sen',cat:'ILT',av:'👨‍🔧',who:'Kerem · Ekip Lideri',txt:'Stajyere bağırdığımı duymuşsun. Evet bağırdım, işi batırdı. Ne yapsaydım?',
+ l:{t:'"Bir daha olmasın, özür dile"',fx:{b:+2,v:+6,e:+5,k:-2}},
+ r:{t:'"Aferin, disiplin şart"',fx:{b:-3,v:-8,e:-6,k:+2}}},
+/* ---- SOSYAL İZOLASYON ---- */
+{id:'izolasyon_oda',cat:'IZO',av:'🧑‍💼',who:'Genel Müdür',txt:'Şu "sorunlu" Deniz\'in masasını depo katına taşıtın. Kimseyle muhatap olmasın.',
+ l:{t:'"Buna gerekçe yok, reddediyorum"',fx:{b:-11,v:+7,e:+6,k:-6}},
+ r:{t:'Masayı depoya taşıt',fx:{b:+9,v:-12,e:-10,k:+5},next:'deniz_depo'}},
+{id:'deniz_depo',cat:'IZO',av:'👨‍🎨',who:'Deniz · Tasarım',txt:'Depoda tek başıma oturuyorum. Wi-Fi bile çekmiyor. Amaç istifa etmem mi?',
+ l:{t:'Yukarı geri taşı, riski üstlen',fx:{b:-8,v:+9,e:+9,k:-5}},
+ r:{t:'"Geçici bir durum" (değil)',fx:{b:+5,v:-11,e:-9,k:+3}}},
+{id:'konusma_yasagi',cat:'IZO',av:'🧑‍💼',who:'İK Direktörü',txt:'Ekibinize duyurun: kimse Deniz\'le iş dışı konuşmayacak. Üstten talimat.',
+ l:{t:'Duyuruyu yapmayı reddet',fx:{b:-10,v:+8,e:+7,k:-5}},
+ r:{t:'Sessizce duyur',fx:{b:+8,v:-13,e:-11,k:+4}}},
+{id:'davet_yok',cat:'IZO',av:'👩‍💼',who:'Zeynep · Satış',txt:'Yıllık strateji toplantısına tüm müdürler çağrıldı, bir tek siz yoksunuz. Liste "yanlışlıkla" mı eksik?',
+ l:{t:'Toplantıya davetsiz katıl',fx:{b:-7,v:+3,e:+4,k:+6}},
+ r:{t:'Görmezden gel, işine bak',fx:{b:+3,v:-4,e:-3,k:-8}}},
+/* ---- İTİBARA SALDIRI ---- */
+{id:'dedikodu',cat:'ITB',av:'👩‍💼',who:'Zeynep · Satış',txt:'Koridorda konuşuluyor: Selin\'in terfiyi "başka yollarla" aldığı dedikodusunu Tolga yayıyor.',
+ l:{t:'Dedikoduyu açıkça kes, Tolga\'yı uyar',fx:{b:-6,v:+7,e:+8,k:-4}},
+ r:{t:'Karışma, hatta biraz da sen anlat',fx:{b:+2,v:-11,e:-8,k:+3}}},
+{id:'taklit',cat:'ITB',av:'🧑‍💼',who:'Genel Müdür',txt:'Yemekte herkesin önünde Deniz\'in kekemeliğini taklit ediyor. Masa gülüyor. Sana bakıyor: "Değil mi ama?"',
+ l:{t:'"Bu hiç komik değil" de ve kalk',fx:{b:-10,v:+9,e:+7,k:-7}},
+ r:{t:'Gülümse, oyuna katıl',fx:{b:+7,v:-13,e:-9,k:+5}}},
+{id:'sosyal_medya',cat:'ITB',av:'👨‍💻',who:'Mehmet · Yazılım',txt:'Şirket WhatsApp grubunda benim eski bir fotoğrafımla dalga geçiliyor. Yöneticiler de grupta ve susuyor.',
+ l:{t:'Grupta net uyarı yaz',fx:{b:-4,v:+7,e:+8,k:-3}},
+ r:{t:'"Şakadan anlamıyorsun"',fx:{b:+2,v:-9,e:-9,k:+2}}},
+{id:'hata_yukleme',cat:'ITB',av:'🧑‍💼',who:'Rakip Müdür Tolga',txt:'Projedeki kendi hatasını yönetim toplantısında senin ekibine yıktı. Herkes sana bakıyor.',
+ l:{t:'Kanıtla çürüt (e-postalar sende)',fx:{b:-5,v:+5,e:+9,k:+6}},
+ r:{t:'Ekibi feda et, sessiz kal',fx:{b:+4,v:-10,e:-13,k:+2}}},
+/* ---- SAĞLIĞA SALDIRI ---- */
+{id:'hasta_calisan',cat:'SAG',av:'👩‍🔬',who:'Selin · Ar-Ge',txt:'39 ateşim var ama Genel Müdür "rapor alan kendini kapıda bulur" dedi. Gelmeli miyim?',
+ l:{t:'"Evde kal, raporu bana bırak"',fx:{b:-8,v:+8,e:+8,k:-4}},
+ r:{t:'"Maske tak gel, iş çok"',fx:{b:+6,v:-11,e:-9,k:+3}}},
+{id:'mesai',cat:'SAG',av:'🧑‍💼',who:'Genel Müdür',txt:'Bu ay herkes cumartesileri de çalışacak. Mesai ücreti mi? Öyle bir bütçe yok.',
+ l:{t:'"Ücretsiz mesai yasadışı, karşıyım"',fx:{b:-12,v:+7,e:+9,k:-7}},
+ r:{t:'Ekibe "gönüllülük esastır" diye duyur',fx:{b:+9,v:-9,e:-12,k:+5}}},
+{id:'panik_atak',cat:'SAG',av:'👨‍🎨',who:'Deniz · Tasarım',txt:'Toplantı öncesi lavaboda panik atak geçirdim. Artık arabada ağlıyorum işe gelmeden önce.',
+ l:{t:'Destek ol, yükünü hafiflet',fx:{b:+5,v:+9,e:+8,k:-4}},
+ r:{t:'"Hepimiz stresliyiz Deniz"',fx:{b:-3,v:-12,e:-8,k:+2}}},
+{id:'guvenlik',cat:'SAG',av:'👨‍🔧',who:'Kerem · Ekip Lideri',txt:'Depodaki raflar çürük, geçen hafta biri az kalsın altında kalıyordu. Tadilat bütçesi reddedildi.',
+ l:{t:'Bütçesiz de olsa depoyu kapat',fx:{b:-9,v:+8,e:+7,k:-5}},
+ r:{t:'"Dikkatli olsunlar"',fx:{b:+4,v:-10,e:-7,k:+2}}},
+/* ---- SİSTEM / YÖNETİM KARTLARI ---- */
+{id:'ik_uyari',cat:'SYS',av:'🗂️',who:'İK Direktörü',txt:'Ekibin "fazla rahat" görünüyor. Verimlilik raporunda adın kırmızıda. Bir şeyler yap.',
+ l:{t:'"Ekibim gayet verimli, veriler ortada"',fx:{b:-8,v:+4,e:+5,k:-5}},
+ r:{t:'Ekibe baskıyı artır',fx:{b:+8,v:-8,e:-10,k:+4}}},
+{id:'ceo_ilgi',cat:'SYS',av:'👔',who:'CEO',txt:'Seni izliyorum. Sert yöneticileri severim. Tolga gibi ol, o adam "sonuç odaklı".',
+ l:{t:'"Ben kendi tarzımla yönetirim"',fx:{b:-9,v:+6,e:+4,k:-6}},
+ r:{t:'"Örnek alıyorum efendim"',fx:{b:+7,v:-7,e:-4,k:+7}}},
+{id:'stajyer',cat:'IS',av:'🧑‍🎓',who:'Ece · Stajyer',txt:'3 aydır maaşsız çalışıyorum, "kadro açılacak" denmişti. Bir umut var mı gerçekten?',
+ l:{t:'Dürüst ol: "Kadro yok, kendini harcama"',fx:{b:-5,v:+7,e:+3,k:-3}},
+ r:{t:'"Az kaldı, sabret" (yalan)',fx:{b:+4,v:-9,e:-4,k:+3}}},
+{id:'ihbar',cat:'SYS',av:'📱',who:'Anonim İhbar Hattı',txt:'Ekibinden biri şirketi mobbing nedeniyle Çalışma Bakanlığı\'na şikayet etmiş. Yönetim "köstebeği" bulmanı istiyor.',
+ l:{t:'"Cadı avı yapmam"',fx:{b:-12,v:+9,e:+8,k:-8}},
+ r:{t:'Soruşturma başlat',fx:{b:+9,v:-12,e:-12,k:+6}}},
+{id:'referans',cat:'ITB',av:'🗂️',who:'İK Direktörü',txt:'İstifa eden Ayşe\'nin yeni işyeri referans için aradı. GM "kötüle ki ders olsun" diyor.',
+ l:{t:'Dürüst ve olumlu referans ver',fx:{b:-7,v:+8,e:+5,k:-4}},
+ r:{t:'"Sorunluydu" de',fx:{b:+6,v:-13,e:-6,k:+3}}},
+{id:'psikolog',cat:'SAG',av:'🩺',who:'İşyeri Hekimi',txt:'Ekibinden 4 kişi bu ay antidepresan raporu getirdi. Bunu yönetime raporlamalı mıyım?',
+ l:{t:'"Raporla, gerçek ortaya çıksın"',fx:{b:-8,v:+7,e:+6,k:-5}},
+ r:{t:'"Gömelim, kimse görmesin"',fx:{b:+5,v:-10,e:-5,k:+3}}},
+/* ---- BASKI≥80: YÖNETİM SANA MOBBİNG YAPIYOR ---- */
+{id:'sana1',cat:'SYS',av:'👔',who:'CEO',txt:'Yönetim seni "uyumsuz" buluyor. Bugünden itibaren park yerin iptal, odandan çık, açık ofise geç.',
+ l:{t:'Onurunla kabul et',fx:{b:-4,v:+4,e:+5,k:-6}},
+ r:{t:'Sen de altındakilere yansıt',fx:{b:-8,v:-12,e:-12,k:+3}},min_b:75},
+{id:'sana2',cat:'IZO',av:'🗂️',who:'İK Direktörü',txt:'Yönetim toplantılarına artık çağrılmıyorsun. Kararlar sensiz alınıp sana "tebliğ" ediliyor.',
+ l:{t:'Yazılı itiraz et, kayıt tut',fx:{b:-5,v:+5,e:+3,k:+4}},
+ r:{t:'Boyun eğ',fx:{b:-6,v:-8,e:-4,k:-8}},min_b:75},
+{id:'sana3',cat:'ITB',av:'👔',who:'CEO',txt:'Şirket bültenine "bazı yöneticilerimizin performans sorunları" yazısı çıktı. Herkes senden bahsedildiğini biliyor.',
+ l:{t:'Açık cevap yaz, itibarını savun',fx:{b:-6,v:+6,e:+4,k:+3}},
+ r:{t:'Sessiz kal, içine at',fx:{b:-4,v:-7,e:-3,k:-7}},min_b:75},
+];
+/* ---------- OYUN SONLARI ---------- */
+const ENDINGS={
+ b0:{i:'🏆',t:'YÖNETİMİN GÖZDESİ',x:'Üst yönetim sana bayılıyor. Aynaya bakınca gördüğün kişiye sen de bayılıyor musun? Artık mobbing\'i sen öğretiyorsun.'},
+ b100:{i:'📦',t:'KOVULDUN',x:'"Şirket kültürüne uyum sağlayamadın." Kutunu topla. Ama başın dik — onlar gibi olmadın.'},
+ v0:{i:'🕳️',t:'RUHUNU KAYBETTİN',x:'Bir sabah aynada Genel Müdür\'ü gördün. Kendi sesin bile ona benziyor artık. Teknik olarak hâlâ hayattasın.'},
+ v100:{i:'😇',t:'BU ŞİRKETE FAZLA İYİSİN',x:'Vicdanın kazandı, istifanı verdin. Belki de asıl kazanan sensin. Kapıdan çıkarken ekip alkışladı.'},
+ e0:{i:'🪑',t:'TOPLU İSTİFA',x:'Ekipten kimse kalmadı. Boş ofiste tek başına oturuyorsun. Yönetim faturasını sana kesti.'},
+ e100:{i:'🎉',t:'"FAZLA SAMİMİ"',x:'Ekip seni çok sevdi. O kadar ki yönetim "otorite kuramıyor" raporu yazdı. Sevilmek de suç olabiliyormuş.'},
+ k0:{i:'📉',t:'KARİYER BİTTİ',x:'Sicilin "sorunlu yönetici" olarak işaretlendi. Sektörde adın çıktı. Ama hangi ad? Karar senindi.'},
+ k100:{i:'🚀',t:'TERFİ ETTİN',x:'Artık üst yönetimdesin. Yarın senin masana bir dosya gelecek: "Alt kademeye baskı kur." Çark dönüyor. Sen de çarksın.'},
+};
+/* ================= MOTOR ================= */
+let M,day,deck,queue,cardEl,underEl,drag,busy;
+const $=id=>document.getElementById(id);
+const stage=$('stage'),lblL=$('lblL'),lblR=$('lblR');
+function startGame(){
+  M={b:50,v:50,e:50,k:50};day=1;queue=[];busy=false;
+  deck=shuffle(CARDS.filter(c=>!c.min_b&&!isFollow(c.id)));
+  $('intro').style.display='none';$('over').classList.remove('show');
+  document.querySelectorAll('.card').forEach(x=>x.remove());
+  renderMeters();$('dayN').textContent=day;
+  spawn();
+}
+function isFollow(id){return CARDS.some(c=>(c.l&&c.l.next===id)||(c.r&&c.r.next===id));}
+function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function nextCard(){
+  if(queue.length&&Math.random()<.6)return CARDS.find(c=>c.id===queue.shift());
+  if(M.b>=75&&Math.random()<.35){const s=CARDS.filter(c=>c.min_b);return s[Math.floor(Math.random()*s.length)];}
+  if(!deck.length)deck=shuffle(CARDS.filter(c=>!c.min_b&&!isFollow(c.id)));
+  return deck.pop();
+}
+function makeCard(c){
+  const el=document.createElement('div');el.className='card';el.dataset.id=c.id;
+  el.innerHTML=`<div class="top"><div class="cat">${catName(c.cat)}</div><div class="avatar">${c.av}</div></div>
+    <div class="who">${c.who}</div><div class="txt">${c.txt}</div>`;
+  return el;
+}
+function catName(k){return{ILT:'iletişim',IZO:'izolasyon',ITB:'itibar',IS:'iş baskısı',SAG:'sağlık',SYS:'yönetim'}[k]||'';}
+function spawn(){
+  const c=nextCard();
+  cardEl=makeCard(c);cardEl._data=c;
+  const n=nextPeek=nextCard;underEl=null;
+  stage.appendChild(cardEl);
+  attachDrag(cardEl);
+  lblL.textContent=c.l.t;lblR.textContent=c.r.t;
+  lblL.style.opacity=0;lblR.style.opacity=0;
+}
+/* ---- sürükleme ---- */
+function attachDrag(el){
+  let sx=0,dx=0,down=false;
+  const start=e=>{if(busy)return;down=true;sx=(e.touches?e.touches[0]:e).clientX;el.style.transition='none';};
+  const move=e=>{
+    if(!down)return;dx=((e.touches?e.touches[0]:e).clientX)-sx;
+    el.style.transform=`translateX(${dx}px) rotate(${dx/18}deg)`;
+    const p=Math.min(Math.abs(dx)/90,1);
+    lblL.style.opacity=dx<-15?p:0;lblR.style.opacity=dx>15?p:0;
+    previewDots(dx);
+  };
+  const end=()=>{
+    if(!down)return;down=false;
+    if(Math.abs(dx)>95)resolve(dx>0?'r':'l',el);
+    else{el.style.transition='transform .25s';el.style.transform='';lblL.style.opacity=0;lblR.style.opacity=0;clearDots();}
+    dx=0;
+  };
+  el.addEventListener('mousedown',start);el.addEventListener('touchstart',start,{passive:true});
+  window.addEventListener('mousemove',move);window.addEventListener('touchmove',move,{passive:true});
+  window.addEventListener('mouseup',end);window.addEventListener('touchend',end);
+}
+function previewDots(dx){
+  const c=cardEl._data;if(!c)return;
+  const fx=dx>15?c.r.fx:dx<-15?c.l.fx:null;
+  ['b','v','e','k'].forEach(k=>{
+    const d=document.querySelector(`#m_${k} .dot`);
+    if(fx&&fx[k]){d.classList.add('on');d.classList.toggle('big',Math.abs(fx[k])>=8);}
+    else{d.classList.remove('on','big');}
+  });
+}
+function clearDots(){document.querySelectorAll('.dot').forEach(d=>d.classList.remove('on','big'));}
+function resolve(side,el){
+  busy=true;const c=el._data,ch=c[side];
+  el.style.transition='transform .38s ease-in';
+  el.style.transform=`translateX(${side==='r'?1:-1}00vw) rotate(${side==='r'?30:-30}deg)`;
+  lblL.style.opacity=0;lblR.style.opacity=0;clearDots();
+  Object.entries(ch.fx).forEach(([k,v])=>M[k]=Math.max(0,Math.min(100,M[k]+v)));
+  if(ch.next&&!queue.includes(ch.next))queue.push(ch.next);
+  day++;
+  setTimeout(()=>{
+    el.remove();renderMeters();$('dayN').textContent=day;
+    const end=checkEnd();
+    if(end)showEnd(end);else{busy=false;spawn();}
+  },380);
+}
+function renderMeters(){
+  const map={b:'m_b',v:'m_v',e:'m_e',k:'m_k'};
+  Object.entries(map).forEach(([k,id])=>{
+    const m=$(id);m.querySelector('.fill').style.width=M[k]+'%';
+    m.classList.toggle('danger',M[k]<=20||M[k]>=80);
+  });
+}
+function checkEnd(){
+  if(M.b<=0)return ENDINGS.b0;if(M.b>=100)return ENDINGS.b100;
+  if(M.v<=0)return ENDINGS.v0;if(M.v>=100)return ENDINGS.v100;
+  if(M.e<=0)return ENDINGS.e0;if(M.e>=100)return ENDINGS.e100;
+  if(M.k<=0)return ENDINGS.k0;if(M.k>=100)return ENDINGS.k100;
+  return null;
+}
+function showEnd(e){
+  $('ovIco').textContent=e.i;$('ovTitle').textContent=e.t;$('ovTxt').textContent=e.x;
+  $('ovScore').textContent=`${day} gün dayandın`;
+  $('over').classList.add('show');
+}
+</script>
+</body>
+</html>

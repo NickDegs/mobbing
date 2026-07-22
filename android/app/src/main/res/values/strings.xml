@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MOBBING</string>
+    <string name="tagline">a corporate survival simulation</string>
+    <string name="start_shift">START YOUR SHIFT</string>
+    <string name="info_corner">Info Corner</string>
+    <string name="menu_note">🏢 pressure · ❤️ conscience · 👥 team · 📈 career\nIf any meter empties or overflows, it\'s over.</string>
+    <string name="day_fmt">DAY %1$d</string>
+    <string name="swipe_hint">◀ swipe to decide ▶</string>
+    <string name="restart">START OVER</string>
+    <string name="lasted_fmt">You lasted %1$d days</string>
+    <string name="back">Back</string>
+    <string name="info_title">Are you experiencing mobbing in real life?</string>
+    <string name="info_body">Mobbing is systematic psychological harassment at work: isolation, humiliation, impossible workloads, rumors.\n\nWhat helps:\n• Keep a dated journal of every incident (what, who, witnesses).\n• Save emails and messages — forward them to a private address.\n• Report through official channels in writing.\n• Talk to a doctor — health effects are real and documentable.\n• Consult a labor lawyer; in many countries mobbing is legally recognized.\n• You are not alone, and it is not your fault.\n\nThis game is fiction, but the patterns are real. If they feel familiar, take them seriously.</string>
+    <string name="cat_ilt">communication</string>
+    <string name="cat_izo">isolation</string>
+    <string name="cat_itb">reputation</string>
+    <string name="cat_is">work pressure</string>
+    <string name="cat_sag">health</string>
+    <string name="cat_sys">management</string>
+    <string name="cat_you">against you</string>
+    <string name="ch_ceo">CEO</string>
+    <string name="ch_gm">General Manager</string>
+    <string name="ch_ik">HR Director</string>
+    <string name="ch_tolga">Tolga · Rival Manager</string>
+    <string name="ch_ayse">Ayşe · Accounting</string>
+    <string name="ch_mehmet">Mehmet · Software</string>
+    <string name="ch_selin">Selin · Engineering</string>
+    <string name="ch_deniz">Deniz · Design</string>
+    <string name="ch_kerem">Kerem · Team Lead</string>
+    <string name="ch_ece">Ece · Intern</string>
+    <string name="ch_hekim">Workplace Doctor</string>
+    <string name="end_b0_t">MANAGEMENT\'S FAVORITE</string>
+    <string name="end_b0_b">The board adores you. Do you adore the person in the mirror? You teach the methods now.</string>
+    <string name="end_b100_t">FIRED</string>
+    <string name="end_b100_b">“You didn\'t fit the culture.” Pack your box. But your head is high — you never became one of them.</string>
+    <string name="end_v0_t">YOU LOST YOURSELF</string>
+    <string name="end_v0_b">One morning the mirror showed the General Manager. Even your voice sounds like his now. Technically, you are still alive.</string>
+    <string name="end_v100_t">TOO GOOD FOR THIS PLACE</string>
+    <string name="end_v100_b">Your conscience won. You resigned. The team applauded as you walked out. Maybe you are the real winner.</string>
+    <string name="end_e0_t">MASS RESIGNATION</string>
+    <string name="end_e0_b">Nobody is left. You sit alone in an empty office. Management billed the disaster to you.</string>
+    <string name="end_e100_t">“TOO FRIENDLY”</string>
+    <string name="end_e100_b">The team loved you so much that management wrote you up for \'failing to maintain authority\'. Being loved can be an offense here.</string>
+    <string name="end_k0_t">CAREER OVER</string>
+    <string name="end_k0_b">Your file now reads \'problem manager\'. Word got around the industry. But which word — that was always your choice.</string>
+    <string name="end_k100_t">PROMOTED</string>
+    <string name="end_k100_b">You\'re upper management now. Tomorrow a file lands on your desk: \'Apply pressure to the lower floors.\' The wheel turns. You are the wheel.</string>
+    <string-array name="notif_bodies">
+        <item>🔔 An employee requested leave.</item>
+        <item>🔔 HR wants to see you.</item>
+        <item>🔔 The GM called a meeting.</item>
+        <item>🔔 A complaint was filed.</item>
+        <item>🔔 Someone is crying in the archive room.</item>
+        <item>🔔 Tolga is presenting \'his\' new idea.</item>
+        <item>🔔 The deadline just moved. Closer.</item>
+    </string-array>
+</resources>
