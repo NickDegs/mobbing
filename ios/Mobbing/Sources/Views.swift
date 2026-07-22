@@ -82,20 +82,22 @@ struct GameView: View {
                 .font(.system(size: 12)).tracking(3)
                 .foregroundStyle(Color.dim).padding(.top, 6)
 
-            Spacer()
-
-            if let card = engine.current {
-                CardView(engine: engine, card: card, dragX: $dragX) { left in
-                    engine.choose(left: left)
-                    if engine.ended != nil { onEnd() }
+            GeometryReader { geo in
+                if let card = engine.current {
+                    CardView(engine: engine, card: card, dragX: $dragX,
+                             cardW: geo.size.width * 0.94,
+                             cardH: geo.size.height * 0.97) { left in
+                        engine.choose(left: left)
+                        if engine.ended != nil { onEnd() }
+                    }
+                    .frame(width: geo.size.width, height: geo.size.height)
                 }
             }
-
-            Spacer()
+            .padding(.top, 8)
 
             Text(L("swipe_hint"))
                 .font(.system(size: 11)).tracking(1)
-                .foregroundStyle(Color.dim).padding(.bottom, 12)
+                .foregroundStyle(Color.dim).padding(.bottom, 6)
         }
     }
 
@@ -120,11 +122,11 @@ struct MeterView: View {
         VStack(spacing: 4) {
             Circle().fill(fx != nil && fx != 0 ? Color.iceSoft : .clear)
                 .frame(width: 9, height: 9)
-            Image(icon).resizable().frame(width: 42, height: 42)
+            Image(icon).resizable().frame(width: 48, height: 48)
             ZStack(alignment: .leading) {
-                Capsule().fill(Color.steel.opacity(0.35)).frame(width: 68, height: 9)
+                Capsule().fill(Color.steel.opacity(0.35)).frame(width: 76, height: 10)
                 Capsule().fill(danger ? dangerColor : Color.ice)
-                    .frame(width: 68 * CGFloat(value) / 100, height: 9)
+                    .frame(width: 76 * CGFloat(value) / 100, height: 10)
                     .animation(.easeOut(duration: 0.5), value: value)
             }
             Text(L(label))
@@ -139,6 +141,8 @@ struct CardView: View {
     @ObservedObject var engine: GameEngine
     let card: Card
     @Binding var dragX: CGFloat
+    var cardW: CGFloat = 350
+    var cardH: CGFloat = 500
     let onChoose: (Bool) -> Void
 
     var body: some View {
@@ -146,7 +150,7 @@ struct CardView: View {
             VStack(spacing: 0) {
                 ZStack(alignment: .topLeading) {
                     Image("c_\(card.ch)").resizable().scaledToFill()
-                        .frame(maxWidth: .infinity).frame(height: 252).clipped()
+                        .frame(maxWidth: .infinity).frame(height: cardH * 0.52).clipped()
                     Text(catEmoji(card.cat) + " " + catLabel(card.cat))
                         .font(.system(size: 9, weight: .semibold)).tracking(2)
                         .foregroundStyle(Color.dim)
@@ -159,7 +163,7 @@ struct CardView: View {
                         .font(.system(size: 12, weight: .bold)).tracking(1.5)
                         .foregroundStyle(Color.iceSoft)
                     Text(engine.text)
-                        .font(.system(size: 16)).lineSpacing(4)
+                        .font(.system(size: 17)).lineSpacing(5)
                         .foregroundStyle(Color.ink)
                         .fixedSize(horizontal: false, vertical: true)
                     Spacer(minLength: 0)
@@ -167,7 +171,7 @@ struct CardView: View {
                 .padding(16)
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .frame(width: 350, height: 500)
+            .frame(width: cardW, height: cardH)
             .background(LinearGradient(colors: [.navyPanel, .navy], startPoint: .top, endPoint: .bottom))
             .clipShape(RoundedRectangle(cornerRadius: 24))
             .overlay(RoundedRectangle(cornerRadius: 24).stroke(Color.steel.opacity(0.5), lineWidth: 1))
@@ -197,16 +201,16 @@ struct CardView: View {
             // Seçim etiketleri — kart ortasında büyük karar bandı
             if dragX < -20 {
                 tag(engine.lText, green: true)
-                    .position(x: 175, y: 250)
+                    .position(x: cardW / 2, y: cardH / 2)
                     .opacity(min(1, abs(dragX) / 110))
             }
             if dragX > 20 {
                 tag(engine.rText, green: false)
-                    .position(x: 175, y: 250)
+                    .position(x: cardW / 2, y: cardH / 2)
                     .opacity(min(1, dragX / 110))
             }
         }
-        .frame(width: 350, height: 500)
+        .frame(width: cardW, height: cardH)
     }
 
     private func tag(_ text: String, green: Bool) -> some View {
@@ -217,7 +221,7 @@ struct CardView: View {
             .multilineTextAlignment(.center)
             .foregroundStyle(accent)
             .padding(.horizontal, 18).padding(.vertical, 20)
-            .frame(width: 320)
+            .frame(width: cardW * 0.9)
             .background(Color.navy.opacity(0.95), in: RoundedRectangle(cornerRadius: 18))
             .overlay(RoundedRectangle(cornerRadius: 18).stroke(accent, lineWidth: 2.5))
     }

@@ -203,8 +203,8 @@ fun GameScreen(e: GameEngine, onEnd: () -> Unit) {
                 val rot by animateFloatAsState(dragX / 30f, tween(50), label = "rot")
                 Box(
                     Modifier
-                        .fillMaxWidth(.92f)
-                        .aspectRatio(0.72f)
+                        .fillMaxWidth(.94f)
+                        .fillMaxHeight(.97f)
                         .graphicsLayer { translationX = dragX; rotationZ = rot }
                         .pointerInput(tick) {
                             detectDragGestures(
@@ -234,7 +234,7 @@ fun GameScreen(e: GameEngine, onEnd: () -> Unit) {
                             Text(charName(c.ch), color = IceSoft, fontSize = 12.sp,
                                 fontWeight = FontWeight.Bold, letterSpacing = 1.5.sp)
                             Spacer(Modifier.height(6.dp))
-                            Text(e.text, color = Ink, fontSize = 16.sp, lineHeight = 22.sp)
+                            Text(e.text, color = Ink, fontSize = 17.sp, lineHeight = 24.sp)
                         }
                     }
                     // Seçim etiketleri
@@ -273,10 +273,10 @@ fun MeterView(icon: Int, label: String, value: Int, dragX: Float, lFx: Int?, rFx
         Box(Modifier.size(9.dp).clip(CircleShape)
             .background(if (fx != null && fx != 0) IceSoft else Color.Transparent))
         Spacer(Modifier.height(3.dp))
-        Image(painterResource(icon), null, Modifier.size(42.dp))
+        Image(painterResource(icon), null, Modifier.size(48.dp))
         Spacer(Modifier.height(4.dp))
-        Box(Modifier.width(68.dp).height(9.dp).clip(RoundedCornerShape(5.dp)).background(Steel.copy(alpha = .35f))) {
-            Box(Modifier.fillMaxWidth(value / 100f).height(9.dp)
+        Box(Modifier.width(76.dp).height(10.dp).clip(RoundedCornerShape(5.dp)).background(Steel.copy(alpha = .35f))) {
+            Box(Modifier.fillMaxWidth(value / 100f).height(10.dp)
                 .background(if (danger) Color(0xFFFF4D5E) else Ice, RoundedCornerShape(5.dp)))
         }
         Spacer(Modifier.height(3.dp))
