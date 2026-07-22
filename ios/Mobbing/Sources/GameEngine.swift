@@ -20,6 +20,7 @@ struct Card: Codable, Identifiable {
     let cat: String
     let ch: String
     let minB: Int?
+    let minD: Int?
     let t: LocText
     let l: Choice
     let r: Choice
@@ -47,7 +48,6 @@ final class GameEngine: ObservableObject {
     private let lang: String
     private var allCards: [Card] = []
     private var followupIds: Set<String> = []
-    private var deck: [Card] = []
     private var queue: [String] = []
 
     private let projects = ["Atlas", "Phoenix", "Nova", "Titan", "Orion", "Vega", "Zenith", "Delta-9"]
@@ -74,13 +74,15 @@ final class GameEngine: ObservableObject {
             overlay = file.cards
         }
         followupIds = Set(allCards.flatMap { [$0.l.next, $0.r.next].compactMap { $0 } })
-        reshuffle()
         drawNext()
     }
 
-    private var mainPool: [Card] { allCards.filter { $0.minB == nil && !followupIds.contains($0.id) } }
+    // Gerçekçi tırmanış: kart ancak minD gününden sonra havuza girer
+    private var recent: [String] = []
+    private var mainPool: [Card] { allCards.filter {
+        $0.minB == nil && !followupIds.contains($0.id) && ($0.minD ?? 0) <= day
+    } }
     private var pressurePool: [Card] { allCards.filter { ($0.minB ?? 999) <= meters.b } }
-    private func reshuffle() { deck = mainPool.shuffled() }
 
     private func substitute(_ s: String) -> String {
         var out = s
@@ -116,8 +118,12 @@ final class GameEngine: ObservableObject {
         if meters.b >= 75 && Double.random(in: 0...1) < 0.35, let c = pressurePool.randomElement() {
             current = c; return
         }
-        if deck.isEmpty { reshuffle() }
-        current = deck.removeLast()
+        // güne uygun havuzdan çek (son 12 kart tekrarlanmaz)
+        let pool = mainPool.filter { !recent.contains($0.id) }
+        let pick = pool.randomElement() ?? mainPool.randomElement()!
+        recent.append(pick.id)
+        if recent.count > 12 { recent.removeFirst() }
+        current = pick
     }
 
     func choose(left: Bool) {

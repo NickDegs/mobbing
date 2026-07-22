@@ -16,7 +16,7 @@ import kotlin.random.Random
 @Serializable data class Choice(val t: LocText, val fx: List<Int>, val next: String? = null)
 @Serializable data class Card(
     val id: String, val cat: String, val ch: String,
-    val minB: Int? = null, val t: LocText, val l: Choice, val r: Choice
+    val minB: Int? = null, val minD: Int? = null, val t: LocText, val l: Choice, val r: Choice
 )
 @Serializable data class CardFile(val cards: List<Card>)
 
@@ -37,7 +37,6 @@ class GameEngine(context: Context, private val lang: String) {
 
     private val allCards: List<Card>
     private val followupIds: Set<String>
-    private var deck: MutableList<Card> = mutableListOf()
     private val queue: ArrayDeque<String> = ArrayDeque()
     private val rng = Random(System.currentTimeMillis())
 
@@ -71,14 +70,15 @@ class GameEngine(context: Context, private val lang: String) {
                 json.decodeFromString<LocFile>(raw).cards
             } catch (_: Exception) { emptyMap() }
         } else emptyMap()
-        reshuffle()
         drawNext()
     }
 
-    private fun mainPool() = allCards.filter { it.minB == null && it.id !in followupIds }
+    // Gerçekçi tırmanış: kart ancak minD gününden sonra havuza girer
+    private val recent = ArrayDeque<String>()
+    private fun mainPool() = allCards.filter {
+        it.minB == null && it.id !in followupIds && (it.minD ?: 0) <= day
+    }
     private fun pressurePool() = allCards.filter { (it.minB ?: 999) <= meters.b }
-
-    private fun reshuffle() { deck = mainPool().shuffled(rng).toMutableList() }
 
     private fun substitute(s: String): String = s
         .replace("{P}", projects[rng.nextInt(projects.size)])
@@ -115,9 +115,13 @@ class GameEngine(context: Context, private val lang: String) {
             val p = pressurePool()
             if (p.isNotEmpty()) { current = p[rng.nextInt(p.size)]; return }
         }
-        // 3) normal deste
-        if (deck.isEmpty()) reshuffle()
-        current = deck.removeAt(deck.size - 1)
+        // 3) güne uygun havuzdan çek (son 12 kart tekrarlanmaz)
+        val pool = mainPool().filter { it.id !in recent }
+        val pick = if (pool.isNotEmpty()) pool[rng.nextInt(pool.size)]
+                   else mainPool()[rng.nextInt(mainPool().size)]
+        recent.addLast(pick.id)
+        if (recent.size > 12) recent.removeFirst()
+        current = pick
     }
 
     /** Seçim uygula. true dönerse oyun devam ediyor; false ise ended dolu. */
