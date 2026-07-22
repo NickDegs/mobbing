@@ -1,0 +1,865 @@
+{
+ "ui": {
+  "app_name": "MOBBING",
+  "tagline": "simulasi bertahan hidup di dunia korporat",
+  "start_shift": "MULAI SHIFT-MU",
+  "info_corner": "Pojok Info",
+  "menu_note": "🏢 tekanan · ❤️ hati nurani · 👥 tim · 📈 karier\nJika ada meter yang kosong atau meluap, tamat.",
+  "day_fmt": "HARI %1$d",
+  "swipe_hint": "◀ geser untuk memutuskan ▶",
+  "restart": "MULAI LAGI",
+  "lasted_fmt": "Kamu bertahan %1$d hari",
+  "back": "Kembali",
+  "info_title": "Apakah kamu mengalami mobbing di kehidupan nyata?",
+  "info_body": "Mobbing adalah perundungan psikologis yang sistematis di tempat kerja: pengucilan, penghinaan, beban kerja mustahil, gosip.\n\nYang bisa membantu:\n• Buat catatan harian bertanggal untuk setiap kejadian (apa, siapa, saksinya).\n• Simpan email dan pesan — teruskan ke alamat pribadi.\n• Laporkan secara tertulis lewat jalur resmi.\n• Bicaralah dengan dokter — dampak kesehatannya nyata dan bisa didokumentasikan.\n• Konsultasikan dengan pengacara ketenagakerjaan; di banyak negara mobbing diakui secara hukum.\n• Kamu tidak sendirian, dan ini bukan salahmu.\n\nGame ini fiksi, tapi polanya nyata. Jika terasa familier, anggaplah serius.",
+  "cat_ilt": "komunikasi",
+  "cat_izo": "isolasi",
+  "cat_itb": "reputasi",
+  "cat_is": "tekanan kerja",
+  "cat_sag": "kesehatan",
+  "cat_sys": "manajemen",
+  "cat_you": "terhadapmu",
+  "ch_ceo": "CEO",
+  "ch_gm": "Manajer Umum",
+  "ch_ik": "Direktur HRD",
+  "ch_tolga": "Tolga · Manajer Saingan",
+  "ch_ayse": "Ayşe · Akuntansi",
+  "ch_mehmet": "Mehmet · Software",
+  "ch_selin": "Selin · Teknik",
+  "ch_deniz": "Deniz · Desain",
+  "ch_kerem": "Kerem · Ketua Tim",
+  "ch_ece": "Ece · Anak Magang",
+  "ch_hekim": "Dokter Perusahaan",
+  "end_b0_t": "ANAK EMAS MANAJEMEN",
+  "end_b0_b": "Direksi memujamu. Apakah kamu memuja orang di cermin? Kini kaulah yang mengajarkan metode-metode itu.",
+  "end_b100_t": "DIPECAT",
+  "end_b100_b": "\"Kamu tidak cocok dengan budaya kami.\" Kemasi kardusmu. Tapi kepalamu tegak — kamu tidak pernah menjadi salah satu dari mereka.",
+  "end_v0_t": "KAMU KEHILANGAN DIRIMU",
+  "end_v0_b": "Suatu pagi, cermin menampilkan sosok Manajer Umum. Bahkan suaramu kini terdengar seperti suaranya. Secara teknis, kamu masih hidup.",
+  "end_v100_t": "TERLALU BAIK UNTUK TEMPAT INI",
+  "end_v100_b": "Hati nuranimu menang. Kamu mengundurkan diri. Tim bertepuk tangan saat kamu melangkah keluar. Mungkin pemenang sesungguhnya adalah kamu.",
+  "end_e0_t": "PENGUNDURAN DIRI MASSAL",
+  "end_e0_b": "Tak ada yang tersisa. Kamu duduk sendirian di kantor yang kosong. Manajemen menagihkan bencana ini atas namamu.",
+  "end_e100_t": "\"TERLALU AKRAB\"",
+  "end_e100_b": "Tim begitu menyayangimu sampai manajemen memberimu surat peringatan karena 'gagal menjaga wibawa'. Di sini, disayangi pun bisa jadi pelanggaran.",
+  "end_k0_t": "KARIER TAMAT",
+  "end_k0_b": "Berkasmu kini bertuliskan 'manajer bermasalah'. Kabarnya menyebar ke seluruh industri. Tapi kabar yang mana — itu selalu pilihanmu.",
+  "end_k100_t": "NAIK JABATAN",
+  "end_k100_b": "Kamu kini manajemen puncak. Besok sebuah berkas mendarat di mejamu: 'Beri tekanan ke lantai-lantai bawah.' Roda berputar. Kaulah rodanya.",
+  "notif_bodies": [
+   "🔔 Seorang karyawan mengajukan cuti.",
+   "🔔 HRD ingin menemuimu.",
+   "🔔 Manajer Umum memanggil rapat.",
+   "🔔 Sebuah pengaduan telah diajukan.",
+   "🔔 Seseorang menangis di ruang arsip.",
+   "🔔 Tolga sedang mempresentasikan ide baru 'miliknya'.",
+   "🔔 Tenggat baru saja bergeser. Semakin dekat."
+  ],
+  "bribe_btn": "Bayar Suap",
+  "bribe_flavor": "Amplop menyelinap di bawah meja. Masalah pun 'beres'.",
+  "lang_auto": "Otomatis (bahasa perangkat)",
+  "privacy_link": "Privasi",
+  "terms_link": "Ketentuan Penggunaan",
+  "meter_b": "TEKANAN",
+  "meter_v": "NURANI",
+  "meter_e": "TIM",
+  "meter_k": "KARIER"
+ },
+ "cards": {
+  "ayse_izin": {
+   "t": "Saya minta cuti setengah hari untuk acara pembagian rapor anak saya. Sudah berbulan-bulan saya tidak cuti.",
+   "l": "Setujui cutinya",
+   "r": "\"Ini tutup kuartal. Tidak ada yang boleh pergi.\""
+  },
+  "ayse_istifa": {
+   "t": "Ini surat pengunduran diri saya. Saya tidak mau jadi ibu yang absen di hari pembagian rapor.",
+   "l": "Bujuk dia bertahan, berikan cutinya",
+   "r": "\"Pintunya di sebelah sana.\""
+  },
+  "mehmet_zam": {
+   "t": "Tiga tahun tanpa kenaikan gaji. Saya sudah cek pasar — gaji saya 40% di bawah rata-rata.",
+   "l": "Perjuangkan kenaikan gajinya ke manajemen",
+   "r": "\"Seribu orang antre mau pekerjaanmu.\""
+  },
+  "mehmet_teklif": {
+   "t": "Saya dapat tawaran dari perusahaan lain. Beri tawaran tandingan, atau akhir bulan saya pergi.",
+   "l": "Perjuangkan tawaran tandingan",
+   "r": "\"Yang mau pergi, silakan pergi.\""
+  },
+  "deadline": {
+   "t": "Selesaikan proyek {P} dalam dua minggu. Normalnya dua bulan? Bukan urusan saya.",
+   "l": "\"Tim tidak akan sanggup. Saya butuh tenggat yang masuk akal.\"",
+   "r": "\"Siap, Pak.\" (umumkan ke tim)"
+  },
+  "deadline_kriz": {
+   "t": "Tiga orang cuti sakit, satu masuk rumah sakit karena darah tinggi. Tenggatnya masih berlaku?",
+   "l": "Perpanjang. Kamu yang tanggung jawab ke manajemen.",
+   "r": "\"Bagikan ke yang masih sehat.\""
+  },
+  "anlamsiz": {
+   "t": "Beri Selin tugas fotokopi dan arsip untuk sementara. Dia perlu sedikit 'ditunjukkan tempatnya'.",
+   "l": "\"Dia insinyur. Saya tidak akan melakukannya.\"",
+   "r": "Kirim dia ke arsip"
+  },
+  "selin_arsiv": {
+   "t": "Saya insinyur dengan pengalaman 6 tahun, dan sudah dua minggu kerjaan saya fotokopi. Kenapa Anda melakukan ini pada saya?",
+   "l": "Kembalikan tugasnya dan minta maaf",
+   "r": "\"Setiap pekerjaan itu berharga, Selin.\""
+  },
+  "gorev_gasp": {
+   "t": "Akun {C} milik timmu saya yang ambil alih. GM sudah menyetujuinya.",
+   "l": "Perjuangkan apa yang jadi hakmu",
+   "r": "Terima diam-diam"
+  },
+  "toplanti_bagirma": {
+   "t": "Dia memotong presentasimu dan berteriak di depan semua orang: \"KAMU NGOMONG NGAWUR!\"",
+   "l": "Tetap tenang. Bela diri dengan data.",
+   "r": "Telan saja — lalu lampiaskan ke tim"
+  },
+  "cc_rezil": {
+   "t": "Instruksi baru: balas setiap email Deniz sambil mencari-cari kesalahan — CC seluruh perusahaan.",
+   "l": "\"Umpan balik diberikan secara pribadi.\"",
+   "r": "Jalankan instruksinya"
+  },
+  "stajyere_bagirma": {
+   "t": "Ya, saya membentak anak magang itu. Dia merusak build. Memangnya saya harus bagaimana?",
+   "l": "\"Jangan pernah lagi. Pergi minta maaf.\"",
+   "r": "\"Bagus. Disiplin itu penting.\""
+  },
+  "sozunu_kesme": {
+   "t": "Di setiap rapat dia memotong kalimatmu: \"Biar saya terjemahkan maksud teman kita ini...\"",
+   "l": "\"Saya bisa menyelesaikan kalimat saya sendiri, Tolga.\"",
+   "r": "Biarkan. Lagi."
+  },
+  "tel_teror": {
+   "t": "Dia menelepon pukul 23.40. \"Kenapa teleponmu mati saat akhir pekan? Angkat kalau saya telepon.\"",
+   "l": "\"Jam di luar kerja adalah milik saya.\"",
+   "r": "Mulai sekarang, biarkan telepon menyala 24/7"
+  },
+  "tel_teror2": {
+   "t": "Tekanan darahmu mengkhawatirkan saya. Kapan terakhir kali kamu tidur semalaman tanpa mengecek ponsel?",
+   "l": "Matikan lagi ponsel di malam hari",
+   "r": "\"Saya baik-baik saja, Dok.\" (tidak)"
+  },
+  "yazili_uyari": {
+   "t": "Manajemen memintamu menyodorkan surat peringatan tertulis untuk Mehmet. Alasannya: 'sikap'. Tidak ada insiden dalam berkas.",
+   "l": "\"Tidak ada insiden, tidak ada peringatan.\"",
+   "r": "Tanda tangani. Kertas sanggup menanggung segalanya."
+  },
+  "izolasyon_oda": {
+   "t": "Pindahkan meja si 'bermasalah' Deniz itu ke lantai gudang. Tak perlu ada yang berurusan dengannya.",
+   "l": "\"Tidak ada dasarnya. Saya menolak.\"",
+   "r": "Suruh pindahkan mejanya"
+  },
+  "deniz_depo": {
+   "t": "Saya duduk sendirian di gudang. Wi-Fi saja tidak sampai. Tujuannya supaya saya mengundurkan diri, kan?",
+   "l": "Pindahkan dia kembali ke atas. Tanggung risikonya.",
+   "r": "\"Ini cuma sementara.\" (tidak)"
+  },
+  "konusma_yasagi": {
+   "t": "Umumkan ke timmu: tidak ada yang boleh bicara dengan Deniz di luar urusan kerja. Perintah dari atas.",
+   "l": "Tolak mengumumkannya",
+   "r": "Umumkan diam-diam"
+  },
+  "davet_yok": {
+   "t": "Rapat strategi tahunan mengundang semua manajer kecuali kamu. Daftarnya 'tidak sengaja' kurang satu?",
+   "l": "Masuk tanpa diundang",
+   "r": "Abaikan. Kerja."
+  },
+  "selam_yok": {
+   "t": "Sejak GM berhenti menyapamu di koridor, separuh lantai ikut berhenti. Menyebar seperti cuaca.",
+   "l": "Sapa semua orang lebih lantang dari sebelumnya",
+   "r": "Kamu juga berhenti menyapa"
+  },
+  "ogle_yemegi": {
+   "t": "Rombongan makan siang tim 'lupa' mengajak saya untuk minggu ketiga. Saya makan sendirian di tangga darurat.",
+   "l": "Besok siang, duduklah makan di sebelahnya",
+   "r": "\"Politik makan siang bukan urusan saya.\""
+  },
+  "dedikodu": {
+   "t": "Koridor ramai membicarakannya: Tolga menyebar gosip bahwa Selin mendapat promosi 'lewat jalur lain'.",
+   "l": "Matikan gosipnya secara terbuka. Tegur Tolga.",
+   "r": "Jangan ikut campur. Malah, ceritakan sekali."
+  },
+  "taklit": {
+   "t": "Saat makan siang dia menirukan gagapnya Deniz. Satu meja tertawa. Dia menatapmu: \"Iya kan? Lucu banget.\"",
+   "l": "\"Itu tidak lucu.\" Berdiri. Pergi.",
+   "r": "Tersenyum. Ikut bermain."
+  },
+  "wp_grubu": {
+   "t": "Foto lama saya jadi bahan olok-olok di grup WhatsApp kantor. Para manajer ada di grup. Diam saja.",
+   "l": "Tulis peringatan tegas di grup",
+   "r": "\"Belajarlah menerima lelucon.\""
+  },
+  "hata_yukleme": {
+   "t": "Dia menimpakan kegagalan proyeknya sendiri ke timmu di rapat direksi. Semua mata menatapmu.",
+   "l": "Bantah dengan jejak email",
+   "r": "Korbankan tim. Diam saja."
+  },
+  "deli_muamele": {
+   "t": "Manajemen menyarankan Deniz mengambil 'surat keterangan kelayakan psikologis'. Satu-satunya gejalanya: dia mengajukan pengaduan.",
+   "l": "\"Mengadu bukan penyakit.\"",
+   "r": "Arahkan dia ke dokter"
+  },
+  "kilik_alay": {
+   "t": "GM mengejek pakaian saya di depan klien: \"Rupanya gaji dari kami tidak cukup untuk berpakaian pantas.\"",
+   "l": "Minta maaf padanya atas nama perusahaan",
+   "r": "\"Dia memang suka bercanda dengan semua orang.\""
+  },
+  "ozel_yasam": {
+   "t": "Dengan suara keras di ruang kerja terbuka: \"Katanya perceraianmu berlarut-larut. Jangan bawa-bawa kekacauan rumahmu ke angka-angkaku.\"",
+   "l": "\"Kehidupan pribadi saya bukan bahan diskusi.\"",
+   "r": "Minta maaf atas perceraianmu sendiri"
+  },
+  "hasta_calisan": {
+   "t": "Demam saya 39 derajat, tapi kata GM siapa pun yang ambil cuti sakit 'akan menemukan dirinya di depan pintu'. Saya harus masuk?",
+   "l": "\"Tetap di rumah. Surat sakitnya urusan saya.\"",
+   "r": "\"Pakai masker. Ada kerjaan.\""
+  },
+  "cumartesi": {
+   "t": "Bulan ini semua orang kerja hari Sabtu. Uang lembur? Anggaran seperti itu tidak ada.",
+   "l": "\"Lembur tanpa bayaran itu ilegal. Saya menolak.\"",
+   "r": "Umumkan sebagai 'sukarela'"
+  },
+  "panik_atak": {
+   "t": "Saya kena serangan panik di toilet sebelum rapat. Sekarang saya menangis di mobil sebelum masuk kerja.",
+   "l": "Ringankan bebannya. Tanyai kabarnya tiap hari.",
+   "r": "\"Kita semua stres, Deniz.\""
+  },
+  "curuk_raf": {
+   "t": "Rak gudang sudah lapuk — minggu lalu nyaris ada yang tertimpa. Anggaran perbaikannya ditolak.",
+   "l": "Tutup gudangnya. Ada anggaran atau tidak.",
+   "r": "\"Bilang saja supaya mereka hati-hati.\""
+  },
+  "raf_kaza": {
+   "t": "Kejadian. Raknya menimpa Musa. Lengannya patah. HRD bertanya bagaimana kita 'mendokumentasikan' ini.",
+   "l": "Laporkan dengan jujur sebagai kecelakaan kerja",
+   "r": "\"Dia jatuh di rumah. Semua sepakat?\""
+  },
+  "antidepresan": {
+   "t": "Bulan ini empat orang di timmu mulai minum antidepresan. Perlu saya laporkan polanya ke manajemen?",
+   "l": "\"Laporkan. Biar kebenarannya muncul.\"",
+   "r": "\"Kubur. Jangan sampai ada yang lihat.\""
+  },
+  "ik_verimlilik": {
+   "t": "Timmu terlihat 'terlalu santai'. Namamu merah di laporan produktivitas. Lakukan sesuatu.",
+   "l": "\"Tim saya bekerja dengan baik. Datanya terbuka.\"",
+   "r": "Kencangkan sekrupnya ke tim"
+  },
+  "ceo_ilgi": {
+   "t": "Saya memperhatikanmu. Saya suka manajer yang keras. Jadilah seperti Tolga — orang itu 'berorientasi hasil'.",
+   "l": "\"Saya memimpin dengan cara saya sendiri.\"",
+   "r": "\"Saya catat, Pak.\""
+  },
+  "stajyer_maas": {
+   "t": "Tiga bulan tanpa gaji. Katanya 'akan ada posisi tetap'. Benarkah masih ada harapan?",
+   "l": "Jujurlah: \"Posisinya tidak ada. Jangan habiskan masa mudamu di sini.\"",
+   "r": "\"Sebentar lagi. Sabar.\" (bohong)"
+  },
+  "ihbar_avi": {
+   "t": "Seseorang melaporkan kita ke Kementerian Ketenagakerjaan soal mobbing. Carikan saya tikusnya.",
+   "l": "\"Saya tidak ikut perburuan penyihir.\"",
+   "r": "Mulai penyelidikannya"
+  },
+  "referans": {
+   "t": "Kantor baru Ayşe menelepon minta referensi. Kata GM: \"Jelek-jelekkan dia. Biar jadi pelajaran.\"",
+   "l": "Beri referensi yang jujur dan positif",
+   "r": "\"Dia itu... bermasalah.\""
+  },
+  "kamera": {
+   "t": "Kamera keamanan baru akan mengarah ke setiap meja, lengkap dengan rekaman layar. 'Demi produktivitas.'",
+   "l": "\"Ini pengawasan, bukan keamanan.\"",
+   "r": "Tanda tangani persetujuan pemasangannya"
+  },
+  "toplu_email": {
+   "t": "Dia mengirim email ke seluruh perusahaan berisi daftar 'karyawan berkinerja rendah'. Insinyur terbaikmu ada di dalamnya. Tanpa dasar.",
+   "l": "Tuntut koreksi secara terbuka",
+   "r": "Hibur insinyurnya secara pribadi. Jangan lakukan apa-apa."
+  },
+  "masa_kucultme": {
+   "t": "\"Beri Mehmet meja di sebelah toilet. Siapa tahu baunya memotivasi dia untuk resign.\"",
+   "l": "\"Meja bukan alat hukuman.\"",
+   "r": "Berikan mejanya"
+  },
+  "gorev_yok": {
+   "t": "Sudah dua minggu saya tidak diberi tugas sama sekali. Duduk melamun. Orang mengira saya malas. Ini lebih buruk daripada kebanyakan kerja.",
+   "l": "Beri dia pekerjaan yang nyata dan berarti",
+   "r": "\"Nikmati saja liburan digaji.\""
+  },
+  "kapasit_alti": {
+   "t": "Saya — insinyur senior — ditugaskan entri data. Baris demi baris. Keahlian saya sengaja dibiarkan membusuk.",
+   "l": "Kembalikan dia ke pekerjaan teknik",
+   "r": "\"Semua data adalah data penting.\""
+  },
+  "surekli_yeni": {
+   "t": "Setiap kali pekerjaan selesai 90%, GM mengubah persyaratannya. Kelima kalinya bulan ini. Tim mulai tercerai-berai.",
+   "l": "Bekukan lingkup kerjanya. Hitam di atas putih.",
+   "r": "\"Dia bosnya. Kita putar haluan lagi.\""
+  },
+  "onur_kirici": {
+   "t": "\"Suruh insinyur baru itu mencuci mobil saya. Pembentukan karakter. Sekalian rekam untuk grup chat.\"",
+   "l": "\"Sama sekali tidak.\"",
+   "r": "Kirim insinyurnya turun membawa spons"
+  },
+  "imkansiz_hedef": {
+   "t": "Target kuartal depan: pertumbuhan {X}%. Kuartal lalu 3% saja susah payah. \"Detailnya urusanmu.\"",
+   "l": "Ajukan rencana tandingan yang realistis",
+   "r": "Terima targetnya. Teruskan sakitnya ke bawah."
+  },
+  "cinsiyet": {
+   "t": "Manajemen tidak mau Selin memimpin rapat klien karena kliennya 'lebih suka berurusan dengan laki-laki'.",
+   "l": "Selin yang memimpin. Titik.",
+   "r": "Ganti dia 'sekali ini saja'"
+  },
+  "inanc_alay": {
+   "t": "Makan malam tim sengaja dijadwalkan pas jam puasa saya, lalu dijadikan bahan bercandaan. Setiap kali.",
+   "l": "Geser jadwalnya. Tidak ada lelucon.",
+   "r": "\"Mereka cuma bercanda kok.\""
+  },
+  "yas_alay": {
+   "t": "Tentang akuntanmu yang berusia 58 tahun: \"Dinosaurus tidak bisa belajar sistem baru. Buat dia merasa waktunya sudah habis.\"",
+   "l": "Carikan dia pelatih saja",
+   "r": "Mulai 'lupa' mengundangnya ke pelatihan"
+  },
+  "toplanti_saat": {
+   "t": "Sekarang dia menjadwalkan rapat wajib pukul 19.30. \"Yang punya urusan lebih penting, bilang di depan muka saya.\"",
+   "l": "\"Rapat selesai pukul 18.00. Saya bilang di depan muka Anda.\"",
+   "r": "Suruh tim membatalkan acara malam mereka"
+  },
+  "performans_oyunu": {
+   "t": "Sistem kinerja baru: 10% terbawah dipecat setiap kuartal. Otomatis. Terlepas dari kinerja sebenarnya.",
+   "l": "Tolak menyusun timmu jadi daftar eksekusi",
+   "r": "Serahkan peringkatnya"
+  },
+  "maas_gizli": {
+   "t": "Pengingat: karyawan yang saling membicarakan gaji kini termasuk 'pelanggaran yang bisa berujung pemecatan'. Umumkan.",
+   "l": "\"Membicarakan gaji adalah hak yang sah.\"",
+   "r": "Pasang pengumumannya"
+  },
+  "aglayan_kisi": {
+   "t": "Saya menemukan Ayşe menangis di ruang arsip. Dia memohon agar saya tidak bilang siapa-siapa. Ini yang ketiga kalinya.",
+   "l": "Bicaralah dengan Ayşe. Tawarkan bantuan sungguhan.",
+   "r": "\"Yang terjadi di arsip, tinggal di arsip.\""
+  },
+  "sen_kovulma_esigi": {
+   "t": "Namamu disebut di rapat direksi. Sebagian menilai manajer 'selembek ini' tidak cocok dengan budaya kita.",
+   "l": "\"Hasil saya yang bicara. Lembut itu metode.\"",
+   "r": "Janjikan 'jadi lebih keras' kuartal depan"
+  },
+  "you_park": {
+   "t": "Direksi menganggapmu 'tidak selaras'. Jatah parkirmu dicabut. Ruanganmu dipindah ke lantai terbuka. Hari ini juga.",
+   "l": "Terima dengan kepala tegak",
+   "r": "Teruskan penghinaan itu ke bawah rantai"
+  },
+  "you_toplanti": {
+   "t": "Kamu tak lagi diundang ke rapat manajemen. Keputusan soal timmu dibuat tanpamu, lalu 'disampaikan' kepadamu.",
+   "l": "Ajukan keberatan tertulis. Simpan arsipnya.",
+   "r": "Tundukkan kepala"
+  },
+  "you_bulten": {
+   "t": "Buletin perusahaan memuat tulisan soal 'masalah kinerja pada sejumlah manajer'. Semua tahu yang dimaksud kamu.",
+   "l": "Terbitkan tanggapan terbuka berbasis fakta",
+   "r": "Telan dalam diam"
+  },
+  "you_maas": {
+   "t": "'Kesalahan administrasi' memotong gajimu 20% bulan ini. Perbaikannya butuh 'beberapa siklus penggajian'.",
+   "l": "Kirim somasi",
+   "r": "Tunggu dengan sopan. Dan terus menunggu."
+  },
+  "you_masa": {
+   "t": "Meja barumu: di samping printer, tepat di bawah semburan AC. Ruangan lamamu kini 'ruang meditasi' yang tak pernah dipakai siapa pun.",
+   "l": "Bekerjalah dari meja itu. Dengan cemerlang.",
+   "r": "Mulai tampak sakit-sakitan, datang terlambat"
+  },
+  "you_taklit": {
+   "t": "Di jamuan makan para manajer, Tolga menirukan gaya presentasimu. CEO yang tertawa paling keras.",
+   "l": "Ikutlah tertawa. Jangan biarkan mereka melihat lukamu.",
+   "r": "Tinggalkan jamuannya"
+  },
+  "email_sessiz": {
+   "t": "Email saya ke manajemen tak dibalas berminggu-minggu. Lalu mereka bilang 'kamu tidak pernah memberi tahu kami'. Saya punya buktinya.",
+   "l": "Buatkan dia protokol jejak tertulis",
+   "r": "\"Mungkin tulis email yang lebih pendek.\""
+  },
+  "proje_calindi": {
+   "t": "Tolga mempresentasikan proposal {P} saya ke direksi. Slide demi slide. Nama saya tak ada di satu halaman pun.",
+   "l": "Tunjukkan tanggal file aslinya ke direksi",
+   "r": "\"Toh ide itu milik perusahaan.\""
+  },
+  "gece_mesaj": {
+   "t": "Pukul 02.00 dia kirim pesan suara ke grup tim: \"Kenapa tidak ada yang menjawab? Ini perusahaan atau panti jompo?\"",
+   "l": "Senyapkan grup untuk semua orang setelah pukul 19.00",
+   "r": "Wajibkan tim membalas di malam hari"
+  },
+  "tatil_iptal": {
+   "t": "Cuti tahunan saya disetujui 2 bulan lalu. Tiket pesawat sudah dibeli. Hari ini dibatalkan 'karena beban kerja'.",
+   "l": "Pulihkan cutinya. Tutupi sendiri kekurangannya.",
+   "r": "\"Perusahaan dulu.\""
+  },
+  "kacak_dinleme": {
+   "t": "Tolga 'tidak sengaja' memperlihatkan tangkapan layar: seseorang memasukkannya ke grup privat timmu. Dia tahu segalanya.",
+   "l": "Peringatkan tim. Bangun lagi kepercayaan.",
+   "r": "Manfaatkan. Beri dia informasi palsu."
+  },
+  "dogum_izni": {
+   "t": "Zeynep mengumumkan kehamilannya. Manajemen ingin dia 'disingkirkan' sebelum cuti melahirkannya dimulai.",
+   "l": "\"Itu ilegal dan keji. Tidak.\"",
+   "r": "Mulai menyusun 'berkas kinerja'"
+  },
+  "engel_alay": {
+   "t": "Lemari perlengkapan ditaruh di depan ramp lagi. Saat akuntan kami yang berkursi roda mengeluh, ada yang tertawa.",
+   "l": "Bersihkan ramp-nya. Cari siapa yang tertawa.",
+   "r": "\"Dia bisa pakai lift barang.\""
+  },
+  "memleket": {
+   "t": "GM terus-terusan menirukan logat kampung halaman karyawan baru di rapat. Senyum anak itu makin tipis setiap kalinya.",
+   "l": "Lain kali, potong langsung di depan umum",
+   "r": "Suruh anak itu 'memperbaiki' logatnya"
+  },
+  "istifa_zorlamasi": {
+   "t": "Taktik baru manajemen: buat hidup Mehmet cukup sengsara sampai dia resign sendiri — pesangon itu mahal.",
+   "l": "Beri tahu Mehmet yang sebenarnya. Diam-diam.",
+   "r": "Jalankan pencekikan perlahan"
+  },
+  "aidat_kesinti": {
+   "t": "Gaji dipotong diam-diam untuk 'iuran dana sosial' yang tak pernah disetujui siapa pun. Uangnya mengalir ke klub golf GM.",
+   "l": "Bongkar potongannya",
+   "r": "\"Semua orang bayar. Sudah tradisi.\""
+  },
+  "kriz_kahraman": {
+   "t": "Krisis server yang kamu ramalkan (dan diabaikan) akhirnya meledak. Tolga kini memperbaikinya dengan 'heroik'. Pakai rencana lamamu.",
+   "l": "Bagikan rencana asli yang bertanggal ke CEO",
+   "r": "Biarkan dia menikmati paradenya"
+  },
+  "hafta_sonu_etkinlik": {
+   "t": "'Team building' wajib hari Minggu ini: paintball pukul 07.00, absensi dicatat. Keluarga? Tidak diundang.",
+   "l": "Jadikan sukarela dan dibayar",
+   "r": "Tegakkan absensinya"
+  },
+  "kidem_sifirla": {
+   "t": "Tim legal menemukan celah: pecat semua orang di tahun ke-4,5, rekrut lagi seminggu kemudian — masa kerja jadi nol, pesangon lenyap.",
+   "l": "Tolak meneken satu pun surat pemecatan",
+   "r": "Proses berkas-berkasnya"
+  },
+  "whistleblower": {
+   "t": "Saya menemukan faktur {C} digelembungkan. Kalau saya laporkan, tamat saya di sini. Kalau tidak, saya jadi kaki tangan. Tolong saya.",
+   "l": "Laporkan bersama-sama. Lewat jalur resmi.",
+   "r": "\"Hapus apa yang kamu lihat.\""
+  },
+  "sirket_telefonu": {
+   "t": "IT memasang pelacak di ponsel kantor — lokasi, pesan, foto. 'Kebijakan standar.' Tidak ada yang diberi tahu.",
+   "l": "Beri tahu semua orang segera",
+   "r": "Diam. Hati-hati juga dengan apa yang kamu ketik."
+  },
+  "eski_dost": {
+   "t": "Ingat Hakan, yang dipecat tahun lalu karena 'tidak kompeten'? Sekarang dia direktur di {C}. Dan dia ingat siapa yang meneken surat keluarnya.",
+   "l": "Telepon dia. Minta maaf dengan tulus.",
+   "r": "Hindari akun itu sepenuhnya"
+  },
+  "mola_yasak": {
+   "t": "Aturan baru: istirahat kopi maksimal 7 menit, dilacak lewat kartu akses. Waktu ke toilet 'sedang dikaji'.",
+   "l": "\"Kami mengelola hasil kerja, bukan kandung kemih.\"",
+   "r": "Pasang mesin pembaca kartunya"
+  },
+  "klima_savasi": {
+   "t": "AC disetel 17 derajat tepat di atas meja saya. Sudah dua kali saya minta tolong. Kata GM: \"Dingin membuat pemalas tetap terjaga.\"",
+   "l": "Pindahkan mejanya. Suruh betulkan AC-nya.",
+   "r": "\"Bawa kardigan.\""
+  },
+  "cv_sabotaj": {
+   "t": "Saya dengar HRD menelepon perusahaan-perusahaan tempat mantan karyawan kita melamar, untuk 'memperingatkan' mereka. Memangnya itu legal?",
+   "l": "Hadapi HRD. Tuntut agar dihentikan.",
+   "r": "\"Bukan sirkus kita lagi.\""
+  },
+  "acil_aile": {
+   "t": "Ayah saya kena stroke. Saya harus pergi SEKARANG. GM menghadang di pintu: \"Demonya satu jam lagi.\"",
+   "l": "\"PERGILAH. Demonya saya yang bawakan.\"",
+   "r": "\"Video call saja dari rumah sakit.\""
+  },
+  "sarhos_gm": {
+   "t": "Di jamuan makan kantor, GM yang mabuk menarik-narik lengan anak magang untuk 'berdansa'. Gadis itu membeku. Semua orang menatapmu.",
+   "l": "Berdirilah di antara mereka. Sekarang.",
+   "r": "Buang muka. Isi lagi gelasmu."
+  },
+  "sarhos_sonra": {
+   "t": "Soal malam itu... Saya mengajukan pengaduan tentang GM. Maukah Anda menuliskan apa yang Anda lihat? Anda ada persis di sana.",
+   "l": "Tulis yang sebenarnya. Tanda tangani.",
+   "r": "\"Saya tidak melihat dengan jelas.\""
+  },
+  "iki_yuzlu_ik": {
+   "t": "Saluran pengaduan 'rahasia' HRD yang baru meneruskan semuanya langsung ke GM. Lengkap dengan nama. Saya pikir Anda perlu tahu.",
+   "l": "Peringatkan tim secara diam-diam",
+   "r": "Pakai salurannya untuk menguji loyalitas"
+  },
+  "prim_gaspi": {
+   "t": "Bonus peluncuran {P} yang dijanjikan 'direstrukturisasi' menjadi pesta piza. Pesta piza.",
+   "l": "Perjuangkan bonus yang sebenarnya",
+   "r": "\"Kejunya ekstra, lho.\""
+  },
+  "görev_tanimi": {
+   "t": "Saya direkrut sebagai desainer. Minggu ini saya mengerjakan: formulir visa GM, slide PR anaknya, dan janji temu dokter hewan untuk anjingnya.",
+   "l": "Akhiri suruhan pribadinya. Secara tertulis.",
+   "r": "\"Setidaknya anjingnya suka kamu.\""
+  },
+  "toplu_istifa_tehdidi": {
+   "t": "Para developer senior bersepakat: kalau Mehmet didepak, kelimanya resign di hari yang sama. Mereka ingin kamu tahu.",
+   "l": "Berdirilah bersama mereka. Sampaikan ke manajemen.",
+   "r": "Laporkan 'persekongkolan' itu ke HRD"
+  },
+  "yemekhane": {
+   "t": "Denah duduk baru di kantin: manajemen makan di balik dinding kaca. 'Terlihat menciptakan keakraban. Keakraban menciptakan tuntutan.'",
+   "l": "Tetap makan bersama timmu",
+   "r": "Duduklah di kursimu di balik kaca"
+  },
+  "sessiz_istifa": {
+   "t": "Separuh timmu menunjukkan gejala quiet quitting — usaha minimum, inisiatif nol. Mereka bukan malas. Mereka terluka.",
+   "l": "Bicara empat mata. Dengarkan dulu.",
+   "r": "Buka rencana perbaikan kinerja untuk semuanya"
+  },
+  "kopya_sirket": {
+   "t": "Kabar angin: Tolga diam-diam membangun perusahaan saingan dengan data klien kita. CEO ingin KAMU membuktikannya. Atau menguburnya. Tidak jelas yang mana.",
+   "l": "Selidiki dengan benar, laporkan temuannya",
+   "r": "\"Saya tidak lihat apa-apa, tidak tahu apa-apa.\""
+  },
+  "mikro_yonetim": {
+   "t": "Sekarang dia menuntut email status per jam dari timmu. Per jam. Dengan tangkapan layar dan jumlah kata.",
+   "l": "\"Anda dapat laporan mingguan. Titik.\"",
+   "r": "Siapkan alur laporan per jamnya"
+  },
+  "kutlama_gaspi": {
+   "t": "Kami menutup kesepakatan {C} setelah 6 bulan lembur malam. Toast GM: \"Ini bukti apa yang bisa dicapai kepemimpinan SAYA.\"",
+   "l": "Angkat gelas untuk tim yang sesungguhnya, sebut nama satu per satu",
+   "r": "Bertepuk tangan bersama yang lain"
+  },
+  "delil_yok_etme": {
+   "t": "Legal ingin semua email yang lebih tua dari 6 bulan dihapus otomatis. Kebetulan sekali: gugatan mobbing-nya menyangkut bulan ke-7.",
+   "l": "Arsipkan dulu semuanya ke tempat lain",
+   "r": "Aktifkan penghapusan otomatisnya"
+  },
+  "you_stajyer": {
+   "t": "Anak magang ditugaskan jadi 'bayanganmu'. Dia mencatat semua yang kamu lakukan dan melapor ke HRD tiap malam. Dia sendiri malu.",
+   "l": "\"Kerjakan tugasmu. Saya tidak menyembunyikan apa pun.\"",
+   "r": "Suapi dia data palsu yang mengesankan"
+  },
+  "you_egitim": {
+   "t": "Kamu didaftarkan — secara wajib — ke kursus 'Keterampilan Komunikasi Dasar'. Bersama para anak magang. Fotonya akan disebar ke seluruh perusahaan.",
+   "l": "Hadiri. Kuasai. Pimpin ruangannya.",
+   "r": "Cari surat dokter untuk bolos"
+  },
+  "you_hedef_revize": {
+   "t": "Targetmu 'direvisi' di tengah kuartal. Naik. 300%. Berlaku surut. Bonusmu kini mustahil secara matematis.",
+   "l": "Dokumentasikan permainannya. Diam-diam sewa pengacara.",
+   "r": "Tetap kejar yang mustahil"
+  },
+  "aynali_oda": {
+   "t": "Hati-hati. Semua yang diperintahkan padamu untuk dilakukan ke orang lain — pernah kulihat dilakukan juga ke orang yang menolak. Tempat ini mendaur ulang metodenya.",
+   "l": "\"Kalau begitu, akulah yang memutus lingkarannya.\"",
+   "r": "\"Kalau begitu, aku harus tetap berguna.\""
+  },
+  "cikis_multakati": {
+   "t": "Data exit interview: 19 dari 21 orang yang keluar menyebut 'perilaku manajemen'. Ringkasan resmi HRD menulis 'alasan pribadi'. Mau tanda tangan?",
+   "l": "Tolak. Lampirkan data mentahnya.",
+   "r": "Tanda tangani fiksinya"
+  },
+  "yeni_kurban": {
+   "t": "\"Kabar baik. Direksi menemukan 'fokus' baru. Seorang manajer di logistik. Kamu lolos — asalkan kamu bantu mengurusnya.\"",
+   "l": "Justru peringatkan manajer logistik itu",
+   "r": "Serahkan buku panduannya"
+  },
+  "remote_kamera": {
+   "t": "Aturan kerja jarak jauh yang baru: kamera MENYALA setiap saat, tangkapan layar tiap 5 menit, izin ke toilet dicatat di chat.",
+   "l": "\"Kami mengukur kerja, bukan tubuh.\"",
+   "r": "Gelar paket pengawasannya"
+  },
+  "remote_mesai": {
+   "t": "Sejak kerja remote, jam kerja saya 07.00 sampai 23.00. 'Toh kamu di rumah,' kata mereka. Rumah saya berhenti jadi rumah.",
+   "l": "Terapkan jam mulai/selesai yang tegas",
+   "r": "\"Fleksibilitas berlaku dua arah.\""
+  },
+  "acik_ofis": {
+   "t": "Dia menata ulang kantor terbuka: 'karyawan berkinerja rendah' duduk menghadap tembok dekat pintu masuk. Pojok aib. Lengkap dengan papan nama.",
+   "l": "Turunkan papannya dengan tanganmu sendiri",
+   "r": "\"Motivasi lewat visibilitas.\""
+  },
+  "sendika": {
+   "t": "Beberapa dari kami diam-diam membicarakan serikat pekerja. Kalau manajemen dengar, gedung ini bisa mereka bakar. Kamu bersama kami atau mereka?",
+   "l": "\"Itu hak kalian. Diamku milik kalian.\"",
+   "r": "Laporkan para penggeraknya"
+  },
+  "avukat_mektup": {
+   "t": "Pengacara Deniz mengirim somasi soal pelecehan di tempat kerja. Manajemen minta 'pernyataan seragam' bahwa tidak pernah terjadi apa-apa.",
+   "l": "\"Saya tidak akan meneken kebohongan.\"",
+   "r": "Teken pernyataan seragamnya"
+  },
+  "tukenmislik": {
+   "t": "Saya tidak merasakan apa-apa lagi. Bukan stres, bukan marah. Saya buka laptop dan cuma menatap. Beginikah rasanya burnout?",
+   "l": "Cuti sakit + rujukan terapis. Hari ini juga.",
+   "r": "\"Ambil libur sore ini.\""
+  },
+  "musteri_hakaret": {
+   "t": "Manajer akun {C} membentak saya di setiap panggilan. Kemarin dia menyebut saya 'spreadsheet yang bisa bicara'. Kata manajemen, 'klien adalah raja'.",
+   "l": "Telepon kliennya. Pasang batas.",
+   "r": "\"Namanya juga raja.\""
+  },
+  "kriz_liste": {
+   "t": "Krisis ekonomi. Jumat ini saya butuh daftar PHK dari timmu: 30%. Urut abjad juga boleh. Saya tidak peduli.",
+   "l": "Tawarkan alternatif: potong gaji + minggu kerja pendek",
+   "r": "Tulis daftarnya"
+  },
+  "kriz_liste2": {
+   "t": "Saya melihat nama saya di kertas cetakan di mejamu. Di bawah tulisan 'Daftar'. Dua bulan lagi saya menikah. Katakan saja yang sebenarnya.",
+   "l": "Katakan yang sebenarnya. Semuanya.",
+   "r": "\"Itu cuma denah tempat duduk.\""
+  },
+  "yeni_ceo": {
+   "t": "Pidato pertama CEO baru: \"Saya baca 40% dari kalian bisa digantikan AI. Buktikan saya salah. Atau jangan. Dua-duanya menghemat.\"",
+   "l": "Bela nilai timmu secara terbuka",
+   "r": "Mulai bikin slide 'transformasi AI'"
+  },
+  "danisman": {
+   "t": "Vonis firma konsultan: departemenmu 'tidak efisien secara emosional'. Solusi mereka: pelatihan senyum wajib. Saya tidak bercanda.",
+   "l": "Tolak sekolah badut itu",
+   "r": "Jadwalkan sesi senyumnya"
+  },
+  "hamile_donus": {
+   "t": "Zeynep kembali dari cuti melahirkan hari Senin. Manajemen 'merestrukturisasi' jabatannya sampai lenyap. Tugas barunya: cadangan resepsionis. Dulu dia kepala tim data.",
+   "l": "Pulihkan jabatan aslinya. Lawan.",
+   "r": "\"Setidaknya dia masih punya pekerjaan.\""
+  },
+  "dil_baski": {
+   "t": "Aturan baru: 'di kantor hanya bahasa resmi'. Dua rekan kena surat teguran karena mengobrol dalam bahasa ibu mereka. Saat makan siang.",
+   "l": "Setidaknya hapus aturannya saat jam istirahat",
+   "r": "Tegakkan. 'Profesionalisme.'"
+  },
+  "taseron": {
+   "t": "Petugas kebersihan makan sambil berdiri di tangga darurat — mereka 'pekerja kontrak', dilarang masuk kantin. Sejak dulu begitu.",
+   "l": "Buka kantin untuk semua orang",
+   "r": "\"Ketentuan kontrak ya ketentuan kontrak.\""
+  },
+  "parti_baski": {
+   "t": "Yang tidak datang ke pesta yacht GM katanya 'melewatkan kariernya juga'. Malam itu ayah Mehmet dirawat di rumah sakit. Dia minta saya bertanya padamu.",
+   "l": "\"Keluarga dulu. Saya yang pasang badan untuknya.\"",
+   "r": "\"Mampir satu jam. Buat fotonya.\""
+  },
+  "eski_sirket": {
+   "t": "Dia bilang ke semua orang kamu 'dipecat' dari perusahaan sebelumnya. Kamu mengundurkan diri. Suratnya ada padamu. Dia pun tahu itu.",
+   "l": "Tunjukkan suratnya sekali. Dengan lantang.",
+   "r": "Biarkan kebohongannya mengendap"
+  },
+  "gizli_zam": {
+   "t": "\"Berikan anggaran kenaikan gaji ke tim Tolga. Timmu 'tidak cukup mengeluh untuk dianggap berisiko kabur'. Itu pujian.\"",
+   "l": "\"Di sini, loyalitas dibayar lebih dulu.\"",
+   "r": "Alihkan anggarannya diam-diam"
+  },
+  "mola_ihbar": {
+   "t": "Sekarang ada 'saluran tips produktivitas' anonim. Seseorang melaporkan Ayşe karena istirahat teh 12 menit. Orang itu saya. Saya mual.",
+   "l": "\"Jangan pernah lagi. Dan saluran itu akan kututup.\"",
+   "r": "\"Refleks bagus. Terus laporkan.\""
+  },
+  "threeh_kural": {
+   "t": "Kebijakan perusahaan kini membatasi cuti sakit 3 hari per TAHUN. Lebih dari itu butuh 'persetujuan pribadi' GM. Ini melanggar undang-undang.",
+   "l": "Laporkan ke dinas ketenagakerjaan",
+   "r": "\"Sekarang aturan ya aturan.\""
+  },
+  "oyun_ici_saka": {
+   "t": "Mereka mengganti nama Wi-Fi kantor jadi 'MehmetLemot'. Kata IT, GM sendiri yang minta. Sudah 3 minggu.",
+   "l": "Suruh IT memperbaikinya + pengaduan resmi",
+   "r": "\"Tapi agak lucu sih.\""
+  },
+  "performans_ani": {
+   "t": "Tinjauan kinerjamu dijadwalkan di ruang rapat kaca. Saat jam makan siang. Menghadap kantin. Nyaris pakai megafon.",
+   "l": "Pindahkan ke ruangan privat",
+   "r": "Tampillah untuk para penonton"
+  },
+  "kidemli_veda": {
+   "t": "Pak Hüseyin pensiun hari Jumat setelah 31 tahun. Kado perpisahan dari manajemen: kalender berlogo perusahaan. Tim patungan untuk hadiah sungguhan. Ikut?",
+   "l": "Ikut + gelar acara perpisahan sungguhan",
+   "r": "\"Kalendernya 12 halaman, lho.\""
+  },
+  "gorusme_kaydi": {
+   "t": "HRD diam-diam merekam pertemuan empat mata 'demi kualitas'. Kata legal, tanpa izin itu ilegal. Kata HRD, 'ya sudah, jangan bilang siapa-siapa'.",
+   "l": "Beri tahu semua orang saat standup pagi",
+   "r": "Jaga ucapanmu di setiap pertemuan"
+  },
+  "prim_yaris": {
+   "t": "Skema 'motivasi' baru: satu bonus, gaya gladiator. Anggota tim bersaing secara terbuka; skor tampil di layar dinding. Nama yang kalah berkedip merah.",
+   "l": "Tolak arenanya",
+   "r": "Pasang sendiri layarnya"
+  },
+  "ise_alim": {
+   "t": "Instruksi rekrutmen: 'Jangan yang di atas 35, jangan ibu dengan anak kecil, jangan yang 'terlalu terdidik untuk patuh'.' Tertulis. Mereka MENULISKANNYA.",
+   "l": "Simpan salinannya. Tolak menerapkannya.",
+   "r": "Saring CV sesuai perintah"
+  },
+  "aile_gunu": {
+   "t": "Di 'Hari Keluarga' dia memperkenalkan karyawan ke pasangan mereka berdasarkan peringkat kinerja: \"Ini Deniz — kelas C, tapi kami masih berharap.\"",
+   "l": "Potong 'tur' itu dengan lantang",
+   "r": "Berharap keluargamu dilewati"
+  },
+  "y_kusagi": {
+   "t": "Pembuka rapat direksi: \"Masalah perusahaan ini: anak muda mengira hak adalah komponen gaji.\" Semua yang di bawah 40 menunduk menatap meja.",
+   "l": "\"Hak bukan soal generasi.\"",
+   "r": "Mengangguk penuh renungan"
+  },
+  "gizli_kamera_wc": {
+   "t": "Tim pemeliharaan menemukan kamera yang mengarah ke koridor toilet, 'untuk menangkap perokok'. Tidak ada yang menyetujui. Tidak ada yang mengaku memasang.",
+   "l": "Copot + buat berita acara insiden",
+   "r": "\"Biarkan. Yang merokok, hati-hati.\""
+  },
+  "zorunlu_mesaj": {
+   "t": "Semua orang wajib memposting 'pesan syukur kepada pimpinan' di LinkedIn tiap bulan. HRD melacak kepatuhannya di berkas bernama 'LOYALITAS.xlsx'.",
+   "l": "\"Media sosial itu ranah pribadi.\"",
+   "r": "Buatkan templat untuk tim"
+  },
+  "veri_sizinti": {
+   "t": "Saya menemukan laporan psikologis karyawan di drive bersama yang terbuka. Milik semua orang. Termasuk milikmu. Disetel 'publik' oleh HRD tiga bulan lalu.",
+   "l": "Kunci + beri tahu semua yang terdampak",
+   "r": "Kunci. Diam-diam."
+  },
+  "cikis_engel": {
+   "t": "Dia memerintahkan satpam mencatat semua yang pulang sebelum pukul 19.00 'untuk arsip'. Arsipnya jadi email daftar aib tiap Jumat.",
+   "l": "Pulang tepat pukul 18.00. Terang-terangan.",
+   "r": "Pulang larut. Jadilah 'teladan.'"
+  },
+  "yalnizlastirma": {
+   "t": "Setiap proyek yang saya sentuh dipindahkan ke orang lain, satu per satu. Kalender saya kosong. Keahlian saya menguap. Ini strategis.",
+   "l": "Bangun kembali portofolionya secara terbuka",
+   "r": "\"Nikmati masa tenangmu.\""
+  },
+  "itibar_linkedin": {
+   "t": "Sebuah akun LinkedIn anonim memposting 'gosip industri' yang jelas-jelas tentang timmu. Gaya tulisannya tak salah lagi: Tolga.",
+   "l": "Tangkap layar semuanya. Konfrontasi dia.",
+   "r": "Buka akun anonim tandingan"
+  },
+  "ilk_gun": {
+   "t": "Karyawan baru itu melewatkan hari pertamanya di meja tanpa komputer, tanpa tugas, tanpa perkenalan. Pukul 17.00 seseorang bertanya dia siapa.",
+   "l": "Jalankan sendiri orientasi yang sungguhan",
+   "r": "\"Hari pertama memang selalu begitu.\""
+  },
+  "maas_gecikme": {
+   "t": "Gaji telat 9 hari. GM hari ini memposting foto dari liburan ski-nya. Grup chat tim membara.",
+   "l": "Tuntut tanggal pembayaran secara tertulis",
+   "r": "\"Sabar. Dan senyapkan grupnya.\""
+  },
+  "toplanti_maraton": {
+   "t": "Jadwal hari ini: 11 rapat, 9 di antaranya 'rapat persiapan rapat'. Waktu kerja sungguhan: 40 menit. Tim tenggelam dalam kalender.",
+   "l": "Umumkan hari-hari bebas rapat",
+   "r": "Tambah satu rapat tentang rapat"
+  },
+  "kisisel_esya": {
+   "t": "Saya datang, meja saya sudah dikosongkan. Foto, tanaman, semuanya di kardus dekat pintu. Katanya 'optimalisasi ruang'. Meja saya masih kosong.",
+   "l": "Pulihkan mejanya. Tuntut siapa yang memerintahkan.",
+   "r": "\"Minimalisme sedang tren.\""
+  },
+  "referans_tehdit": {
+   "t": "\"Ingatkan mereka yang resign: industri ini kecil. Satu telepon dari saya dan mereka bakal jualan gorengan. Masukkan ke naskah exit interview.\"",
+   "l": "\"Ancaman tidak akan masuk ke naskah saya.\"",
+   "r": "Tambahkan 'pengingat ramah' itu"
+  },
+  "ekip_koruma": {
+   "t": "Tim sadar kamu selama ini pasang badan untuk mereka di lantai atas. Mereka membelikanmu mug: 'Tameng Manusia Paling Lumayan Sedunia'. Ada kuenya juga.",
+   "l": "Terima mugnya. Makan kuenya.",
+   "r": "\"Tidak ada kumpul-kumpul di jam kerja.\""
+  },
+  "you_oda_bitki": {
+   "t": "Bahkan tanaman kantormu 'direalokasi'. Ke ruangan Tolga. Ada memonya segala. Seseorang menulis MEMO tentang tanamanmu.",
+   "l": "Beli tanaman yang lebih besar. Namai Merdeka.",
+   "r": "Ajukan memo tandingan"
+  },
+  "you_asistan": {
+   "t": "Asistenmu 'dipromosikan' entah ke mana, tanpa pengganti. Undangan rapatmu kini lewat asisten Tolga. Yang 'sangat sibuk'.",
+   "l": "Kelola kalendermu sendiri dengan disiplin baja",
+   "r": "Lewatkan rapat-rapat. Biarkan semuanya terbakar."
+  },
+  "you_lobi": {
+   "t": "Kartu aksesmu diambil 'untuk diperbarui'. Sudah tiga hari. Tiap pagi kamu menunggu di lobi sampai ada yang membukakan pintu. Resepsionis minta maaf setiap hari.",
+   "l": "Bekerja dari lobi. Produktif terang-terangan.",
+   "r": "Tuntut kartunya kembali sambil bikin ribut"
+  },
+  "you_soguk_oda": {
+   "t": "'Kantor barumu': bekas ruang server. 14 derajat, satu lampu berkedip-kedip, kursi beroda tiga. Tolga mampir tiap hari untuk 'mengecek moral'.",
+   "l": "Dekorasi. Jadikan legendaris.",
+   "r": "Duduk diam. Hitung kedipan lampunya."
+  },
+  "ihbarci_koruma": {
+   "t": "Saya tahu siapa yang mengadu ke kementerian. Manajemen hampir menemukannya. Satu kata dari saya menghentikan perburuan — dengan menunjuk orang yang salah.",
+   "l": "\"Tidak. Tidak boleh ada orang yang salah. Titik.\"",
+   "r": "\"Tunjuk saja Tolga.\""
+  },
+  "cocuk_hasta": {
+   "t": "Anak saya dioperasi hari Kamis. Saya sudah bilang ke GM. Dia malah menaruh 'rilis kritis' di hari Kamis dan menjadikan saya satu-satunya approver.",
+   "l": "Ambil sendiri peran approver-nya",
+   "r": "\"Rumah sakit ada Wi-Fi kok.\""
+  },
+  "unvan_oyunu": {
+   "t": "Trik retensi manajemen: naikkan jabatan, bekukan gaji. Selin sekarang 'Senior Executive Principal Lead'. Gaji sama. Tapi kartu namanya baru.",
+   "l": "\"Jabatan tidak membayar sewa.\"",
+   "r": "Pesan kartu nama yang lebih mengkilap"
+  },
+  "anket_oyunu": {
+   "t": "Survei kepuasan 'anonim' menanyakan departemen, masa kerja, usia, dan tempat makan siang favorit. Hasilnya langsung ke GM. Lengkap dengan daftar tebakan nama.",
+   "l": "Peringatkan semua orang: ini jebakan",
+   "r": "\"Isi semua dengan angka lima, biar selesai.\""
+  },
+  "emekli_aday": {
+   "t": "\"Hüseyin 2 tahun lagi pensiun. Kalau dia resign duluan, kita hemat pesangonnya. Buat hari-harinya... mendidik.\"",
+   "l": "Kawal sendiri 2 tahun terakhirnya",
+   "r": "Mulai 'pendidikannya'"
+  },
+  "whatsapp_saat": {
+   "t": "GM memasukkan nomor pribadi saya ke 6 grup kerja. Semalam ponsel saya bergetar 214 kali. Saya hitung. Dan saya anak magang.",
+   "l": "Keluarkan dia sendiri dari semua grup",
+   "r": "\"Selamat datang di industri ini.\""
+  },
+  "vardiya_oyunu": {
+   "t": "Shift gudang 'dioptimalkan': tutup pukul 23.00, buka pukul 07.00 — orangnya sama. Tidur kini sekadar kesalahan penjadwalan.",
+   "l": "Wajibkan jeda istirahat 11 jam",
+   "r": "\"Kopi gratis di bawah.\""
+  },
+  "basari_gizle": {
+   "t": "Permohonan paten kami disetujui — kabar besar. Manajemen mengembargo pengumumannya 'supaya tidak menggelembungkan ekspektasi gaji'.",
+   "l": "Umumkan saja. Tim dulu.",
+   "r": "Bersulang diam-diam di tangga darurat"
+  },
+  "kres_sozu": {
+   "t": "'Daycare perusahaan' yang dijanjikan 3 tahun lalu kini jadi 'ruang wellness' — satu beanbag dan satu poster. Para orang tua membayar separuh gaji untuk penitipan anak.",
+   "l": "Hidupkan lagi proyek daycare-nya",
+   "r": "\"Beanbag-nya ergonomis, lho.\""
+  },
+  "stajyer_fikir": {
+   "t": "Ide penghematan saya diterapkan di seluruh perusahaan. Pengumumannya memuji 'visi pimpinan senior'. Email aslinya ada pada saya.",
+   "l": "Luruskan catatannya secara terbuka",
+   "r": "\"Pengalaman adalah hadiah tersendiri.\""
+  },
+  "kapali_kapi": {
+   "t": "Kebijakan baru: pintunya 'selalu terbuka' — tapi mengambil janji temu butuh formulir, dua persetujuan, dan menunggu 3 minggu. Formulirnya menanyakan 'agenda emosionalmu'.",
+   "l": "Masuk tanpa formulir",
+   "r": "Isi formulirnya. Tunggu 3 minggu."
+  },
+  "tatil_mesaj": {
+   "t": "Saya di pemakaman nenek saya dan GM terus menelepon soal warna font. Dia meninggalkan 11 pesan suara. Soal. Warna. Font.",
+   "l": "Ambil alih ponselnya. Bereskan semuanya sendiri.",
+   "r": "\"Memangnya dia mau warna apa?\""
+  },
+  "beden_dili": {
+   "t": "Layanan konsultan baru: 'analisis ekspresi mikro' karyawan selama rapat. Mengerutkan kening kini 'momen pembinaan'. Ada laporannya segala.",
+   "l": "Batalkan ilmu semu itu",
+   "r": "Latih wajah netralmu"
+  },
+  "ofis_taşınma": {
+   "t": "Kantor pusat pindah 47 km, ke sebelah rumah GM. 'Perjalanan membangun karakter.' Tanpa bus antar-jemput. Diumumkan hari Jumat pukul 17.58.",
+   "l": "Perjuangkan bus jemputan + hari remote",
+   "r": "\"Beli audiobook, semuanya.\""
+  },
+  "gorunmez_emek": {
+   "t": "Dua belas tahun saya melatih setiap akuntan yang direkrut perusahaan ini. Jabatan saya tak pernah berubah. Orang yang saya latih tahun lalu kini jadi manajer saya.",
+   "l": "Susun sendiri berkas promosinya",
+   "r": "\"Mengajar itu abadi.\""
+  },
+  "son_soz": {
+   "t": "Saya pensiun. Nasihat terakhir: 20 tahun saya menyaksikan gedung ini melahap manusia. Yang selamat bukan yang paling keras. Melainkan yang tetap menjadi manusia. Entah bagaimana caranya.",
+   "l": "\"Kalau begitu, saya akan tetap menjadi manusia.\"",
+   "r": "\"Bertahan hidup dulu, Dok.\""
+  }
+ }
+}

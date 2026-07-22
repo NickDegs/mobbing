@@ -1,226 +1,865 @@
 {
-  "ui": {
-    "app_name": "MOBBING",
-    "tagline": "una simulación de supervivencia corporativa",
-    "start_shift": "EMPIEZA TU TURNO",
-    "info_corner": "Rincón informativo",
-    "menu_note": "🏢 presión · ❤️ conciencia · 👥 equipo · 📈 carrera\nSi un medidor se vacía o se desborda, se acabó.",
-    "day_fmt": "DÍA %1$d",
-    "swipe_hint": "◀ desliza para decidir ▶",
-    "restart": "VOLVER A EMPEZAR",
-    "lasted_fmt": "Aguantaste %1$d días",
-    "back": "Atrás",
-    "info_title": "¿Sufres mobbing en la vida real?",
-    "info_body": "El mobbing es acoso psicológico sistemático en el trabajo: aislamiento, humillación, cargas de trabajo imposibles, rumores.\n\nQué ayuda:\n• Lleva un diario fechado de cada incidente (qué, quién, testigos).\n• Guarda correos y mensajes — reenvíalos a una dirección personal.\n• Denuncia por escrito a través de los canales oficiales.\n• Habla con un médico — los efectos en la salud son reales y documentables.\n• Consulta a un abogado laboralista; en muchos países el mobbing está reconocido legalmente.\n• No estás solo, y no es culpa tuya.\n\nEste juego es ficción, pero los patrones son reales. Si te resultan familiares, tómatelos en serio.",
-    "cat_ilt": "comunicación",
-    "cat_izo": "aislamiento",
-    "cat_itb": "reputación",
-    "cat_is": "presión laboral",
-    "cat_sag": "salud",
-    "cat_sys": "dirección",
-    "cat_you": "contra ti",
-    "ch_ceo": "CEO",
-    "ch_gm": "Director General",
-    "ch_ik": "Director de RR. HH.",
-    "ch_tolga": "Tolga · Jefe rival",
-    "ch_ayse": "Ayşe · Contabilidad",
-    "ch_mehmet": "Mehmet · Software",
-    "ch_selin": "Selin · Ingeniería",
-    "ch_deniz": "Deniz · Diseño",
-    "ch_kerem": "Kerem · Jefe de equipo",
-    "ch_ece": "Ece · Becaria",
-    "ch_hekim": "Médico de empresa",
-    "end_b0_t": "EL FAVORITO DE LA DIRECCIÓN",
-    "end_b0_b": "La junta te adora. ¿Y tú adoras a la persona del espejo? Ahora los métodos los enseñas tú.",
-    "end_b100_t": "DESPEDIDO",
-    "end_b100_b": "«No encajabas en la cultura.» Recoge tu caja. Pero con la cabeza bien alta: nunca te convertiste en uno de ellos.",
-    "end_v0_t": "TE PERDISTE A TI MISMO",
-    "end_v0_b": "Una mañana, el espejo mostró al Director General. Hasta tu voz suena ya como la suya. Técnicamente, sigues vivo.",
-    "end_v100_t": "DEMASIADO BUENO PARA ESTE LUGAR",
-    "end_v100_b": "Tu conciencia ganó. Renunciaste. El equipo aplaudió mientras salías. Quizá el verdadero ganador seas tú.",
-    "end_e0_t": "RENUNCIA MASIVA",
-    "end_e0_b": "No queda nadie. Estás sentado, solo, en una oficina vacía. La dirección te facturó el desastre a ti.",
-    "end_e100_t": "«DEMASIADO CERCANO»",
-    "end_e100_b": "El equipo te quería tanto que la dirección te amonestó por «no mantener la autoridad». Aquí, ser querido puede ser una falta.",
-    "end_k0_t": "CARRERA TERMINADA",
-    "end_k0_b": "Tu expediente ahora dice «jefe problemático». La voz corrió por el sector. Pero qué voz corría: eso siempre fue elección tuya.",
-    "end_k100_t": "ASCENDIDO",
-    "end_k100_b": "Ya eres alta dirección. Mañana aterriza un expediente en tu mesa: «Aplicar presión a los pisos de abajo.» La rueda gira. La rueda eres tú.",
-    "notif_bodies": [
-      "🔔 Un empleado ha pedido un permiso.",
-      "🔔 RR. HH. quiere verte.",
-      "🔔 El DG ha convocado una reunión.",
-      "🔔 Se ha presentado una queja.",
-      "🔔 Alguien llora en la sala de archivo.",
-      "🔔 Tolga presenta «su» nueva idea.",
-      "🔔 La fecha límite acaba de moverse. Más cerca."
-    ],
-    "meter_b": "PRESIÓN",
-    "meter_v": "CONCIENCIA",
-    "meter_e": "EQUIPO",
-    "meter_k": "CARRERA",
-    "bribe_btn": "Pagar un soborno",
-    "bribe_flavor": "El sobre se desliza bajo la mesa. El problema se «resuelve»."
+ "ui": {
+  "app_name": "MOBBING",
+  "tagline": "una simulación de supervivencia corporativa",
+  "start_shift": "EMPIEZA TU TURNO",
+  "info_corner": "Rincón informativo",
+  "menu_note": "🏢 presión · ❤️ conciencia · 👥 equipo · 📈 carrera\nSi un medidor se vacía o se desborda, se acabó.",
+  "day_fmt": "DÍA %1$d",
+  "swipe_hint": "◀ desliza para decidir ▶",
+  "restart": "VOLVER A EMPEZAR",
+  "lasted_fmt": "Aguantaste %1$d días",
+  "back": "Atrás",
+  "info_title": "¿Sufres mobbing en la vida real?",
+  "info_body": "El mobbing es acoso psicológico sistemático en el trabajo: aislamiento, humillación, cargas de trabajo imposibles, rumores.\n\nQué ayuda:\n• Lleva un diario fechado de cada incidente (qué, quién, testigos).\n• Guarda correos y mensajes — reenvíalos a una dirección personal.\n• Denuncia por escrito a través de los canales oficiales.\n• Habla con un médico — los efectos en la salud son reales y documentables.\n• Consulta a un abogado laboralista; en muchos países el mobbing está reconocido legalmente.\n• No estás solo, y no es culpa tuya.\n\nEste juego es ficción, pero los patrones son reales. Si te resultan familiares, tómatelos en serio.",
+  "cat_ilt": "comunicación",
+  "cat_izo": "aislamiento",
+  "cat_itb": "reputación",
+  "cat_is": "presión laboral",
+  "cat_sag": "salud",
+  "cat_sys": "dirección",
+  "cat_you": "contra ti",
+  "ch_ceo": "CEO",
+  "ch_gm": "Director General",
+  "ch_ik": "Director de RR. HH.",
+  "ch_tolga": "Tolga · Jefe rival",
+  "ch_ayse": "Ayşe · Contabilidad",
+  "ch_mehmet": "Mehmet · Software",
+  "ch_selin": "Selin · Ingeniería",
+  "ch_deniz": "Deniz · Diseño",
+  "ch_kerem": "Kerem · Jefe de equipo",
+  "ch_ece": "Ece · Becaria",
+  "ch_hekim": "Médico de empresa",
+  "end_b0_t": "EL FAVORITO DE LA DIRECCIÓN",
+  "end_b0_b": "La junta te adora. ¿Y tú adoras a la persona del espejo? Ahora los métodos los enseñas tú.",
+  "end_b100_t": "DESPEDIDO",
+  "end_b100_b": "«No encajabas en la cultura.» Recoge tu caja. Pero con la cabeza bien alta: nunca te convertiste en uno de ellos.",
+  "end_v0_t": "TE PERDISTE A TI MISMO",
+  "end_v0_b": "Una mañana, el espejo mostró al Director General. Hasta tu voz suena ya como la suya. Técnicamente, sigues vivo.",
+  "end_v100_t": "DEMASIADO BUENO PARA ESTE LUGAR",
+  "end_v100_b": "Tu conciencia ganó. Renunciaste. El equipo aplaudió mientras salías. Quizá el verdadero ganador seas tú.",
+  "end_e0_t": "RENUNCIA MASIVA",
+  "end_e0_b": "No queda nadie. Estás sentado, solo, en una oficina vacía. La dirección te facturó el desastre a ti.",
+  "end_e100_t": "«DEMASIADO CERCANO»",
+  "end_e100_b": "El equipo te quería tanto que la dirección te amonestó por «no mantener la autoridad». Aquí, ser querido puede ser una falta.",
+  "end_k0_t": "CARRERA TERMINADA",
+  "end_k0_b": "Tu expediente ahora dice «jefe problemático». La voz corrió por el sector. Pero qué voz corría: eso siempre fue elección tuya.",
+  "end_k100_t": "ASCENDIDO",
+  "end_k100_b": "Ya eres alta dirección. Mañana aterriza un expediente en tu mesa: «Aplicar presión a los pisos de abajo.» La rueda gira. La rueda eres tú.",
+  "notif_bodies": [
+   "🔔 Un empleado ha pedido un permiso.",
+   "🔔 RR. HH. quiere verte.",
+   "🔔 El DG ha convocado una reunión.",
+   "🔔 Se ha presentado una queja.",
+   "🔔 Alguien llora en la sala de archivo.",
+   "🔔 Tolga presenta «su» nueva idea.",
+   "🔔 La fecha límite acaba de moverse. Más cerca."
+  ],
+  "meter_b": "PRESIÓN",
+  "meter_v": "CONCIENCIA",
+  "meter_e": "EQUIPO",
+  "meter_k": "CARRERA",
+  "bribe_btn": "Pagar un soborno",
+  "bribe_flavor": "El sobre se desliza bajo la mesa. El problema se «resuelve».",
+  "lang_auto": "Automático (idioma del dispositivo)",
+  "privacy_link": "Privacidad",
+  "terms_link": "Términos de uso"
+ },
+ "cards": {
+  "ayse_izin": {
+   "t": "Pido medio día libre para la entrega de notas de mi hija. Llevo meses sin tomarme un permiso.",
+   "l": "Aprobar el permiso",
+   "r": "«Es cierre de trimestre. Nadie se va.»"
   },
-  "cards": {
-    "ayse_izin": {"t": "Pido medio día libre para la entrega de notas de mi hija. Llevo meses sin tomarme un permiso.", "l": "Aprobar el permiso", "r": "«Es cierre de trimestre. Nadie se va.»"},
-    "ayse_istifa": {"t": "Aquí tiene mi renuncia. No pienso ser una madre que se pierde el día de las notas.", "l": "Convencerla de quedarse, concederle el permiso", "r": "«La puerta está ahí mismo.»"},
-    "mehmet_zam": {"t": "Tres años sin aumento. Investigué el mercado: cobro un 40 % por debajo de la media.", "l": "Defender su aumento ante la dirección", "r": "«Hay mil personas que quieren tu puesto.»"},
-    "mehmet_teklif": {"t": "Tengo una oferta de otra empresa. O hay contraoferta o a fin de mes no estoy.", "l": "Pelear por una contraoferta", "r": "«El que se va, se va.»"},
-    "deadline": {"t": "Terminen el proyecto {P} en dos semanas. ¿Que normalmente lleva dos meses? No es mi problema.", "l": "«El equipo no aguanta esto. Necesito un plazo realista.»", "r": "«A sus órdenes.» (anunciarlo al equipo)"},
-    "deadline_kriz": {"t": "Tres personas de baja médica, una hospitalizada por la tensión. ¿Sigue en pie la fecha límite?", "l": "Ampliar el plazo. Tú darás la cara.", "r": "«Repártanlo entre los sanos.»"},
-    "anlamsiz": {"t": "Pon a Selin una temporada a hacer fotocopias y archivo. Hay que «bajarle los humos».", "l": "«Es ingeniera. No pienso hacer eso.»", "r": "Mandarla al archivo"},
-    "selin_arsiv": {"t": "Soy ingeniera con 6 años de experiencia y llevo dos semanas haciendo fotocopias. ¿Por qué me hacen esto?", "l": "Devolverle sus funciones y pedirle disculpas", "r": "«Todo trabajo tiene su valor, Selin.»"},
-    "gorev_gasp": {"t": "Me quedo con la cuenta de {C} de tu equipo. El Director General ya lo aprobó.", "l": "Pelear por lo que es tuyo", "r": "Aceptarlo en silencio"},
-    "toplanti_bagirma": {"t": "Corta tu presentación y grita delante de todos: «¡ESTÁS DICIENDO TONTERÍAS!»", "l": "Mantener la calma. Defenderte con datos.", "r": "Tragártelo — y luego descargarlo en el equipo"},
-    "cc_rezil": {"t": "Nueva directriz: responder a cada correo de Deniz señalándole errores — con toda la empresa en copia.", "l": "«El feedback se da en privado.»", "r": "Cumplir la directriz"},
-    "stajyere_bagirma": {"t": "Sí, le grité a la becaria. Rompió la build. ¿Qué querías que hiciera?", "l": "«Nunca más. Ve a disculparte.»", "r": "«Bien hecho. La disciplina importa.»"},
-    "sozunu_kesme": {"t": "En cada reunión te corta a media frase: «Dejen que traduzca lo que nuestro amigo intenta decir...»", "l": "«Sé terminar mis propias frases, Tolga.»", "r": "Dejarlo. Otra vez."},
-    "tel_teror": {"t": "Te llama a las 23:40. «¿Por qué tienes el teléfono apagado el fin de semana? Contesta cuando yo llame.»", "l": "«Mis horas libres me pertenecen.»", "r": "Tener el teléfono encendido 24/7 desde ahora"},
-    "tel_teror2": {"t": "Tus valores de tensión me preocupan. ¿Cuándo fue la última vez que dormiste una noche entera sin mirar el teléfono?", "l": "Volver a apagar el teléfono por las noches", "r": "«Estoy bien, doctor.» (no lo estás)"},
-    "yazili_uyari": {"t": "La dirección quiere que hagas firmar a Mehmet una amonestación escrita. Motivo: «actitud». No hay ningún incidente en el expediente.", "l": "«Sin incidente no hay amonestación.»", "r": "Firmarla. El papel lo aguanta todo."},
-    "izolasyon_oda": {"t": "Que trasladen la mesa del «conflictivo» de Deniz a la planta del almacén. Que nadie tenga que tratar con él.", "l": "«No hay justificación. Me niego.»", "r": "Mandar trasladar la mesa"},
-    "deniz_depo": {"t": "Estoy sentado solo en el almacén. Ni el Wi-Fi llega. ¿El objetivo es que renuncie?", "l": "Subirlo de nuevo. Asumir las consecuencias.", "r": "«Es algo temporal.» (no lo es)"},
-    "konusma_yasagi": {"t": "Anuncia a tu equipo: nadie habla con Deniz fuera de temas de trabajo. Órdenes de arriba.", "l": "Negarte a anunciarlo", "r": "Anunciarlo en voz baja"},
-    "davet_yok": {"t": "A la reunión anual de estrategia invitaron a todos los jefes menos a ti. ¿La lista quedó corta «por accidente»?", "l": "Entrar sin invitación", "r": "Ignorarlo. Trabajar."},
-    "selam_yok": {"t": "Desde que el DG dejó de saludarte en el pasillo, media planta también dejó de hacerlo. Se propaga como el clima.", "l": "Saludar a todos más alto que nunca", "r": "Dejar de saludar tú también"},
-    "ogle_yemegi": {"t": "El grupo del almuerzo lleva tres semanas «olvidándose» de invitarme. Como solo en el hueco de la escalera.", "l": "Sentarte tú con él mañana a mediodía", "r": "«La política de comedor no es asunto mío.»"},
-    "dedikodu": {"t": "El pasillo murmura: Tolga difunde el rumor de que Selin consiguió el ascenso «por otros medios».", "l": "Matar el rumor públicamente. Advertir a Tolga.", "r": "No meterte. Quizá contarlo tú una vez."},
-    "taklit": {"t": "En el almuerzo imita el tartamudeo de Deniz. La mesa se ríe. Te mira: «¿A que sí? Buenísimo.»", "l": "«Eso no tiene gracia.» Levantarte. Irte.", "r": "Sonreír. Seguirle el juego."},
-    "wp_grubu": {"t": "En el grupo de WhatsApp de la empresa se burlan de una foto vieja mía. Los jefes están en el grupo. Callados.", "l": "Escribir una advertencia clara en el grupo", "r": "«Aprende a aguantar una broma.»"},
-    "hata_yukleme": {"t": "Cargó el fracaso de su propio proyecto sobre tu equipo en la reunión de la junta. Todos te miran a ti.", "l": "Refutarlo con el historial de correos", "r": "Sacrificar al equipo. Callar."},
-    "deli_muamele": {"t": "La dirección sugiere que Deniz consiga un «certificado de aptitud psicológica». Su único síntoma: haber presentado una queja.", "l": "«Quejarse no es una enfermedad.»", "r": "Derivarlo al médico"},
-    "kilik_alay": {"t": "El DG se burló de mi ropa delante de los clientes: «Por lo visto no le pagamos lo suficiente para vestirse como es debido.»", "l": "Pedirle disculpas en nombre de la empresa", "r": "«Él bromea con todo el mundo.»"},
-    "ozel_yasam": {"t": "«Me han dicho que tu divorcio se alarga», dice en voz alta en la oficina abierta. «No mezcles el desorden de tu casa con mis números.»", "l": "«Mi vida privada no se discute.»", "r": "Disculparte por tu propio divorcio"},
-    "hasta_calisan": {"t": "Tengo 39 de fiebre, pero el DG dijo que quien coja la baja «se encontrará en la calle». ¿Debería ir?", "l": "«Quédate en casa. La baja es problema mío.»", "r": "«Ponte mascarilla. Hay trabajo.»"},
-    "cumartesi": {"t": "Este mes todo el mundo trabaja los sábados. ¿Horas extra pagadas? Ese presupuesto no existe.", "l": "«Las horas extra sin pagar son ilegales. Me opongo.»", "r": "Anunciarlo como «voluntario»"},
-    "panik_atak": {"t": "Tuve un ataque de pánico en el baño antes de la reunión. Ahora lloro en el coche antes de entrar a trabajar.", "l": "Aligerar su carga. Preguntarle cada día cómo está.", "r": "«Todos estamos estresados, Deniz.»"},
-    "curuk_raf": {"t": "Las estanterías del almacén están podridas — la semana pasada casi aplastan a alguien. El presupuesto de reparación fue rechazado.", "l": "Cerrar el almacén. Con o sin presupuesto.", "r": "«Que tengan cuidado.»"},
-    "raf_kaza": {"t": "Pasó. La estantería cayó encima de Musa. Brazo roto. RR. HH. pregunta cómo lo vamos a «documentar».", "l": "Notificarlo honestamente como accidente laboral", "r": "«Se cayó en su casa. ¿Todos de acuerdo?»"},
-    "antidepresan": {"t": "Este mes, cuatro personas de tu equipo empezaron a tomar antidepresivos. ¿Informo del patrón a la dirección?", "l": "«Infórmelo. Que salga la verdad.»", "r": "«Entiérrelo. Que nadie lo vea.»"},
-    "ik_verimlilik": {"t": "Tu equipo parece «demasiado cómodo». Tu nombre está en rojo en el informe de productividad. Haz algo.", "l": "«Mi equipo cumple. Los datos están a la vista.»", "r": "Apretarle las tuercas al equipo"},
-    "ceo_ilgi": {"t": "Te he estado observando. Me gustan los jefes duros. Sé como Tolga — ese hombre está «orientado a resultados».", "l": "«Yo dirijo a mi manera.»", "r": "«Tomo nota, señor.»"},
-    "stajyer_maas": {"t": "Tres meses sin cobrar. Me dijeron que «se abriría una plaza». ¿Hay alguna esperanza real?", "l": "Ser honesto: «No hay plaza. No quemes tu juventud aquí.»", "r": "«Falta poco. Ten paciencia.» (mentira)"},
-    "ihbar_avi": {"t": "Alguien nos denunció por mobbing ante el Ministerio de Trabajo. Encuéntrame al topo.", "l": "«Yo no hago cacerías de brujas.»", "r": "Iniciar la investigación"},
-    "referans": {"t": "El nuevo empleador de Ayşe llamó pidiendo referencias. El DG dice: «Déjala por los suelos. Que sirva de lección.»", "l": "Dar una referencia honesta y positiva", "r": "«Ella era... problemática.»"},
-    "kamera": {"t": "Las nuevas cámaras de seguridad apuntarán a cada mesa, con grabación de pantalla incluida. «Por la productividad.»", "l": "«Esto es vigilancia, no seguridad.»", "r": "Firmar la orden de instalación"},
-    "toplu_email": {"t": "Envió a toda la empresa un correo con la lista de «bajo rendimiento». Tu mejor ingeniero está en ella. Injustamente.", "l": "Exigir una rectificación pública", "r": "Consolar al ingeniero en privado. No hacer nada."},
-    "masa_kucultme": {"t": "«Dale a Mehmet la mesa junto a los baños. Quizá el olor lo motive a renunciar.»", "l": "«Las mesas no son instrumentos de castigo.»", "r": "Reasignar la mesa"},
-    "gorev_yok": {"t": "Llevo dos semanas sin que me den ni una tarea. Me siento y miro. La gente me cree un vago. Esto es peor que el exceso de trabajo.", "l": "Asignarle trabajo real y con sentido", "r": "«Disfruta de las vacaciones pagadas.»"},
-    "kapasit_alti": {"t": "A mí — ingeniera sénior — me pusieron a introducir datos. Fila tras fila. Mis habilidades se pudren a propósito.", "l": "Devolverla al trabajo de ingeniería", "r": "«Todo dato es un dato importante.»"},
-    "surekli_yeni": {"t": "Cada vez que terminamos el 90 % de una tarea, el DG cambia los requisitos. Quinta vez este mes. El equipo se deshace.", "l": "Congelar el alcance. Dejarlo por escrito.", "r": "«Él es el jefe. Pivotamos otra vez.»"},
-    "onur_kirici": {"t": "«Que el ingeniero nuevo me lave el coche. Forja el carácter. Y que lo grabe para el grupo.»", "l": "«Rotundamente no.»", "r": "Mandar al ingeniero abajo con una esponja"},
-    "imkansiz_hedef": {"t": "Objetivo del próximo trimestre: {X} % de crecimiento. El trimestre pasado apenas llegamos al 3 %. «Los detalles son cosa tuya.»", "l": "Presentar un contraplan realista", "r": "Aceptar el objetivo. Pasar el dolor hacia abajo."},
-    "cinsiyet": {"t": "La dirección no quiere que Selin dirija la reunión con el cliente porque este «prefiere tratar con hombres».", "l": "La dirige Selin. Punto final.", "r": "Cambiarla «solo por esta vez»"},
-    "inanc_alay": {"t": "Programan la cena de equipo a propósito en mis horas de ayuno, y luego hacen bromas al respecto. Todas las veces.", "l": "Mover la cena. Ni una broma más.", "r": "«Solo están de cachondeo.»"},
-    "yas_alay": {"t": "Sobre tu contable de 58 años: «Los dinosaurios no aprenden el sistema nuevo. Hazle sentir que le llegó la hora.»", "l": "Conseguirle un formador, mejor", "r": "Empezar a «olvidarte» de invitarla a las formaciones"},
-    "toplanti_saat": {"t": "Ahora pone las reuniones obligatorias a las 19:30. «El que tenga algo más importante que hacer, que me lo diga a la cara.»", "l": "«Las reuniones terminan a las 18:00. Se lo digo a la cara.»", "r": "Decirle al equipo que cancele sus planes de noche"},
-    "performans_oyunu": {"t": "Nuevo sistema de evaluación: cada trimestre se despide automáticamente al 10 % de abajo. Sin importar el rendimiento real.", "l": "Negarte a poner a tu equipo en una lista negra", "r": "Enviar el ranking"},
-    "maas_gizli": {"t": "Recordatorio: que los empleados comenten sus sueldos entre ellos es ahora «motivo de despido». Anúncialo.", "l": "«Hablar del sueldo es un derecho legal.»", "r": "Colgar el anuncio"},
-    "aglayan_kisi": {"t": "Encontré a Ayşe llorando en la sala de archivo. Me suplicó que no se lo contara a nadie. Es la tercera vez.", "l": "Hablar con Ayşe. Ofrecerle ayuda de verdad.", "r": "«Lo que pasa en el archivo se queda en el archivo.»"},
-    "sen_kovulma_esigi": {"t": "Tu nombre salió en la reunión de la junta. Algunos creen que un jefe «tan blando» no encaja en nuestra cultura.", "l": "«Mis resultados hablan. La suavidad es un método.»", "r": "Prometer «endurecerte» el próximo trimestre"},
-    "you_park": {"t": "La junta te considera «desalineado». Tu plaza de aparcamiento queda anulada. Tu despacho se muda a la oficina abierta. Hoy.", "l": "Aceptarlo con la cabeza alta", "r": "Pasar la humillación hacia abajo en la cadena"},
-    "you_toplanti": {"t": "Ya no te convocan a las reuniones de dirección. Las decisiones sobre tu equipo se toman sin ti y luego te las «comunican».", "l": "Objetar por escrito. Guardar registros.", "r": "Agachar la cabeza"},
-    "you_bulten": {"t": "El boletín de la empresa menciona «problemas de rendimiento en ciertos jefes». Todos saben que se refiere a ti.", "l": "Publicar una respuesta abierta y con datos", "r": "Tragártelo en silencio"},
-    "you_maas": {"t": "Un «error administrativo» te recortó el sueldo un 20 % este mes. Corregirlo llevará «varios ciclos de nómina».", "l": "Enviar un requerimiento legal", "r": "Esperar educadamente. Y seguir esperando."},
-    "you_masa": {"t": "Tu nueva mesa: junto a la impresora, bajo la salida del aire acondicionado. Tu antiguo despacho ahora es una «sala de meditación» que nadie usa.", "l": "Trabajar desde esa mesa. Y brillar.", "r": "Empezar a parecer enfermo, a llegar tarde"},
-    "you_taklit": {"t": "En la cena de jefes, Tolga imita tu estilo de presentación. El que más se ríe es el CEO.", "l": "Reírte con ellos. Negarles la herida.", "r": "Abandonar la cena"},
-    "email_sessiz": {"t": "Mis correos a la dirección se quedan semanas sin respuesta. Luego dicen «nunca nos informaste». Tengo pruebas.", "l": "Montarle un protocolo de rastro escrito", "r": "«Quizá deberías escribir correos más cortos.»"},
-    "proje_calindi": {"t": "Tolga presentó mi propuesta de {P} a la junta. Diapositiva a diapositiva. Mi nombre no estaba en ni una sola página.", "l": "Mostrar a la junta las fechas de los archivos originales", "r": "«Las ideas son de la empresa, de todos modos.»"},
-    "gece_mesaj": {"t": "Manda un audio al grupo del equipo a las 02:00: «¿Por qué nadie contesta? ¿Esto es una empresa o una residencia de ancianos?»", "l": "Silenciar el grupo para todos después de las 19:00", "r": "Exigir al equipo que responda de noche"},
-    "tatil_iptal": {"t": "Mis vacaciones estaban aprobadas desde hace 2 meses. Vuelos comprados. Hoy las cancelaron «por carga de trabajo».", "l": "Restituir las vacaciones. Cubrir tú el hueco.", "r": "«La empresa es lo primero.»"},
-    "kacak_dinleme": {"t": "Tolga te enseña «sin querer» una captura de pantalla: alguien lo añadió al chat privado de tu equipo. Lo sabe todo.", "l": "Avisar al equipo. Reconstruir la confianza.", "r": "Aprovecharlo. Filtrarle información falsa."},
-    "dogum_izni": {"t": "Zeynep anunció su embarazo. La dirección quiere «ponerla de patitas en la calle» antes de que empiece la baja maternal.", "l": "«Eso es ilegal y ruin. No.»", "r": "Empezar a fabricar un «expediente de rendimiento»"},
-    "engel_alay": {"t": "Volvieron a poner el armario de material delante de la rampa. Cuando nuestro contable en silla de ruedas se quejó, alguien se rio.", "l": "Despejar la rampa. Averiguar quién se rio.", "r": "«Que use el montacargas.»"},
-    "memleket": {"t": "El DG no para de imitar el acento del pueblo del nuevo en las reuniones. La sonrisa del chico se afina cada vez más.", "l": "Cortarlo en público la próxima vez", "r": "Aconsejar al chico que «corrija» su acento"},
-    "istifa_zorlamasi": {"t": "Nueva táctica de la dirección: hacerle la vida a Mehmet lo bastante miserable como para que renuncie — la indemnización sale cara.", "l": "Contarle la verdad a Mehmet. En secreto.", "r": "Ejecutar el estrangulamiento lento"},
-    "aidat_kesinti": {"t": "En la nómina descuentan en silencio una «cuota del fondo social» que nadie aprobó. El dinero va al club de golf del DG.", "l": "Destapar el descuento", "r": "«Todos pagan. Es tradición.»"},
-    "kriz_kahraman": {"t": "La crisis de servidores que predijiste (y por la que te ignoraron) estalló. Ahora Tolga la arregla «heroicamente». Con tu viejo plan.", "l": "Compartir con el CEO el plan original fechado", "r": "Dejarle su desfile triunfal"},
-    "hafta_sonu_etkinlik": {"t": "«Team building» obligatorio este domingo: paintball a las 07:00, con lista de asistencia. ¿Las familias? No están invitadas.", "l": "Hacerlo voluntario y pagado", "r": "Pasar lista"},
-    "kidem_sifirla": {"t": "Legal encontró un truco: despedir a todos a los 4 años y medio y recontratarlos a la semana — la antigüedad se reinicia, la indemnización se evapora.", "l": "Negarte a firmar un solo despido", "r": "Tramitar el papeleo"},
-    "whistleblower": {"t": "Descubrí que las facturas de {C} están infladas. Si lo denuncio, estoy acabado aquí. Si no, soy cómplice. Ayúdame.", "l": "Denunciarlo juntos. Por la vía oficial.", "r": "«Borra lo que viste.»"},
-    "sirket_telefonu": {"t": "IT instaló software de rastreo en los teléfonos de empresa — ubicación, mensajes, fotos. «Política estándar.» No se lo dijeron a nadie.", "l": "Informar a todos de inmediato", "r": "Callar. Y vigilar lo que tú escribes."},
-    "eski_dost": {"t": "¿Te acuerdas de Hakan, despedido el año pasado por «incompetencia»? Ahora es director en {C}. Y recuerda quién firmó su salida.", "l": "Llamarlo. Disculparte honestamente.", "r": "Evitar esa cuenta por completo"},
-    "mola_yasak": {"t": "Nueva regla: pausa del café limitada a 7 minutos, controlada por tarjeta. El tiempo de baño está «en revisión».", "l": "«Gestionamos producción, no vejigas.»", "r": "Mandar instalar los lectores de tarjeta"},
-    "klima_savasi": {"t": "Fijaron el aire acondicionado a 17 °C justo encima de mi mesa. Lo pedí dos veces. El DG: «El frío mantiene despiertos a los vagos.»", "l": "Mover su mesa. Hacer ajustar el aire.", "r": "«Tráete una chaqueta.»"},
-    "cv_sabotaj": {"t": "Oí que RR. HH. llama a las empresas donde solicitan trabajo nuestros exempleados para «advertirles». ¿Eso es siquiera legal?", "l": "Confrontar a RR. HH. Exigir que pare.", "r": "«Ya no es nuestro circo.»"},
-    "acil_aile": {"t": "Mi padre tuvo un ictus. Tengo que salir YA. El DG bloquea la puerta: «La demo es en una hora.»", "l": "«VETE. La demo la presento yo.»", "r": "«Conéctate por videollamada desde el hospital.»"},
-    "sarhos_gm": {"t": "En la cena de empresa, el DG, borracho, tira del brazo de la becaria para «bailar». Ella está paralizada. Todos te miran a ti.", "l": "Interponerte. Ahora mismo.", "r": "Mirar hacia otro lado. Rellenar tu copa."},
-    "sarhos_sonra": {"t": "Sobre aquella noche... Voy a presentar una queja contra el DG. ¿Escribirás lo que viste? Estabas ahí mismo.", "l": "Escribir la verdad. Firmarla.", "r": "«Es que no lo vi bien.»"},
-    "iki_yuzlu_ik": {"t": "La nueva línea «confidencial» de quejas de RR. HH. lo reenvía todo directamente al DG. Con nombres. Pensé que debías saberlo.", "l": "Avisar al equipo con discreción", "r": "Usar la línea para poner a prueba lealtades"},
-    "prim_gaspi": {"t": "El bono prometido por el lanzamiento de {P} fue «reestructurado» en una fiesta de pizza. Una fiesta de pizza.", "l": "Pelear por el bono de verdad", "r": "«Eso sí: con queso extra.»"},
-    "görev_tanimi": {"t": "Me contrataron como diseñador. Esta semana hice: los papeles del visado del DG, las diapositivas de los deberes de su hijo y una cita con el veterinario para su perro.", "l": "Acabar con los recados personales. Por escrito.", "r": "«Al menos al perro le caes bien.»"},
-    "toplu_istifa_tehdidi": {"t": "Los desarrolladores sénior hicieron un pacto: si echan a Mehmet, los cinco renuncian el mismo día. Quieren que lo sepas.", "l": "Ponerte de su lado. Decírselo a la dirección.", "r": "Denunciar la «conspiración» a RR. HH."},
-    "yemekhane": {"t": "Nuevo plano de asientos en el comedor: la dirección come tras una mampara de cristal. «La visibilidad crea familiaridad. La familiaridad crea exigencias.»", "l": "Seguir comiendo con tu equipo", "r": "Ocupar tu sitio detrás del cristal"},
-    "sessiz_istifa": {"t": "La mitad de tu equipo muestra señales de renuncia silenciosa — esfuerzo mínimo, cero iniciativa. No son vagos. Están heridos.", "l": "Charlas uno a uno. Primero escuchar.", "r": "Plan de mejora de rendimiento para todos"},
-    "kopya_sirket": {"t": "Rumor: Tolga está montando en secreto una empresa rival con los datos de nuestros clientes. El CEO quiere que TÚ lo demuestres. O lo entierres. No queda claro cuál.", "l": "Investigar como es debido, informar de los hallazgos", "r": "«No vi nada, no sé nada.»"},
-    "mikro_yonetim": {"t": "Ahora exige a tu equipo correos de estado cada hora. Cada hora. Con capturas de pantalla y recuento de palabras.", "l": "«Tendrán informes semanales. Y punto.»", "r": "Montar el flujo horario"},
-    "kutlama_gaspi": {"t": "Cerramos el acuerdo con {C} tras 6 meses de turnos de noche. El brindis del DG: «Esto demuestra lo que logra MI liderazgo.»", "l": "Brindar por el equipo de verdad, nombre a nombre", "r": "Aplaudir con todos los demás"},
-    "delil_yok_etme": {"t": "Legal quiere que se borren automáticamente todos los correos de más de 6 meses. Casualidad: la demanda por mobbing cubre el mes 7.", "l": "Primero archivarlo todo fuera", "r": "Activar el borrado automático"},
-    "you_stajyer": {"t": "Asignaron a la becaria a hacerte de «sombra». Toma nota de todo lo que haces y reporta a RR. HH. cada noche. A ella le da vergüenza.", "l": "«Haz tu trabajo. No tengo nada que ocultar.»", "r": "Alimentarla con datos falsos impresionantes"},
-    "you_egitim": {"t": "Te inscribieron — obligatoriamente — en un curso de «Habilidades básicas de comunicación». Con los becarios. Las fotos se compartirán con toda la empresa.", "l": "Asistir. Brillar. Adueñarte de la sala.", "r": "Conseguir un justificante médico para librarte"},
-    "you_hedef_revize": {"t": "Tus objetivos fueron «revisados» a mitad de trimestre. Al alza. Un 300 %. Con carácter retroactivo. Tu bono es ahora matemáticamente imposible.", "l": "Documentar el juego. Contratar abogado en silencio.", "r": "Perseguir lo imposible de todos modos"},
-    "aynali_oda": {"t": "Ten cuidado. Todo lo que te ordenan hacerles a otros — lo he visto hacérselo también a quien se negó. Este lugar recicla sus métodos.", "l": "«Entonces yo romperé el ciclo.»", "r": "«Entonces más me vale seguir siendo útil.»"},
-    "cikis_multakati": {"t": "Datos de las entrevistas de salida: 19 de 21 que se fueron citaron «el comportamiento de la dirección». El resumen oficial de RR. HH. dice «motivos personales». ¿Lo firmas?", "l": "Negarte. Adjuntar los datos en bruto.", "r": "Firmar la ficción"},
-    "yeni_kurban": {"t": "«Buenas noticias. La junta encontró un nuevo 'foco'. Un jefe de logística. Tú te libras — si ayudas con él.»", "l": "Avisar al jefe de logística, mejor", "r": "Entregarles el manual de instrucciones"},
-    "remote_kamera": {"t": "Nueva norma de teletrabajo: cámaras ENCENDIDAS en todo momento, capturas de pantalla cada 5 minutos, las idas al baño se anotan en el chat.", "l": "«Medimos el trabajo, no los cuerpos.»", "r": "Desplegar el paquete de vigilancia"},
-    "remote_mesai": {"t": "Desde que teletrabajo, mi jornada es de 07:00 a 23:00. «Total, estás en casa», dicen. Mi casa dejó de ser mi casa.", "l": "Imponer horas fijas de inicio y fin", "r": "«La flexibilidad va en ambos sentidos.»"},
-    "acik_ofis": {"t": "Reorganizó la oficina abierta: los de «bajo rendimiento» se sientan mirando a la pared, junto a la entrada. Un rincón de la vergüenza. Con cartel.", "l": "Arrancar el cartel con tus propias manos", "r": "«Motivación mediante visibilidad.»"},
-    "sendika": {"t": "Unos cuantos estamos hablando en voz baja de sindicalizarnos. Si la dirección se entera, quema el edificio. ¿Estás con nosotros o con ellos?", "l": "«Es su derecho. Mi silencio es suyo.»", "r": "Delatar a los organizadores"},
-    "avukat_mektup": {"t": "El abogado de Deniz envió un requerimiento formal por acoso laboral. La dirección quiere una «declaración conjunta» de que no pasó nada.", "l": "«No pienso firmar una mentira.»", "r": "Firmar la declaración conjunta"},
-    "tukenmislik": {"t": "Ya no siento nada. Ni estrés, ni rabia. Abro el portátil y me quedo mirando. ¿Esto es el burnout?", "l": "Baja médica + derivación al terapeuta. Hoy mismo.", "r": "«Tómate la tarde libre.»"},
-    "musteri_hakaret": {"t": "El responsable de la cuenta de {C} me grita en cada llamada. Ayer me llamó «hoja de cálculo parlante». La dirección dice que «el cliente es el rey».", "l": "Llamar al cliente. Marcar límites.", "r": "«Los reyes son reyes.»"},
-    "kriz_liste": {"t": "Crisis económica. Necesito para el viernes una lista de despidos de tu equipo: el 30 %. Por orden alfabético si quieres. Me da igual.", "l": "Proponer alternativas: recortes de sueldo + semanas cortas", "r": "Escribir la lista"},
-    "kriz_liste2": {"t": "Vi mi nombre en una hoja impresa sobre tu mesa. Bajo el título «Lista». Me caso dentro de dos meses. Solo dime la verdad.", "l": "Decirle la verdad. Toda.", "r": "«Es solo un plano de asientos.»"},
-    "yeni_ceo": {"t": "Primer discurso del nuevo CEO: «Leí que el 40 % de ustedes es reemplazable por la IA. Demuéstrenme lo contrario. O no. Ambas cosas ahorran dinero.»", "l": "Defender públicamente el valor de tu equipo", "r": "Empezar una presentación de «transformación con IA»"},
-    "danisman": {"t": "Veredicto de la consultora: tu departamento es «emocionalmente ineficiente». Su solución: formación obligatoria en sonrisas. No es broma.", "l": "Rechazar la escuela de payasos", "r": "Programar las sesiones de sonrisa"},
-    "hamile_donus": {"t": "Zeynep vuelve el lunes de su baja maternal. La dirección «reestructuró» su puesto hasta hacerlo desaparecer. Su nuevo trabajo: suplente de recepción. Era jefa del equipo de datos.", "l": "Devolverle su puesto real. Pelear.", "r": "«Al menos tiene trabajo.»"},
-    "dil_baski": {"t": "Nueva regla: «en la oficina, solo el idioma corporativo». A dos compañeros les levantaron acta por charlar en su lengua materna. En el almuerzo.", "l": "Eliminar la regla, al menos en los descansos", "r": "Aplicarla. «Profesionalidad.»"},
-    "taseron": {"t": "El personal de limpieza come de pie en el hueco de la escalera — son «subcontratados», no pueden entrar al comedor. Desde siempre.", "l": "Abrir el comedor a todo el mundo", "r": "«Las condiciones del contrato son las condiciones del contrato.»"},
-    "parti_baski": {"t": "Quien falte a la fiesta del yate del DG «también falta a su carrera». Esa noche, el padre de Mehmet está en el hospital. Me pidió que te lo preguntara.", "l": "«La familia primero. Yo lo defenderé.»", "r": "«Que pase una hora. Para la foto.»"},
-    "eski_sirket": {"t": "Le cuenta a todo el mundo que a ti te «echaron» de tu empresa anterior. Renunciaste. Tienes la carta. Y él lo sabe.", "l": "Enseñar la carta una vez. Bien alto.", "r": "Dejar que la mentira se asiente"},
-    "gizli_zam": {"t": "«Dale el presupuesto de aumentos al equipo de Tolga. El tuyo 'no se queja lo suficiente como para ser riesgo de fuga'. Es un cumplido.»", "l": "«Aquí la lealtad se paga primero.»", "r": "Reasignar el presupuesto en silencio"},
-    "mola_ihbar": {"t": "Ahora hay una «línea anónima de productividad». Alguien denunció a Ayşe por una pausa de té de 12 minutos. Fui yo. Se me revuelve el estómago.", "l": "«Nunca más. Y haré que cierren esa línea.»", "r": "«Buen reflejo. Sigue denunciando.»"},
-    "threeh_kural": {"t": "La política de la empresa limita ahora la baja por enfermedad a 3 días al AÑO. Más requiere la «aprobación personal» del DG. Esto viola la ley.", "l": "Denunciarlo a la autoridad laboral", "r": "«Ahora las reglas son las reglas.»"},
-    "oyun_ici_saka": {"t": "Renombraron el Wi-Fi de la oficina como «MehmetEsLento». IT dice que lo pidió el DG en persona. Ya van 3 semanas.", "l": "Que IT lo corrija + queja formal", "r": "«La verdad es que tiene su gracia.»"},
-    "performans_ani": {"t": "Tu evaluación de rendimiento se programó en la sala de cristal. A la hora del almuerzo. Del lado que da al comedor. Con megáfono. Casi.", "l": "Trasladarla a una sala privada", "r": "Actuar para el público"},
-    "kidemli_veda": {"t": "El viejo Hüseyin se jubila el viernes tras 31 años. El regalo de la dirección: un calendario con el logo de la empresa. El equipo reúne dinero para un regalo de verdad. ¿Te apuntas?", "l": "Apuntarte + organizar una ceremonia de verdad", "r": "«Oye, que el calendario tiene 12 páginas.»"},
-    "gorusme_kaydi": {"t": "RR. HH. graba en secreto las reuniones uno a uno «por calidad». Legal dice que sin consentimiento es ilegal. RR. HH. dice «pues no se lo cuenten a nadie».", "l": "Contárselo a todos en la reunión matinal", "r": "Medir tus palabras en las reuniones"},
-    "prim_yaris": {"t": "Nuevo plan de «motivación»: un solo bono, estilo gladiadores. Los miembros del equipo compiten en público; puntuaciones en una pantalla de pared. Los nombres de los perdedores parpadean en rojo.", "l": "Rechazar la arena", "r": "Colgar la pantalla tú mismo"},
-    "ise_alim": {"t": "Directriz de contratación: «Nadie de más de 35, ninguna madre con niños pequeños, nadie 'demasiado formado para obedecer'.» Por escrito. Lo pusieron POR ESCRITO.", "l": "Guardar una copia. Negarte a aplicarla.", "r": "Filtrar los CV según lo ordenado"},
-    "aile_gunu": {"t": "En el «Día de la Familia» presenta a los empleados a sus parejas por nivel de rendimiento: «Este es Deniz — grupo C, pero tenemos esperanzas.»", "l": "Interrumpir el «tour» en voz alta", "r": "Esperar que se salte a tu familia"},
-    "y_kusagi": {"t": "Apertura de la reunión de la junta: «El problema de esta empresa es que los jóvenes creen que los derechos son parte del sueldo.» Todos los menores de 40 miran fijamente la mesa.", "l": "«Los derechos no son cuestión de generaciones.»", "r": "Asentir con gesto reflexivo"},
-    "gizli_kamera_wc": {"t": "Mantenimiento encontró una cámara apuntando al pasillo de los baños, «para pillar a los fumadores». Nadie la aprobó. Nadie admite haberla instalado.", "l": "Arrancarla + acta del incidente", "r": "«Que se quede. Fumadores, ojo.»"},
-    "zorunlu_mesaj": {"t": "Todos deben publicar cada mes en LinkedIn un «mensaje de gratitud al liderazgo». RR. HH. controla el cumplimiento en una hoja llamada «LEALTAD.xlsx».", "l": "«Las redes sociales son propiedad privada.»", "r": "Preparar una plantilla para el equipo"},
-    "veri_sizinti": {"t": "Encontré los informes psicológicos de los empleados en la unidad compartida abierta. Los de todos. Incluido el tuyo. RR. HH. los puso en «público» hace tres meses.", "l": "Bloquearlo + avisar a todos los afectados", "r": "Bloquearlo. En silencio."},
-    "cikis_engel": {"t": "Ordenó a seguridad registrar a todo el que salga antes de las 19:00, «para que conste». El registro se convierte cada viernes en un correo-muro de la vergüenza.", "l": "Salir a las 18:00 en punto. A la vista de todos.", "r": "Quedarte hasta tarde. Dar «ejemplo»."},
-    "yalnizlastirma": {"t": "Pasaron uno a uno a otras manos todos los proyectos que toco. Mi calendario está vacío. Mis habilidades se evaporan. Esto es estratégico.", "l": "Reconstruir su cartera abiertamente", "r": "«Disfruta de la temporada tranquila.»"},
-    "itibar_linkedin": {"t": "Una cuenta anónima de LinkedIn publica «cotilleos del sector» que claramente van sobre tu equipo. El estilo es inconfundiblemente el de Tolga.", "l": "Capturarlo todo. Confrontarlo.", "r": "Abrir una cuenta anónima rival"},
-    "ilk_gun": {"t": "La nueva pasó su primer día en una mesa sin ordenador, sin tareas, sin presentaciones. A las 17:00 alguien preguntó quién era.", "l": "Hacer tú mismo una incorporación de verdad", "r": "«El primer día siempre es así.»"},
-    "maas_gecikme": {"t": "Los sueldos llevan 9 días de retraso. El DG publicó hoy una foto de su viaje de esquí. El chat del equipo arde.", "l": "Exigir por escrito una fecha de pago", "r": "«Paciencia. Y silencien el grupo.»"},
-    "toplanti_maraton": {"t": "Agenda de hoy: 11 reuniones, 9 de ellas «pre-reuniones de reuniones». Tiempo de trabajo real: 40 minutos. El equipo se ahoga en calendarios.", "l": "Declarar días sin reuniones", "r": "Añadir una reunión sobre las reuniones"},
-    "kisisel_esya": {"t": "Llegué y mi mesa estaba vaciada. Fotos, planta, todo en una caja junto a la puerta. «Optimización del espacio», dijeron. Mi mesa sigue vacía.", "l": "Restaurar su mesa. Exigir saber quién dio la orden.", "r": "«El minimalismo está de moda.»"},
-    "referans_tehdit": {"t": "«Recuérdales a tus renunciantes: este sector es pequeño. Una llamada mía y acabarán vendiendo bocadillos en la calle. Ponlo en el guion de la entrevista de salida.»", "l": "«Las amenazas no entran en mis guiones.»", "r": "Añadir el «recordatorio amistoso»"},
-    "ekip_koruma": {"t": "El equipo se dio cuenta de que arriba llevas recibiendo golpes por ellos. Te compraron una taza: «El Escudo Humano Más Pasable del Mundo». Hay tarta.", "l": "Aceptar la taza. Comer la tarta.", "r": "«Nada de reuniones en horario laboral.»"},
-    "you_oda_bitki": {"t": "Hasta la planta de tu despacho fue «reasignada». Al despacho de Tolga. Hay un memorando al respecto. Alguien escribió un MEMORANDO sobre tu planta.", "l": "Comprar una planta más grande. Llamarla Libertad.", "r": "Presentar un contramemorando"},
-    "you_asistan": {"t": "A tu asistente la «ascendieron» a otro sitio y no la reemplazó nadie. Tus convocatorias de reunión pasan ahora por la asistente de Tolga. Que está «muy ocupada».", "l": "Gestionar tu agenda tú mismo, con disciplina de hierro", "r": "Perderte reuniones. Que arda todo."},
-    "you_lobi": {"t": "Te quitaron la tarjeta de acceso «para renovarla». Ya van tres días. Cada mañana esperas en el vestíbulo hasta que alguien te abre. Recepción se disculpa a diario.", "l": "Trabajar desde el vestíbulo. Productivo y a la vista.", "r": "Exigir la tarjeta montando una escena"},
-    "you_soguk_oda": {"t": "Tu «nuevo despacho»: la antigua sala de servidores. 14 °C, una única lámpara parpadeante, una silla con tres ruedas. Tolga pasa cada día a «comprobar la moral».", "l": "Decorarlo. Convertirlo en leyenda.", "r": "Sentarte en silencio. Contar los parpadeos."},
-    "ihbarci_koruma": {"t": "Sé quién presentó la denuncia al ministerio. La dirección está a punto de descubrirlo. Una palabra mía termina la cacería — señalando a la persona equivocada.", "l": "«No. Nada de personas equivocadas. Jamás.»", "r": "«Señale a Tolga.»"},
-    "cocuk_hasta": {"t": "A mi hijo lo operan el jueves. Se lo dije al DG. Puso un «despliegue crítico» el jueves y me asignó como único aprobador.", "l": "Asumir tú mismo el rol de aprobador", "r": "«En el hospital hay Wi-Fi.»"},
-    "unvan_oyunu": {"t": "El truco de retención de la dirección: subir títulos, congelar sueldos. Selin es ahora «Líder Principal Ejecutiva Sénior». Mismo sueldo. Eso sí, tarjetas de visita nuevas.", "l": "«Los títulos no pagan el alquiler.»", "r": "Encargar tarjetas de visita más brillantes"},
-    "anket_oyunu": {"t": "La encuesta de clima «anónima» pregunta departamento, antigüedad, edad y tu sitio favorito para almorzar. Los resultados van directos al DG. Con una lista de conjeturas adjunta.", "l": "Avisar a todos: es una trampa", "r": "«Pongan todos cincos y acabemos con esto.»"},
-    "emekli_aday": {"t": "«A Hüseyin le quedan 2 años para jubilarse. Si renuncia antes, nos ahorramos la indemnización. Haz que sus días sean... instructivos.»", "l": "Proteger personalmente sus 2 últimos años", "r": "Empezar la «instrucción»"},
-    "whatsapp_saat": {"t": "El DG añadió mi número personal a 6 grupos de trabajo. Mi teléfono vibró 214 veces anoche. Las conté. Soy becaria.", "l": "Sacarla tú mismo de todos los grupos", "r": "«Bienvenida al sector.»"},
-    "vardiya_oyunu": {"t": "Los turnos del almacén fueron «optimizados»: cierre a las 23:00, apertura a las 07:00 — la misma gente. Dormir es ahora un error de planificación.", "l": "Imponer descansos de 11 horas entre turnos", "r": "«Abajo el café es gratis.»"},
-    "basari_gizle": {"t": "Nuestra solicitud de patente fue aprobada — una noticia enorme. La dirección embargó el anuncio «para no inflar las expectativas salariales».", "l": "Anunciarlo de todos modos. El equipo primero.", "r": "Brindar a escondidas en el hueco de la escalera"},
-    "kres_sozu": {"t": "La «guardería de empresa» prometida hace 3 años es ahora una «sala de bienestar» — un puf y un póster. Los padres pagan media nómina en guarderías.", "l": "Reactivar el proyecto de guardería", "r": "«Pero el puf es ergonómico.»"},
-    "stajyer_fikir": {"t": "Mi idea de ahorro se implantó en toda la empresa. El anuncio se lo atribuye a la «visión de la alta dirección». Tengo el correo original.", "l": "Corregir el registro públicamente", "r": "«La experiencia es su propia recompensa.»"},
-    "kapali_kapi": {"t": "Nueva política: su puerta está «siempre abierta» — pero pedir cita requiere un formulario, dos aprobaciones y 3 semanas de espera. El formulario pregunta por tu «agenda emocional».", "l": "Entrar sin el formulario", "r": "Rellenar el formulario. Esperar 3 semanas."},
-    "tatil_mesaj": {"t": "Estoy en el funeral de mi abuela y el DG no para de llamar por el color de una fuente. Dejó 11 mensajes de voz. Por. Una. Fuente.", "l": "Quedarte con su teléfono. Resolverlo todo tú.", "r": "«¿Y qué color prefería?»"},
-    "beden_dili": {"t": "Nuevo servicio de consultoría: «análisis de microexpresiones» de los empleados en las reuniones. Fruncir el ceño es ahora un «momento entrenable». Hasta hay informes.", "l": "Cancelar la pseudociencia", "r": "Practicar tu cara neutra"},
-    "ofis_taşınma": {"t": "La sede se muda a 47 km, junto a la casa del DG. «El trayecto forja el carácter.» Sin autobús de empresa. Anunciado un viernes a las 17:58.", "l": "Pelear por autobuses + días de teletrabajo", "r": "«Cómprense audiolibros, todos.»"},
-    "gorunmez_emek": {"t": "Llevo 12 años formando a cada contable que contrata esta empresa. Mi puesto nunca cambió. La persona que formé el año pasado ahora es mi jefa.", "l": "Preparar tú mismo su expediente de ascenso", "r": "«Enseñar es atemporal.»"},
-    "son_soz": {"t": "Me jubilo. Último consejo: llevo 20 años viendo a este edificio devorar personas. Los que sobrevivieron no eran los más duros. Eran los que seguían siendo humanos. De alguna manera.", "l": "«Entonces seguiré siendo humano.»", "r": "«Primero sobrevivir, doctor.»"}
+  "ayse_istifa": {
+   "t": "Aquí tiene mi renuncia. No pienso ser una madre que se pierde el día de las notas.",
+   "l": "Convencerla de quedarse, concederle el permiso",
+   "r": "«La puerta está ahí mismo.»"
+  },
+  "mehmet_zam": {
+   "t": "Tres años sin aumento. Investigué el mercado: cobro un 40 % por debajo de la media.",
+   "l": "Defender su aumento ante la dirección",
+   "r": "«Hay mil personas que quieren tu puesto.»"
+  },
+  "mehmet_teklif": {
+   "t": "Tengo una oferta de otra empresa. O hay contraoferta o a fin de mes no estoy.",
+   "l": "Pelear por una contraoferta",
+   "r": "«El que se va, se va.»"
+  },
+  "deadline": {
+   "t": "Terminen el proyecto {P} en dos semanas. ¿Que normalmente lleva dos meses? No es mi problema.",
+   "l": "«El equipo no aguanta esto. Necesito un plazo realista.»",
+   "r": "«A sus órdenes.» (anunciarlo al equipo)"
+  },
+  "deadline_kriz": {
+   "t": "Tres personas de baja médica, una hospitalizada por la tensión. ¿Sigue en pie la fecha límite?",
+   "l": "Ampliar el plazo. Tú darás la cara.",
+   "r": "«Repártanlo entre los sanos.»"
+  },
+  "anlamsiz": {
+   "t": "Pon a Selin una temporada a hacer fotocopias y archivo. Hay que «bajarle los humos».",
+   "l": "«Es ingeniera. No pienso hacer eso.»",
+   "r": "Mandarla al archivo"
+  },
+  "selin_arsiv": {
+   "t": "Soy ingeniera con 6 años de experiencia y llevo dos semanas haciendo fotocopias. ¿Por qué me hacen esto?",
+   "l": "Devolverle sus funciones y pedirle disculpas",
+   "r": "«Todo trabajo tiene su valor, Selin.»"
+  },
+  "gorev_gasp": {
+   "t": "Me quedo con la cuenta de {C} de tu equipo. El Director General ya lo aprobó.",
+   "l": "Pelear por lo que es tuyo",
+   "r": "Aceptarlo en silencio"
+  },
+  "toplanti_bagirma": {
+   "t": "Corta tu presentación y grita delante de todos: «¡ESTÁS DICIENDO TONTERÍAS!»",
+   "l": "Mantener la calma. Defenderte con datos.",
+   "r": "Tragártelo — y luego descargarlo en el equipo"
+  },
+  "cc_rezil": {
+   "t": "Nueva directriz: responder a cada correo de Deniz señalándole errores — con toda la empresa en copia.",
+   "l": "«El feedback se da en privado.»",
+   "r": "Cumplir la directriz"
+  },
+  "stajyere_bagirma": {
+   "t": "Sí, le grité a la becaria. Rompió la build. ¿Qué querías que hiciera?",
+   "l": "«Nunca más. Ve a disculparte.»",
+   "r": "«Bien hecho. La disciplina importa.»"
+  },
+  "sozunu_kesme": {
+   "t": "En cada reunión te corta a media frase: «Dejen que traduzca lo que nuestro amigo intenta decir...»",
+   "l": "«Sé terminar mis propias frases, Tolga.»",
+   "r": "Dejarlo. Otra vez."
+  },
+  "tel_teror": {
+   "t": "Te llama a las 23:40. «¿Por qué tienes el teléfono apagado el fin de semana? Contesta cuando yo llame.»",
+   "l": "«Mis horas libres me pertenecen.»",
+   "r": "Tener el teléfono encendido 24/7 desde ahora"
+  },
+  "tel_teror2": {
+   "t": "Tus valores de tensión me preocupan. ¿Cuándo fue la última vez que dormiste una noche entera sin mirar el teléfono?",
+   "l": "Volver a apagar el teléfono por las noches",
+   "r": "«Estoy bien, doctor.» (no lo estás)"
+  },
+  "yazili_uyari": {
+   "t": "La dirección quiere que hagas firmar a Mehmet una amonestación escrita. Motivo: «actitud». No hay ningún incidente en el expediente.",
+   "l": "«Sin incidente no hay amonestación.»",
+   "r": "Firmarla. El papel lo aguanta todo."
+  },
+  "izolasyon_oda": {
+   "t": "Que trasladen la mesa del «conflictivo» de Deniz a la planta del almacén. Que nadie tenga que tratar con él.",
+   "l": "«No hay justificación. Me niego.»",
+   "r": "Mandar trasladar la mesa"
+  },
+  "deniz_depo": {
+   "t": "Estoy sentado solo en el almacén. Ni el Wi-Fi llega. ¿El objetivo es que renuncie?",
+   "l": "Subirlo de nuevo. Asumir las consecuencias.",
+   "r": "«Es algo temporal.» (no lo es)"
+  },
+  "konusma_yasagi": {
+   "t": "Anuncia a tu equipo: nadie habla con Deniz fuera de temas de trabajo. Órdenes de arriba.",
+   "l": "Negarte a anunciarlo",
+   "r": "Anunciarlo en voz baja"
+  },
+  "davet_yok": {
+   "t": "A la reunión anual de estrategia invitaron a todos los jefes menos a ti. ¿La lista quedó corta «por accidente»?",
+   "l": "Entrar sin invitación",
+   "r": "Ignorarlo. Trabajar."
+  },
+  "selam_yok": {
+   "t": "Desde que el DG dejó de saludarte en el pasillo, media planta también dejó de hacerlo. Se propaga como el clima.",
+   "l": "Saludar a todos más alto que nunca",
+   "r": "Dejar de saludar tú también"
+  },
+  "ogle_yemegi": {
+   "t": "El grupo del almuerzo lleva tres semanas «olvidándose» de invitarme. Como solo en el hueco de la escalera.",
+   "l": "Sentarte tú con él mañana a mediodía",
+   "r": "«La política de comedor no es asunto mío.»"
+  },
+  "dedikodu": {
+   "t": "El pasillo murmura: Tolga difunde el rumor de que Selin consiguió el ascenso «por otros medios».",
+   "l": "Matar el rumor públicamente. Advertir a Tolga.",
+   "r": "No meterte. Quizá contarlo tú una vez."
+  },
+  "taklit": {
+   "t": "En el almuerzo imita el tartamudeo de Deniz. La mesa se ríe. Te mira: «¿A que sí? Buenísimo.»",
+   "l": "«Eso no tiene gracia.» Levantarte. Irte.",
+   "r": "Sonreír. Seguirle el juego."
+  },
+  "wp_grubu": {
+   "t": "En el grupo de WhatsApp de la empresa se burlan de una foto vieja mía. Los jefes están en el grupo. Callados.",
+   "l": "Escribir una advertencia clara en el grupo",
+   "r": "«Aprende a aguantar una broma.»"
+  },
+  "hata_yukleme": {
+   "t": "Cargó el fracaso de su propio proyecto sobre tu equipo en la reunión de la junta. Todos te miran a ti.",
+   "l": "Refutarlo con el historial de correos",
+   "r": "Sacrificar al equipo. Callar."
+  },
+  "deli_muamele": {
+   "t": "La dirección sugiere que Deniz consiga un «certificado de aptitud psicológica». Su único síntoma: haber presentado una queja.",
+   "l": "«Quejarse no es una enfermedad.»",
+   "r": "Derivarlo al médico"
+  },
+  "kilik_alay": {
+   "t": "El DG se burló de mi ropa delante de los clientes: «Por lo visto no le pagamos lo suficiente para vestirse como es debido.»",
+   "l": "Pedirle disculpas en nombre de la empresa",
+   "r": "«Él bromea con todo el mundo.»"
+  },
+  "ozel_yasam": {
+   "t": "«Me han dicho que tu divorcio se alarga», dice en voz alta en la oficina abierta. «No mezcles el desorden de tu casa con mis números.»",
+   "l": "«Mi vida privada no se discute.»",
+   "r": "Disculparte por tu propio divorcio"
+  },
+  "hasta_calisan": {
+   "t": "Tengo 39 de fiebre, pero el DG dijo que quien coja la baja «se encontrará en la calle». ¿Debería ir?",
+   "l": "«Quédate en casa. La baja es problema mío.»",
+   "r": "«Ponte mascarilla. Hay trabajo.»"
+  },
+  "cumartesi": {
+   "t": "Este mes todo el mundo trabaja los sábados. ¿Horas extra pagadas? Ese presupuesto no existe.",
+   "l": "«Las horas extra sin pagar son ilegales. Me opongo.»",
+   "r": "Anunciarlo como «voluntario»"
+  },
+  "panik_atak": {
+   "t": "Tuve un ataque de pánico en el baño antes de la reunión. Ahora lloro en el coche antes de entrar a trabajar.",
+   "l": "Aligerar su carga. Preguntarle cada día cómo está.",
+   "r": "«Todos estamos estresados, Deniz.»"
+  },
+  "curuk_raf": {
+   "t": "Las estanterías del almacén están podridas — la semana pasada casi aplastan a alguien. El presupuesto de reparación fue rechazado.",
+   "l": "Cerrar el almacén. Con o sin presupuesto.",
+   "r": "«Que tengan cuidado.»"
+  },
+  "raf_kaza": {
+   "t": "Pasó. La estantería cayó encima de Musa. Brazo roto. RR. HH. pregunta cómo lo vamos a «documentar».",
+   "l": "Notificarlo honestamente como accidente laboral",
+   "r": "«Se cayó en su casa. ¿Todos de acuerdo?»"
+  },
+  "antidepresan": {
+   "t": "Este mes, cuatro personas de tu equipo empezaron a tomar antidepresivos. ¿Informo del patrón a la dirección?",
+   "l": "«Infórmelo. Que salga la verdad.»",
+   "r": "«Entiérrelo. Que nadie lo vea.»"
+  },
+  "ik_verimlilik": {
+   "t": "Tu equipo parece «demasiado cómodo». Tu nombre está en rojo en el informe de productividad. Haz algo.",
+   "l": "«Mi equipo cumple. Los datos están a la vista.»",
+   "r": "Apretarle las tuercas al equipo"
+  },
+  "ceo_ilgi": {
+   "t": "Te he estado observando. Me gustan los jefes duros. Sé como Tolga — ese hombre está «orientado a resultados».",
+   "l": "«Yo dirijo a mi manera.»",
+   "r": "«Tomo nota, señor.»"
+  },
+  "stajyer_maas": {
+   "t": "Tres meses sin cobrar. Me dijeron que «se abriría una plaza». ¿Hay alguna esperanza real?",
+   "l": "Ser honesto: «No hay plaza. No quemes tu juventud aquí.»",
+   "r": "«Falta poco. Ten paciencia.» (mentira)"
+  },
+  "ihbar_avi": {
+   "t": "Alguien nos denunció por mobbing ante el Ministerio de Trabajo. Encuéntrame al topo.",
+   "l": "«Yo no hago cacerías de brujas.»",
+   "r": "Iniciar la investigación"
+  },
+  "referans": {
+   "t": "El nuevo empleador de Ayşe llamó pidiendo referencias. El DG dice: «Déjala por los suelos. Que sirva de lección.»",
+   "l": "Dar una referencia honesta y positiva",
+   "r": "«Ella era... problemática.»"
+  },
+  "kamera": {
+   "t": "Las nuevas cámaras de seguridad apuntarán a cada mesa, con grabación de pantalla incluida. «Por la productividad.»",
+   "l": "«Esto es vigilancia, no seguridad.»",
+   "r": "Firmar la orden de instalación"
+  },
+  "toplu_email": {
+   "t": "Envió a toda la empresa un correo con la lista de «bajo rendimiento». Tu mejor ingeniero está en ella. Injustamente.",
+   "l": "Exigir una rectificación pública",
+   "r": "Consolar al ingeniero en privado. No hacer nada."
+  },
+  "masa_kucultme": {
+   "t": "«Dale a Mehmet la mesa junto a los baños. Quizá el olor lo motive a renunciar.»",
+   "l": "«Las mesas no son instrumentos de castigo.»",
+   "r": "Reasignar la mesa"
+  },
+  "gorev_yok": {
+   "t": "Llevo dos semanas sin que me den ni una tarea. Me siento y miro. La gente me cree un vago. Esto es peor que el exceso de trabajo.",
+   "l": "Asignarle trabajo real y con sentido",
+   "r": "«Disfruta de las vacaciones pagadas.»"
+  },
+  "kapasit_alti": {
+   "t": "A mí — ingeniera sénior — me pusieron a introducir datos. Fila tras fila. Mis habilidades se pudren a propósito.",
+   "l": "Devolverla al trabajo de ingeniería",
+   "r": "«Todo dato es un dato importante.»"
+  },
+  "surekli_yeni": {
+   "t": "Cada vez que terminamos el 90 % de una tarea, el DG cambia los requisitos. Quinta vez este mes. El equipo se deshace.",
+   "l": "Congelar el alcance. Dejarlo por escrito.",
+   "r": "«Él es el jefe. Pivotamos otra vez.»"
+  },
+  "onur_kirici": {
+   "t": "«Que el ingeniero nuevo me lave el coche. Forja el carácter. Y que lo grabe para el grupo.»",
+   "l": "«Rotundamente no.»",
+   "r": "Mandar al ingeniero abajo con una esponja"
+  },
+  "imkansiz_hedef": {
+   "t": "Objetivo del próximo trimestre: {X} % de crecimiento. El trimestre pasado apenas llegamos al 3 %. «Los detalles son cosa tuya.»",
+   "l": "Presentar un contraplan realista",
+   "r": "Aceptar el objetivo. Pasar el dolor hacia abajo."
+  },
+  "cinsiyet": {
+   "t": "La dirección no quiere que Selin dirija la reunión con el cliente porque este «prefiere tratar con hombres».",
+   "l": "La dirige Selin. Punto final.",
+   "r": "Cambiarla «solo por esta vez»"
+  },
+  "inanc_alay": {
+   "t": "Programan la cena de equipo a propósito en mis horas de ayuno, y luego hacen bromas al respecto. Todas las veces.",
+   "l": "Mover la cena. Ni una broma más.",
+   "r": "«Solo están de cachondeo.»"
+  },
+  "yas_alay": {
+   "t": "Sobre tu contable de 58 años: «Los dinosaurios no aprenden el sistema nuevo. Hazle sentir que le llegó la hora.»",
+   "l": "Conseguirle un formador, mejor",
+   "r": "Empezar a «olvidarte» de invitarla a las formaciones"
+  },
+  "toplanti_saat": {
+   "t": "Ahora pone las reuniones obligatorias a las 19:30. «El que tenga algo más importante que hacer, que me lo diga a la cara.»",
+   "l": "«Las reuniones terminan a las 18:00. Se lo digo a la cara.»",
+   "r": "Decirle al equipo que cancele sus planes de noche"
+  },
+  "performans_oyunu": {
+   "t": "Nuevo sistema de evaluación: cada trimestre se despide automáticamente al 10 % de abajo. Sin importar el rendimiento real.",
+   "l": "Negarte a poner a tu equipo en una lista negra",
+   "r": "Enviar el ranking"
+  },
+  "maas_gizli": {
+   "t": "Recordatorio: que los empleados comenten sus sueldos entre ellos es ahora «motivo de despido». Anúncialo.",
+   "l": "«Hablar del sueldo es un derecho legal.»",
+   "r": "Colgar el anuncio"
+  },
+  "aglayan_kisi": {
+   "t": "Encontré a Ayşe llorando en la sala de archivo. Me suplicó que no se lo contara a nadie. Es la tercera vez.",
+   "l": "Hablar con Ayşe. Ofrecerle ayuda de verdad.",
+   "r": "«Lo que pasa en el archivo se queda en el archivo.»"
+  },
+  "sen_kovulma_esigi": {
+   "t": "Tu nombre salió en la reunión de la junta. Algunos creen que un jefe «tan blando» no encaja en nuestra cultura.",
+   "l": "«Mis resultados hablan. La suavidad es un método.»",
+   "r": "Prometer «endurecerte» el próximo trimestre"
+  },
+  "you_park": {
+   "t": "La junta te considera «desalineado». Tu plaza de aparcamiento queda anulada. Tu despacho se muda a la oficina abierta. Hoy.",
+   "l": "Aceptarlo con la cabeza alta",
+   "r": "Pasar la humillación hacia abajo en la cadena"
+  },
+  "you_toplanti": {
+   "t": "Ya no te convocan a las reuniones de dirección. Las decisiones sobre tu equipo se toman sin ti y luego te las «comunican».",
+   "l": "Objetar por escrito. Guardar registros.",
+   "r": "Agachar la cabeza"
+  },
+  "you_bulten": {
+   "t": "El boletín de la empresa menciona «problemas de rendimiento en ciertos jefes». Todos saben que se refiere a ti.",
+   "l": "Publicar una respuesta abierta y con datos",
+   "r": "Tragártelo en silencio"
+  },
+  "you_maas": {
+   "t": "Un «error administrativo» te recortó el sueldo un 20 % este mes. Corregirlo llevará «varios ciclos de nómina».",
+   "l": "Enviar un requerimiento legal",
+   "r": "Esperar educadamente. Y seguir esperando."
+  },
+  "you_masa": {
+   "t": "Tu nueva mesa: junto a la impresora, bajo la salida del aire acondicionado. Tu antiguo despacho ahora es una «sala de meditación» que nadie usa.",
+   "l": "Trabajar desde esa mesa. Y brillar.",
+   "r": "Empezar a parecer enfermo, a llegar tarde"
+  },
+  "you_taklit": {
+   "t": "En la cena de jefes, Tolga imita tu estilo de presentación. El que más se ríe es el CEO.",
+   "l": "Reírte con ellos. Negarles la herida.",
+   "r": "Abandonar la cena"
+  },
+  "email_sessiz": {
+   "t": "Mis correos a la dirección se quedan semanas sin respuesta. Luego dicen «nunca nos informaste». Tengo pruebas.",
+   "l": "Montarle un protocolo de rastro escrito",
+   "r": "«Quizá deberías escribir correos más cortos.»"
+  },
+  "proje_calindi": {
+   "t": "Tolga presentó mi propuesta de {P} a la junta. Diapositiva a diapositiva. Mi nombre no estaba en ni una sola página.",
+   "l": "Mostrar a la junta las fechas de los archivos originales",
+   "r": "«Las ideas son de la empresa, de todos modos.»"
+  },
+  "gece_mesaj": {
+   "t": "Manda un audio al grupo del equipo a las 02:00: «¿Por qué nadie contesta? ¿Esto es una empresa o una residencia de ancianos?»",
+   "l": "Silenciar el grupo para todos después de las 19:00",
+   "r": "Exigir al equipo que responda de noche"
+  },
+  "tatil_iptal": {
+   "t": "Mis vacaciones estaban aprobadas desde hace 2 meses. Vuelos comprados. Hoy las cancelaron «por carga de trabajo».",
+   "l": "Restituir las vacaciones. Cubrir tú el hueco.",
+   "r": "«La empresa es lo primero.»"
+  },
+  "kacak_dinleme": {
+   "t": "Tolga te enseña «sin querer» una captura de pantalla: alguien lo añadió al chat privado de tu equipo. Lo sabe todo.",
+   "l": "Avisar al equipo. Reconstruir la confianza.",
+   "r": "Aprovecharlo. Filtrarle información falsa."
+  },
+  "dogum_izni": {
+   "t": "Zeynep anunció su embarazo. La dirección quiere «ponerla de patitas en la calle» antes de que empiece la baja maternal.",
+   "l": "«Eso es ilegal y ruin. No.»",
+   "r": "Empezar a fabricar un «expediente de rendimiento»"
+  },
+  "engel_alay": {
+   "t": "Volvieron a poner el armario de material delante de la rampa. Cuando nuestro contable en silla de ruedas se quejó, alguien se rio.",
+   "l": "Despejar la rampa. Averiguar quién se rio.",
+   "r": "«Que use el montacargas.»"
+  },
+  "memleket": {
+   "t": "El DG no para de imitar el acento del pueblo del nuevo en las reuniones. La sonrisa del chico se afina cada vez más.",
+   "l": "Cortarlo en público la próxima vez",
+   "r": "Aconsejar al chico que «corrija» su acento"
+  },
+  "istifa_zorlamasi": {
+   "t": "Nueva táctica de la dirección: hacerle la vida a Mehmet lo bastante miserable como para que renuncie — la indemnización sale cara.",
+   "l": "Contarle la verdad a Mehmet. En secreto.",
+   "r": "Ejecutar el estrangulamiento lento"
+  },
+  "aidat_kesinti": {
+   "t": "En la nómina descuentan en silencio una «cuota del fondo social» que nadie aprobó. El dinero va al club de golf del DG.",
+   "l": "Destapar el descuento",
+   "r": "«Todos pagan. Es tradición.»"
+  },
+  "kriz_kahraman": {
+   "t": "La crisis de servidores que predijiste (y por la que te ignoraron) estalló. Ahora Tolga la arregla «heroicamente». Con tu viejo plan.",
+   "l": "Compartir con el CEO el plan original fechado",
+   "r": "Dejarle su desfile triunfal"
+  },
+  "hafta_sonu_etkinlik": {
+   "t": "«Team building» obligatorio este domingo: paintball a las 07:00, con lista de asistencia. ¿Las familias? No están invitadas.",
+   "l": "Hacerlo voluntario y pagado",
+   "r": "Pasar lista"
+  },
+  "kidem_sifirla": {
+   "t": "Legal encontró un truco: despedir a todos a los 4 años y medio y recontratarlos a la semana — la antigüedad se reinicia, la indemnización se evapora.",
+   "l": "Negarte a firmar un solo despido",
+   "r": "Tramitar el papeleo"
+  },
+  "whistleblower": {
+   "t": "Descubrí que las facturas de {C} están infladas. Si lo denuncio, estoy acabado aquí. Si no, soy cómplice. Ayúdame.",
+   "l": "Denunciarlo juntos. Por la vía oficial.",
+   "r": "«Borra lo que viste.»"
+  },
+  "sirket_telefonu": {
+   "t": "IT instaló software de rastreo en los teléfonos de empresa — ubicación, mensajes, fotos. «Política estándar.» No se lo dijeron a nadie.",
+   "l": "Informar a todos de inmediato",
+   "r": "Callar. Y vigilar lo que tú escribes."
+  },
+  "eski_dost": {
+   "t": "¿Te acuerdas de Hakan, despedido el año pasado por «incompetencia»? Ahora es director en {C}. Y recuerda quién firmó su salida.",
+   "l": "Llamarlo. Disculparte honestamente.",
+   "r": "Evitar esa cuenta por completo"
+  },
+  "mola_yasak": {
+   "t": "Nueva regla: pausa del café limitada a 7 minutos, controlada por tarjeta. El tiempo de baño está «en revisión».",
+   "l": "«Gestionamos producción, no vejigas.»",
+   "r": "Mandar instalar los lectores de tarjeta"
+  },
+  "klima_savasi": {
+   "t": "Fijaron el aire acondicionado a 17 °C justo encima de mi mesa. Lo pedí dos veces. El DG: «El frío mantiene despiertos a los vagos.»",
+   "l": "Mover su mesa. Hacer ajustar el aire.",
+   "r": "«Tráete una chaqueta.»"
+  },
+  "cv_sabotaj": {
+   "t": "Oí que RR. HH. llama a las empresas donde solicitan trabajo nuestros exempleados para «advertirles». ¿Eso es siquiera legal?",
+   "l": "Confrontar a RR. HH. Exigir que pare.",
+   "r": "«Ya no es nuestro circo.»"
+  },
+  "acil_aile": {
+   "t": "Mi padre tuvo un ictus. Tengo que salir YA. El DG bloquea la puerta: «La demo es en una hora.»",
+   "l": "«VETE. La demo la presento yo.»",
+   "r": "«Conéctate por videollamada desde el hospital.»"
+  },
+  "sarhos_gm": {
+   "t": "En la cena de empresa, el DG, borracho, tira del brazo de la becaria para «bailar». Ella está paralizada. Todos te miran a ti.",
+   "l": "Interponerte. Ahora mismo.",
+   "r": "Mirar hacia otro lado. Rellenar tu copa."
+  },
+  "sarhos_sonra": {
+   "t": "Sobre aquella noche... Voy a presentar una queja contra el DG. ¿Escribirás lo que viste? Estabas ahí mismo.",
+   "l": "Escribir la verdad. Firmarla.",
+   "r": "«Es que no lo vi bien.»"
+  },
+  "iki_yuzlu_ik": {
+   "t": "La nueva línea «confidencial» de quejas de RR. HH. lo reenvía todo directamente al DG. Con nombres. Pensé que debías saberlo.",
+   "l": "Avisar al equipo con discreción",
+   "r": "Usar la línea para poner a prueba lealtades"
+  },
+  "prim_gaspi": {
+   "t": "El bono prometido por el lanzamiento de {P} fue «reestructurado» en una fiesta de pizza. Una fiesta de pizza.",
+   "l": "Pelear por el bono de verdad",
+   "r": "«Eso sí: con queso extra.»"
+  },
+  "görev_tanimi": {
+   "t": "Me contrataron como diseñador. Esta semana hice: los papeles del visado del DG, las diapositivas de los deberes de su hijo y una cita con el veterinario para su perro.",
+   "l": "Acabar con los recados personales. Por escrito.",
+   "r": "«Al menos al perro le caes bien.»"
+  },
+  "toplu_istifa_tehdidi": {
+   "t": "Los desarrolladores sénior hicieron un pacto: si echan a Mehmet, los cinco renuncian el mismo día. Quieren que lo sepas.",
+   "l": "Ponerte de su lado. Decírselo a la dirección.",
+   "r": "Denunciar la «conspiración» a RR. HH."
+  },
+  "yemekhane": {
+   "t": "Nuevo plano de asientos en el comedor: la dirección come tras una mampara de cristal. «La visibilidad crea familiaridad. La familiaridad crea exigencias.»",
+   "l": "Seguir comiendo con tu equipo",
+   "r": "Ocupar tu sitio detrás del cristal"
+  },
+  "sessiz_istifa": {
+   "t": "La mitad de tu equipo muestra señales de renuncia silenciosa — esfuerzo mínimo, cero iniciativa. No son vagos. Están heridos.",
+   "l": "Charlas uno a uno. Primero escuchar.",
+   "r": "Plan de mejora de rendimiento para todos"
+  },
+  "kopya_sirket": {
+   "t": "Rumor: Tolga está montando en secreto una empresa rival con los datos de nuestros clientes. El CEO quiere que TÚ lo demuestres. O lo entierres. No queda claro cuál.",
+   "l": "Investigar como es debido, informar de los hallazgos",
+   "r": "«No vi nada, no sé nada.»"
+  },
+  "mikro_yonetim": {
+   "t": "Ahora exige a tu equipo correos de estado cada hora. Cada hora. Con capturas de pantalla y recuento de palabras.",
+   "l": "«Tendrán informes semanales. Y punto.»",
+   "r": "Montar el flujo horario"
+  },
+  "kutlama_gaspi": {
+   "t": "Cerramos el acuerdo con {C} tras 6 meses de turnos de noche. El brindis del DG: «Esto demuestra lo que logra MI liderazgo.»",
+   "l": "Brindar por el equipo de verdad, nombre a nombre",
+   "r": "Aplaudir con todos los demás"
+  },
+  "delil_yok_etme": {
+   "t": "Legal quiere que se borren automáticamente todos los correos de más de 6 meses. Casualidad: la demanda por mobbing cubre el mes 7.",
+   "l": "Primero archivarlo todo fuera",
+   "r": "Activar el borrado automático"
+  },
+  "you_stajyer": {
+   "t": "Asignaron a la becaria a hacerte de «sombra». Toma nota de todo lo que haces y reporta a RR. HH. cada noche. A ella le da vergüenza.",
+   "l": "«Haz tu trabajo. No tengo nada que ocultar.»",
+   "r": "Alimentarla con datos falsos impresionantes"
+  },
+  "you_egitim": {
+   "t": "Te inscribieron — obligatoriamente — en un curso de «Habilidades básicas de comunicación». Con los becarios. Las fotos se compartirán con toda la empresa.",
+   "l": "Asistir. Brillar. Adueñarte de la sala.",
+   "r": "Conseguir un justificante médico para librarte"
+  },
+  "you_hedef_revize": {
+   "t": "Tus objetivos fueron «revisados» a mitad de trimestre. Al alza. Un 300 %. Con carácter retroactivo. Tu bono es ahora matemáticamente imposible.",
+   "l": "Documentar el juego. Contratar abogado en silencio.",
+   "r": "Perseguir lo imposible de todos modos"
+  },
+  "aynali_oda": {
+   "t": "Ten cuidado. Todo lo que te ordenan hacerles a otros — lo he visto hacérselo también a quien se negó. Este lugar recicla sus métodos.",
+   "l": "«Entonces yo romperé el ciclo.»",
+   "r": "«Entonces más me vale seguir siendo útil.»"
+  },
+  "cikis_multakati": {
+   "t": "Datos de las entrevistas de salida: 19 de 21 que se fueron citaron «el comportamiento de la dirección». El resumen oficial de RR. HH. dice «motivos personales». ¿Lo firmas?",
+   "l": "Negarte. Adjuntar los datos en bruto.",
+   "r": "Firmar la ficción"
+  },
+  "yeni_kurban": {
+   "t": "«Buenas noticias. La junta encontró un nuevo 'foco'. Un jefe de logística. Tú te libras — si ayudas con él.»",
+   "l": "Avisar al jefe de logística, mejor",
+   "r": "Entregarles el manual de instrucciones"
+  },
+  "remote_kamera": {
+   "t": "Nueva norma de teletrabajo: cámaras ENCENDIDAS en todo momento, capturas de pantalla cada 5 minutos, las idas al baño se anotan en el chat.",
+   "l": "«Medimos el trabajo, no los cuerpos.»",
+   "r": "Desplegar el paquete de vigilancia"
+  },
+  "remote_mesai": {
+   "t": "Desde que teletrabajo, mi jornada es de 07:00 a 23:00. «Total, estás en casa», dicen. Mi casa dejó de ser mi casa.",
+   "l": "Imponer horas fijas de inicio y fin",
+   "r": "«La flexibilidad va en ambos sentidos.»"
+  },
+  "acik_ofis": {
+   "t": "Reorganizó la oficina abierta: los de «bajo rendimiento» se sientan mirando a la pared, junto a la entrada. Un rincón de la vergüenza. Con cartel.",
+   "l": "Arrancar el cartel con tus propias manos",
+   "r": "«Motivación mediante visibilidad.»"
+  },
+  "sendika": {
+   "t": "Unos cuantos estamos hablando en voz baja de sindicalizarnos. Si la dirección se entera, quema el edificio. ¿Estás con nosotros o con ellos?",
+   "l": "«Es su derecho. Mi silencio es suyo.»",
+   "r": "Delatar a los organizadores"
+  },
+  "avukat_mektup": {
+   "t": "El abogado de Deniz envió un requerimiento formal por acoso laboral. La dirección quiere una «declaración conjunta» de que no pasó nada.",
+   "l": "«No pienso firmar una mentira.»",
+   "r": "Firmar la declaración conjunta"
+  },
+  "tukenmislik": {
+   "t": "Ya no siento nada. Ni estrés, ni rabia. Abro el portátil y me quedo mirando. ¿Esto es el burnout?",
+   "l": "Baja médica + derivación al terapeuta. Hoy mismo.",
+   "r": "«Tómate la tarde libre.»"
+  },
+  "musteri_hakaret": {
+   "t": "El responsable de la cuenta de {C} me grita en cada llamada. Ayer me llamó «hoja de cálculo parlante». La dirección dice que «el cliente es el rey».",
+   "l": "Llamar al cliente. Marcar límites.",
+   "r": "«Los reyes son reyes.»"
+  },
+  "kriz_liste": {
+   "t": "Crisis económica. Necesito para el viernes una lista de despidos de tu equipo: el 30 %. Por orden alfabético si quieres. Me da igual.",
+   "l": "Proponer alternativas: recortes de sueldo + semanas cortas",
+   "r": "Escribir la lista"
+  },
+  "kriz_liste2": {
+   "t": "Vi mi nombre en una hoja impresa sobre tu mesa. Bajo el título «Lista». Me caso dentro de dos meses. Solo dime la verdad.",
+   "l": "Decirle la verdad. Toda.",
+   "r": "«Es solo un plano de asientos.»"
+  },
+  "yeni_ceo": {
+   "t": "Primer discurso del nuevo CEO: «Leí que el 40 % de ustedes es reemplazable por la IA. Demuéstrenme lo contrario. O no. Ambas cosas ahorran dinero.»",
+   "l": "Defender públicamente el valor de tu equipo",
+   "r": "Empezar una presentación de «transformación con IA»"
+  },
+  "danisman": {
+   "t": "Veredicto de la consultora: tu departamento es «emocionalmente ineficiente». Su solución: formación obligatoria en sonrisas. No es broma.",
+   "l": "Rechazar la escuela de payasos",
+   "r": "Programar las sesiones de sonrisa"
+  },
+  "hamile_donus": {
+   "t": "Zeynep vuelve el lunes de su baja maternal. La dirección «reestructuró» su puesto hasta hacerlo desaparecer. Su nuevo trabajo: suplente de recepción. Era jefa del equipo de datos.",
+   "l": "Devolverle su puesto real. Pelear.",
+   "r": "«Al menos tiene trabajo.»"
+  },
+  "dil_baski": {
+   "t": "Nueva regla: «en la oficina, solo el idioma corporativo». A dos compañeros les levantaron acta por charlar en su lengua materna. En el almuerzo.",
+   "l": "Eliminar la regla, al menos en los descansos",
+   "r": "Aplicarla. «Profesionalidad.»"
+  },
+  "taseron": {
+   "t": "El personal de limpieza come de pie en el hueco de la escalera — son «subcontratados», no pueden entrar al comedor. Desde siempre.",
+   "l": "Abrir el comedor a todo el mundo",
+   "r": "«Las condiciones del contrato son las condiciones del contrato.»"
+  },
+  "parti_baski": {
+   "t": "Quien falte a la fiesta del yate del DG «también falta a su carrera». Esa noche, el padre de Mehmet está en el hospital. Me pidió que te lo preguntara.",
+   "l": "«La familia primero. Yo lo defenderé.»",
+   "r": "«Que pase una hora. Para la foto.»"
+  },
+  "eski_sirket": {
+   "t": "Le cuenta a todo el mundo que a ti te «echaron» de tu empresa anterior. Renunciaste. Tienes la carta. Y él lo sabe.",
+   "l": "Enseñar la carta una vez. Bien alto.",
+   "r": "Dejar que la mentira se asiente"
+  },
+  "gizli_zam": {
+   "t": "«Dale el presupuesto de aumentos al equipo de Tolga. El tuyo 'no se queja lo suficiente como para ser riesgo de fuga'. Es un cumplido.»",
+   "l": "«Aquí la lealtad se paga primero.»",
+   "r": "Reasignar el presupuesto en silencio"
+  },
+  "mola_ihbar": {
+   "t": "Ahora hay una «línea anónima de productividad». Alguien denunció a Ayşe por una pausa de té de 12 minutos. Fui yo. Se me revuelve el estómago.",
+   "l": "«Nunca más. Y haré que cierren esa línea.»",
+   "r": "«Buen reflejo. Sigue denunciando.»"
+  },
+  "threeh_kural": {
+   "t": "La política de la empresa limita ahora la baja por enfermedad a 3 días al AÑO. Más requiere la «aprobación personal» del DG. Esto viola la ley.",
+   "l": "Denunciarlo a la autoridad laboral",
+   "r": "«Ahora las reglas son las reglas.»"
+  },
+  "oyun_ici_saka": {
+   "t": "Renombraron el Wi-Fi de la oficina como «MehmetEsLento». IT dice que lo pidió el DG en persona. Ya van 3 semanas.",
+   "l": "Que IT lo corrija + queja formal",
+   "r": "«La verdad es que tiene su gracia.»"
+  },
+  "performans_ani": {
+   "t": "Tu evaluación de rendimiento se programó en la sala de cristal. A la hora del almuerzo. Del lado que da al comedor. Con megáfono. Casi.",
+   "l": "Trasladarla a una sala privada",
+   "r": "Actuar para el público"
+  },
+  "kidemli_veda": {
+   "t": "El viejo Hüseyin se jubila el viernes tras 31 años. El regalo de la dirección: un calendario con el logo de la empresa. El equipo reúne dinero para un regalo de verdad. ¿Te apuntas?",
+   "l": "Apuntarte + organizar una ceremonia de verdad",
+   "r": "«Oye, que el calendario tiene 12 páginas.»"
+  },
+  "gorusme_kaydi": {
+   "t": "RR. HH. graba en secreto las reuniones uno a uno «por calidad». Legal dice que sin consentimiento es ilegal. RR. HH. dice «pues no se lo cuenten a nadie».",
+   "l": "Contárselo a todos en la reunión matinal",
+   "r": "Medir tus palabras en las reuniones"
+  },
+  "prim_yaris": {
+   "t": "Nuevo plan de «motivación»: un solo bono, estilo gladiadores. Los miembros del equipo compiten en público; puntuaciones en una pantalla de pared. Los nombres de los perdedores parpadean en rojo.",
+   "l": "Rechazar la arena",
+   "r": "Colgar la pantalla tú mismo"
+  },
+  "ise_alim": {
+   "t": "Directriz de contratación: «Nadie de más de 35, ninguna madre con niños pequeños, nadie 'demasiado formado para obedecer'.» Por escrito. Lo pusieron POR ESCRITO.",
+   "l": "Guardar una copia. Negarte a aplicarla.",
+   "r": "Filtrar los CV según lo ordenado"
+  },
+  "aile_gunu": {
+   "t": "En el «Día de la Familia» presenta a los empleados a sus parejas por nivel de rendimiento: «Este es Deniz — grupo C, pero tenemos esperanzas.»",
+   "l": "Interrumpir el «tour» en voz alta",
+   "r": "Esperar que se salte a tu familia"
+  },
+  "y_kusagi": {
+   "t": "Apertura de la reunión de la junta: «El problema de esta empresa es que los jóvenes creen que los derechos son parte del sueldo.» Todos los menores de 40 miran fijamente la mesa.",
+   "l": "«Los derechos no son cuestión de generaciones.»",
+   "r": "Asentir con gesto reflexivo"
+  },
+  "gizli_kamera_wc": {
+   "t": "Mantenimiento encontró una cámara apuntando al pasillo de los baños, «para pillar a los fumadores». Nadie la aprobó. Nadie admite haberla instalado.",
+   "l": "Arrancarla + acta del incidente",
+   "r": "«Que se quede. Fumadores, ojo.»"
+  },
+  "zorunlu_mesaj": {
+   "t": "Todos deben publicar cada mes en LinkedIn un «mensaje de gratitud al liderazgo». RR. HH. controla el cumplimiento en una hoja llamada «LEALTAD.xlsx».",
+   "l": "«Las redes sociales son propiedad privada.»",
+   "r": "Preparar una plantilla para el equipo"
+  },
+  "veri_sizinti": {
+   "t": "Encontré los informes psicológicos de los empleados en la unidad compartida abierta. Los de todos. Incluido el tuyo. RR. HH. los puso en «público» hace tres meses.",
+   "l": "Bloquearlo + avisar a todos los afectados",
+   "r": "Bloquearlo. En silencio."
+  },
+  "cikis_engel": {
+   "t": "Ordenó a seguridad registrar a todo el que salga antes de las 19:00, «para que conste». El registro se convierte cada viernes en un correo-muro de la vergüenza.",
+   "l": "Salir a las 18:00 en punto. A la vista de todos.",
+   "r": "Quedarte hasta tarde. Dar «ejemplo»."
+  },
+  "yalnizlastirma": {
+   "t": "Pasaron uno a uno a otras manos todos los proyectos que toco. Mi calendario está vacío. Mis habilidades se evaporan. Esto es estratégico.",
+   "l": "Reconstruir su cartera abiertamente",
+   "r": "«Disfruta de la temporada tranquila.»"
+  },
+  "itibar_linkedin": {
+   "t": "Una cuenta anónima de LinkedIn publica «cotilleos del sector» que claramente van sobre tu equipo. El estilo es inconfundiblemente el de Tolga.",
+   "l": "Capturarlo todo. Confrontarlo.",
+   "r": "Abrir una cuenta anónima rival"
+  },
+  "ilk_gun": {
+   "t": "La nueva pasó su primer día en una mesa sin ordenador, sin tareas, sin presentaciones. A las 17:00 alguien preguntó quién era.",
+   "l": "Hacer tú mismo una incorporación de verdad",
+   "r": "«El primer día siempre es así.»"
+  },
+  "maas_gecikme": {
+   "t": "Los sueldos llevan 9 días de retraso. El DG publicó hoy una foto de su viaje de esquí. El chat del equipo arde.",
+   "l": "Exigir por escrito una fecha de pago",
+   "r": "«Paciencia. Y silencien el grupo.»"
+  },
+  "toplanti_maraton": {
+   "t": "Agenda de hoy: 11 reuniones, 9 de ellas «pre-reuniones de reuniones». Tiempo de trabajo real: 40 minutos. El equipo se ahoga en calendarios.",
+   "l": "Declarar días sin reuniones",
+   "r": "Añadir una reunión sobre las reuniones"
+  },
+  "kisisel_esya": {
+   "t": "Llegué y mi mesa estaba vaciada. Fotos, planta, todo en una caja junto a la puerta. «Optimización del espacio», dijeron. Mi mesa sigue vacía.",
+   "l": "Restaurar su mesa. Exigir saber quién dio la orden.",
+   "r": "«El minimalismo está de moda.»"
+  },
+  "referans_tehdit": {
+   "t": "«Recuérdales a tus renunciantes: este sector es pequeño. Una llamada mía y acabarán vendiendo bocadillos en la calle. Ponlo en el guion de la entrevista de salida.»",
+   "l": "«Las amenazas no entran en mis guiones.»",
+   "r": "Añadir el «recordatorio amistoso»"
+  },
+  "ekip_koruma": {
+   "t": "El equipo se dio cuenta de que arriba llevas recibiendo golpes por ellos. Te compraron una taza: «El Escudo Humano Más Pasable del Mundo». Hay tarta.",
+   "l": "Aceptar la taza. Comer la tarta.",
+   "r": "«Nada de reuniones en horario laboral.»"
+  },
+  "you_oda_bitki": {
+   "t": "Hasta la planta de tu despacho fue «reasignada». Al despacho de Tolga. Hay un memorando al respecto. Alguien escribió un MEMORANDO sobre tu planta.",
+   "l": "Comprar una planta más grande. Llamarla Libertad.",
+   "r": "Presentar un contramemorando"
+  },
+  "you_asistan": {
+   "t": "A tu asistente la «ascendieron» a otro sitio y no la reemplazó nadie. Tus convocatorias de reunión pasan ahora por la asistente de Tolga. Que está «muy ocupada».",
+   "l": "Gestionar tu agenda tú mismo, con disciplina de hierro",
+   "r": "Perderte reuniones. Que arda todo."
+  },
+  "you_lobi": {
+   "t": "Te quitaron la tarjeta de acceso «para renovarla». Ya van tres días. Cada mañana esperas en el vestíbulo hasta que alguien te abre. Recepción se disculpa a diario.",
+   "l": "Trabajar desde el vestíbulo. Productivo y a la vista.",
+   "r": "Exigir la tarjeta montando una escena"
+  },
+  "you_soguk_oda": {
+   "t": "Tu «nuevo despacho»: la antigua sala de servidores. 14 °C, una única lámpara parpadeante, una silla con tres ruedas. Tolga pasa cada día a «comprobar la moral».",
+   "l": "Decorarlo. Convertirlo en leyenda.",
+   "r": "Sentarte en silencio. Contar los parpadeos."
+  },
+  "ihbarci_koruma": {
+   "t": "Sé quién presentó la denuncia al ministerio. La dirección está a punto de descubrirlo. Una palabra mía termina la cacería — señalando a la persona equivocada.",
+   "l": "«No. Nada de personas equivocadas. Jamás.»",
+   "r": "«Señale a Tolga.»"
+  },
+  "cocuk_hasta": {
+   "t": "A mi hijo lo operan el jueves. Se lo dije al DG. Puso un «despliegue crítico» el jueves y me asignó como único aprobador.",
+   "l": "Asumir tú mismo el rol de aprobador",
+   "r": "«En el hospital hay Wi-Fi.»"
+  },
+  "unvan_oyunu": {
+   "t": "El truco de retención de la dirección: subir títulos, congelar sueldos. Selin es ahora «Líder Principal Ejecutiva Sénior». Mismo sueldo. Eso sí, tarjetas de visita nuevas.",
+   "l": "«Los títulos no pagan el alquiler.»",
+   "r": "Encargar tarjetas de visita más brillantes"
+  },
+  "anket_oyunu": {
+   "t": "La encuesta de clima «anónima» pregunta departamento, antigüedad, edad y tu sitio favorito para almorzar. Los resultados van directos al DG. Con una lista de conjeturas adjunta.",
+   "l": "Avisar a todos: es una trampa",
+   "r": "«Pongan todos cincos y acabemos con esto.»"
+  },
+  "emekli_aday": {
+   "t": "«A Hüseyin le quedan 2 años para jubilarse. Si renuncia antes, nos ahorramos la indemnización. Haz que sus días sean... instructivos.»",
+   "l": "Proteger personalmente sus 2 últimos años",
+   "r": "Empezar la «instrucción»"
+  },
+  "whatsapp_saat": {
+   "t": "El DG añadió mi número personal a 6 grupos de trabajo. Mi teléfono vibró 214 veces anoche. Las conté. Soy becaria.",
+   "l": "Sacarla tú mismo de todos los grupos",
+   "r": "«Bienvenida al sector.»"
+  },
+  "vardiya_oyunu": {
+   "t": "Los turnos del almacén fueron «optimizados»: cierre a las 23:00, apertura a las 07:00 — la misma gente. Dormir es ahora un error de planificación.",
+   "l": "Imponer descansos de 11 horas entre turnos",
+   "r": "«Abajo el café es gratis.»"
+  },
+  "basari_gizle": {
+   "t": "Nuestra solicitud de patente fue aprobada — una noticia enorme. La dirección embargó el anuncio «para no inflar las expectativas salariales».",
+   "l": "Anunciarlo de todos modos. El equipo primero.",
+   "r": "Brindar a escondidas en el hueco de la escalera"
+  },
+  "kres_sozu": {
+   "t": "La «guardería de empresa» prometida hace 3 años es ahora una «sala de bienestar» — un puf y un póster. Los padres pagan media nómina en guarderías.",
+   "l": "Reactivar el proyecto de guardería",
+   "r": "«Pero el puf es ergonómico.»"
+  },
+  "stajyer_fikir": {
+   "t": "Mi idea de ahorro se implantó en toda la empresa. El anuncio se lo atribuye a la «visión de la alta dirección». Tengo el correo original.",
+   "l": "Corregir el registro públicamente",
+   "r": "«La experiencia es su propia recompensa.»"
+  },
+  "kapali_kapi": {
+   "t": "Nueva política: su puerta está «siempre abierta» — pero pedir cita requiere un formulario, dos aprobaciones y 3 semanas de espera. El formulario pregunta por tu «agenda emocional».",
+   "l": "Entrar sin el formulario",
+   "r": "Rellenar el formulario. Esperar 3 semanas."
+  },
+  "tatil_mesaj": {
+   "t": "Estoy en el funeral de mi abuela y el DG no para de llamar por el color de una fuente. Dejó 11 mensajes de voz. Por. Una. Fuente.",
+   "l": "Quedarte con su teléfono. Resolverlo todo tú.",
+   "r": "«¿Y qué color prefería?»"
+  },
+  "beden_dili": {
+   "t": "Nuevo servicio de consultoría: «análisis de microexpresiones» de los empleados en las reuniones. Fruncir el ceño es ahora un «momento entrenable». Hasta hay informes.",
+   "l": "Cancelar la pseudociencia",
+   "r": "Practicar tu cara neutra"
+  },
+  "ofis_taşınma": {
+   "t": "La sede se muda a 47 km, junto a la casa del DG. «El trayecto forja el carácter.» Sin autobús de empresa. Anunciado un viernes a las 17:58.",
+   "l": "Pelear por autobuses + días de teletrabajo",
+   "r": "«Cómprense audiolibros, todos.»"
+  },
+  "gorunmez_emek": {
+   "t": "Llevo 12 años formando a cada contable que contrata esta empresa. Mi puesto nunca cambió. La persona que formé el año pasado ahora es mi jefa.",
+   "l": "Preparar tú mismo su expediente de ascenso",
+   "r": "«Enseñar es atemporal.»"
+  },
+  "son_soz": {
+   "t": "Me jubilo. Último consejo: llevo 20 años viendo a este edificio devorar personas. Los que sobrevivieron no eran los más duros. Eran los que seguían siendo humanos. De alguna manera.",
+   "l": "«Entonces seguiré siendo humano.»",
+   "r": "«Primero sobrevivir, doctor.»"
   }
+ }
 }

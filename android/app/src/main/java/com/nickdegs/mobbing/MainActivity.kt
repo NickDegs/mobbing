@@ -9,6 +9,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -48,6 +49,7 @@ val Dim = Color(0xFF7FA1BC)
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Loc.init(this)
         enableEdgeToEdge()
         setContent { MobbingApp() }
         Notif.scheduleDaily(this)
@@ -59,11 +61,8 @@ enum class Screen { Menu, Game, Over, Info }
 @Composable
 fun MobbingApp() {
     val ctx = LocalContext.current
-    val lang = remember {
-        val l = ctx.resources.configuration.locales[0].language
-        val code = if (l == "in") "id" else l   // Android eski Endonezce kodu
-        if (code in listOf("tr","de","fr","es","it","pt","ru","ja","ko","zh","ar","hi","id","nl","pl")) code else "en"
-    }
+    var langTick by remember { mutableIntStateOf(0) }
+    var showLang by remember { mutableStateOf(false) }
     var screen by remember { mutableStateOf(Screen.Menu) }
     var engine by remember { mutableStateOf<GameEngine?>(null) }
     val billing = remember {
@@ -82,27 +81,61 @@ fun MobbingApp() {
         Box(Modifier.fillMaxSize().background(Navy)) {
             when (screen) {
                 Screen.Menu -> MenuScreen(
-                    onStart = { engine = GameEngine(ctx, lang); screen = Screen.Game },
-                    onInfo = { screen = Screen.Info })
+                    onStart = { engine = GameEngine(ctx, Loc.lang); screen = Screen.Game },
+                    onInfo = { screen = Screen.Info },
+                    onLang = { showLang = true })
                 Screen.Game -> engine?.let { e ->
-                    GameScreen(e, lang) { screen = Screen.Over }
+                    GameScreen(e) { screen = Screen.Over }
                 }
                 Screen.Over -> engine?.let { e ->
                     OverScreen(e,
-                        onRestart = { engine = GameEngine(ctx, lang); screen = Screen.Game },
+                        onRestart = { engine = GameEngine(ctx, Loc.lang); screen = Screen.Game },
                         onBribe = { billing?.buy() },
                         bribeAvailable = billing?.product != null,
                         bribePrice = billing?.priceLabel ?: "$0.99")
                 }
                 Screen.Info -> InfoScreen { screen = Screen.Menu }
             }
+            if (showLang) LangDialog(
+                onPick = { code ->
+                    Loc.setOverride(ctx, code)
+                    langTick++
+                    showLang = false
+                },
+                onClose = { showLang = false })
         }
+        key(langTick) {}   // dil değişince yeniden çiz
     }
+}
+
+// ── Dil seçici ─────────────────────────────────────────────────────────────
+@Composable
+fun LangDialog(onPick: (String) -> Unit, onClose: () -> Unit) {
+    AlertDialog(
+        onDismissRequest = onClose,
+        containerColor = NavyPanel,
+        confirmButton = {},
+        title = { Text("🌐", fontSize = 22.sp) },
+        text = {
+            androidx.compose.foundation.lazy.LazyColumn {
+                item {
+                    TextButton(onClick = { onPick("auto") }) {
+                        Text(Loc.s("lang_auto"), color = IceSoft, fontSize = 15.sp)
+                    }
+                }
+                items(Loc.SUPPORTED.size) { i ->
+                    val code = Loc.SUPPORTED[i]
+                    TextButton(onClick = { onPick(code) }) {
+                        Text(Loc.NATIVE_NAMES[code] ?: code, color = Ink, fontSize = 15.sp)
+                    }
+                }
+            }
+        })
 }
 
 // ── Ana menü ───────────────────────────────────────────────────────────────
 @Composable
-fun MenuScreen(onStart: () -> Unit, onInfo: () -> Unit) {
+fun MenuScreen(onStart: () -> Unit, onInfo: () -> Unit, onLang: () -> Unit) {
     Box(Modifier.fillMaxSize()) {
         Image(painterResource(R.drawable.menu_bg), null,
             Modifier.fillMaxSize(), contentScale = ContentScale.Crop)
@@ -113,16 +146,20 @@ fun MenuScreen(onStart: () -> Unit, onInfo: () -> Unit) {
         ) {
             Text("MOBBING", color = Ink, fontSize = 44.sp,
                 fontWeight = FontWeight.Black, letterSpacing = 10.sp)
-            Text(stringResource(R.string.tagline), color = Dim, fontSize = 13.sp,
+            Text(Loc.s("tagline"), color = Dim, fontSize = 13.sp,
                 letterSpacing = 3.sp, textAlign = TextAlign.Center)
             Spacer(Modifier.height(48.dp))
-            GlassButton(stringResource(R.string.start_shift), onStart)
+            GlassButton(Loc.s("start_shift"), onStart)
             Spacer(Modifier.height(14.dp))
-            GlassButton(stringResource(R.string.info_corner), onInfo, subtle = true)
+            GlassButton(Loc.s("info_corner"), onInfo, subtle = true)
         }
-        Text(stringResource(R.string.menu_note), color = Dim, fontSize = 11.sp,
+        Text(Loc.s("menu_note"), color = Dim, fontSize = 11.sp,
             textAlign = TextAlign.Center, lineHeight = 16.sp,
             modifier = Modifier.align(Alignment.BottomCenter).padding(24.dp))
+        TextButton(onClick = onLang,
+            modifier = Modifier.align(Alignment.TopEnd).statusBarsPadding().padding(10.dp)) {
+            Text("🌐", fontSize = 24.sp)
+        }
     }
 }
 
@@ -140,7 +177,7 @@ fun GlassButton(label: String, onClick: () -> Unit, subtle: Boolean = false) {
 
 // ── Oyun ekranı ────────────────────────────────────────────────────────────
 @Composable
-fun GameScreen(e: GameEngine, lang: String, onEnd: () -> Unit) {
+fun GameScreen(e: GameEngine, onEnd: () -> Unit) {
     var tick by remember { mutableIntStateOf(0) }   // recompose tetikleyici
     var dragX by remember { mutableFloatStateOf(0f) }
     val card = e.current
@@ -152,12 +189,12 @@ fun GameScreen(e: GameEngine, lang: String, onEnd: () -> Unit) {
             Modifier.fillMaxWidth().padding(horizontal = 22.dp, vertical = 10.dp),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            MeterView(R.drawable.m_baski, R.string.meter_b, e.meters.b, dragX, card?.l?.fx?.get(0), card?.r?.fx?.get(0))
-            MeterView(R.drawable.m_vicdan, R.string.meter_v, e.meters.v, dragX, card?.l?.fx?.get(1), card?.r?.fx?.get(1))
-            MeterView(R.drawable.m_ekip, R.string.meter_e, e.meters.e, dragX, card?.l?.fx?.get(2), card?.r?.fx?.get(2))
-            MeterView(R.drawable.m_kariyer, R.string.meter_k, e.meters.k, dragX, card?.l?.fx?.get(3), card?.r?.fx?.get(3))
+            MeterView(R.drawable.m_baski, "meter_b", e.meters.b, dragX, card?.l?.fx?.get(0), card?.r?.fx?.get(0))
+            MeterView(R.drawable.m_vicdan, "meter_v", e.meters.v, dragX, card?.l?.fx?.get(1), card?.r?.fx?.get(1))
+            MeterView(R.drawable.m_ekip, "meter_e", e.meters.e, dragX, card?.l?.fx?.get(2), card?.r?.fx?.get(2))
+            MeterView(R.drawable.m_kariyer, "meter_k", e.meters.k, dragX, card?.l?.fx?.get(3), card?.r?.fx?.get(3))
         }
-        Text(stringResource(R.string.day_fmt, e.day), color = Dim, fontSize = 12.sp,
+        Text(String.format(Loc.s("day_fmt"), e.day), color = Dim, fontSize = 12.sp,
             letterSpacing = 3.sp, modifier = Modifier.align(Alignment.CenterHorizontally))
 
         // Kart
@@ -207,7 +244,7 @@ fun GameScreen(e: GameEngine, lang: String, onEnd: () -> Unit) {
                 }
             }
         }
-        Text(stringResource(R.string.swipe_hint), color = Dim, fontSize = 11.sp, letterSpacing = 1.sp,
+        Text(Loc.s("swipe_hint"), color = Dim, fontSize = 11.sp, letterSpacing = 1.sp,
             modifier = Modifier.align(Alignment.CenterHorizontally).padding(bottom = 18.dp).navigationBarsPadding())
     }
 }
@@ -229,7 +266,7 @@ fun ChoiceTag(text: String, left: Boolean, progress: Float, modifier: Modifier) 
 }
 
 @Composable
-fun MeterView(icon: Int, label: Int, value: Int, dragX: Float, lFx: Int?, rFx: Int?) {
+fun MeterView(icon: Int, label: String, value: Int, dragX: Float, lFx: Int?, rFx: Int?) {
     val fx = if (dragX < -20) lFx else if (dragX > 20) rFx else null
     val danger = value <= 20 || value >= 80
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -243,7 +280,7 @@ fun MeterView(icon: Int, label: Int, value: Int, dragX: Float, lFx: Int?, rFx: I
                 .background(if (danger) Color(0xFFFF4D5E) else Ice, RoundedCornerShape(5.dp)))
         }
         Spacer(Modifier.height(3.dp))
-        Text(stringResource(label), color = if (danger) Color(0xFFFF4D5E) else Dim,
+        Text(Loc.s(label), color = if (danger) Color(0xFFFF4D5E) else Dim,
             fontSize = 10.sp, fontWeight = FontWeight.Bold, letterSpacing = 1.sp)
     }
 }
@@ -267,13 +304,13 @@ fun OverScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Text(stringResource(endTitle(end)), color = IceSoft, fontSize = 24.sp,
+            Text(Loc.s(endTitle(end)), color = IceSoft, fontSize = 24.sp,
                 fontWeight = FontWeight.Black, letterSpacing = 2.sp, textAlign = TextAlign.Center)
             Spacer(Modifier.height(16.dp))
-            Text(stringResource(endBody(end)), color = Ink, fontSize = 15.sp,
+            Text(Loc.s(endBody(end)), color = Ink, fontSize = 15.sp,
                 lineHeight = 22.sp, textAlign = TextAlign.Center)
             Spacer(Modifier.height(12.dp))
-            Text(stringResource(R.string.lasted_fmt, e.day), color = Dim, fontSize = 13.sp)
+            Text(String.format(Loc.s("lasted_fmt"), e.day), color = Dim, fontSize = 13.sp)
             Spacer(Modifier.height(34.dp))
             // 💼 Rüşvet — kaldığın yerden devam
             if (bribeAvailable) {
@@ -284,14 +321,22 @@ fun OverScreen(
                     modifier = Modifier.fillMaxWidth(.78f).height(58.dp)
                 ) {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Text("💼 " + stringResource(R.string.bribe_btn) + " — " + bribePrice,
+                        Text("💼 " + Loc.s("bribe_btn") + " — " + bribePrice,
                             fontSize = 15.sp, fontWeight = FontWeight.Bold)
-                        Text(stringResource(R.string.bribe_flavor), fontSize = 10.sp)
+                        Text(Loc.s("bribe_flavor"), fontSize = 10.sp)
                     }
                 }
                 Spacer(Modifier.height(10.dp))
             }
-            GlassButton(stringResource(R.string.restart), onRestart, subtle = true)
+            GlassButton(Loc.s("restart"), onRestart, subtle = true)
+            Spacer(Modifier.height(10.dp))
+            Row(horizontalArrangement = Arrangement.spacedBy(14.dp)) {
+                val uri = androidx.compose.ui.platform.LocalUriHandler.current
+                Text(Loc.s("privacy_link"), color = Dim, fontSize = 11.sp,
+                    modifier = Modifier.clickable { uri.openUri("https://realvirtuality.app/mobbing/privacy.html") })
+                Text(Loc.s("terms_link"), color = Dim, fontSize = 11.sp,
+                    modifier = Modifier.clickable { uri.openUri("https://realvirtuality.app/mobbing/terms.html") })
+            }
         }
     }
 }
@@ -300,11 +345,11 @@ fun OverScreen(
 @Composable
 fun InfoScreen(onBack: () -> Unit) {
     Column(Modifier.fillMaxSize().padding(28.dp).statusBarsPadding()) {
-        Text(stringResource(R.string.info_title), color = IceSoft, fontSize = 22.sp, fontWeight = FontWeight.Bold)
+        Text(Loc.s("info_title"), color = IceSoft, fontSize = 22.sp, fontWeight = FontWeight.Bold)
         Spacer(Modifier.height(16.dp))
-        Text(stringResource(R.string.info_body), color = Ink, fontSize = 14.sp, lineHeight = 22.sp,
+        Text(Loc.s("info_body"), color = Ink, fontSize = 14.sp, lineHeight = 22.sp,
             modifier = Modifier.weight(1f))
-        GlassButton(stringResource(R.string.back), onBack, subtle = true)
+        GlassButton(Loc.s("back"), onBack, subtle = true)
         Spacer(Modifier.height(20.dp))
     }
 }
@@ -316,30 +361,11 @@ fun charRes(ch: String) = when (ch) {
     "selin" -> R.drawable.c_selin; "deniz" -> R.drawable.c_deniz; "kerem" -> R.drawable.c_kerem
     "ece" -> R.drawable.c_ece; else -> R.drawable.c_hekim
 }
-@Composable fun charName(ch: String) = stringResource(when (ch) {
-    "ceo" -> R.string.ch_ceo; "gm" -> R.string.ch_gm; "ik" -> R.string.ch_ik
-    "tolga" -> R.string.ch_tolga; "ayse" -> R.string.ch_ayse; "mehmet" -> R.string.ch_mehmet
-    "selin" -> R.string.ch_selin; "deniz" -> R.string.ch_deniz; "kerem" -> R.string.ch_kerem
-    "ece" -> R.string.ch_ece; else -> R.string.ch_hekim
-})
+fun charName(ch: String) = Loc.s("ch_$ch")
 fun catEmoji(cat: String) = when (cat) {
     "ILT" -> "\uD83D\uDDE3\uFE0F"; "IZO" -> "\uD83D\uDEAA"; "ITB" -> "\uD83C\uDFAD"
     "IS" -> "\uD83D\uDCCB"; "SAG" -> "\uD83E\uDE7A"; "YOU" -> "\uD83C\uDFAF"; else -> "\uD83D\uDC54"
 }
-@Composable fun catLabel(cat: String) = stringResource(when (cat) {
-    "ILT" -> R.string.cat_ilt; "IZO" -> R.string.cat_izo; "ITB" -> R.string.cat_itb
-    "IS" -> R.string.cat_is; "SAG" -> R.string.cat_sag; "YOU" -> R.string.cat_you
-    else -> R.string.cat_sys
-})
-fun endTitle(e: Ending) = when (e) {
-    Ending.B0 -> R.string.end_b0_t; Ending.B100 -> R.string.end_b100_t
-    Ending.V0 -> R.string.end_v0_t; Ending.V100 -> R.string.end_v100_t
-    Ending.E0 -> R.string.end_e0_t; Ending.E100 -> R.string.end_e100_t
-    Ending.K0 -> R.string.end_k0_t; Ending.K100 -> R.string.end_k100_t
-}
-fun endBody(e: Ending) = when (e) {
-    Ending.B0 -> R.string.end_b0_b; Ending.B100 -> R.string.end_b100_b
-    Ending.V0 -> R.string.end_v0_b; Ending.V100 -> R.string.end_v100_b
-    Ending.E0 -> R.string.end_e0_b; Ending.E100 -> R.string.end_e100_b
-    Ending.K0 -> R.string.end_k0_b; Ending.K100 -> R.string.end_k100_b
-}
+fun catLabel(cat: String) = Loc.s("cat_" + cat.lowercase())
+fun endTitle(e: Ending) = e.key + "_t"
+fun endBody(e: Ending) = e.key + "_b"

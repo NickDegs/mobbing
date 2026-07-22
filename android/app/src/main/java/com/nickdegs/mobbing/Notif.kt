@@ -36,7 +36,8 @@ object Notif {
     }
 
     fun show(ctx: Context) {
-        val bodies = ctx.resources.getStringArray(R.array.notif_bodies)
+        Loc.init(ctx)
+        val bodies = Loc.arr("notif_bodies").ifEmpty { listOf("🔔") }
         val n = NotificationCompat.Builder(ctx, CH)
             .setSmallIcon(R.mipmap.ic_launcher)
             .setContentTitle(ctx.getString(R.string.app_name))

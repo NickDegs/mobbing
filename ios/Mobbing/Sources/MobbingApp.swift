@@ -38,7 +38,9 @@ enum Screen { case menu, game, over, info }
 
 struct RootView: View {
     @State private var screen: Screen = .menu
+    @State private var showLang = false
     @StateObject private var holder = EngineHolder()
+    @StateObject private var loc = Loc.shared
 
     var body: some View {
         ZStack {
@@ -46,7 +48,8 @@ struct RootView: View {
             switch screen {
             case .menu: MenuView(
                 onStart: { holder.newGame(); screen = .game },
-                onInfo: { screen = .info })
+                onInfo: { screen = .info },
+                onLang: { showLang = true })
             case .game:
                 if let e = holder.engine {
                     GameView(engine: e) { screen = .over }
@@ -60,15 +63,43 @@ struct RootView: View {
             case .info: InfoView { screen = .menu }
             }
         }
+        .sheet(isPresented: $showLang) {
+            LangPicker { code in
+                Loc.shared.setOverride(code)
+                showLang = false
+            }
+            .presentationDetents([.medium, .large])
+        }
+    }
+}
+
+// ── Dil seçici ─────────────────────────────────────────────────────────────
+struct LangPicker: View {
+    let onPick: (String) -> Void
+
+    var body: some View {
+        NavigationStack {
+            List {
+                Button { onPick("auto") } label: {
+                    Text(L("lang_auto")).foregroundStyle(Color.iceSoft).bold()
+                }
+                ForEach(Loc.supported, id: \.self) { code in
+                    Button { onPick(code) } label: {
+                        Text(Loc.nativeNames[code] ?? code).foregroundStyle(Color.ink)
+                    }
+                }
+            }
+            .scrollContentBackground(.hidden)
+            .background(Color.navy)
+            .navigationTitle("🌐")
+        }
     }
 }
 
 final class EngineHolder: ObservableObject {
     @Published var engine: GameEngine?
     func newGame() {
-        let supported = ["tr","de","fr","es","it","pt","ru","ja","ko","zh","ar","hi","id","nl","pl"]
-        let code = Locale.current.language.languageCode?.identifier ?? "en"
-        engine = GameEngine(lang: supported.contains(code) ? code : "en")
+        engine = GameEngine(lang: Loc.shared.lang)
     }
 }
 
@@ -79,11 +110,8 @@ enum Notif {
         center.requestAuthorization(options: [.alert, .sound]) { granted, _ in
             guard granted else { return }
             center.removeAllPendingNotificationRequests()
-            let bodies = [
-                String(localized: "notif_1"), String(localized: "notif_2"),
-                String(localized: "notif_3"), String(localized: "notif_4"),
-                String(localized: "notif_5")
-            ]
+            var bodies = Loc.shared.arr("notif_bodies")
+            if bodies.isEmpty { bodies = ["🔔"] }
             for i in 0..<5 {
                 var comps = DateComponents()
                 comps.hour = [11, 14, 16, 18, 19][i % 5]

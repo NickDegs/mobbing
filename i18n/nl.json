@@ -1,0 +1,865 @@
+{
+ "ui": {
+  "app_name": "MOBBING",
+  "tagline": "een simulatie over overleven in het bedrijfsleven",
+  "start_shift": "BEGIN JE DIENST",
+  "info_corner": "Infohoek",
+  "menu_note": "🏢 druk · ❤️ geweten · 👥 team · 📈 carrière\nLoopt een meter leeg of over, dan is het voorbij.",
+  "day_fmt": "DAG %1$d",
+  "swipe_hint": "◀ swipe om te beslissen ▶",
+  "restart": "OPNIEUW BEGINNEN",
+  "lasted_fmt": "Je hield het %1$d dagen vol",
+  "back": "Terug",
+  "info_title": "Word je in het echt gepest op je werk?",
+  "info_body": "Mobbing is systematische psychologische intimidatie op het werk: isolatie, vernedering, onmogelijke werkdruk, roddels.\n\nWat helpt:\n• Houd een gedateerd logboek bij van elk incident (wat, wie, getuigen).\n• Bewaar e-mails en berichten — stuur ze door naar een privéadres.\n• Meld het schriftelijk via officiële kanalen.\n• Praat met een arts — de gevolgen voor je gezondheid zijn echt en aantoonbaar.\n• Raadpleeg een arbeidsrechtadvocaat; in veel landen is mobbing juridisch erkend.\n• Je bent niet alleen, en het is niet jouw schuld.\n\nDit spel is fictie, maar de patronen zijn echt. Komen ze je bekend voor, neem ze dan serieus.",
+  "cat_ilt": "communicatie",
+  "cat_izo": "isolatie",
+  "cat_itb": "reputatie",
+  "cat_is": "werkdruk",
+  "cat_sag": "gezondheid",
+  "cat_sys": "management",
+  "cat_you": "tegen jou",
+  "ch_ceo": "CEO",
+  "ch_gm": "Algemeen Directeur",
+  "ch_ik": "HR-directeur",
+  "ch_tolga": "Tolga · Rivaliserende manager",
+  "ch_ayse": "Ayşe · Boekhouding",
+  "ch_mehmet": "Mehmet · Software",
+  "ch_selin": "Selin · Engineering",
+  "ch_deniz": "Deniz · Design",
+  "ch_kerem": "Kerem · Teamleider",
+  "ch_ece": "Ece · Stagiaire",
+  "ch_hekim": "Bedrijfsarts",
+  "end_b0_t": "LIEVELING VAN DE DIRECTIE",
+  "end_b0_b": "Het bestuur is dol op je. Ben jij nog dol op de persoon in de spiegel? De methodes leer jij nu aan anderen.",
+  "end_b100_t": "ONTSLAGEN",
+  "end_b100_b": "‘Je paste niet bij de cultuur.’ Pak je doos in. Maar je loopt met opgeheven hoofd — je bent nooit een van hen geworden.",
+  "end_v0_t": "JE BENT JEZELF KWIJTGERAAKT",
+  "end_v0_b": "Op een ochtend toonde de spiegel de Algemeen Directeur. Zelfs je stem klinkt nu als de zijne. Technisch gezien leef je nog.",
+  "end_v100_t": "TE GOED VOOR DEZE TENT",
+  "end_v100_b": "Je geweten heeft gewonnen. Je nam ontslag. Het team applaudisseerde toen je naar buiten liep. Misschien ben jij wel de echte winnaar.",
+  "end_e0_t": "MASSAAL ONTSLAG",
+  "end_e0_b": "Er is niemand meer over. Je zit alleen in een leeg kantoor. De directie heeft de ramp op jouw rekening gezet.",
+  "end_e100_t": "‘TE AMICAAL’",
+  "end_e100_b": "Het team hield zoveel van je dat de directie je een berisping gaf wegens ‘gebrek aan gezag’. Geliefd zijn kan hier een overtreding zijn.",
+  "end_k0_t": "CARRIÈRE VOORBIJ",
+  "end_k0_b": "In je dossier staat nu ‘probleemmanager’. Het praatje ging rond in de branche. Maar wélk praatje — dat was altijd jouw keuze.",
+  "end_k100_t": "GEPROMOVEERD",
+  "end_k100_b": "Je hoort nu bij het hogere management. Morgen landt er een dossier op je bureau: ‘Voer de druk op de lagere verdiepingen op.’ Het rad draait door. Jij bent het rad.",
+  "notif_bodies": [
+   "🔔 Een medewerker heeft verlof aangevraagd.",
+   "🔔 HR wil je spreken.",
+   "🔔 De directeur heeft een vergadering belegd.",
+   "🔔 Er is een klacht ingediend.",
+   "🔔 Er huilt iemand in de archiefkamer.",
+   "🔔 Tolga presenteert ‘zijn’ nieuwe idee.",
+   "🔔 De deadline is net verschoven. Dichterbij."
+  ],
+  "bribe_btn": "Betaal smeergeld",
+  "bribe_flavor": "De envelop glijdt onder de tafel door. Het probleem ‘lost zich op’.",
+  "lang_auto": "Automatisch (apparaattaal)",
+  "privacy_link": "Privacy",
+  "terms_link": "Gebruiksvoorwaarden",
+  "meter_b": "DRUK",
+  "meter_v": "GEWETEN",
+  "meter_e": "TEAM",
+  "meter_k": "CARRIÈRE"
+ },
+ "cards": {
+  "ayse_izin": {
+   "t": "Ik vraag een halve dag vrij voor de rapportuitreiking van mijn dochter. Ik heb al maanden geen verlof opgenomen.",
+   "l": "Het verlof goedkeuren",
+   "r": "‘Kwartaalafsluiting. Niemand gaat weg.’"
+  },
+  "ayse_istifa": {
+   "t": "Hier is mijn ontslagbrief. Ik word geen moeder die de rapportdag mist.",
+   "l": "Haar overhalen te blijven, het verlof toekennen",
+   "r": "‘Daar is de deur.’"
+  },
+  "mehmet_zam": {
+   "t": "Al 3 jaar geen loonsverhoging. Ik heb de markt bekeken — ik verdien 40% onder het gemiddelde.",
+   "l": "Bij de directie voor zijn verhoging pleiten",
+   "r": "‘Duizend mensen willen jouw baan.’"
+  },
+  "mehmet_teklif": {
+   "t": "Ik heb een aanbod van een ander bedrijf. Kom met een tegenbod of ik ben eind van de maand weg.",
+   "l": "Vechten voor een tegenbod",
+   "r": "‘Wie weg wil, gaat maar.’"
+  },
+  "deadline": {
+   "t": "Project {P} moet over twee weken af. Duurt het normaal twee maanden? Niet mijn probleem.",
+   "l": "‘Het team overleeft dit niet. Ik wil een realistische deadline.’",
+   "r": "‘Komt in orde, meneer.’ (aan het team verkondigen)"
+  },
+  "deadline_kriz": {
+   "t": "Drie mensen zitten ziek thuis, één ligt met hoge bloeddruk in het ziekenhuis. Geldt de deadline nog steeds?",
+   "l": "Verleng hem. Jij legt verantwoording af.",
+   "r": "‘Verdeel het over de gezonden.’"
+  },
+  "anlamsiz": {
+   "t": "Geef Selin een tijdje kopieer- en archiefwerk. Ze moet even ‘op haar plaats worden gezet’.",
+   "l": "‘Ze is ingenieur. Dat doe ik niet.’",
+   "r": "Haar naar het archief sturen"
+  },
+  "selin_arsiv": {
+   "t": "Ik ben al 6 jaar ingenieur en sta nu twee weken te kopiëren. Waarom doet u mij dit aan?",
+   "l": "Haar taken teruggeven en excuses aanbieden",
+   "r": "‘Elke taak telt, Selin.’"
+  },
+  "gorev_gasp": {
+   "t": "Ik neem de klant {C} van jouw team over. De directeur heeft het al goedgekeurd.",
+   "l": "Vechten voor wat van jou is",
+   "r": "Het zwijgend accepteren"
+  },
+  "toplanti_bagirma": {
+   "t": "Hij kapt je presentatie af en schreeuwt waar iedereen bij is: ‘JE KLETST UIT JE NEK!’",
+   "l": "Kalm blijven. Verdedigen met data.",
+   "r": "Inslikken — en het afreageren op het team"
+  },
+  "cc_rezil": {
+   "t": "Nieuwe instructie: beantwoord elke e-mail van Deniz met foutopmerkingen — heel het bedrijf in de cc.",
+   "l": "‘Feedback geef je onder vier ogen.’",
+   "r": "De instructie opvolgen"
+  },
+  "stajyere_bagirma": {
+   "t": "Ja, ik heb tegen de stagiaire geschreeuwd. Ze heeft de build gesloopt. Wat had ik dan moeten doen?",
+   "l": "‘Nooit meer. Ga je excuses aanbieden.’",
+   "r": "‘Goed zo. Discipline moet.’"
+  },
+  "sozunu_kesme": {
+   "t": "In elke vergadering valt hij je in de rede: ‘Laat mij even vertalen wat onze collega probeert te zeggen...’",
+   "l": "‘Ik kan mijn eigen zinnen afmaken, Tolga.’",
+   "r": "Hem laten begaan. Alweer."
+  },
+  "tel_teror": {
+   "t": "Hij belt je om 23:40. ‘Waarom staat je telefoon in het weekend uit? Opnemen als ik bel.’",
+   "l": "‘Mijn vrije tijd is van mij.’",
+   "r": "De telefoon voortaan 24/7 aan laten"
+  },
+  "tel_teror2": {
+   "t": "Je bloeddrukwaarden baren me zorgen. Wanneer heb je voor het laatst een nacht doorgeslapen zonder op je telefoon te kijken?",
+   "l": "De telefoon ’s nachts weer uitzetten",
+   "r": "‘Ik voel me prima, dokter.’ (niet dus)"
+  },
+  "yazili_uyari": {
+   "t": "De directie wil dat je Mehmet een schriftelijke waarschuwing laat tekenen. Reden: ‘houding’. Geen incident in het dossier.",
+   "l": "‘Geen incident, geen waarschuwing.’",
+   "r": "Tekenen. Papier is geduldig."
+  },
+  "izolasyon_oda": {
+   "t": "Laat het bureau van die ‘probleemfiguur’ Deniz naar de opslagverdieping verhuizen. Niemand hoeft zich met hem bezig te houden.",
+   "l": "‘Er is geen enkele grond. Geweigerd.’",
+   "r": "Het bureau laten verplaatsen"
+  },
+  "deniz_depo": {
+   "t": "Ik zit in mijn eentje in de opslag. Zelfs de wifi komt hier niet. Is het de bedoeling dat ik ontslag neem?",
+   "l": "Hem terug naar boven halen. De klappen zelf opvangen.",
+   "r": "‘Het is tijdelijk.’ (niet dus)"
+  },
+  "konusma_yasagi": {
+   "t": "Kondig aan je team aan: niemand praat met Deniz over iets anders dan werk. Orders van boven.",
+   "l": "Weigeren het aan te kondigen",
+   "r": "Het stilletjes aankondigen"
+  },
+  "davet_yok": {
+   "t": "Voor de jaarlijkse strategievergadering is elke manager uitgenodigd behalve jij. Was de lijst ‘per ongeluk’ onvolledig?",
+   "l": "Onuitgenodigd naar binnen lopen",
+   "r": "Negeren. Doorwerken."
+  },
+  "selam_yok": {
+   "t": "Sinds de directeur je op de gang niet meer groet, doet de halve verdieping het ook niet meer. Het verspreidt zich als het weer.",
+   "l": "Iedereen luider groeten dan ooit",
+   "r": "Zelf ook stoppen met groeten"
+  },
+  "ogle_yemegi": {
+   "t": "Het lunchgroepje ‘vergeet’ me nu al de derde week uit te nodigen. Ik eet alleen in het trappenhuis.",
+   "l": "Morgen zelf bij hem gaan lunchen",
+   "r": "‘Lunchpolitiek is mijn taak niet.’"
+  },
+  "dedikodu": {
+   "t": "De wandelgangen gonzen: Tolga verspreidt het gerucht dat Selin haar promotie ‘langs andere wegen’ heeft gekregen.",
+   "l": "Het gerucht publiekelijk de kop indrukken. Tolga waarschuwen.",
+   "r": "Erbuiten blijven. Het misschien één keertje zelf doorvertellen."
+  },
+  "taklit": {
+   "t": "Tijdens de lunch doet hij het stotteren van Deniz na. De tafel lacht. Hij kijkt jou aan: ‘Toch? Hilarisch.’",
+   "l": "‘Dit is niet grappig.’ Opstaan. Weglopen.",
+   "r": "Glimlachen. Meespelen."
+  },
+  "wp_grubu": {
+   "t": "In de WhatsApp-groep van het bedrijf wordt een oude foto van mij belachelijk gemaakt. De managers zitten erin. Ze zwijgen.",
+   "l": "Een duidelijke waarschuwing in de groep zetten",
+   "r": "‘Leer eens tegen een grapje te kunnen.’"
+  },
+  "hata_yukleme": {
+   "t": "Hij schoof zijn eigen mislukte project in de bestuursvergadering in de schoenen van jouw team. Iedereen kijkt naar jou.",
+   "l": "Het weerleggen met de e-mailgeschiedenis",
+   "r": "Het team opofferen. Zwijgen."
+  },
+  "deli_muamele": {
+   "t": "De directie stelt voor dat Deniz een ‘psychologische geschiktheidsverklaring’ haalt. Zijn enige symptoom: hij heeft een klacht ingediend.",
+   "l": "‘Klagen is geen ziekte.’",
+   "r": "Hem naar de dokter doorsturen"
+  },
+  "kilik_alay": {
+   "t": "De directeur maakte waar klanten bij waren mijn outfit belachelijk: ‘We betalen haar blijkbaar niet genoeg om zich fatsoenlijk te kleden.’",
+   "l": "Namens het bedrijf excuses aan haar aanbieden",
+   "r": "‘Hij maakt met iedereen grapjes.’"
+  },
+  "ozel_yasam": {
+   "t": "‘Ik hoor dat je scheiding maar voortsleept,’ zegt hij hardop in de kantoortuin. ‘Hou je huiselijke puinhoop uit mijn cijfers.’",
+   "l": "‘Mijn privéleven staat niet ter discussie.’",
+   "r": "Excuses aanbieden voor je eigen scheiding"
+  },
+  "hasta_calisan": {
+   "t": "Ik heb 39 graden koorts, maar de directeur zei dat wie zich ziek meldt ‘zichzelf bij de deur terugvindt’. Moet ik komen?",
+   "l": "‘Blijf thuis. De ziekmelding is mijn probleem.’",
+   "r": "‘Doe een mondkapje op. Er ligt werk.’"
+  },
+  "cumartesi": {
+   "t": "Deze maand werkt iedereen op zaterdag. Overurentoeslag? Zo’n budget bestaat niet.",
+   "l": "‘Onbetaald overwerk is illegaal. Ik maak bezwaar.’",
+   "r": "Het aankondigen als ‘vrijwillig’"
+  },
+  "panik_atak": {
+   "t": "Ik kreeg vlak voor de vergadering een paniekaanval op het toilet. Ik huil tegenwoordig in mijn auto voordat ik naar binnen ga.",
+   "l": "Zijn werklast verlichten. Dagelijks bij hem checken.",
+   "r": "‘We hebben allemaal stress, Deniz.’"
+  },
+  "curuk_raf": {
+   "t": "De magazijnstellingen zijn verrot — vorige week werd bijna iemand verpletterd. Het reparatiebudget is afgewezen.",
+   "l": "Het magazijn sluiten. Budget of geen budget.",
+   "r": "‘Zeg dat ze voorzichtig moeten zijn.’"
+  },
+  "raf_kaza": {
+   "t": "Het is gebeurd. De stelling kwam op Musa terecht. Arm gebroken. HR vraagt hoe we dit ‘documenteren’.",
+   "l": "Het eerlijk melden als arbeidsongeval",
+   "r": "‘Hij is thuis uitgegleden. Iedereen akkoord?’"
+  },
+  "antidepresan": {
+   "t": "Vier mensen uit je team zijn deze maand met antidepressiva begonnen. Zal ik dit patroon aan de directie rapporteren?",
+   "l": "‘Rapporteer het. Laat de waarheid boven komen.’",
+   "r": "‘Begraaf het. Niemand mag het zien.’"
+  },
+  "ik_verimlilik": {
+   "t": "Je team oogt ‘te relaxed’. Jouw naam staat rood in het productiviteitsrapport. Doe er iets aan.",
+   "l": "‘Mijn team levert. De cijfers zijn openbaar.’",
+   "r": "De duimschroeven bij het team aandraaien"
+  },
+  "ceo_ilgi": {
+   "t": "Ik hou je in de gaten. Ik hou van harde managers. Wees als Tolga — die man is ‘resultaatgericht’.",
+   "l": "‘Ik leid op mijn eigen manier.’",
+   "r": "‘Ik maak aantekeningen, meneer.’"
+  },
+  "stajyer_maas": {
+   "t": "Drie maanden onbetaald. Ze zeiden dat er ‘een vaste plek zou komen’. Is er echt nog hoop?",
+   "l": "Eerlijk zijn: ‘Er komt geen plek. Verspil je jonge jaren hier niet.’",
+   "r": "‘Bijna zover. Nog even geduld.’ (een leugen)"
+  },
+  "ihbar_avi": {
+   "t": "Iemand heeft ons wegens mobbing aangegeven bij het ministerie van Arbeid. Zoek de mol voor me.",
+   "l": "‘Ik doe niet aan heksenjachten.’",
+   "r": "Het onderzoek starten"
+  },
+  "referans": {
+   "t": "De nieuwe werkgever van Ayşe belde voor een referentie. De directeur zegt: ‘Maak haar zwart. Als lesje.’",
+   "l": "Een eerlijke, positieve referentie geven",
+   "r": "‘Ze was... problematisch.’"
+  },
+  "kamera": {
+   "t": "Nieuwe beveiligingscamera’s worden op elk bureau gericht, mét schermopname. ‘Voor de productiviteit.’",
+   "l": "‘Dit is geen beveiliging, dit is bespieden.’",
+   "r": "De installatiegoedkeuring tekenen"
+  },
+  "toplu_email": {
+   "t": "Hij stuurde een bedrijfsbrede mail met een lijst ‘onderpresteerders’. Je beste ingenieur staat erop. Onterecht.",
+   "l": "Een openbare rectificatie eisen",
+   "r": "De ingenieur onder vier ogen troosten. Verder niets doen."
+  },
+  "masa_kucultme": {
+   "t": "‘Geef Mehmet het bureau naast de toiletten. Misschien motiveert de geur hem om ontslag te nemen.’",
+   "l": "‘Bureaus zijn geen strafmiddel.’",
+   "r": "Het bureau toewijzen"
+  },
+  "gorev_yok": {
+   "t": "Al twee weken krijg ik geen enkele taak. Ik zit maar te staren. Mensen denken dat ik lui ben. Dit is erger dan overwerkt zijn.",
+   "l": "Hem echt, zinvol werk geven",
+   "r": "‘Geniet van je betaalde vakantie.’"
+  },
+  "kapasit_alti": {
+   "t": "Ze hebben mij — een senior ingenieur — op data-invoer gezet. Regel na regel. Mijn vaardigheden verrotten met opzet.",
+   "l": "Haar terugzetten op ingenieurswerk",
+   "r": "‘Alle data is belangrijke data.’"
+  },
+  "surekli_yeni": {
+   "t": "Elke keer als een taak voor 90% af is, verandert de directeur de eisen. Vijfde keer deze maand. Het team valt uit elkaar.",
+   "l": "De scope bevriezen. Op papier zetten.",
+   "r": "‘Hij is de baas. We draaien wel weer bij.’"
+  },
+  "onur_kirici": {
+   "t": "‘Laat de nieuwe ingenieur mijn auto wassen. Karaktervorming. En filmen voor de groepschat.’",
+   "l": "‘Absoluut niet.’",
+   "r": "De ingenieur met een spons naar beneden sturen"
+  },
+  "imkansiz_hedef": {
+   "t": "Doel voor volgend kwartaal: {X}% groei. Vorig kwartaal haalden we met moeite 3. ‘Details zijn jouw werk.’",
+   "l": "Een realistisch tegenplan presenteren",
+   "r": "Het doel accepteren. De pijn naar beneden doorgeven."
+  },
+  "cinsiyet": {
+   "t": "De directie wil niet dat Selin het klantgesprek leidt, omdat de klant ‘liever met mannen zakendoet’.",
+   "l": "Selin leidt het. Punt uit.",
+   "r": "Haar ‘voor deze ene keer’ vervangen"
+  },
+  "inanc_alay": {
+   "t": "Ze plannen het teamdiner expres tijdens mijn vastenuren en maken er daarna grapjes over. Elke keer weer.",
+   "l": "Het diner verzetten. Geen grappen.",
+   "r": "‘Het is maar plagerij.’"
+  },
+  "yas_alay": {
+   "t": "Over je 58-jarige boekhoudster: ‘Dinosaurussen leren het nieuwe systeem toch niet. Laat haar voelen dat haar tijd gekomen is.’",
+   "l": "Haar in plaats daarvan aan een trainer koppelen",
+   "r": "Haar ‘vergeten’ uit te nodigen voor trainingen"
+  },
+  "toplanti_saat": {
+   "t": "Hij plant verplichte vergaderingen nu om 19:30. ‘Wie iets belangrijkers heeft, zegt het maar recht in mijn gezicht.’",
+   "l": "‘Vergaderingen eindigen om 18:00. Ik zeg het u recht in uw gezicht.’",
+   "r": "Het team opdragen hun avonden af te zeggen"
+  },
+  "performans_oyunu": {
+   "t": "Nieuw beoordelingssysteem: de onderste 10% wordt elk kwartaal ontslagen. Automatisch. Los van de werkelijke prestaties.",
+   "l": "Weigeren je team op een afschietlijst te zetten",
+   "r": "De ranglijst indienen"
+  },
+  "maas_gizli": {
+   "t": "Ter herinnering: medewerkers die onderling over salaris praten, plegen voortaan een ‘ontslagwaardige overtreding’. Kondig het aan.",
+   "l": "‘Over je salaris praten is een wettelijk recht.’",
+   "r": "De mededeling ophangen"
+  },
+  "aglayan_kisi": {
+   "t": "Ik vond Ayşe huilend in de archiefkamer. Ze smeekte me het aan niemand te vertellen. Dit is de derde keer.",
+   "l": "Met Ayşe praten. Echte hulp aanbieden.",
+   "r": "‘Wat in het archief gebeurt, blijft in het archief.’"
+  },
+  "sen_kovulma_esigi": {
+   "t": "Je naam viel in de bestuursvergadering. Sommigen vinden dat een ‘zo softe’ manager niet bij onze cultuur past.",
+   "l": "‘Mijn resultaten spreken voor zich. Zachtheid is een methode.’",
+   "r": "Beloven volgend kwartaal ‘harder’ te worden"
+  },
+  "you_park": {
+   "t": "Het bestuur vindt je ‘niet passend’. Je parkeerplek is ingetrokken. Je kantoor verhuist naar de kantoortuin. Vandaag nog.",
+   "l": "Het met opgeheven hoofd accepteren",
+   "r": "De vernedering doorgeven naar beneden in de keten"
+  },
+  "you_toplanti": {
+   "t": "Je wordt niet meer uitgenodigd voor managementvergaderingen. Besluiten over jouw team worden zonder jou genomen en daarna ‘meegedeeld’.",
+   "l": "Schriftelijk bezwaar maken. Alles vastleggen.",
+   "r": "Het hoofd buigen"
+  },
+  "you_bulten": {
+   "t": "In de bedrijfsnieuwsbrief staat een stuk over ‘prestatieproblemen bij bepaalde managers’. Iedereen weet dat het over jou gaat.",
+   "l": "Een open, feitelijk weerwoord publiceren",
+   "r": "Het zwijgend inslikken"
+  },
+  "you_maas": {
+   "t": "Een ‘administratieve fout’ heeft je salaris deze maand met 20% gekort. Het herstel duurt ‘een paar loonrondes’.",
+   "l": "Een aangetekende sommatie sturen",
+   "r": "Beleefd wachten. En blijven wachten."
+  },
+  "you_masa": {
+   "t": "Je nieuwe bureau: naast de printer, onder het aircorooster. Je oude kantoor is nu een ‘meditatieruimte’ die niemand gebruikt.",
+   "l": "Vanaf dat bureau werken. Briljant werk leveren.",
+   "r": "Er ziek uit gaan zien, te laat gaan komen"
+  },
+  "you_taklit": {
+   "t": "Op het managersdiner doet Tolga jouw presentatiestijl na. De CEO lacht het hardst van allemaal.",
+   "l": "Meelachen. Ze de wond niet gunnen.",
+   "r": "Het diner verlaten"
+  },
+  "email_sessiz": {
+   "t": "Mijn mails aan de directie blijven wekenlang onbeantwoord. Daarna heet het ‘je hebt ons nooit geïnformeerd’. Ik heb de bewijzen.",
+   "l": "Een schriftelijk spoor-protocol voor hem opzetten",
+   "r": "‘Schrijf misschien kortere mails.’"
+  },
+  "proje_calindi": {
+   "t": "Tolga presenteerde mijn {P}-voorstel aan het bestuur. Dia voor dia. Mijn naam stond op geen enkele pagina.",
+   "l": "Het bestuur de originele bestandsdatums laten zien",
+   "r": "‘Ideeën zijn toch van het bedrijf.’"
+  },
+  "gece_mesaj": {
+   "t": "Hij stuurt om 02:00 een spraakbericht naar de teamgroep: ‘Waarom antwoordt er niemand? Is dit een bedrijf of een verzorgingstehuis?’",
+   "l": "De groep na 19:00 voor iedereen laten dempen",
+   "r": "Nachtelijke antwoorden van het team verplicht stellen"
+  },
+  "tatil_iptal": {
+   "t": "Mijn vakantie was 2 maanden geleden goedgekeurd. Vluchten geboekt. Vandaag geannuleerd ‘wegens werkdruk’.",
+   "l": "De vakantie herstellen. Het gat zelf opvullen.",
+   "r": "‘Het bedrijf gaat voor.’"
+  },
+  "kacak_dinleme": {
+   "t": "Tolga laat je ‘per ongeluk’ een screenshot zien: iemand heeft hem toegevoegd aan de privéchat van je team. Hij weet alles.",
+   "l": "Het team waarschuwen. Het vertrouwen herstellen.",
+   "r": "Het uitbuiten. Hem valse informatie voeren."
+  },
+  "dogum_izni": {
+   "t": "Zeynep heeft haar zwangerschap aangekondigd. De directie wil haar ‘uitfaseren’ vóór haar verlof ingaat.",
+   "l": "‘Dat is illegaal én laaghartig. Nee.’",
+   "r": "Beginnen met een ‘prestatiedossier’ opbouwen"
+  },
+  "engel_alay": {
+   "t": "Ze hebben de voorraadkast wéér voor de rolstoelhelling gezet. Toen onze collega in een rolstoel klaagde, lachte er iemand.",
+   "l": "De helling vrijmaken. Uitzoeken wie er lachte.",
+   "r": "‘Hij kan de goederenlift toch nemen.’"
+  },
+  "memleket": {
+   "t": "De directeur imiteert in vergaderingen steeds het accent van de nieuwe collega. De glimlach van de jongen wordt elke keer dunner.",
+   "l": "Het de volgende keer publiekelijk afkappen",
+   "r": "De jongen aanraden zijn accent ‘af te leren’"
+  },
+  "istifa_zorlamasi": {
+   "t": "De nieuwe tactiek van de directie: maak het leven van Mehmet zo zuur dat hij zelf ontslag neemt — een vergoeding kost geld.",
+   "l": "Mehmet de waarheid vertellen. In het geheim.",
+   "r": "De langzame verstikking uitvoeren"
+  },
+  "aidat_kesinti": {
+   "t": "Er wordt stilletjes een ‘sociale-fondsbijdrage’ op de lonen ingehouden waar niemand mee heeft ingestemd. Het geld gaat naar de golfclub van de directeur.",
+   "l": "De inhouding aan het licht brengen",
+   "r": "‘Iedereen betaalt. Traditie.’"
+  },
+  "kriz_kahraman": {
+   "t": "De servercrisis die jij voorspelde (en waarbij niemand luisterde) is uitgebroken. Tolga lost hem nu ‘heldhaftig’ op. Met jouw oude plan.",
+   "l": "Het gedateerde originele plan met de CEO delen",
+   "r": "Hem zijn overwinningsparade gunnen"
+  },
+  "hafta_sonu_etkinlik": {
+   "t": "Aanstaande zondag verplichte ‘teambuilding’: paintball om 07:00, met presentielijst. Gezinnen? Niet uitgenodigd.",
+   "l": "Het vrijwillig en betaald maken",
+   "r": "De presentieplicht handhaven"
+  },
+  "kidem_sifirla": {
+   "t": "Juridische zaken vond een truc: iedereen na 4,5 jaar ontslaan en na een week weer aannemen — anciënniteit op nul, ontslagvergoeding verdampt.",
+   "l": "Weigeren ook maar één ontslag te tekenen",
+   "r": "De papieren verwerken"
+  },
+  "whistleblower": {
+   "t": "Ik heb ontdekt dat de facturen aan {C} worden opgeblazen. Meld ik het, dan ben ik hier klaar. Meld ik het niet, dan ben ik medeplichtig. Help me.",
+   "l": "Het samen melden. Via de officiële weg.",
+   "r": "‘Wis wat je hebt gezien.’"
+  },
+  "sirket_telefonu": {
+   "t": "IT heeft volgsoftware op de zakelijke telefoons gezet — locatie, berichten, foto’s. ‘Standaardbeleid.’ Niemand is ingelicht.",
+   "l": "Iedereen onmiddellijk informeren",
+   "r": "Zwijgen. Zelf oppassen met wat je typt."
+  },
+  "eski_dost": {
+   "t": "Weet je nog, Hakan, vorig jaar ontslagen wegens ‘onbekwaamheid’? Hij is nu directeur bij {C}. En hij weet nog wie zijn ontslag tekende.",
+   "l": "Hem bellen. Oprecht excuses aanbieden.",
+   "r": "Die klant volledig mijden"
+  },
+  "mola_yasak": {
+   "t": "Nieuwe regel: koffiepauzes maximaal 7 minuten, geregistreerd per badge. Toiletbezoek ‘wordt onderzocht’.",
+   "l": "‘Wij sturen op werkresultaat, niet op blazen.’",
+   "r": "De badgelezers laten ophangen"
+  },
+  "klima_savasi": {
+   "t": "Ze hebben de airco pal boven mijn bureau op 17 graden vastgezet. Ik heb het twee keer netjes gevraagd. De directeur: ‘Kou houdt luie mensen wakker.’",
+   "l": "Haar bureau verplaatsen. De airco laten bijstellen.",
+   "r": "‘Neem een vestje mee.’"
+  },
+  "cv_sabotaj": {
+   "t": "Ik hoorde dat HR bedrijven belt waar onze oud-medewerkers solliciteren om ze te ‘waarschuwen’. Is dat überhaupt legaal?",
+   "l": "HR ermee confronteren. Eisen dat het stopt.",
+   "r": "‘Niet meer ons circus.’"
+  },
+  "acil_aile": {
+   "t": "Mijn vader heeft een beroerte gehad. Ik moet NU weg. De directeur verspert de deur: ‘De demo is over een uur.’",
+   "l": "‘GA. Ik doe de demo zelf wel.’",
+   "r": "‘Bel maar in via video vanuit het ziekenhuis.’"
+  },
+  "sarhos_gm": {
+   "t": "Op het bedrijfsdiner sjort de dronken directeur aan de arm van de stagiaire om te ‘dansen’. Ze is verstijfd. Iedereen kijkt naar jou.",
+   "l": "Ertussen springen. Nu.",
+   "r": "Wegkijken. Je glas bijvullen."
+  },
+  "sarhos_sonra": {
+   "t": "Over die avond... Ik dien een klacht in tegen de directeur. Wil je opschrijven wat je zag? Je stond er vlak naast.",
+   "l": "De waarheid opschrijven. Ondertekenen.",
+   "r": "‘Ik heb het niet goed kunnen zien.’"
+  },
+  "iki_yuzlu_ik": {
+   "t": "De nieuwe ‘vertrouwelijke’ klachtenlijn van HR stuurt alles rechtstreeks door naar de directeur. Mét namen. Ik vond dat je het moest weten.",
+   "l": "Het team discreet waarschuwen",
+   "r": "De lijn gebruiken als loyaliteitstest"
+  },
+  "prim_gaspi": {
+   "t": "De beloofde bonus voor de lancering van {P} is ‘geherstructureerd’ tot een pizzafeestje. Een pizzafeestje.",
+   "l": "Vechten voor de echte bonus",
+   "r": "‘Wel met extra kaas, hoor.’"
+  },
+  "görev_tanimi": {
+   "t": "Ik ben aangenomen als ontwerper. Deze week deed ik: de visumpapieren van de directeur, de huiswerkpresentatie van zijn zoon en een dierenartsafspraak voor zijn hond.",
+   "l": "De privéklusjes beëindigen. Schriftelijk.",
+   "r": "‘De hond mag je tenminste graag.’"
+  },
+  "toplu_istifa_tehdidi": {
+   "t": "De senior developers hebben een pact gesloten: wordt Mehmet weggewerkt, dan nemen alle vijf dezelfde dag ontslag. Ze wilden dat je het wist.",
+   "l": "Achter ze staan. Het de directie melden.",
+   "r": "Het ‘complot’ aangeven bij HR"
+  },
+  "yemekhane": {
+   "t": "Nieuwe indeling in de kantine: het management eet achter een glazen wand. ‘Zichtbaarheid kweekt vertrouwelijkheid. Vertrouwelijkheid kweekt eisen.’",
+   "l": "Bij je team blijven eten",
+   "r": "Je plek achter het glas innemen"
+  },
+  "sessiz_istifa": {
+   "t": "De helft van je team vertoont tekenen van quiet quitting — minimale inzet, nul initiatief. Ze zijn niet lui. Ze zijn gewond.",
+   "l": "Eén-op-één-gesprekken. Eerst luisteren.",
+   "r": "Verbetertrajecten voor iedereen"
+  },
+  "kopya_sirket": {
+   "t": "Gerucht: Tolga bouwt in het geheim een concurrent op met onze klantdata. De CEO wil dat JIJ het bewijst. Of begraaft. Onduidelijk welk van de twee.",
+   "l": "Netjes onderzoeken, de bevindingen rapporteren",
+   "r": "‘Niets gezien, niets geweten.’"
+  },
+  "mikro_yonetim": {
+   "t": "Hij eist nu elk uur status-mails van je team. Elk uur. Met screenshots en woordentelling.",
+   "l": "‘U krijgt weekrapporten. Meer niet.’",
+   "r": "De uurlijkse rapportage optuigen"
+  },
+  "kutlama_gaspi": {
+   "t": "Na 6 maanden nachtwerk sloten we de deal met {C}. De toost van de directeur: ‘Dit laat zien wat MIJN leiderschap bereikt.’",
+   "l": "Toosten op het echte team, naam voor naam",
+   "r": "Met de rest mee applaudisseren"
+  },
+  "delil_yok_etme": {
+   "t": "Juridische zaken wil alle mails ouder dan 6 maanden automatisch laten wissen. Toevallig beslaat de mobbingzaak maand 7.",
+   "l": "Eerst alles extern archiveren",
+   "r": "De automatische verwijdering aanzetten"
+  },
+  "you_stajyer": {
+   "t": "Ze hebben de stagiaire aangewezen als jouw ‘schaduw’. Ze noteert alles wat je doet en rapporteert elke avond aan HR. Ze schaamt zich.",
+   "l": "‘Doe je werk maar. Ik heb niets te verbergen.’",
+   "r": "Haar indrukwekkende nepdata voeren"
+  },
+  "you_egitim": {
+   "t": "Je bent — verplicht — ingeschreven voor de cursus ‘Basisvaardigheden Communicatie’. Samen met de stagiairs. De foto’s worden bedrijfsbreed gedeeld.",
+   "l": "Erheen gaan. Schitteren. De zaal veroveren.",
+   "r": "Een doktersbriefje regelen en wegblijven"
+  },
+  "you_hedef_revize": {
+   "t": "Je targets zijn halverwege het kwartaal ‘herzien’. Omhoog. Met 300%. Met terugwerkende kracht. Je bonus is nu wiskundig onmogelijk.",
+   "l": "Het spelletje documenteren. In stilte een advocaat nemen.",
+   "r": "Toch achter het onmogelijke aan jagen"
+  },
+  "aynali_oda": {
+   "t": "Wees voorzichtig. Alles wat jou wordt opgedragen anderen aan te doen — ik heb gezien dat het ook werd aangedaan bij wie weigerde. Deze plek recyclet haar methodes.",
+   "l": "‘Dan doorbreek ik de cirkel.’",
+   "r": "‘Dan kan ik maar beter nuttig blijven.’"
+  },
+  "cikis_multakati": {
+   "t": "Data uit de exitgesprekken: 19 van de 21 vertrekkers noemden ‘gedrag van het management’. In de officiële HR-samenvatting staat ‘persoonlijke redenen’. Teken je?",
+   "l": "Weigeren. De ruwe data bijvoegen.",
+   "r": "De fictie ondertekenen"
+  },
+  "yeni_kurban": {
+   "t": "‘Goed nieuws. Het bestuur heeft een nieuwe ‘focus’ gevonden. Een of andere manager bij logistiek. Jij bent van de haak — als je met hem meehelpt.’",
+   "l": "In plaats daarvan de logistiek manager waarschuwen",
+   "r": "Het draaiboek overdragen"
+  },
+  "remote_kamera": {
+   "t": "Nieuwe thuiswerkregel: camera’s altijd AAN, elke 5 minuten een screenshot, toiletpauzes melden in de chat.",
+   "l": "‘Wij meten werk, geen lichamen.’",
+   "r": "Het surveillancepakket uitrollen"
+  },
+  "remote_mesai": {
+   "t": "Sinds het thuiswerken loopt mijn werkdag van 07:00 tot 23:00. ‘Je bent toch thuis,’ zeggen ze. Mijn thuis is geen thuis meer.",
+   "l": "Harde begin- en eindtijden afdwingen",
+   "r": "‘Flexibiliteit werkt twee kanten op.’"
+  },
+  "acik_ofis": {
+   "t": "Hij heeft de kantoortuin heringericht: ‘onderpresteerders’ zitten bij de ingang met hun gezicht naar de muur. Een schandhoek. Met bordje.",
+   "l": "Het bordje eigenhandig weghalen",
+   "r": "‘Motivatie door zichtbaarheid.’"
+  },
+  "sendika": {
+   "t": "Een paar van ons praten stilletjes over een vakbond. Als het management het hoort, steken ze het gebouw in brand. Sta je aan onze kant of aan die van hen?",
+   "l": "‘Jullie goed recht. Mijn zwijgen is van jullie.’",
+   "r": "De organisatoren rapporteren"
+  },
+  "avukat_mektup": {
+   "t": "De advocaat van Deniz heeft een formele sommatie gestuurd wegens pesterijen op het werk. De directie wil een ‘gezamenlijke verklaring’ dat er niets is gebeurd.",
+   "l": "‘Een leugen onderteken ik niet.’",
+   "r": "De gezamenlijke verklaring tekenen"
+  },
+  "tukenmislik": {
+   "t": "Ik voel niets meer. Geen stress, geen woede. Ik klap mijn laptop open en staar. Is dit wat een burn-out is?",
+   "l": "Ziekmelding + doorverwijzing naar een therapeut. Vandaag nog.",
+   "r": "‘Neem de middag maar vrij.’"
+  },
+  "musteri_hakaret": {
+   "t": "De accountmanager van {C} schreeuwt tegen me in elk gesprek. Gisteren noemde hij me ‘een pratende spreadsheet’. De directie zegt: ‘de klant is koning’.",
+   "l": "De klant bellen. Grenzen stellen.",
+   "r": "‘Koningen blijven koningen.’"
+  },
+  "kriz_liste": {
+   "t": "Economische crisis. Ik wil vrijdag een ontslaglijst uit jouw team: 30%. Alfabetisch mag ook. Het boeit me niet.",
+   "l": "Een alternatief bieden: loonoffer + kortere week",
+   "r": "De lijst schrijven"
+  },
+  "kriz_liste2": {
+   "t": "Ik zag mijn naam op een print op je bureau. Onder de kop ‘Lijst’. Ik trouw over twee maanden. Vertel me gewoon de waarheid.",
+   "l": "Haar de waarheid vertellen. Helemaal.",
+   "r": "‘Dat is gewoon een plattegrond van de zitplaatsen.’"
+  },
+  "yeni_ceo": {
+   "t": "De eerste toespraak van de nieuwe CEO: ‘Ik las dat 40% van jullie vervangbaar is door AI. Bewijs het tegendeel. Of niet. Allebei bespaart geld.’",
+   "l": "De waarde van je team publiekelijk verdedigen",
+   "r": "Beginnen aan een presentatie ‘AI-transformatie’"
+  },
+  "danisman": {
+   "t": "Het oordeel van het adviesbureau: jouw afdeling is ‘emotioneel inefficiënt’. Hun oplossing: verplichte glimlachtraining. Ik maak geen grapje.",
+   "l": "De clownsschool weigeren",
+   "r": "De glimlachsessies inplannen"
+  },
+  "hamile_donus": {
+   "t": "Zeynep komt maandag terug van zwangerschapsverlof. Het management heeft haar functie ‘wegherstructureerd’. Haar nieuwe baan: reserve-receptioniste. Ze was hoofd van het datateam.",
+   "l": "Haar echte functie terughalen. Vechten.",
+   "r": "‘Ze heeft tenminste nog een baan.’"
+  },
+  "dil_baski": {
+   "t": "Nieuwe regel: ‘op kantoor alleen de voertaal’. Twee collega’s kregen een aantekening omdat ze in hun moedertaal kletsten. Tijdens de lunch.",
+   "l": "De regel op zijn minst voor de pauzes schrappen",
+   "r": "Handhaven. ‘Professionaliteit.’"
+  },
+  "taseron": {
+   "t": "De schoonmakers eten staand in het trappenhuis — het zijn ‘externen’, ze mogen de kantine niet in. Al eeuwig.",
+   "l": "De kantine voor iedereen openstellen",
+   "r": "‘Contractvoorwaarden zijn contractvoorwaarden.’"
+  },
+  "parti_baski": {
+   "t": "Wie het jachtfeest van de directeur mist, ‘mist ook zijn carrière’. Die avond ligt de vader van Mehmet in het ziekenhuis. Hij vroeg mij het jou te vragen.",
+   "l": "‘Familie eerst. Ik dek hem wel.’",
+   "r": "‘Eén uurtje langskomen. Voor de foto.’"
+  },
+  "eski_sirket": {
+   "t": "Hij vertelt iedereen dat je bij je vorige bedrijf ‘bent ontslagen’. Je nam zelf ontslag. Je hebt de brief. Dat weet hij ook.",
+   "l": "De brief één keer laten zien. Luid en duidelijk.",
+   "r": "De leugen laten inslijten"
+  },
+  "gizli_zam": {
+   "t": "‘Geef het verhogingsbudget aan de mensen van Tolga. Jouw team ‘klaagt niet genoeg om een vluchtrisico te zijn’. Dat is een compliment.’",
+   "l": "‘Hier wordt loyaliteit als eerste uitbetaald.’",
+   "r": "Het budget stilletjes overhevelen"
+  },
+  "mola_ihbar": {
+   "t": "Er is nu een anonieme ‘productiviteitskliklijn’. Iemand heeft Ayşe aangegeven voor een theepauze van 12 minuten. Ik was het. Ik word er misselijk van.",
+   "l": "‘Nooit meer. En die lijn laat ik sluiten.’",
+   "r": "‘Goede reflex. Blijf melden.’"
+  },
+  "threeh_kural": {
+   "t": "Het bedrijfsbeleid beperkt ziekteverlof nu tot 3 dagen per JAAR. Alles daarboven vereist de ‘persoonlijke goedkeuring’ van de directeur. Dit is in strijd met de wet.",
+   "l": "Het melden bij de arbeidsinspectie",
+   "r": "‘Regels zijn nu eenmaal regels.’"
+  },
+  "oyun_ici_saka": {
+   "t": "Ze hebben de kantoorwifi omgedoopt tot ‘MehmetIsTraag’. IT zegt dat de directeur het persoonlijk heeft gevraagd. Het duurt nu al 3 weken.",
+   "l": "IT het laten herstellen + formele klacht",
+   "r": "‘Het is eigenlijk wel een beetje grappig.’"
+  },
+  "performans_ani": {
+   "t": "Je beoordelingsgesprek is gepland in de glazen vergaderruimte. Tijdens lunchtijd. Aan de kantinekant. Bijna met megafoon erbij.",
+   "l": "Het naar een besloten ruimte laten verplaatsen",
+   "r": "Een show opvoeren voor het publiek"
+  },
+  "kidemli_veda": {
+   "t": "De oude Hüseyin gaat vrijdag met pensioen, na 31 jaar. Het afscheidscadeau van het management: een kalender met het bedrijfslogo. Het team zamelt geld in voor een echt cadeau. Doe je mee?",
+   "l": "Meedoen + een echt afscheid organiseren",
+   "r": "‘Die kalender heeft anders wel 12 pagina’s.’"
+  },
+  "gorusme_kaydi": {
+   "t": "HR neemt één-op-één-gesprekken stiekem op ‘voor de kwaliteit’. Juridische zaken zegt: zonder toestemming illegaal. HR zegt: ‘vertel het dan gewoon aan niemand’.",
+   "l": "Het bij de ochtendmeeting aan iedereen vertellen",
+   "r": "Op je woorden letten in gesprekken"
+  },
+  "prim_yaris": {
+   "t": "Nieuw ‘motivatieplan’: één bonus, gladiatorenstijl. Teamleden strijden openlijk tegen elkaar; de scores op een scherm aan de muur. De namen van de verliezers knipperen rood.",
+   "l": "De arena weigeren",
+   "r": "Het scherm eigenhandig laten ophangen"
+  },
+  "ise_alim": {
+   "t": "Wervingsrichtlijn: ‘Niemand boven de 35, geen moeders met jonge kinderen, niemand die ‘te opgeleid is om te gehoorzamen’.’ Op papier. Ze hebben het op PAPIER gezet.",
+   "l": "Een kopie bewaren. Weigeren het toe te passen.",
+   "r": "Cv’s filteren zoals bevolen"
+  },
+  "aile_gunu": {
+   "t": "Op de ‘Familiedag’ stelt hij medewerkers aan hun partners voor per prestatieklasse: ‘Dit is Deniz — C-klasse, maar we houden hoop.’",
+   "l": "De ‘rondleiding’ luidkeels onderbreken",
+   "r": "Hopen dat hij jouw gezin overslaat"
+  },
+  "y_kusagi": {
+   "t": "Opening van de bestuursvergadering: ‘Het probleem van dit bedrijf is dat jongeren denken dat rechten een looncomponent zijn.’ Iedereen onder de 40 staart naar de tafel.",
+   "l": "‘Rechten zijn geen generatiekwestie.’",
+   "r": "Bedachtzaam knikken"
+  },
+  "gizli_kamera_wc": {
+   "t": "De onderhoudsploeg vond een camera gericht op de toiletgang — ‘om rokers te betrappen’. Niemand heeft hem goedgekeurd. Niemand geeft toe hem te hebben opgehangen.",
+   "l": "Weg laten halen + incidentrapport",
+   "r": "‘Laat maar hangen. Rokers, opgepast.’"
+  },
+  "zorunlu_mesaj": {
+   "t": "Iedereen moet maandelijks een ‘dankbaarheidsbericht aan de leiding’ op LinkedIn plaatsen. HR houdt de naleving bij in een spreadsheet genaamd ‘LOYALITEIT.xlsx’.",
+   "l": "‘Sociale media zijn privéterrein.’",
+   "r": "Een sjabloon voor het team opstellen"
+  },
+  "veri_sizinti": {
+   "t": "Ik vond de psychologische rapporten van het personeel op de open gedeelde schijf. Van iedereen. Ook van jou. Drie maanden geleden door HR op ‘openbaar’ gezet.",
+   "l": "Afgrendelen + alle betrokkenen informeren",
+   "r": "Afgrendelen. In stilte."
+  },
+  "cikis_engel": {
+   "t": "Hij laat de beveiliging iedereen noteren die vóór 19:00 vertrekt, ‘voor de administratie’. De administratie wordt op vrijdag een schandpaalmail.",
+   "l": "Om klokslag 18:00 vertrekken. Demonstratief.",
+   "r": "Langer blijven. Het ‘goede voorbeeld’ geven."
+  },
+  "yalnizlastirma": {
+   "t": "Ze hebben elk project dat ik aanraak stuk voor stuk aan anderen gegeven. Mijn agenda is leeg. Mijn vaardigheden verdampen. Dit is strategisch.",
+   "l": "Haar portfolio openlijk weer opbouwen",
+   "r": "‘Geniet van je rustige periode.’"
+  },
+  "itibar_linkedin": {
+   "t": "Een anoniem LinkedIn-account plaatst ‘brancheroddels’ die overduidelijk over jouw team gaan. De schrijfstijl is onmiskenbaar die van Tolga.",
+   "l": "Alles vastleggen met screenshots. Hem confronteren.",
+   "r": "Zelf een rivaliserend anoniem account beginnen"
+  },
+  "ilk_gun": {
+   "t": "De nieuwe collega bracht haar eerste dag door aan een bureau zonder computer, zonder taken, zonder kennismaking. Om 17:00 vroeg iemand wie ze was.",
+   "l": "Zelf een echte onboarding verzorgen",
+   "r": "‘De eerste dag is altijd zo.’"
+  },
+  "maas_gecikme": {
+   "t": "De salarissen zijn 9 dagen te laat. De directeur postte vandaag een foto van zijn skivakantie. De teamchat staat in lichterlaaie.",
+   "l": "Een schriftelijke betaaldatum eisen",
+   "r": "‘Geduld. En zet die groep op stil.’"
+  },
+  "toplanti_maraton": {
+   "t": "Het programma van vandaag: 11 vergaderingen, waarvan 9 ‘voorvergaderingen voor vergaderingen’. Echte werktijd: 40 minuten. Het team verdrinkt in agenda’s.",
+   "l": "Vergadervrije dagen instellen",
+   "r": "Een vergadering over vergaderingen toevoegen"
+  },
+  "kisisel_esya": {
+   "t": "Ik kwam binnen en mijn bureau was leeggehaald. Foto’s, plant, alles in een doos bij de deur. ‘Ruimteoptimalisatie,’ zeiden ze. Mijn bureau is nog steeds leeg.",
+   "l": "Zijn bureau herstellen. Eisen te weten wie de opdracht gaf.",
+   "r": "‘Minimalisme is in.’"
+  },
+  "referans_tehdit": {
+   "t": "‘Herinner je opzeggers eraan: deze branche is klein. Eén telefoontje van mij en ze staan broodjes te verkopen. Zet het in het script voor het exitgesprek.’",
+   "l": "‘Dreigementen komen mijn scripts niet in.’",
+   "r": "De ‘vriendelijke herinnering’ toevoegen"
+  },
+  "ekip_koruma": {
+   "t": "Het team heeft gemerkt dat jij boven de klappen voor ons opvangt. Ze hebben een mok voor je gekocht: ‘Redelijk Oké Menselijk Schild van de Wereld’. Er is ook taart.",
+   "l": "De mok aannemen. De taart opeten.",
+   "r": "‘Geen samenscholing onder werktijd.’"
+  },
+  "you_oda_bitki": {
+   "t": "Zelfs de plant op je kamer is ‘herbestemd’. Naar de kamer van Tolga. Er is een memo over. Iemand heeft een MEMO geschreven over jouw plant.",
+   "l": "Een grotere plant kopen. Haar Vrijheid noemen.",
+   "r": "Een tegenmemo indienen"
+  },
+  "you_asistan": {
+   "t": "Je assistente is ‘weggepromoveerd’ en door niemand vervangen. Je vergaderuitnodigingen lopen nu via de assistente van Tolga. Die ‘erg druk’ is.",
+   "l": "Je agenda met ijzeren discipline zelf beheren",
+   "r": "Vergaderingen missen. Laat maar branden."
+  },
+  "you_lobi": {
+   "t": "Ze hebben je toegangspas ingenomen ‘voor vernieuwing’. Drie dagen geleden. Elke ochtend wacht je in de lobby tot iemand je binnenlaat. De receptie verontschuldigt zich dagelijks.",
+   "l": "Vanuit de lobby werken. Demonstratief productief.",
+   "r": "Met een scène je pas terugeisen"
+  },
+  "you_soguk_oda": {
+   "t": "Je ‘nieuwe kantoor’: de oude serverruimte. 14 graden, één flikkerende lamp, een stoel met drie wieltjes. Tolga komt dagelijks langs om ‘het moreel te peilen’.",
+   "l": "Inrichten. Er een legende van maken.",
+   "r": "Zwijgend zitten. De flikkeringen tellen."
+  },
+  "ihbarci_koruma": {
+   "t": "Ik weet wie de klacht bij het ministerie heeft ingediend. Het management is er bijna achter. Eén woord van mij en de jacht stopt — gericht op de verkeerde persoon.",
+   "l": "‘Nee. Geen verkeerde persoon. Nooit.’",
+   "r": "‘Wijs naar Tolga.’"
+  },
+  "cocuk_hasta": {
+   "t": "Mijn zoon wordt donderdag geopereerd. Ik heb het de directeur verteld. Hij plande een ‘kritieke release’ op donderdag en wees mij aan als enige goedkeurder.",
+   "l": "De goedkeurdersrol zelf overnemen",
+   "r": "‘Ziekenhuizen hebben wifi.’"
+  },
+  "unvan_oyunu": {
+   "t": "De bindingstruc van het management: titels verhogen, salarissen bevriezen. Selin is nu ‘Senior Executive Principal Lead’. Zelfde loon. Wel nieuwe visitekaartjes.",
+   "l": "‘Van een titel betaal je geen huur.’",
+   "r": "Glimmender visitekaartjes bestellen"
+  },
+  "anket_oyunu": {
+   "t": "De ‘anonieme’ tevredenheidsenquête vraagt naar afdeling, dienstjaren, leeftijd en favoriete lunchplek. De resultaten gaan rechtstreeks naar de directeur. Met gokjes over de namen erbij.",
+   "l": "Iedereen waarschuwen dat het een val is",
+   "r": "‘Iedereen vult vijven in, klaar.’"
+  },
+  "emekli_aday": {
+   "t": "‘Hüseyin zit 2 jaar voor zijn pensioen. Neemt hij zelf ontslag, dan besparen we de uitkering. Maak zijn dagen... leerzaam.’",
+   "l": "Zijn laatste 2 jaar persoonlijk bewaken",
+   "r": "Beginnen met de ‘lessen’"
+  },
+  "whatsapp_saat": {
+   "t": "De directeur heeft mijn privénummer aan 6 werkgroepen toegevoegd. Mijn telefoon trilde vannacht 214 keer. Ik heb geteld. Ik ben stagiaire.",
+   "l": "Haar zelf uit alle groepen verwijderen",
+   "r": "‘Welkom in de branche.’"
+  },
+  "vardiya_oyunu": {
+   "t": "De magazijndiensten zijn ‘geoptimaliseerd’: om 23:00 sluiten, om 07:00 openen — dezelfde mensen. Slaap is nu een planningsfout.",
+   "l": "Rustperiodes van 11 uur afdwingen",
+   "r": "‘Beneden is de koffie gratis.’"
+  },
+  "basari_gizle": {
+   "t": "Onze octrooiaanvraag is toegekend — groot nieuws. Het management heeft de bekendmaking verboden ‘zodat de salarisverwachtingen niet oplopen’.",
+   "l": "Het toch bekendmaken. Team eerst.",
+   "r": "Stiekem proosten in het trappenhuis"
+  },
+  "kres_sozu": {
+   "t": "De 3 jaar geleden beloofde ‘bedrijfscrèche’ is nu een ‘wellnessruimte’ — een zitzak en een poster. Ouders betalen hun halve salaris aan de kinderopvang.",
+   "l": "Het crècheproject weer opstarten",
+   "r": "‘Die zitzak is anders wel ergonomisch.’"
+  },
+  "stajyer_fikir": {
+   "t": "Mijn besparingsidee is bedrijfsbreed ingevoerd. In de aankondiging staat ‘visie van het senior management’. Ik heb de originele e-mail.",
+   "l": "De feiten publiekelijk rechtzetten",
+   "r": "‘Ervaring is zijn eigen beloning.’"
+  },
+  "kapali_kapi": {
+   "t": "Nieuw beleid: zijn deur staat ‘altijd open’ — maar een afspraak vergt een formulier, twee goedkeuringen en 3 weken wachttijd. Het formulier vraagt naar je ‘emotionele agenda’.",
+   "l": "Zonder formulier naar binnen lopen",
+   "r": "Het formulier invullen. 3 weken wachten."
+  },
+  "tatil_mesaj": {
+   "t": "Ik ben op de begrafenis van mijn oma en de directeur blijft maar bellen over een letterkleur. Hij heeft 11 voicemails ingesproken. Over. Een. Letterkleur.",
+   "l": "Haar telefoon overnemen. Alles zelf afhandelen.",
+   "r": "‘Welke kleur wilde hij eigenlijk?’"
+  },
+  "beden_dili": {
+   "t": "Nieuwe adviesdienst: ‘micro-expressieanalyse’ van medewerkers tijdens vergaderingen. Fronsen is nu een ‘coachbaar moment’. Er zijn zelfs rapporten.",
+   "l": "De pseudowetenschap opzeggen",
+   "r": "Je neutrale gezicht oefenen"
+  },
+  "ofis_taşınma": {
+   "t": "Het hoofdkantoor verhuist 47 km verderop, naast het huis van de directeur. ‘Reizen vormt het karakter.’ Geen pendelbus. Aangekondigd op een vrijdag om 17:58.",
+   "l": "Vechten voor pendelbussen + thuiswerkdagen",
+   "r": "‘Koop allemaal luisterboeken.’"
+  },
+  "gorunmez_emek": {
+   "t": "Al 12 jaar leid ik elke boekhouder op die dit bedrijf aanneemt. Mijn titel is nooit veranderd. Degene die ik vorig jaar heb ingewerkt, is nu mijn manager.",
+   "l": "Haar promotiedossier zelf opbouwen",
+   "r": "‘Lesgeven is tijdloos.’"
+  },
+  "son_soz": {
+   "t": "Ik ga met pensioen. Mijn laatste advies: ik heb 20 jaar toegekeken hoe dit gebouw mensen opvreet. De overlevers waren niet de hardsten. Het waren degenen die op de een of andere manier mens bleven.",
+   "l": "‘Dan blijf ik mens.’",
+   "r": "‘Eerst overleven, dokter.’"
+  }
+ }
+}

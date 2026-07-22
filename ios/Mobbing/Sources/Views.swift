@@ -4,24 +4,33 @@ import SwiftUI
 struct MenuView: View {
     let onStart: () -> Void
     let onInfo: () -> Void
+    let onLang: () -> Void
 
     var body: some View {
         ZStack {
             Image("menu_bg").resizable().scaledToFill().ignoresSafeArea()
+            VStack {
+                HStack {
+                    Spacer()
+                    Button(action: onLang) { Text("🌐").font(.system(size: 26)) }
+                        .padding(.trailing, 16).padding(.top, 8)
+                }
+                Spacer()
+            }
             VStack(spacing: 0) {
                 Spacer()
                 Text("MOBBING")
                     .font(.system(size: 46, weight: .black))
                     .tracking(10).foregroundStyle(Color.ink)
-                Text(String(localized: "tagline"))
+                Text(L("tagline"))
                     .font(.system(size: 13)).tracking(3)
                     .foregroundStyle(Color.dim).padding(.top, 4)
                 Spacer().frame(height: 48)
-                GlassButton(label: String(localized: "start_shift"), action: onStart)
-                GlassButton(label: String(localized: "info_corner"), action: onInfo, subtle: true)
+                GlassButton(label: L("start_shift"), action: onStart)
+                GlassButton(label: L("info_corner"), action: onInfo, subtle: true)
                     .padding(.top, 14)
                 Spacer()
-                Text(String(localized: "menu_note"))
+                Text(L("menu_note"))
                     .font(.system(size: 11)).multilineTextAlignment(.center)
                     .foregroundStyle(Color.dim).padding(.bottom, 26)
             }
@@ -69,7 +78,7 @@ struct GameView: View {
             }
             .padding(.horizontal, 26).padding(.top, 8)
 
-            Text(String(format: String(localized: "day_fmt"), engine.day))
+            Text(String(format: L("day_fmt"), engine.day))
                 .font(.system(size: 12)).tracking(3)
                 .foregroundStyle(Color.dim).padding(.top, 6)
 
@@ -84,7 +93,7 @@ struct GameView: View {
 
             Spacer()
 
-            Text(String(localized: "swipe_hint"))
+            Text(L("swipe_hint"))
                 .font(.system(size: 11)).tracking(1)
                 .foregroundStyle(Color.dim).padding(.bottom, 12)
         }
@@ -118,7 +127,7 @@ struct MeterView: View {
                     .frame(width: 68 * CGFloat(value) / 100, height: 9)
                     .animation(.easeOut(duration: 0.5), value: value)
             }
-            Text(String(localized: String.LocalizationValue(label)))
+            Text(L(label))
                 .font(.system(size: 10, weight: .bold)).tracking(1)
                 .foregroundStyle(danger ? dangerColor : Color.dim)
         }
@@ -227,14 +236,14 @@ struct OverView: View {
             Color.navy.opacity(0.55).ignoresSafeArea()
             VStack(spacing: 16) {
                 if let end = engine.ended {
-                    Text(String(localized: String.LocalizationValue("end_\(end.rawValue)_t")))
+                    Text(L("end_\(end.rawValue)_t"))
                         .font(.system(size: 24, weight: .black)).tracking(2)
                         .foregroundStyle(Color.iceSoft).multilineTextAlignment(.center)
-                    Text(String(localized: String.LocalizationValue("end_\(end.rawValue)_b")))
+                    Text(L("end_\(end.rawValue)_b"))
                         .font(.system(size: 15)).lineSpacing(5)
                         .foregroundStyle(Color.ink).multilineTextAlignment(.center)
                 }
-                Text(String(format: String(localized: "lasted_fmt"), engine.day))
+                Text(String(format: L("lasted_fmt"), engine.day))
                     .font(.system(size: 13)).foregroundStyle(Color.dim)
 
                 // 💼 Rüşvet — kaldığın yerden devam (consumable IAP)
@@ -248,9 +257,9 @@ struct OverView: View {
                         }
                     } label: {
                         VStack(spacing: 2) {
-                            Text("💼 " + String(localized: "bribe_btn") + " — " + store.priceLabel)
+                            Text("💼 " + L("bribe_btn") + " — " + store.priceLabel)
                                 .font(.system(size: 15, weight: .bold))
-                            Text(String(localized: "bribe_flavor"))
+                            Text(L("bribe_flavor"))
                                 .font(.system(size: 10)).opacity(0.8)
                         }
                         .foregroundStyle(Color.navy)
@@ -264,8 +273,17 @@ struct OverView: View {
                     .padding(.top, 20)
                 }
 
-                GlassButton(label: String(localized: "restart"), action: onRestart, subtle: true)
+                GlassButton(label: L("restart"), action: onRestart, subtle: true)
                     .padding(.top, 6)
+
+                // IAP yasal linkleri (App Store zorunluluğu)
+                HStack(spacing: 14) {
+                    Link(L("privacy_link"), destination: URL(string: "https://realvirtuality.app/mobbing/privacy.html")!)
+                    Link(L("terms_link"), destination: URL(string: "https://realvirtuality.app/mobbing/terms.html")!)
+                }
+                .font(.system(size: 11))
+                .foregroundStyle(Color.dim)
+                .padding(.top, 10)
             }
             .padding(36)
         }
@@ -278,15 +296,15 @@ struct InfoView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text(String(localized: "info_title"))
+            Text(L("info_title"))
                 .font(.system(size: 22, weight: .bold))
                 .foregroundStyle(Color.iceSoft)
             ScrollView {
-                Text(String(localized: "info_body"))
+                Text(L("info_body"))
                     .font(.system(size: 14)).lineSpacing(6)
                     .foregroundStyle(Color.ink)
             }
-            GlassButton(label: String(localized: "back"), action: onBack, subtle: true)
+            GlassButton(label: L("back"), action: onBack, subtle: true)
                 .frame(maxWidth: .infinity)
         }
         .padding(28)
@@ -294,8 +312,8 @@ struct InfoView: View {
 }
 
 // ── Yardımcılar ────────────────────────────────────────────────────────────
-func charName(_ ch: String) -> String { String(localized: String.LocalizationValue("ch_\(ch)")) }
-func catLabel(_ cat: String) -> String { String(localized: String.LocalizationValue("cat_\(cat.lowercased())")) }
+func charName(_ ch: String) -> String { L("ch_\(ch)") }
+func catLabel(_ cat: String) -> String { L("cat_\(cat.lowercased())") }
 func catEmoji(_ cat: String) -> String {
     switch cat {
     case "ILT": return "🗣️"; case "IZO": return "🚪"; case "ITB": return "🎭"
