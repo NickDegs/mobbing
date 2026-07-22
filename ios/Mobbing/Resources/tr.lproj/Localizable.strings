@@ -8,7 +8,7 @@
 "lasted_fmt" = "%d gün dayandın";
 "back" = "Geri";
 "info_title" = "Gerçek hayatta mobbinge mi maruz kalıyorsun?";
-"info_body" = "Mobbing, işyerinde sistematik psikolojik tacizdir: dışlama, aşağılama, imkansız iş yükleri, dedikodular.\n\nNe işe yarar:\n• Her olay için tarihli kayıt tut (ne oldu, kim, tanıklar).\n• E-posta ve mesajları sakla — kişisel bir adrese yönlendir.\n• Resmî kanallara YAZILI şikayette bulun.\n• Doktora git — sağlık etkileri gerçek ve belgelenebilir.\n• İş hukuku avukatına danış; mobbing birçok ülkede (Türkiye dahil) hukuken tanınıyor.\n• Yalnız değilsin ve bu senin suçun değil.\n\nBu oyun kurgu, ama örüntüler gerçek. Tanıdık geliyorsa ciddiye al.";
+"info_body" = "Mobbing, işyerinde sistematik psikolojik tacizdir: dışlama, aşağılama, imkansız iş yükleri, dedikodular.\n\nNe işe yarar:\n• Her olay için tarihli kayıt tut (ne oldu, kim, tanıklar).\n• E-posta ve mesajları sakla — kişisel bir adrese yönlendir.\n• Resmî kanallara YAZILI şikayette bulun.\n• Doktora git — sağlık etkileri gerçek ve belgelenebilir.\n• İş hukuku avukatına danış; mobbing birçok ülkede hukuken tanınıyor.\n• Yalnız değilsin ve bu senin suçun değil.\n\nBu oyun kurgu, ama örüntüler gerçek. Tanıdık geliyorsa ciddiye al.";
 "cat_ilt" = "iletişim";
 "cat_izo" = "izolasyon";
 "cat_itb" = "itibar";
@@ -50,3 +50,7 @@
 "notif_5" = "🔔 Arşiv odasında biri ağlıyor.";
 "bribe_btn" = "Rüşvet Ver";
 "bribe_flavor" = "Zarf masanın altından kayar. Sorun ’çözülür’.";
+"meter_b" = "BASKI";
+"meter_v" = "VİCDAN";
+"meter_e" = "EKİP";
+"meter_k" = "KARİYER";

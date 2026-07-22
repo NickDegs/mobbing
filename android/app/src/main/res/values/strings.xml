@@ -57,4 +57,8 @@
     </string-array>
     <string name="bribe_btn">Pay a Bribe</string>
     <string name="bribe_flavor">The envelope slides under the table. The problem &#8217;resolves&#8217;.</string>
+    <string name="meter_b">PRESSURE</string>
+    <string name="meter_v">CONSCIENCE</string>
+    <string name="meter_e">TEAM</string>
+    <string name="meter_k">CAREER</string>
 </resources>

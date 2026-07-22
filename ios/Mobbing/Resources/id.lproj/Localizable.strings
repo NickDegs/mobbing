@@ -6,3 +6,7 @@
 "restart" = "MULAI ULANG";
 "lasted_fmt" = "Kamu bertahan %d hari";
 "back" = "Kembali";
+"meter_b" = "TEKANAN";
+"meter_v" = "NURANI";
+"meter_e" = "TIM";
+"meter_k" = "KARIER";

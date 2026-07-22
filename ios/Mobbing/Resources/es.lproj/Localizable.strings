@@ -6,3 +6,7 @@
 "restart" = "EMPEZAR DE NUEVO";
 "lasted_fmt" = "Aguantaste %d días";
 "back" = "Atrás";
+"meter_b" = "PRESIÓN";
+"meter_v" = "CONCIENCIA";
+"meter_e" = "EQUIPO";
+"meter_k" = "CARRERA";

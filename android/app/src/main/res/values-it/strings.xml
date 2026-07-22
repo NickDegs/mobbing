@@ -8,4 +8,8 @@
     <string name="restart">RICOMINCIA</string>
     <string name="lasted_fmt">Hai resistito %1$d giorni</string>
     <string name="back">Indietro</string>
+    <string name="meter_b">PRESSIONE</string>
+    <string name="meter_v">COSCIENZA</string>
+    <string name="meter_e">SQUADRA</string>
+    <string name="meter_k">CARRIERA</string>
 </resources>

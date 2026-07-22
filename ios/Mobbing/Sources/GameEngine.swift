@@ -53,6 +53,11 @@ final class GameEngine: ObservableObject {
     private let projects = ["Atlas", "Phoenix", "Nova", "Titan", "Orion", "Vega", "Zenith", "Delta-9"]
     private let clients = ["GlobalCorp", "Meridian AŞ", "NorthBridge", "Vertex Ltd", "OmniTrade", "BlueRock"]
 
+    // Çeviri katmanı: loc_<lang>.json → id -> {t,l,r}
+    struct LocCard: Codable { let t: String; let l: String; let r: String }
+    struct LocFile: Codable { let cards: [String: LocCard] }
+    private var overlay: [String: LocCard] = [:]
+
     init(lang: String) {
         self.lang = lang
         for name in ["cards_core", "cards_ext", "cards_ext2"] {
@@ -61,6 +66,12 @@ final class GameEngine: ObservableObject {
                let file = try? JSONDecoder().decode(CardFile.self, from: data) {
                 allCards += file.cards
             }
+        }
+        if !["en", "tr"].contains(lang),
+           let url = Bundle.main.url(forResource: "loc_\(lang)", withExtension: "json"),
+           let data = try? Data(contentsOf: url),
+           let file = try? JSONDecoder().decode(LocFile.self, from: data) {
+            overlay = file.cards
         }
         followupIds = Set(allCards.flatMap { [$0.l.next, $0.r.next].compactMap { $0 } })
         reshuffle()
@@ -79,10 +90,25 @@ final class GameEngine: ObservableObject {
         return out
     }
 
-    func cardText(_ c: Card) -> String { substitute(c.t.get(lang)) }
-    func choiceText(_ ch: Choice) -> String { substitute(ch.t.get(lang)) }
+    // Çözülmüş metinler — kart çekildiğinde BİR KEZ hesaplanır (render'da rastgelelik bug'ı önlenir)
+    @Published var text = ""
+    @Published var lText = ""
+    @Published var rText = ""
+
+    private func resolveTexts() {
+        guard let c = current else { return }
+        let o = overlay[c.id]
+        text = substitute(o?.t ?? c.t.get(lang))
+        lText = substitute(o?.l ?? c.l.t.get(lang))
+        rText = substitute(o?.r ?? c.r.t.get(lang))
+    }
 
     private func drawNext() {
+        pickNext()
+        resolveTexts()
+    }
+
+    private func pickNext() {
         if !queue.isEmpty && Double.random(in: 0...1) < 0.6 {
             let id = queue.removeFirst()
             if let c = allCards.first(where: { $0.id == id }) { current = c; return }

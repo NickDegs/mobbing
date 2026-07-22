@@ -6,3 +6,7 @@
 "restart" = "OPNIEUW BEGINNEN";
 "lasted_fmt" = "Je hield het %d dagen vol";
 "back" = "Terug";
+"meter_b" = "DRUK";
+"meter_v" = "GEWETEN";
+"meter_e" = "TEAM";
+"meter_k" = "CARRIÈRE";

@@ -8,4 +8,8 @@
     <string name="restart">重新开始</string>
     <string name="lasted_fmt">你坚持了 %1$d 天</string>
     <string name="back">返回</string>
+    <string name="meter_b">压力</string>
+    <string name="meter_v">良知</string>
+    <string name="meter_e">团队</string>
+    <string name="meter_k">职业</string>
 </resources>

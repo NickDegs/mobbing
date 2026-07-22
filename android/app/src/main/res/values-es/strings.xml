@@ -8,4 +8,8 @@
     <string name="restart">EMPEZAR DE NUEVO</string>
     <string name="lasted_fmt">Aguantaste %1$d días</string>
     <string name="back">Atrás</string>
+    <string name="meter_b">PRESIÓN</string>
+    <string name="meter_v">CONCIENCIA</string>
+    <string name="meter_e">EQUIPO</string>
+    <string name="meter_k">CARRERA</string>
 </resources>

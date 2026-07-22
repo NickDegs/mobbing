@@ -8,4 +8,8 @@
     <string name="restart">다시 시작</string>
     <string name="lasted_fmt">%1$d일 버텼습니다</string>
     <string name="back">뒤로</string>
+    <string name="meter_b">압박</string>
+    <string name="meter_v">양심</string>
+    <string name="meter_e">팀</string>
+    <string name="meter_k">커리어</string>
 </resources>

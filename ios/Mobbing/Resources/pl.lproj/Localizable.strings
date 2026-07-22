@@ -6,3 +6,7 @@
 "restart" = "ZACZNIJ OD NOWA";
 "lasted_fmt" = "Wytrzymałeś %d dni";
 "back" = "Wstecz";
+"meter_b" = "PRESJA";
+"meter_v" = "SUMIENIE";
+"meter_e" = "ZESPÓŁ";
+"meter_k" = "KARIERA";

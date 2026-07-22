@@ -6,3 +6,7 @@
 "restart" = "やり直す";
 "lasted_fmt" = "%d日間耐えた";
 "back" = "戻る";
+"meter_b" = "圧力";
+"meter_v" = "良心";
+"meter_e" = "チーム";
+"meter_k" = "キャリア";

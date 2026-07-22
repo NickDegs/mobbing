@@ -66,8 +66,9 @@ struct RootView: View {
 final class EngineHolder: ObservableObject {
     @Published var engine: GameEngine?
     func newGame() {
-        let lang = Locale.current.language.languageCode?.identifier == "tr" ? "tr" : "en"
-        engine = GameEngine(lang: lang)
+        let supported = ["tr","de","fr","es","it","pt","ru","ja","ko","zh","ar","hi","id","nl","pl"]
+        let code = Locale.current.language.languageCode?.identifier ?? "en"
+        engine = GameEngine(lang: supported.contains(code) ? code : "en")
     }
 }
 

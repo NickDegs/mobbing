@@ -8,4 +8,8 @@
     <string name="restart">OPNIEUW BEGINNEN</string>
     <string name="lasted_fmt">Je hield het %1$d dagen vol</string>
     <string name="back">Terug</string>
+    <string name="meter_b">DRUK</string>
+    <string name="meter_v">GEWETEN</string>
+    <string name="meter_e">TEAM</string>
+    <string name="meter_k">CARRIÈRE</string>
 </resources>

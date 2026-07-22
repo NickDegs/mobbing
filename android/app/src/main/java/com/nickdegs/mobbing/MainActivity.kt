@@ -58,7 +58,11 @@ enum class Screen { Menu, Game, Over, Info }
 @Composable
 fun MobbingApp() {
     val ctx = LocalContext.current
-    val lang = remember { if (ctx.resources.configuration.locales[0].language == "tr") "tr" else "en" }
+    val lang = remember {
+        val l = ctx.resources.configuration.locales[0].language
+        val code = if (l == "in") "id" else l   // Android eski Endonezce kodu
+        if (code in listOf("tr","de","fr","es","it","pt","ru","ja","ko","zh","ar","hi","id","nl","pl")) code else "en"
+    }
     var screen by remember { mutableStateOf(Screen.Menu) }
     var engine by remember { mutableStateOf<GameEngine?>(null) }
     val billing = remember {
@@ -147,10 +151,10 @@ fun GameScreen(e: GameEngine, lang: String, onEnd: () -> Unit) {
             Modifier.fillMaxWidth().padding(horizontal = 22.dp, vertical = 10.dp),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            MeterView(R.drawable.m_baski, e.meters.b, dragX, card?.l?.fx?.get(0), card?.r?.fx?.get(0))
-            MeterView(R.drawable.m_vicdan, e.meters.v, dragX, card?.l?.fx?.get(1), card?.r?.fx?.get(1))
-            MeterView(R.drawable.m_ekip, e.meters.e, dragX, card?.l?.fx?.get(2), card?.r?.fx?.get(2))
-            MeterView(R.drawable.m_kariyer, e.meters.k, dragX, card?.l?.fx?.get(3), card?.r?.fx?.get(3))
+            MeterView(R.drawable.m_baski, R.string.meter_b, e.meters.b, dragX, card?.l?.fx?.get(0), card?.r?.fx?.get(0))
+            MeterView(R.drawable.m_vicdan, R.string.meter_v, e.meters.v, dragX, card?.l?.fx?.get(1), card?.r?.fx?.get(1))
+            MeterView(R.drawable.m_ekip, R.string.meter_e, e.meters.e, dragX, card?.l?.fx?.get(2), card?.r?.fx?.get(2))
+            MeterView(R.drawable.m_kariyer, R.string.meter_k, e.meters.k, dragX, card?.l?.fx?.get(3), card?.r?.fx?.get(3))
         }
         Text(stringResource(R.string.day_fmt, e.day), color = Dim, fontSize = 12.sp,
             letterSpacing = 3.sp, modifier = Modifier.align(Alignment.CenterHorizontally))
@@ -161,7 +165,7 @@ fun GameScreen(e: GameEngine, lang: String, onEnd: () -> Unit) {
                 val rot by animateFloatAsState(dragX / 30f, tween(50), label = "rot")
                 Box(
                     Modifier
-                        .fillMaxWidth(.86f)
+                        .fillMaxWidth(.92f)
                         .aspectRatio(0.72f)
                         .graphicsLayer { translationX = dragX; rotationZ = rot }
                         .pointerInput(tick) {
@@ -192,13 +196,13 @@ fun GameScreen(e: GameEngine, lang: String, onEnd: () -> Unit) {
                             Text(charName(c.ch), color = IceSoft, fontSize = 12.sp,
                                 fontWeight = FontWeight.Bold, letterSpacing = 1.5.sp)
                             Spacer(Modifier.height(6.dp))
-                            Text(e.cardText(c), color = Ink, fontSize = 15.sp, lineHeight = 21.sp)
+                            Text(e.text, color = Ink, fontSize = 16.sp, lineHeight = 22.sp)
                         }
                     }
                     // Seçim etiketleri
                     val p = (abs(dragX) / 260f).coerceIn(0f, 1f)
-                    if (dragX < -20) ChoiceTag(e.choiceText(c.l), true, p, Modifier.align(Alignment.CenterStart))
-                    if (dragX > 20) ChoiceTag(e.choiceText(c.r), false, p, Modifier.align(Alignment.CenterEnd))
+                    if (dragX < -20) ChoiceTag(e.lText, true, p, Modifier.align(Alignment.CenterStart))
+                    if (dragX > 20) ChoiceTag(e.rText, false, p, Modifier.align(Alignment.CenterEnd))
                 }
             }
         }
@@ -221,19 +225,22 @@ fun ChoiceTag(text: String, left: Boolean, progress: Float, modifier: Modifier) 
 }
 
 @Composable
-fun MeterView(icon: Int, value: Int, dragX: Float, lFx: Int?, rFx: Int?) {
+fun MeterView(icon: Int, label: Int, value: Int, dragX: Float, lFx: Int?, rFx: Int?) {
     val fx = if (dragX < -20) lFx else if (dragX > 20) rFx else null
     val danger = value <= 20 || value >= 80
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Box(Modifier.size(8.dp).clip(CircleShape)
+        Box(Modifier.size(9.dp).clip(CircleShape)
             .background(if (fx != null && fx != 0) IceSoft else Color.Transparent))
         Spacer(Modifier.height(3.dp))
-        Image(painterResource(icon), null, Modifier.size(30.dp))
+        Image(painterResource(icon), null, Modifier.size(42.dp))
         Spacer(Modifier.height(4.dp))
-        Box(Modifier.width(46.dp).height(5.dp).clip(RoundedCornerShape(3.dp)).background(Steel.copy(alpha = .35f))) {
-            Box(Modifier.fillMaxWidth(value / 100f).height(5.dp)
-                .background(if (danger) Color(0xFFFF4D5E) else Ice, RoundedCornerShape(3.dp)))
+        Box(Modifier.width(68.dp).height(9.dp).clip(RoundedCornerShape(5.dp)).background(Steel.copy(alpha = .35f))) {
+            Box(Modifier.fillMaxWidth(value / 100f).height(9.dp)
+                .background(if (danger) Color(0xFFFF4D5E) else Ice, RoundedCornerShape(5.dp)))
         }
+        Spacer(Modifier.height(3.dp))
+        Text(stringResource(label), color = if (danger) Color(0xFFFF4D5E) else Dim,
+            fontSize = 10.sp, fontWeight = FontWeight.Bold, letterSpacing = 1.sp)
     }
 }
 

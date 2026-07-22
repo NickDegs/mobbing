@@ -8,4 +8,8 @@
     <string name="restart">MULAI ULANG</string>
     <string name="lasted_fmt">Kamu bertahan %1$d hari</string>
     <string name="back">Kembali</string>
+    <string name="meter_b">TEKANAN</string>
+    <string name="meter_v">NURANI</string>
+    <string name="meter_e">TIM</string>
+    <string name="meter_k">KARIER</string>
 </resources>

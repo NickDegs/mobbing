@@ -59,13 +59,13 @@ struct GameView: View {
         VStack(spacing: 0) {
             // Göstergeler
             HStack {
-                MeterView(icon: "m_baski", value: engine.meters.b, fx: activeFx(0))
+                MeterView(icon: "m_baski", label: "meter_b", value: engine.meters.b, fx: activeFx(0))
                 Spacer()
-                MeterView(icon: "m_vicdan", value: engine.meters.v, fx: activeFx(1))
+                MeterView(icon: "m_vicdan", label: "meter_v", value: engine.meters.v, fx: activeFx(1))
                 Spacer()
-                MeterView(icon: "m_ekip", value: engine.meters.e, fx: activeFx(2))
+                MeterView(icon: "m_ekip", label: "meter_e", value: engine.meters.e, fx: activeFx(2))
                 Spacer()
-                MeterView(icon: "m_kariyer", value: engine.meters.k, fx: activeFx(3))
+                MeterView(icon: "m_kariyer", label: "meter_k", value: engine.meters.k, fx: activeFx(3))
             }
             .padding(.horizontal, 26).padding(.top, 8)
 
@@ -100,22 +100,27 @@ struct GameView: View {
 
 struct MeterView: View {
     let icon: String
+    let label: String
     let value: Int
     let fx: Int?
 
     var danger: Bool { value <= 20 || value >= 80 }
+    var dangerColor: Color { Color(red: 1, green: 0.30, blue: 0.37) }
 
     var body: some View {
         VStack(spacing: 4) {
             Circle().fill(fx != nil && fx != 0 ? Color.iceSoft : .clear)
-                .frame(width: 8, height: 8)
-            Image(icon).resizable().frame(width: 30, height: 30)
+                .frame(width: 9, height: 9)
+            Image(icon).resizable().frame(width: 42, height: 42)
             ZStack(alignment: .leading) {
-                Capsule().fill(Color.steel.opacity(0.35)).frame(width: 46, height: 5)
-                Capsule().fill(danger ? Color(red: 1, green: 0.30, blue: 0.37) : Color.ice)
-                    .frame(width: 46 * CGFloat(value) / 100, height: 5)
+                Capsule().fill(Color.steel.opacity(0.35)).frame(width: 68, height: 9)
+                Capsule().fill(danger ? dangerColor : Color.ice)
+                    .frame(width: 68 * CGFloat(value) / 100, height: 9)
                     .animation(.easeOut(duration: 0.5), value: value)
             }
+            Text(String(localized: String.LocalizationValue(label)))
+                .font(.system(size: 10, weight: .bold)).tracking(1)
+                .foregroundStyle(danger ? dangerColor : Color.dim)
         }
     }
 }
@@ -132,7 +137,7 @@ struct CardView: View {
             VStack(spacing: 0) {
                 ZStack(alignment: .topLeading) {
                     Image("c_\(card.ch)").resizable().scaledToFill()
-                        .frame(maxWidth: .infinity).frame(height: 240).clipped()
+                        .frame(maxWidth: .infinity).frame(height: 252).clipped()
                     Text(catEmoji(card.cat) + " " + catLabel(card.cat))
                         .font(.system(size: 9, weight: .semibold)).tracking(2)
                         .foregroundStyle(Color.dim)
@@ -144,8 +149,8 @@ struct CardView: View {
                     Text(charName(card.ch))
                         .font(.system(size: 12, weight: .bold)).tracking(1.5)
                         .foregroundStyle(Color.iceSoft)
-                    Text(engine.cardText(card))
-                        .font(.system(size: 15)).lineSpacing(4)
+                    Text(engine.text)
+                        .font(.system(size: 16)).lineSpacing(4)
                         .foregroundStyle(Color.ink)
                         .fixedSize(horizontal: false, vertical: true)
                     Spacer(minLength: 0)
@@ -153,7 +158,7 @@ struct CardView: View {
                 .padding(16)
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .frame(width: 330, height: 470)
+            .frame(width: 350, height: 500)
             .background(LinearGradient(colors: [.navyPanel, .navy], startPoint: .top, endPoint: .bottom))
             .clipShape(RoundedRectangle(cornerRadius: 24))
             .overlay(RoundedRectangle(cornerRadius: 24).stroke(Color.steel.opacity(0.5), lineWidth: 1))
@@ -182,17 +187,17 @@ struct CardView: View {
 
             // Seçim etiketleri
             if dragX < -20 {
-                tag(engine.choiceText(card.l), green: true)
+                tag(engine.lText, green: true)
                     .position(x: 80, y: 235)
                     .opacity(min(1, abs(dragX) / 110))
             }
             if dragX > 20 {
-                tag(engine.choiceText(card.r), green: false)
+                tag(engine.rText, green: false)
                     .position(x: 250, y: 235)
                     .opacity(min(1, dragX / 110))
             }
         }
-        .frame(width: 330, height: 470)
+        .frame(width: 350, height: 500)
     }
 
     private func tag(_ text: String, green: Bool) -> some View {

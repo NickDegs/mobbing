@@ -8,4 +8,8 @@
     <string name="restart">НАЧАТЬ ЗАНОВО</string>
     <string name="lasted_fmt">Вы продержались %1$d дней</string>
     <string name="back">Назад</string>
+    <string name="meter_b">ДАВЛЕНИЕ</string>
+    <string name="meter_v">СОВЕСТЬ</string>
+    <string name="meter_e">КОМАНДА</string>
+    <string name="meter_k">КАРЬЕРА</string>
 </resources>

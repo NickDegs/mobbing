@@ -11,7 +11,7 @@
     <string name="lasted_fmt">%1$d gün dayandın</string>
     <string name="back">Geri</string>
     <string name="info_title">Gerçek hayatta mobbinge mi maruz kalıyorsun?</string>
-    <string name="info_body">Mobbing, işyerinde sistematik psikolojik tacizdir: dışlama, aşağılama, imkansız iş yükleri, dedikodular.\n\nNe işe yarar:\n• Her olay için tarihli kayıt tut (ne oldu, kim, tanıklar).\n• E-posta ve mesajları sakla — kişisel bir adrese yönlendir.\n• Resmî kanallara YAZILI şikayette bulun.\n• Doktora git — sağlık etkileri gerçek ve belgelenebilir.\n• İş hukuku avukatına danış; mobbing birçok ülkede (Türkiye dahil) hukuken tanınıyor.\n• Yalnız değilsin ve bu senin suçun değil.\n\nBu oyun kurgu, ama örüntüler gerçek. Tanıdık geliyorsa ciddiye al.</string>
+    <string name="info_body">Mobbing, işyerinde sistematik psikolojik tacizdir: dışlama, aşağılama, imkansız iş yükleri, dedikodular.\n\nNe işe yarar:\n• Her olay için tarihli kayıt tut (ne oldu, kim, tanıklar).\n• E-posta ve mesajları sakla — kişisel bir adrese yönlendir.\n• Resmî kanallara YAZILI şikayette bulun.\n• Doktora git — sağlık etkileri gerçek ve belgelenebilir.\n• İş hukuku avukatına danış; mobbing birçok ülkede hukuken tanınıyor.\n• Yalnız değilsin ve bu senin suçun değil.\n\nBu oyun kurgu, ama örüntüler gerçek. Tanıdık geliyorsa ciddiye al.</string>
     <string name="cat_ilt">iletişim</string>
     <string name="cat_izo">izolasyon</string>
     <string name="cat_itb">itibar</string>
@@ -57,4 +57,8 @@
     </string-array>
     <string name="bribe_btn">Rüşvet Ver</string>
     <string name="bribe_flavor">Zarf masanın altından kayar. Sorun &#8217;çözülür&#8217;.</string>
+    <string name="meter_b">BASKI</string>
+    <string name="meter_v">VİCDAN</string>
+    <string name="meter_e">EKİP</string>
+    <string name="meter_k">KARİYER</string>
 </resources>

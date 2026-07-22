@@ -8,4 +8,8 @@
     <string name="restart">ابدأ من جديد</string>
     <string name="lasted_fmt">صمدت %1$d يومًا</string>
     <string name="back">رجوع</string>
+    <string name="meter_b">الضغط</string>
+    <string name="meter_v">الضمير</string>
+    <string name="meter_e">الفريق</string>
+    <string name="meter_k">المسيرة</string>
 </resources>

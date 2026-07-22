@@ -8,4 +8,8 @@
     <string name="restart">फिर से शुरू करें</string>
     <string name="lasted_fmt">आप %1$d दिन टिके</string>
     <string name="back">वापस</string>
+    <string name="meter_b">दबाव</string>
+    <string name="meter_v">विवेक</string>
+    <string name="meter_e">टीम</string>
+    <string name="meter_k">करियर</string>
 </resources>

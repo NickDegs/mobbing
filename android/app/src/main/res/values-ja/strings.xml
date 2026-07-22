@@ -8,4 +8,8 @@
     <string name="restart">やり直す</string>
     <string name="lasted_fmt">%1$d日間耐えた</string>
     <string name="back">戻る</string>
+    <string name="meter_b">圧力</string>
+    <string name="meter_v">良心</string>
+    <string name="meter_e">チーム</string>
+    <string name="meter_k">キャリア</string>
 </resources>

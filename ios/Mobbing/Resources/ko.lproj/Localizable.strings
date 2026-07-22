@@ -6,3 +6,7 @@
 "restart" = "다시 시작";
 "lasted_fmt" = "%d일 버텼습니다";
 "back" = "뒤로";
+"meter_b" = "압박";
+"meter_v" = "양심";
+"meter_e" = "팀";
+"meter_k" = "커리어";

@@ -49,6 +49,12 @@ class GameEngine(context: Context, private val lang: String) {
     private val projects = listOf("Atlas", "Phoenix", "Nova", "Titan", "Orion", "Vega", "Zenith", "Delta-9")
     private val clients = listOf("GlobalCorp", "Meridian AŞ", "NorthBridge", "Vertex Ltd", "OmniTrade", "BlueRock")
 
+    // Çeviri katmanı: assets/loc_<lang>.json → id -> {t,l,r}
+    private val overlay: Map<String, LocCard>
+
+    @Serializable data class LocCard(val t: String, val l: String, val r: String)
+    @Serializable data class LocFile(val cards: Map<String, LocCard> = emptyMap())
+
     init {
         val json = Json { ignoreUnknownKeys = true }
         val files = listOf("cards_core.json", "cards_ext.json", "cards_ext2.json")
@@ -59,6 +65,12 @@ class GameEngine(context: Context, private val lang: String) {
         }
         allCards = cards
         followupIds = cards.flatMap { listOfNotNull(it.l.next, it.r.next) }.toSet()
+        overlay = if (lang !in listOf("en", "tr")) {
+            try {
+                val raw = context.assets.open("loc_$lang.json").bufferedReader().use { it.readText() }
+                json.decodeFromString<LocFile>(raw).cards
+            } catch (_: Exception) { emptyMap() }
+        } else emptyMap()
         reshuffle()
         drawNext()
     }
@@ -73,14 +85,29 @@ class GameEngine(context: Context, private val lang: String) {
         .replace("{C}", clients[rng.nextInt(clients.size)])
         .replace("{X}", (rng.nextInt(5, 40) * 10).toString())
 
-    fun cardText(c: Card): String = substitute(c.t.get(lang))
-    fun choiceText(ch: Choice): String = substitute(ch.t.get(lang))
+    // Çözülmüş metinler — kart çekildiğinde BİR KEZ hesaplanır (render'da rastgelelik bug'ı önlenir)
+    var text = ""; private set
+    var lText = ""; private set
+    var rText = ""; private set
+
+    private fun resolveTexts() {
+        val c = current ?: return
+        val o = overlay[c.id]
+        text = substitute(o?.t ?: c.t.get(lang))
+        lText = substitute(o?.l ?: c.l.t.get(lang))
+        rText = substitute(o?.r ?: c.r.t.get(lang))
+    }
 
     private fun drawNext() {
+        pickNext()
+        resolveTexts()
+    }
+
+    private fun pickNext() {
         // 1) zincir kuyruğu öncelikli (%60)
         if (queue.isNotEmpty() && rng.nextFloat() < 0.6f) {
             val id = queue.removeFirst()
-            current = allCards.firstOrNull { it.id == id } ?: return drawNext()
+            current = allCards.firstOrNull { it.id == id } ?: return pickNext()
             return
         }
         // 2) baskı yüksekse "sana mobbing" destesi (%35)

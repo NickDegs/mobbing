@@ -8,4 +8,8 @@
     <string name="restart">ZACZNIJ OD NOWA</string>
     <string name="lasted_fmt">Wytrzymałeś %1$d dni</string>
     <string name="back">Wstecz</string>
+    <string name="meter_b">PRESJA</string>
+    <string name="meter_v">SUMIENIE</string>
+    <string name="meter_e">ZESPÓŁ</string>
+    <string name="meter_k">KARIERA</string>
 </resources>

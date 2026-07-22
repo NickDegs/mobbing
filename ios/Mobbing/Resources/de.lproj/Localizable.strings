@@ -6,3 +6,7 @@
 "restart" = "NEU STARTEN";
 "lasted_fmt" = "Du hast %d Tage durchgehalten";
 "back" = "Zurück";
+"meter_b" = "DRUCK";
+"meter_v" = "GEWISSEN";
+"meter_e" = "TEAM";
+"meter_k" = "KARRIERE";
