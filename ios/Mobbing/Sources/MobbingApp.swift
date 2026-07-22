@@ -28,7 +28,7 @@ extension View { func glassy(_ corner: CGFloat = 16) -> some View { modifier(Gla
 
 @main
 struct MobbingApp: App {
-    init() { Notif.requestAndSchedule() }
+    init() { if ShotMode.mode == nil { Notif.requestAndSchedule() } }
     var body: some Scene {
         WindowGroup { RootView().preferredColorScheme(.dark) }
     }
