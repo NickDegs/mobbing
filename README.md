@@ -9,4 +9,3 @@ Barış'ın gerçek mobbing deneyiminden doğan hiciv/farkındalık oyunu.
 - Ücretli, reklamsız, çevrimdışı, veri toplamaz.
 - Privacy: https://realvirtuality.app/mobbing/privacy.html
 
-Sahibi: dev2 oturumu.
