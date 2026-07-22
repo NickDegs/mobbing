@@ -132,6 +132,9 @@ class GameEngine(context: Context, private val lang: String) {
         meters.e = clamp(meters.e + fx[2]); meters.k = clamp(meters.k + fx[3])
         ch.next?.let { if (it !in queue) queue.addLast(it) }
         day++
+        // Sistem yorulmaz: balayı bitince üst yönetim baskısı her gün kendiliğinden artar
+        val creep = when { day < 10 -> 0; day < 50 -> 1; else -> 2 }
+        meters.b = clamp(meters.b + creep)
         ended = checkEnd()
         if (ended != null) return false
         drawNext()

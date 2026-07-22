@@ -128,6 +128,9 @@ final class GameEngine: ObservableObject {
         meters.e = clamp(meters.e + fx[2]); meters.k = clamp(meters.k + fx[3])
         if let nx = ch.next, !queue.contains(nx) { queue.append(nx) }
         day += 1
+        // Sistem yorulmaz: balayı bitince üst yönetim baskısı her gün kendiliğinden artar
+        let creep = day < 10 ? 0 : (day < 50 ? 1 : 2)
+        meters.b = clamp(meters.b + creep)
         ended = checkEnd()
         if ended == nil { drawNext() }
     }
