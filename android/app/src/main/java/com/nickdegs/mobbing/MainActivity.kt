@@ -8,6 +8,7 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -201,8 +202,8 @@ fun GameScreen(e: GameEngine, lang: String, onEnd: () -> Unit) {
                     }
                     // Seçim etiketleri
                     val p = (abs(dragX) / 260f).coerceIn(0f, 1f)
-                    if (dragX < -20) ChoiceTag(e.lText, true, p, Modifier.align(Alignment.CenterStart))
-                    if (dragX > 20) ChoiceTag(e.rText, false, p, Modifier.align(Alignment.CenterEnd))
+                    if (dragX < -20) ChoiceTag(e.lText, true, p, Modifier.align(Alignment.Center))
+                    if (dragX > 20) ChoiceTag(e.rText, false, p, Modifier.align(Alignment.Center))
                 }
             }
         }
@@ -213,14 +214,17 @@ fun GameScreen(e: GameEngine, lang: String, onEnd: () -> Unit) {
 
 @Composable
 fun ChoiceTag(text: String, left: Boolean, progress: Float, modifier: Modifier) {
+    val accent = if (left) Color(0xFF39D98A) else Color(0xFFFF4D5E)
     Box(
-        modifier.padding(10.dp).graphicsLayer { alpha = progress }
-            .rotate(if (left) -4f else 4f)
-            .background(NavyPanel, RoundedCornerShape(12.dp))
-            .padding(10.dp).widthIn(max = 150.dp)
+        modifier.padding(horizontal = 14.dp).graphicsLayer { alpha = progress }
+            .fillMaxWidth()
+            .background(Navy.copy(alpha = .95f), RoundedCornerShape(18.dp))
+            .border(2.5.dp, accent, RoundedCornerShape(18.dp))
+            .padding(horizontal = 18.dp, vertical = 20.dp),
+        contentAlignment = Alignment.Center
     ) {
-        Text(text, color = if (left) Color(0xFF39D98A) else Color(0xFFFF4D5E),
-            fontSize = 12.sp, fontWeight = FontWeight.Bold, lineHeight = 16.sp)
+        Text(text, color = accent, textAlign = TextAlign.Center,
+            fontSize = 19.sp, fontWeight = FontWeight.Black, lineHeight = 26.sp)
     }
 }
 

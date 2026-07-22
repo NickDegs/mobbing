@@ -185,15 +185,15 @@ struct CardView: View {
                     }
             )
 
-            // Seçim etiketleri
+            // Seçim etiketleri — kart ortasında büyük karar bandı
             if dragX < -20 {
                 tag(engine.lText, green: true)
-                    .position(x: 80, y: 235)
+                    .position(x: 175, y: 250)
                     .opacity(min(1, abs(dragX) / 110))
             }
             if dragX > 20 {
                 tag(engine.rText, green: false)
-                    .position(x: 250, y: 235)
+                    .position(x: 175, y: 250)
                     .opacity(min(1, dragX / 110))
             }
         }
@@ -201,14 +201,16 @@ struct CardView: View {
     }
 
     private func tag(_ text: String, green: Bool) -> some View {
-        Text(text)
-            .font(.system(size: 12, weight: .bold)).lineSpacing(2)
-            .foregroundStyle(green ? Color(red: 0.22, green: 0.85, blue: 0.54)
-                                   : Color(red: 1, green: 0.30, blue: 0.37))
-            .padding(10)
-            .frame(maxWidth: 150)
-            .background(Color.navyPanel.opacity(0.95), in: RoundedRectangle(cornerRadius: 12))
-            .rotationEffect(.degrees(green ? -4 : 4))
+        let accent = green ? Color(red: 0.22, green: 0.85, blue: 0.54)
+                           : Color(red: 1, green: 0.30, blue: 0.37)
+        return Text(text)
+            .font(.system(size: 19, weight: .black)).lineSpacing(5)
+            .multilineTextAlignment(.center)
+            .foregroundStyle(accent)
+            .padding(.horizontal, 18).padding(.vertical, 20)
+            .frame(width: 320)
+            .background(Color.navy.opacity(0.95), in: RoundedRectangle(cornerRadius: 18))
+            .overlay(RoundedRectangle(cornerRadius: 18).stroke(accent, lineWidth: 2.5))
     }
 }
 

@@ -55,6 +55,10 @@
       "🔔 Tolga présente « sa » nouvelle idée.",
       "🔔 La deadline vient de bouger. Plus proche."
     ],
+    "meter_b": "PRESSION",
+    "meter_v": "CONSCIENCE",
+    "meter_e": "ÉQUIPE",
+    "meter_k": "CARRIÈRE",
     "bribe_btn": "Verser un pot-de-vin",
     "bribe_flavor": "L'enveloppe glisse sous la table. Le problème se « résout »."
   },
