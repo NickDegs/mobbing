@@ -63,7 +63,8 @@
   ],
   "lang_auto": "تلقائي (لغة الجهاز)",
   "privacy_link": "الخصوصية",
-  "terms_link": "شروط الاستخدام"
+  "terms_link": "شروط الاستخدام",
+  "record_fmt": "الرقم القياسي: %1$d يومًا"
  },
  "cards": {
   "ayse_izin": {

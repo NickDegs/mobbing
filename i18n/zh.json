@@ -63,7 +63,8 @@
   ],
   "lang_auto": "自动(设备语言)",
   "privacy_link": "隐私政策",
-  "terms_link": "使用条款"
+  "terms_link": "使用条款",
+  "record_fmt": "最佳纪录:%1$d天"
  },
  "cards": {
   "ayse_izin": {

@@ -63,7 +63,8 @@
   "meter_b": "ДАВЛЕНИЕ",
   "meter_v": "СОВЕСТЬ",
   "meter_e": "КОМАНДА",
-  "meter_k": "КАРЬЕРА"
+  "meter_k": "КАРЬЕРА",
+  "record_fmt": "Рекорд: %1$d дней"
  },
  "cards": {
   "ayse_izin": {

@@ -148,6 +148,12 @@ fun MenuScreen(onStart: () -> Unit, onInfo: () -> Unit, onLang: () -> Unit) {
                 fontWeight = FontWeight.Black, letterSpacing = 10.sp)
             Text(Loc.s("tagline"), color = Dim, fontSize = 13.sp,
                 letterSpacing = 3.sp, textAlign = TextAlign.Center)
+            val best = LocalContext.current.getSharedPreferences("mobbing_prefs", 0).getInt("best", 0)
+            if (best > 0) {
+                Spacer(Modifier.height(10.dp))
+                Text("🏆 " + String.format(Loc.s("record_fmt"), best), color = IceSoft,
+                    fontSize = 14.sp, fontWeight = FontWeight.Bold)
+            }
             Spacer(Modifier.height(48.dp))
             GlassButton(Loc.s("start_shift"), onStart)
             Spacer(Modifier.height(14.dp))
@@ -296,6 +302,10 @@ fun OverScreen(
 ) {
     val end = e.ended ?: return
     var showConfirm by remember { mutableStateOf(false) }
+    val prefs = LocalContext.current.getSharedPreferences("mobbing_prefs", 0)
+    LaunchedEffect(Unit) {
+        if (e.day > prefs.getInt("best", 0)) prefs.edit().putInt("best", e.day).apply()
+    }
     Box(Modifier.fillMaxSize()) {
         Image(painterResource(R.drawable.gameover_bg), null,
             Modifier.fillMaxSize(), contentScale = ContentScale.Crop)

@@ -63,7 +63,8 @@
   "bribe_flavor": "El sobre se desliza bajo la mesa. El problema se «resuelve».",
   "lang_auto": "Automático (idioma del dispositivo)",
   "privacy_link": "Privacidad",
-  "terms_link": "Términos de uso"
+  "terms_link": "Términos de uso",
+  "record_fmt": "Récord: %1$d días"
  },
  "cards": {
   "ayse_izin": {

@@ -25,6 +25,12 @@ struct MenuView: View {
                 Text(L("tagline"))
                     .font(.system(size: 13)).tracking(3)
                     .foregroundStyle(Color.dim).padding(.top, 4)
+                if UserDefaults.standard.integer(forKey: "best") > 0 {
+                    Text("🏆 " + String(format: L("record_fmt").replacingOccurrences(of: "%1$d", with: "%d"),
+                                        UserDefaults.standard.integer(forKey: "best")))
+                        .font(.system(size: 14, weight: .bold))
+                        .foregroundStyle(Color.iceSoft).padding(.top, 10)
+                }
                 Spacer().frame(height: 48)
                 GlassButton(label: L("start_shift"), action: onStart)
                 GlassButton(label: L("info_corner"), action: onInfo, subtle: true)
@@ -287,7 +293,11 @@ struct OverView: View {
             }
             .padding(36)
         }
-        .onAppear { if ShotMode.mode == "confirm" {
+        .onAppear {
+            if engine.day > UserDefaults.standard.integer(forKey: "best") {
+                UserDefaults.standard.set(engine.day, forKey: "best")
+            }
+            if ShotMode.mode == "confirm" {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { showConfirm = true }
         } }
         .sheet(isPresented: $showConfirm) {

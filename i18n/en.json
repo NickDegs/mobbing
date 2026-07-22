@@ -63,7 +63,8 @@
   ],
   "lang_auto": "Automatic (device language)",
   "privacy_link": "Privacy Policy",
-  "terms_link": "Terms of Use"
+  "terms_link": "Terms of Use",
+  "record_fmt": "Best: %1$d days"
  },
  "cards": {}
 }

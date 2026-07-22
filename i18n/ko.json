@@ -63,7 +63,8 @@
   "meter_b": "압박",
   "meter_v": "양심",
   "meter_e": "팀",
-  "meter_k": "커리어"
+  "meter_k": "커리어",
+  "record_fmt": "최고 기록: %1$d일"
  },
  "cards": {
   "ayse_izin": {

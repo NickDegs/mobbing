@@ -63,7 +63,8 @@
   "bribe_flavor": "La busta scivola sotto il tavolo. Il problema si 'risolve'.",
   "lang_auto": "Automatico (lingua del dispositivo)",
   "privacy_link": "Privacy",
-  "terms_link": "Termini di utilizzo"
+  "terms_link": "Termini di utilizzo",
+  "record_fmt": "Record: %1$d giorni"
  },
  "cards": {
   "ayse_izin": {

@@ -63,7 +63,8 @@
   "meter_b": "DRUK",
   "meter_v": "GEWETEN",
   "meter_e": "TEAM",
-  "meter_k": "CARRIÈRE"
+  "meter_k": "CARRIÈRE",
+  "record_fmt": "Record: %1$d dagen"
  },
  "cards": {
   "ayse_izin": {

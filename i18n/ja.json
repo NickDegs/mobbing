@@ -63,7 +63,8 @@
   "meter_b": "圧力",
   "meter_v": "良心",
   "meter_e": "チーム",
-  "meter_k": "キャリア"
+  "meter_k": "キャリア",
+  "record_fmt": "最高記録:%1$d日"
  },
  "cards": {
   "ayse_izin": {

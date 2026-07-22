@@ -63,7 +63,8 @@
   "bribe_flavor": "L'enveloppe glisse sous la table. Le problème se « résout ».",
   "lang_auto": "Automatique (langue de l'appareil)",
   "privacy_link": "Confidentialité",
-  "terms_link": "Conditions d'utilisation"
+  "terms_link": "Conditions d'utilisation",
+  "record_fmt": "Record : %1$d jours"
  },
  "cards": {
   "ayse_izin": {

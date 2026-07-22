@@ -63,7 +63,8 @@
   "meter_b": "PRESJA",
   "meter_v": "SUMIENIE",
   "meter_e": "ZESPÓŁ",
-  "meter_k": "KARIERA"
+  "meter_k": "KARIERA",
+  "record_fmt": "Rekord: %1$d dni"
  },
  "cards": {
   "ayse_izin": {

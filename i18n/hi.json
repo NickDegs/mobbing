@@ -63,7 +63,8 @@
   "meter_b": "दबाव",
   "meter_v": "विवेक",
   "meter_e": "टीम",
-  "meter_k": "करियर"
+  "meter_k": "करियर",
+  "record_fmt": "रिकॉर्ड: %1$d दिन"
  },
  "cards": {
   "ayse_izin": {

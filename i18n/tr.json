@@ -63,7 +63,8 @@
   ],
   "lang_auto": "Otomatik (cihaz dili)",
   "privacy_link": "Gizlilik Politikası",
-  "terms_link": "Kullanım Şartları"
+  "terms_link": "Kullanım Şartları",
+  "record_fmt": "Rekorun: %1$d gün"
  },
  "cards": {}
 }

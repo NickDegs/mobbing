@@ -63,7 +63,8 @@
   "meter_b": "TEKANAN",
   "meter_v": "NURANI",
   "meter_e": "TIM",
-  "meter_k": "KARIER"
+  "meter_k": "KARIER",
+  "record_fmt": "Rekor: %1$d hari"
  },
  "cards": {
   "ayse_izin": {

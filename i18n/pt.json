@@ -63,7 +63,8 @@
   "bribe_flavor": "O envelope desliza por baixo da mesa. O problema se 'resolve'.",
   "lang_auto": "Automático (idioma do dispositivo)",
   "privacy_link": "Privacidade",
-  "terms_link": "Termos de uso"
+  "terms_link": "Termos de uso",
+  "record_fmt": "Recorde: %1$d dias"
  },
  "cards": {
   "ayse_izin": {
