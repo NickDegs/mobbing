@@ -133,7 +133,7 @@ struct CardView: View {
                 ZStack(alignment: .topLeading) {
                     Image("c_\(card.ch)").resizable().scaledToFill()
                         .frame(maxWidth: .infinity).frame(height: 240).clipped()
-                    Text(catLabel(card.cat))
+                    Text(catEmoji(card.cat) + " " + catLabel(card.cat))
                         .font(.system(size: 9, weight: .semibold)).tracking(2)
                         .foregroundStyle(Color.dim)
                         .padding(.horizontal, 8).padding(.vertical, 3)
@@ -211,6 +211,8 @@ struct CardView: View {
 struct OverView: View {
     @ObservedObject var engine: GameEngine
     let onRestart: () -> Void
+    let onBribe: () -> Void
+    @StateObject private var store = BribeStore()
 
     var body: some View {
         ZStack {
@@ -227,8 +229,36 @@ struct OverView: View {
                 }
                 Text(String(format: String(localized: "lasted_fmt"), engine.day))
                     .font(.system(size: 13)).foregroundStyle(Color.dim)
-                GlassButton(label: String(localized: "restart"), action: onRestart)
+
+                // 💼 Rüşvet — kaldığın yerden devam (consumable IAP)
+                if store.product != nil {
+                    Button {
+                        Task {
+                            if await store.buy() {
+                                engine.revive()
+                                onBribe()
+                            }
+                        }
+                    } label: {
+                        VStack(spacing: 2) {
+                            Text("💼 " + String(localized: "bribe_btn") + " — " + store.priceLabel)
+                                .font(.system(size: 15, weight: .bold))
+                            Text(String(localized: "bribe_flavor"))
+                                .font(.system(size: 10)).opacity(0.8)
+                        }
+                        .foregroundStyle(Color.navy)
+                        .frame(maxWidth: .infinity).frame(height: 58)
+                    }
+                    .background(Color.iceSoft)
+                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                    .glassy(16)
+                    .frame(maxWidth: 300)
+                    .disabled(store.purchasing)
                     .padding(.top, 20)
+                }
+
+                GlassButton(label: String(localized: "restart"), action: onRestart, subtle: true)
+                    .padding(.top, 6)
             }
             .padding(36)
         }
@@ -259,3 +289,10 @@ struct InfoView: View {
 // ── Yardımcılar ────────────────────────────────────────────────────────────
 func charName(_ ch: String) -> String { String(localized: String.LocalizationValue("ch_\(ch)")) }
 func catLabel(_ cat: String) -> String { String(localized: String.LocalizationValue("cat_\(cat.lowercased())")) }
+func catEmoji(_ cat: String) -> String {
+    switch cat {
+    case "ILT": return "🗣️"; case "IZO": return "🚪"; case "ITB": return "🎭"
+    case "IS": return "📋"; case "SAG": return "🩺"; case "YOU": return "🎯"
+    default: return "👔"
+    }
+}

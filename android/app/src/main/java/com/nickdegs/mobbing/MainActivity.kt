@@ -61,6 +61,17 @@ fun MobbingApp() {
     val lang = remember { if (ctx.resources.configuration.locales[0].language == "tr") "tr" else "en" }
     var screen by remember { mutableStateOf(Screen.Menu) }
     var engine by remember { mutableStateOf<GameEngine?>(null) }
+    val billing = remember {
+        (ctx as? MainActivity)?.let { BillingManager(it).also { b -> b.connect() } }
+    }
+
+    // Rüşvet başarılı → göstergeyi kurtar, oyuna dön
+    SideEffect {
+        billing?.onBribeSuccess = {
+            engine?.revive()
+            screen = Screen.Game
+        }
+    }
 
     MaterialTheme(colorScheme = darkColorScheme(primary = Ice, background = Navy, surface = NavyPanel)) {
         Box(Modifier.fillMaxSize().background(Navy)) {
@@ -72,7 +83,11 @@ fun MobbingApp() {
                     GameScreen(e, lang) { screen = Screen.Over }
                 }
                 Screen.Over -> engine?.let { e ->
-                    OverScreen(e) { engine = GameEngine(ctx, lang); screen = Screen.Game }
+                    OverScreen(e,
+                        onRestart = { engine = GameEngine(ctx, lang); screen = Screen.Game },
+                        onBribe = { billing?.buy() },
+                        bribeAvailable = billing?.product != null,
+                        bribePrice = billing?.priceLabel ?: "$0.99")
                 }
                 Screen.Info -> InfoScreen { screen = Screen.Menu }
             }
@@ -168,7 +183,7 @@ fun GameScreen(e: GameEngine, lang: String, onEnd: () -> Unit) {
                         Box(Modifier.fillMaxWidth().weight(1.1f)) {
                             Image(painterResource(charRes(c.ch)), null,
                                 Modifier.fillMaxSize(), contentScale = ContentScale.Crop)
-                            Text(catLabel(c.cat), color = Dim, fontSize = 9.sp, letterSpacing = 2.sp,
+                            Text(catEmoji(c.cat) + " " + catLabel(c.cat), color = Dim, fontSize = 9.sp, letterSpacing = 2.sp,
                                 modifier = Modifier.padding(10.dp)
                                     .background(Navy.copy(alpha = .65f), RoundedCornerShape(10.dp))
                                     .padding(horizontal = 8.dp, vertical = 3.dp))
@@ -224,7 +239,13 @@ fun MeterView(icon: Int, value: Int, dragX: Float, lFx: Int?, rFx: Int?) {
 
 // ── Oyun sonu ──────────────────────────────────────────────────────────────
 @Composable
-fun OverScreen(e: GameEngine, onRestart: () -> Unit) {
+fun OverScreen(
+    e: GameEngine,
+    onRestart: () -> Unit,
+    onBribe: () -> Unit,
+    bribeAvailable: Boolean,
+    bribePrice: String
+) {
     val end = e.ended ?: return
     Box(Modifier.fillMaxSize()) {
         Image(painterResource(R.drawable.gameover_bg), null,
@@ -243,7 +264,23 @@ fun OverScreen(e: GameEngine, onRestart: () -> Unit) {
             Spacer(Modifier.height(12.dp))
             Text(stringResource(R.string.lasted_fmt, e.day), color = Dim, fontSize = 13.sp)
             Spacer(Modifier.height(34.dp))
-            GlassButton(stringResource(R.string.restart), onRestart)
+            // 💼 Rüşvet — kaldığın yerden devam
+            if (bribeAvailable) {
+                Button(
+                    onClick = onBribe,
+                    colors = ButtonDefaults.buttonColors(containerColor = IceSoft, contentColor = Navy),
+                    shape = RoundedCornerShape(16.dp),
+                    modifier = Modifier.fillMaxWidth(.78f).height(58.dp)
+                ) {
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Text("💼 " + stringResource(R.string.bribe_btn) + " — " + bribePrice,
+                            fontSize = 15.sp, fontWeight = FontWeight.Bold)
+                        Text(stringResource(R.string.bribe_flavor), fontSize = 10.sp)
+                    }
+                }
+                Spacer(Modifier.height(10.dp))
+            }
+            GlassButton(stringResource(R.string.restart), onRestart, subtle = true)
         }
     }
 }
@@ -274,6 +311,10 @@ fun charRes(ch: String) = when (ch) {
     "selin" -> R.string.ch_selin; "deniz" -> R.string.ch_deniz; "kerem" -> R.string.ch_kerem
     "ece" -> R.string.ch_ece; else -> R.string.ch_hekim
 })
+fun catEmoji(cat: String) = when (cat) {
+    "ILT" -> "\uD83D\uDDE3\uFE0F"; "IZO" -> "\uD83D\uDEAA"; "ITB" -> "\uD83C\uDFAD"
+    "IS" -> "\uD83D\uDCCB"; "SAG" -> "\uD83E\uDE7A"; "YOU" -> "\uD83C\uDFAF"; else -> "\uD83D\uDC54"
+}
 @Composable fun catLabel(cat: String) = stringResource(when (cat) {
     "ILT" -> R.string.cat_ilt; "IZO" -> R.string.cat_izo; "ITB" -> R.string.cat_itb
     "IS" -> R.string.cat_is; "SAG" -> R.string.cat_sag; "YOU" -> R.string.cat_you

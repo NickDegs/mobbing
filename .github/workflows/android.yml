@@ -26,6 +26,7 @@ jobs:
         run: |
           cp ../cards/cards_core.json app/src/main/assets/
           cp ../cards/cards_ext.json  app/src/main/assets/
+          cp ../cards/cards_ext2.json app/src/main/assets/
           echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 -d > release.keystore
           chmod +x gradlew
           ./gradlew bundleRelease --no-daemon \
@@ -40,3 +41,12 @@ jobs:
           name: mobbing-aab
           path: android/app/build/outputs/bundle/release/*.aab
           retention-days: 30
+
+      - name: Play internal test kanalına yükle
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+          packageName: com.nickdegs.mobbing
+          releaseFiles: android/app/build/outputs/bundle/release/app-release.aab
+          track: internal
+          status: completed

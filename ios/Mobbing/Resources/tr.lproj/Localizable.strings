@@ -48,3 +48,5 @@
 "notif_3" = "🔔 GM toplantı çağırdı.";
 "notif_4" = "🔔 Bir şikayet dilekçesi verildi.";
 "notif_5" = "🔔 Arşiv odasında biri ağlıyor.";
+"bribe_btn" = "Rüşvet Ver";
+"bribe_flavor" = "Zarf masanın altından kayar. Sorun ’çözülür’.";

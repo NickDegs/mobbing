@@ -55,4 +55,6 @@
         <item>🔔 Tolga \'kendi\' yeni fikrini sunuyor.</item>
         <item>🔔 Deadline az önce değişti. Yaklaştı.</item>
     </string-array>
+    <string name="bribe_btn">Rüşvet Ver</string>
+    <string name="bribe_flavor">Zarf masanın altından kayar. Sorun &#8217;çözülür&#8217;.</string>
 </resources>

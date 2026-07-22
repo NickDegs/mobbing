@@ -55,4 +55,6 @@
         <item>🔔 Tolga is presenting \'his\' new idea.</item>
         <item>🔔 The deadline just moved. Closer.</item>
     </string-array>
+    <string name="bribe_btn">Pay a Bribe</string>
+    <string name="bribe_flavor">The envelope slides under the table. The problem &#8217;resolves&#8217;.</string>
 </resources>

@@ -51,7 +51,7 @@ class GameEngine(context: Context, private val lang: String) {
 
     init {
         val json = Json { ignoreUnknownKeys = true }
-        val files = listOf("cards_core.json", "cards_ext.json")
+        val files = listOf("cards_core.json", "cards_ext.json", "cards_ext2.json")
         val cards = mutableListOf<Card>()
         for (f in files) {
             val raw = context.assets.open(f).bufferedReader().use { it.readText() }
@@ -112,6 +112,23 @@ class GameEngine(context: Context, private val lang: String) {
     }
 
     private fun clamp(x: Int) = max(0, min(100, x))
+
+    /** Rüşvet: seni bitiren göstergeyi güvenli bölgeye çeker, oyun kaldığı günden sürer. */
+    fun revive() {
+        when (ended) {
+            Ending.B0 -> meters.b = 30
+            Ending.B100 -> meters.b = 70
+            Ending.V0 -> meters.v = 30
+            Ending.V100 -> meters.v = 70
+            Ending.E0 -> meters.e = 30
+            Ending.E100 -> meters.e = 70
+            Ending.K0 -> meters.k = 30
+            Ending.K100 -> meters.k = 70
+            null -> return
+        }
+        ended = null
+        drawNext()
+    }
 
     private fun checkEnd(): Ending? = when {
         meters.b <= 0 -> Ending.B0;   meters.b >= 100 -> Ending.B100

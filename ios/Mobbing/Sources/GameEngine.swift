@@ -55,7 +55,7 @@ final class GameEngine: ObservableObject {
 
     init(lang: String) {
         self.lang = lang
-        for name in ["cards_core", "cards_ext"] {
+        for name in ["cards_core", "cards_ext", "cards_ext2"] {
             if let url = Bundle.main.url(forResource: name, withExtension: "json"),
                let data = try? Data(contentsOf: url),
                let file = try? JSONDecoder().decode(CardFile.self, from: data) {
@@ -107,6 +107,19 @@ final class GameEngine: ObservableObject {
     }
 
     private func clamp(_ x: Int) -> Int { max(0, min(100, x)) }
+
+    /// Rüşvet: seni bitiren göstergeyi güvenli bölgeye çeker, oyun kaldığı günden sürer.
+    func revive() {
+        guard let end = ended else { return }
+        switch end {
+        case .b0: meters.b = 30;  case .b100: meters.b = 70
+        case .v0: meters.v = 30;  case .v100: meters.v = 70
+        case .e0: meters.e = 30;  case .e100: meters.e = 70
+        case .k0: meters.k = 30;  case .k100: meters.k = 70
+        }
+        ended = nil
+        drawNext()
+    }
 
     private func checkEnd() -> Ending? {
         if meters.b <= 0 { return .b0 };   if meters.b >= 100 { return .b100 }

@@ -48,3 +48,5 @@
 "notif_3" = "🔔 The GM called a meeting.";
 "notif_4" = "🔔 A complaint was filed.";
 "notif_5" = "🔔 Someone is crying in the archive room.";
+"bribe_btn" = "Pay a Bribe";
+"bribe_flavor" = "The envelope slides under the table. The problem ’resolves’.";

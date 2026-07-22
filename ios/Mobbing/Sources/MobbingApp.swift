@@ -53,7 +53,9 @@ struct RootView: View {
                 }
             case .over:
                 if let e = holder.engine {
-                    OverView(engine: e) { holder.newGame(); screen = .game }
+                    OverView(engine: e,
+                             onRestart: { holder.newGame(); screen = .game },
+                             onBribe: { screen = .game })
                 }
             case .info: InfoView { screen = .menu }
             }
