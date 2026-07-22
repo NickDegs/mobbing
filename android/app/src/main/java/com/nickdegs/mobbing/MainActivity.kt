@@ -295,6 +295,7 @@ fun OverScreen(
     bribePrice: String
 ) {
     val end = e.ended ?: return
+    var showConfirm by remember { mutableStateOf(false) }
     Box(Modifier.fillMaxSize()) {
         Image(painterResource(R.drawable.gameover_bg), null,
             Modifier.fillMaxSize(), contentScale = ContentScale.Crop)
@@ -315,7 +316,7 @@ fun OverScreen(
             // 💼 Rüşvet — kaldığın yerden devam
             if (bribeAvailable) {
                 Button(
-                    onClick = onBribe,
+                    onClick = { showConfirm = true },
                     colors = ButtonDefaults.buttonColors(containerColor = IceSoft, contentColor = Navy),
                     shape = RoundedCornerShape(16.dp),
                     modifier = Modifier.fillMaxWidth(.78f).height(58.dp)
@@ -327,6 +328,31 @@ fun OverScreen(
                     }
                 }
                 Spacer(Modifier.height(10.dp))
+            }
+            if (showConfirm) {
+                val uri2 = androidx.compose.ui.platform.LocalUriHandler.current
+                AlertDialog(
+                    onDismissRequest = { showConfirm = false },
+                    containerColor = NavyPanel,
+                    confirmButton = {
+                        Button(
+                            onClick = { showConfirm = false; onBribe() },
+                            colors = ButtonDefaults.buttonColors(containerColor = IceSoft, contentColor = Navy)
+                        ) { Text(Loc.s("bribe_btn") + " — " + bribePrice, fontWeight = FontWeight.Bold) }
+                    },
+                    title = { Text("💼 " + Loc.s("bribe_btn"), color = Ink, fontWeight = FontWeight.Black) },
+                    text = {
+                        Column {
+                            Text(Loc.s("bribe_flavor"), color = Dim, fontSize = 13.sp)
+                            Spacer(Modifier.height(14.dp))
+                            Row(horizontalArrangement = Arrangement.spacedBy(14.dp)) {
+                                Text(Loc.s("privacy_link"), color = IceSoft, fontSize = 12.sp,
+                                    modifier = Modifier.clickable { uri2.openUri("https://realvirtuality.app/mobbing/privacy.html") })
+                                Text(Loc.s("terms_link"), color = IceSoft, fontSize = 12.sp,
+                                    modifier = Modifier.clickable { uri2.openUri("https://realvirtuality.app/mobbing/terms.html") })
+                            }
+                        }
+                    })
             }
             GlassButton(Loc.s("restart"), onRestart, subtle = true)
             Spacer(Modifier.height(10.dp))

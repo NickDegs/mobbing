@@ -233,6 +233,7 @@ struct OverView: View {
     let onRestart: () -> Void
     let onBribe: () -> Void
     @StateObject private var store = BribeStore()
+    @State private var showConfirm = false
 
     var body: some View {
         ZStack {
@@ -253,12 +254,7 @@ struct OverView: View {
                 // 💼 Rüşvet — kaldığın yerden devam (consumable IAP)
                 if store.product != nil {
                     Button {
-                        Task {
-                            if await store.buy() {
-                                engine.revive()
-                                onBribe()
-                            }
-                        }
+                        showConfirm = true
                     } label: {
                         VStack(spacing: 2) {
                             Text("💼 " + L("bribe_btn") + " — " + store.priceLabel)
@@ -290,6 +286,37 @@ struct OverView: View {
                 .padding(.top, 10)
             }
             .padding(36)
+        }
+        .sheet(isPresented: $showConfirm) {
+            VStack(spacing: 18) {
+                Text("💼").font(.system(size: 52))
+                Text(L("bribe_btn")).font(.system(size: 22, weight: .black))
+                    .foregroundStyle(Color.ink)
+                Text(L("bribe_flavor")).font(.system(size: 14))
+                    .foregroundStyle(Color.dim).multilineTextAlignment(.center)
+                Text(store.priceLabel).font(.system(size: 30, weight: .black))
+                    .foregroundStyle(Color.iceSoft)
+                GlassButton(label: L("bribe_btn") + " — " + store.priceLabel) {
+                    showConfirm = false
+                    Task {
+                        if await store.buy() {
+                            engine.revive()
+                            onBribe()
+                        }
+                    }
+                }
+                // Satın alma öncesi yasal linkler (App Store kuralı)
+                HStack(spacing: 16) {
+                    Link(L("privacy_link"), destination: URL(string: "https://realvirtuality.app/mobbing/privacy.html")!)
+                    Link(L("terms_link"), destination: URL(string: "https://realvirtuality.app/mobbing/terms.html")!)
+                }
+                .font(.system(size: 12))
+                .foregroundStyle(Color.iceSoft)
+            }
+            .padding(30)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.navy)
+            .presentationDetents([.medium])
         }
     }
 }
