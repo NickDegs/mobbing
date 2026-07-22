@@ -134,6 +134,9 @@ final class GameEngine: ObservableObject {
 
     private func clamp(_ x: Int) -> Int { max(0, min(100, x)) }
 
+    /// Ekran görüntüsü/test modu: belirli bir sonu zorla
+    func forceEnd(_ e: Ending) { ended = e }
+
     /// Rüşvet: seni bitiren göstergeyi güvenli bölgeye çeker, oyun kaldığı günden sürer.
     func revive() {
         guard let end = ended else { return }

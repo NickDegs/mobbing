@@ -1,0 +1,61 @@
+name: Simülatör Ekran Görüntüleri
+
+on:
+  workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  shots:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Xcode 26 seç
+        run: |
+          BEST=""
+          for VER in 26 27 16 17; do
+            MATCH=$(ls /Applications/ | grep -E "^Xcode_${VER}" | sort -V | tail -1)
+            if [ -n "$MATCH" ]; then BEST="$MATCH"; break; fi
+          done
+          [ -z "$BEST" ] && BEST=$(ls /Applications/ | grep -E "^Xcode_[0-9]" | sort -V | tail -1)
+          sudo xcode-select -s "/Applications/$BEST/Contents/Developer"
+          xcodebuild -version
+
+      - name: Simülatör için derle
+        working-directory: ios
+        run: |
+          cp ../cards/*.json Mobbing/Resources/
+          brew install xcodegen
+          xcodegen generate
+          xcodebuild -project Mobbing.xcodeproj -scheme Mobbing \
+            -sdk iphonesimulator -configuration Debug \
+            -derivedDataPath dd CODE_SIGNING_ALLOWED=NO build | tail -5
+
+      - name: Simülatörü başlat + ekran görüntüleri
+        run: |
+          # En yeni iPhone simülatörünü bul/oluştur
+          RUNTIME=$(xcrun simctl list runtimes | grep iOS | tail -1 | sed 's/.*- //')
+          DEVTYPE=$(xcrun simctl list devicetypes | grep -E "iPhone 1[6-9]( Pro Max)?" | tail -1 | grep -oE "com.apple.CoreSimulator.SimDeviceType.[^)]*")
+          echo "runtime=$RUNTIME devtype=$DEVTYPE"
+          UD=$(xcrun simctl create shotdev "$DEVTYPE" "$RUNTIME")
+          xcrun simctl boot "$UD"
+          xcrun simctl bootstatus "$UD" -b
+          APP=$(find ios/dd/Build/Products -name "*.app" | head -1)
+          xcrun simctl install "$UD" "$APP"
+          mkdir -p simshots
+          for MODE in game over confirm; do
+            xcrun simctl launch "$UD" com.nickdegs.mobbing -uiShot $MODE
+            sleep 8
+            xcrun simctl io "$UD" screenshot simshots/sim_$MODE.png
+            xcrun simctl terminate "$UD" com.nickdegs.mobbing || true
+            sleep 2
+          done
+          ls -la simshots/
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sim-screenshots
+          path: simshots/*.png
+          retention-days: 7

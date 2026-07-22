@@ -36,6 +36,15 @@ struct MobbingApp: App {
 
 enum Screen { case menu, game, over, info }
 
+/// Simülatör ekran görüntüsü modu: `-uiShot over|confirm|game`
+enum ShotMode {
+    static var mode: String? {
+        let a = ProcessInfo.processInfo.arguments
+        if let i = a.firstIndex(of: "-uiShot"), i + 1 < a.count { return a[i + 1] }
+        return nil
+    }
+}
+
 struct RootView: View {
     @State private var screen: Screen = .menu
     @State private var showLang = false
@@ -61,6 +70,16 @@ struct RootView: View {
                              onBribe: { screen = .game })
                 }
             case .info: InfoView { screen = .menu }
+            }
+        }
+        .onAppear {
+            if let m = ShotMode.mode {
+                holder.newGame()
+                if m == "game" { screen = .game }
+                else {
+                    holder.engine?.forceEnd(.b100)
+                    screen = .over
+                }
             }
         }
         .sheet(isPresented: $showLang) {

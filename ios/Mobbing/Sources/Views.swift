@@ -252,7 +252,7 @@ struct OverView: View {
                     .font(.system(size: 13)).foregroundStyle(Color.dim)
 
                 // 💼 Rüşvet — kaldığın yerden devam (consumable IAP)
-                if store.product != nil {
+                if store.product != nil || ShotMode.mode != nil {
                     Button {
                         showConfirm = true
                     } label: {
@@ -287,6 +287,9 @@ struct OverView: View {
             }
             .padding(36)
         }
+        .onAppear { if ShotMode.mode == "confirm" {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { showConfirm = true }
+        } }
         .sheet(isPresented: $showConfirm) {
             VStack(spacing: 18) {
                 Text("💼").font(.system(size: 52))
