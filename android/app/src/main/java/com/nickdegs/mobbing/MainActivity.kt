@@ -12,6 +12,8 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
@@ -190,9 +192,12 @@ fun GameScreen(e: GameEngine, onEnd: () -> Unit) {
     val screenW = LocalConfiguration.current.screenWidthDp.dp
 
     Column(Modifier.fillMaxSize().statusBarsPadding()) {
+        // Sağlık şeridi (tam genişlik) + kanıt rozeti
+        HealthBar(e.meters.h, e.evidence,
+            Modifier.fillMaxWidth().padding(horizontal = 22.dp, top = 8.dp))
         // Göstergeler
         Row(
-            Modifier.fillMaxWidth().padding(horizontal = 22.dp, vertical = 10.dp),
+            Modifier.fillMaxWidth().padding(horizontal = 22.dp, vertical = 8.dp),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             MeterView(R.drawable.m_baski, "meter_b", e.meters.b, dragX, card?.l?.fx?.get(0), card?.r?.fx?.get(0))
@@ -227,17 +232,30 @@ fun GameScreen(e: GameEngine, onEnd: () -> Unit) {
                         .clip(RoundedCornerShape(24.dp))
                         .background(Brush.verticalGradient(listOf(NavyPanel, Navy)))
                 ) {
+                    val law = e.showLawsuitOffer
                     Column(Modifier.fillMaxSize()) {
                         Box(Modifier.fillMaxWidth().weight(1.1f)) {
-                            Image(painterResource(charRes(c.ch)), null,
-                                Modifier.fillMaxSize(), contentScale = ContentScale.Crop)
-                            Text(catEmoji(c.cat) + " " + catLabel(c.cat), color = Dim, fontSize = 9.sp, letterSpacing = 2.sp,
-                                modifier = Modifier.padding(10.dp)
-                                    .background(Navy.copy(alpha = .65f), RoundedCornerShape(10.dp))
-                                    .padding(horizontal = 8.dp, vertical = 3.dp))
+                            if (law) {
+                                Box(Modifier.fillMaxSize().background(
+                                    Brush.verticalGradient(listOf(Color(0xFF1A5238), Color(0xFF0D2921)))),
+                                    contentAlignment = Alignment.Center) {
+                                    Text("⚖️", fontSize = 84.sp)
+                                }
+                                Text("⚖️ " + Loc.s("lawsuit_cat"), color = IceSoft, fontSize = 9.sp, letterSpacing = 2.sp,
+                                    modifier = Modifier.padding(10.dp)
+                                        .background(Navy.copy(alpha = .65f), RoundedCornerShape(10.dp))
+                                        .padding(horizontal = 8.dp, vertical = 3.dp))
+                            } else {
+                                Image(painterResource(charRes(c.ch)), null,
+                                    Modifier.fillMaxSize(), contentScale = ContentScale.Crop)
+                                Text(catEmoji(c.cat) + " " + catLabel(c.cat), color = Dim, fontSize = 9.sp, letterSpacing = 2.sp,
+                                    modifier = Modifier.padding(10.dp)
+                                        .background(Navy.copy(alpha = .65f), RoundedCornerShape(10.dp))
+                                        .padding(horizontal = 8.dp, vertical = 3.dp))
+                            }
                         }
                         Column(Modifier.fillMaxWidth().weight(1f).padding(16.dp)) {
-                            Text(charName(c.ch), color = IceSoft, fontSize = 12.sp,
+                            Text(if (law) Loc.s("lawsuit_head") else charName(c.ch), color = IceSoft, fontSize = 12.sp,
                                 fontWeight = FontWeight.Bold, letterSpacing = 1.5.sp)
                             Spacer(Modifier.height(6.dp))
                             Text(e.text, color = Ink, fontSize = 17.sp, lineHeight = 24.sp)
@@ -268,6 +286,36 @@ fun ChoiceTag(text: String, left: Boolean, progress: Float, modifier: Modifier) 
     ) {
         Text(text, color = accent, textAlign = TextAlign.Center,
             fontSize = 19.sp, fontWeight = FontWeight.Black, lineHeight = 26.sp)
+    }
+}
+
+@Composable
+fun HealthBar(value: Int, evidence: Int, modifier: Modifier = Modifier) {
+    val panic = value < 30
+    val barColor = when {
+        value < 30 -> Color(0xFFFF4D5E)
+        value < 55 -> Color(0xFFFFAD42)
+        else -> Color(0xFF39D98A)
+    }
+    Row(modifier, verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        Text(if (panic) "💔" else "❤️", fontSize = 15.sp)
+        Box(Modifier.weight(1f).height(8.dp).clip(RoundedCornerShape(4.dp))
+            .background(Steel.copy(alpha = .35f))) {
+            Box(Modifier.fillMaxWidth((value / 100f).coerceIn(0f, 1f)).fillMaxHeight()
+                .background(barColor, RoundedCornerShape(4.dp)))
+        }
+        if (panic) Text(Loc.s("health_panic"), color = barColor,
+            fontSize = 9.sp, fontWeight = FontWeight.Black, letterSpacing = 1.sp)
+        if (evidence > 0) Row(
+            Modifier.background(NavyPanel.copy(alpha = .9f), RoundedCornerShape(50))
+                .padding(horizontal = 7.dp, vertical = 2.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(3.dp)
+        ) {
+            Text("📁", fontSize = 11.sp)
+            Text("$evidence", color = IceSoft, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+        }
     }
 }
 
@@ -311,7 +359,10 @@ fun OverScreen(
             Modifier.fillMaxSize(), contentScale = ContentScale.Crop)
         Box(Modifier.fillMaxSize().background(Navy.copy(alpha = .55f)))
         Column(
-            Modifier.fillMaxSize().padding(36.dp),
+            Modifier.fillMaxSize()
+                .verticalScroll(rememberScrollState())
+                .padding(horizontal = 36.dp, vertical = 48.dp)
+                .statusBarsPadding().navigationBarsPadding(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
@@ -322,7 +373,40 @@ fun OverScreen(
                 lineHeight = 22.sp, textAlign = TextAlign.Center)
             Spacer(Modifier.height(12.dp))
             Text(String.format(Loc.s("lasted_fmt"), e.day), color = Dim, fontSize = 13.sp)
-            Spacer(Modifier.height(34.dp))
+
+            // İlişki özeti — kaç kişi seni sevdi / nefret etti
+            if (e.lovedCount > 0 || e.hatedCount > 0) {
+                Spacer(Modifier.height(10.dp))
+                Row(horizontalArrangement = Arrangement.spacedBy(18.dp)) {
+                    if (e.lovedCount > 0) Text("❤️ " + String.format(Loc.s("summary_loved"), e.lovedCount),
+                        color = Color(0xFF39D98A), fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
+                    if (e.hatedCount > 0) Text("⚡ " + String.format(Loc.s("summary_hated"), e.hatedCount),
+                        color = Color(0xFFFF4D5E), fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
+                }
+            }
+
+            // Gerçek karşılık — verdiğin "ezen" kararların iş hukuku karşılığı
+            val consequences = e.legalConsequences()
+            if (consequences.isNotEmpty()) {
+                Spacer(Modifier.height(12.dp))
+                Column(
+                    Modifier.fillMaxWidth(.86f)
+                        .background(NavyPanel.copy(alpha = .6f), RoundedCornerShape(12.dp))
+                        .padding(12.dp)
+                ) {
+                    Text(Loc.s("legal_intro"), color = IceSoft, fontSize = 11.sp,
+                        fontWeight = FontWeight.Bold, letterSpacing = 1.sp)
+                    Spacer(Modifier.height(5.dp))
+                    consequences.forEach { line ->
+                        Text("• $line", color = Ink, fontSize = 11.sp, lineHeight = 15.sp)
+                        Spacer(Modifier.height(2.dp))
+                    }
+                    Text(Loc.s("legal_outro"), color = Dim, fontSize = 10.sp,
+                        fontStyle = androidx.compose.ui.text.font.FontStyle.Italic)
+                }
+            }
+
+            Spacer(Modifier.height(28.dp))
             // 💼 Rüşvet — kaldığın yerden devam
             if (bribeAvailable) {
                 Button(

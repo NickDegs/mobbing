@@ -1,7 +1,7 @@
 import Foundation
 
 // ---------------------------------------------------------------------------
-// Veri modeli — cards_*.json ile aynı şema
+// Veri modeli — cards_*.json ile aynı şema (DEĞİŞMEDİ, geriye uyumlu)
 // ---------------------------------------------------------------------------
 struct LocText: Codable {
     let en: String
@@ -28,12 +28,15 @@ struct Card: Codable, Identifiable {
 
 struct CardFile: Codable { let cards: [Card] }
 
+// 5 gösterge: baskı, vicdan, ekip, kariyer, SAĞLIK (yeni)
 struct Meters {
-    var b = 50, v = 50, e = 50, k = 50
+    var b = 50, v = 50, e = 50, k = 50, h = 100
 }
 
 enum Ending: String {
     case b0, b100, v0, v100, e0, e100, k0, k100
+    case h0        // YENİ: sağlık çöküşü (tükenmişlik)
+    case lawsuit   // YENİ: dava zaferi (adalet)
 }
 
 // ---------------------------------------------------------------------------
@@ -45,6 +48,15 @@ final class GameEngine: ObservableObject {
     @Published var current: Card?
     @Published var ended: Ending?
 
+    // v2 sistemleri
+    @Published var evidence = 0                 // kanıt sayacı
+    @Published var showLawsuitOffer = false     // "dava aç?" özel kartı gösteriliyor mu
+    private(set) var relationships: [String: Int] = [:]   // karakter ilişki hafızası
+    private(set) var legalTally: [String: Int] = [:]      // kategori bazlı "ezen karar" sayısı
+    private var solidarityShield = 0            // sendika kalkanı (tur sayısı)
+    private var lawsuitOffered = false          // dava teklifi bir kez sunulsun
+    private var unionTriggered = false          // sendika olayı bir kez
+
     private let lang: String
     private var allCards: [Card] = []
     private var followupIds: Set<String> = []
@@ -53,10 +65,13 @@ final class GameEngine: ObservableObject {
     private let projects = ["Atlas", "Phoenix", "Nova", "Titan", "Orion", "Vega", "Zenith", "Delta-9"]
     private let clients = ["GlobalCorp", "Meridian AŞ", "NorthBridge", "Vertex Ltd", "OmniTrade", "BlueRock"]
 
-    // Çeviri katmanı: loc_<lang>.json → id -> {t,l,r}
+    // Çeviri katmanı
     struct LocCard: Codable { let t: String; let l: String; let r: String }
     struct LocFile: Codable { let cards: [String: LocCard] }
     private var overlay: [String: LocCard] = [:]
+
+    // Mağduriyet kategorileri (kanıt/gerçek karşılık için)
+    private let victimCats: Set<String> = ["SAG", "IZO", "ITB", "IS", "YOU"]
 
     init(lang: String) {
         self.lang = lang
@@ -77,7 +92,7 @@ final class GameEngine: ObservableObject {
         drawNext()
     }
 
-    // Gerçekçi tırmanış: kart ancak minD gününden sonra havuza girer
+    // ----- Kart havuzu -----
     private var recent: [String] = []
     private var mainPool: [Card] { allCards.filter {
         $0.minB == nil && !followupIds.contains($0.id) && ($0.minD ?? 0) <= day
@@ -92,12 +107,18 @@ final class GameEngine: ObservableObject {
         return out
     }
 
-    // Çözülmüş metinler — kart çekildiğinde BİR KEZ hesaplanır (render'da rastgelelik bug'ı önlenir)
     @Published var text = ""
     @Published var lText = ""
     @Published var rText = ""
 
     private func resolveTexts() {
+        // Dava teklifi özel kartı — koddan gelir, JSON'da yok
+        if showLawsuitOffer {
+            text = L("lawsuit_offer_t")
+            lText = L("lawsuit_offer_l")
+            rText = L("lawsuit_offer_r")
+            return
+        }
         guard let c = current else { return }
         let o = overlay[c.id]
         text = substitute(o?.t ?? c.t.get(lang))
@@ -111,6 +132,11 @@ final class GameEngine: ObservableObject {
     }
 
     private func pickNext() {
+        // Sendika olayı: ekip güçlü + oturmuş + bir kez
+        if !unionTriggered && meters.e > 65 && day > 25,
+           let u = allCards.first(where: { $0.id == "sendika" }) {
+            unionTriggered = true; current = u; return
+        }
         if !queue.isEmpty && Double.random(in: 0...1) < 0.6 {
             let id = queue.removeFirst()
             if let c = allCards.first(where: { $0.id == id }) { current = c; return }
@@ -118,7 +144,6 @@ final class GameEngine: ObservableObject {
         if meters.b >= 75 && Double.random(in: 0...1) < 0.35, let c = pressurePool.randomElement() {
             current = c; return
         }
-        // güne uygun havuzdan çek (son 12 kart tekrarlanmaz)
         let pool = mainPool.filter { !recent.contains($0.id) }
         let pick = pool.randomElement() ?? mainPool.randomElement()!
         recent.append(pick.id)
@@ -126,27 +151,69 @@ final class GameEngine: ObservableObject {
         current = pick
     }
 
+    // ----- Seçim -----
     func choose(left: Bool) {
+        // Dava teklifi ekranındaki seçim
+        if showLawsuitOffer {
+            showLawsuitOffer = false
+            if left { ended = .lawsuit }   // dava aç → adalet sonu
+            else { drawNext() }            // devam
+            return
+        }
         guard let c = current else { return }
         let ch = left ? c.l : c.r
         let fx = ch.fx.map { $0 == 0 ? 0 : $0 + Int.random(in: -2...2) }
+
         meters.b = clamp(meters.b + fx[0]); meters.v = clamp(meters.v + fx[1])
         meters.e = clamp(meters.e + fx[2]); meters.k = clamp(meters.k + fx[3])
+
+        // 2. KANIT: mağduriyet kartında direniş (baskıyı düşüren) tarafı → belge
+        if victimCats.contains(c.cat) && fx[0] < 0 { evidence += 1 }
+
+        // 3. İLİŞKİ HAFIZASI: karaktere yönelik ekip etkisi
+        if fx[2] > 0 { relationships[c.ch, default: 0] += 1 }
+        else if fx[2] < 0 { relationships[c.ch, default: 0] -= 1 }
+
+        // 4. GERÇEK KARŞILIK: "ezen" (baskı artıran) karar → kategori sayacı
+        if fx[0] > 0 && c.cat != "YOU" { legalTally[c.cat, default: 0] += 1 }
+
+        // 5. SENDİKA kalkanı: sendika kartında birlik (baskı düşür) seçilirse
+        if c.id == "sendika" && fx[0] < 0 { solidarityShield = 5; evidence += 2 }
+
         if let nx = ch.next, !queue.contains(nx) { queue.append(nx) }
         day += 1
-        // Sistem yorulmaz: balayı bitince üst yönetim baskısı her gün kendiliğinden artar
-        let creep = day < 10 ? 0 : (day < 50 ? 1 : 2)
-        meters.b = clamp(meters.b + creep)
+
+        // 1. SAĞLIK: baskı ve vicdana bağlı otomatik erime
+        var hd = 0
+        if meters.b > 65 { hd -= 3 } else if meters.b > 45 { hd -= 1 }
+        if meters.v < 25 { hd -= 2 }
+        if fx[0] < 0 && fx[2] > 0 { hd += 1 }   // insani karar = nefes
+        meters.h = clamp(meters.h + hd)
+
+        // Sistem yorulmaz: baskı creep (sendika kalkanı varsa durur)
+        if solidarityShield > 0 { solidarityShield -= 1 }
+        else {
+            let creep = day < 10 ? 0 : (day < 50 ? 1 : 2)
+            meters.b = clamp(meters.b + creep)
+        }
+
+        // 2b. Dava teklifi: yeterli kanıt bir kez sunulur
         ended = checkEnd()
-        if ended == nil { drawNext() }
+        if ended != nil { return }
+        if !lawsuitOffered && evidence >= 12 {
+            lawsuitOffered = true
+            showLawsuitOffer = true
+            resolveTexts()
+            return
+        }
+        drawNext()
     }
 
     private func clamp(_ x: Int) -> Int { max(0, min(100, x)) }
 
-    /// Ekran görüntüsü/test modu: belirli bir sonu zorla
     func forceEnd(_ e: Ending) { ended = e }
 
-    /// Rüşvet: seni bitiren göstergeyi güvenli bölgeye çeker, oyun kaldığı günden sürer.
+    /// Rüşvet: seni bitiren göstergeyi güvenli bölgeye çeker
     func revive() {
         guard let end = ended else { return }
         switch end {
@@ -154,16 +221,36 @@ final class GameEngine: ObservableObject {
         case .v0: meters.v = 30;  case .v100: meters.v = 70
         case .e0: meters.e = 30;  case .e100: meters.e = 70
         case .k0: meters.k = 30;  case .k100: meters.k = 70
+        case .h0: meters.h = 40
+        case .lawsuit: return   // adalet sonu geri alınmaz
         }
         ended = nil
         drawNext()
     }
 
     private func checkEnd() -> Ending? {
+        if meters.h <= 0 { return .h0 }
         if meters.b <= 0 { return .b0 };   if meters.b >= 100 { return .b100 }
         if meters.v <= 0 { return .v0 };   if meters.v >= 100 { return .v100 }
         if meters.e <= 0 { return .e0 };   if meters.e >= 100 { return .e100 }
         if meters.k <= 0 { return .k0 };   if meters.k >= 100 { return .k100 }
         return nil
+    }
+
+    // ----- Oyun sonu özetleri (UI için) -----
+    /// Sevilen/nefret edilen karakter sayısı
+    var lovedCount: Int { relationships.values.filter { $0 >= 3 }.count }
+    var hatedCount: Int { relationships.values.filter { $0 <= -3 }.count }
+
+    /// Gerçek karşılık satırları — verilen "ezen" kararların iş hukuku karşılığı
+    func legalConsequences() -> [String] {
+        var out: [String] = []
+        let order = ["SAG", "IZO", "ITB", "IS"]
+        for cat in order {
+            if let n = legalTally[cat], n > 0 {
+                out.append(String(format: L("legal_\(cat.lowercased())"), n))
+            }
+        }
+        return out
     }
 }

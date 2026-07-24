@@ -8,7 +8,7 @@ import kotlin.math.min
 import kotlin.random.Random
 
 // ---------------------------------------------------------------------------
-// Veri modeli — cards_*.json ile aynı şema
+// Veri modeli — cards_*.json ile aynı şema (DEĞİŞMEDİ, geriye uyumlu)
 // ---------------------------------------------------------------------------
 @Serializable data class LocText(val en: String, val tr: String? = null) {
     fun get(lang: String): String = if (lang == "tr" && tr != null) tr else en
@@ -20,14 +20,13 @@ import kotlin.random.Random
 )
 @Serializable data class CardFile(val cards: List<Card>)
 
-// ---------------------------------------------------------------------------
-// Göstergeler
-// ---------------------------------------------------------------------------
-data class Meters(var b: Int = 50, var v: Int = 50, var e: Int = 50, var k: Int = 50)
+// 5 gösterge: baskı, vicdan, ekip, kariyer, SAĞLIK (yeni)
+data class Meters(var b: Int = 50, var v: Int = 50, var e: Int = 50, var k: Int = 50, var h: Int = 100)
 
 enum class Ending(val key: String) {
     B0("end_b0"), B100("end_b100"), V0("end_v0"), V100("end_v100"),
-    E0("end_e0"), E100("end_e100"), K0("end_k0"), K100("end_k100")
+    E0("end_e0"), E100("end_e100"), K0("end_k0"), K100("end_k100"),
+    H0("end_h0"), LAWSUIT("end_lawsuit")   // YENİ: sağlık çöküşü + dava zaferi
 }
 
 // ---------------------------------------------------------------------------
@@ -44,13 +43,21 @@ class GameEngine(context: Context, private val lang: String) {
     var day = 1; private set
     var current: Card? = null; private set
 
-    // {P} proje, {C} müşteri, {X} sayı değişken havuzları
+    // v2 sistemleri
+    var evidence = 0; private set                    // kanıt sayacı
+    var showLawsuitOffer = false; private set        // "dava aç?" özel kartı
+    val relationships = mutableMapOf<String, Int>()  // karakter ilişki hafızası
+    val legalTally = mutableMapOf<String, Int>()     // kategori bazlı "ezen karar" sayısı
+    private var solidarityShield = 0
+    private var lawsuitOffered = false
+    private var unionTriggered = false
+
     private val projects = listOf("Atlas", "Phoenix", "Nova", "Titan", "Orion", "Vega", "Zenith", "Delta-9")
     private val clients = listOf("GlobalCorp", "Meridian AŞ", "NorthBridge", "Vertex Ltd", "OmniTrade", "BlueRock")
 
-    // Çeviri katmanı: assets/loc_<lang>.json → id -> {t,l,r}
-    private val overlay: Map<String, LocCard>
+    private val victimCats = setOf("SAG", "IZO", "ITB", "IS", "YOU")
 
+    private val overlay: Map<String, LocCard>
     @Serializable data class LocCard(val t: String, val l: String, val r: String)
     @Serializable data class LocFile(val cards: Map<String, LocCard> = emptyMap())
 
@@ -73,7 +80,6 @@ class GameEngine(context: Context, private val lang: String) {
         drawNext()
     }
 
-    // Gerçekçi tırmanış: kart ancak minD gününden sonra havuza girer
     private val recent = ArrayDeque<String>()
     private fun mainPool() = allCards.filter {
         it.minB == null && it.id !in followupIds && (it.minD ?: 0) <= day
@@ -85,12 +91,18 @@ class GameEngine(context: Context, private val lang: String) {
         .replace("{C}", clients[rng.nextInt(clients.size)])
         .replace("{X}", (rng.nextInt(5, 40) * 10).toString())
 
-    // Çözülmüş metinler — kart çekildiğinde BİR KEZ hesaplanır (render'da rastgelelik bug'ı önlenir)
     var text = ""; private set
     var lText = ""; private set
     var rText = ""; private set
 
     private fun resolveTexts() {
+        // Dava teklifi özel kartı — koddan gelir, JSON'da yok
+        if (showLawsuitOffer) {
+            text = Loc.s("lawsuit_offer_t")
+            lText = Loc.s("lawsuit_offer_l")
+            rText = Loc.s("lawsuit_offer_r")
+            return
+        }
         val c = current ?: return
         val o = overlay[c.id]
         text = substitute(o?.t ?: c.t.get(lang))
@@ -104,6 +116,11 @@ class GameEngine(context: Context, private val lang: String) {
     }
 
     private fun pickNext() {
+        // Sendika olayı: ekip güçlü + oturmuş + bir kez
+        if (!unionTriggered && meters.e > 65 && day > 25) {
+            val u = allCards.firstOrNull { it.id == "sendika" }
+            if (u != null) { unionTriggered = true; current = u; return }
+        }
         // 1) zincir kuyruğu öncelikli (%60)
         if (queue.isNotEmpty() && rng.nextFloat() < 0.6f) {
             val id = queue.removeFirst()
@@ -124,30 +141,69 @@ class GameEngine(context: Context, private val lang: String) {
         current = pick
     }
 
-    /** Seçim uygula. true dönerse oyun devam ediyor; false ise ended dolu. */
     var ended: Ending? = null; private set
 
+    /** Seçim uygula. true dönerse oyun devam ediyor; false ise ended/lawsuitOffer dolu. */
     fun choose(left: Boolean): Boolean {
+        // Dava teklifi ekranındaki seçim
+        if (showLawsuitOffer) {
+            showLawsuitOffer = false
+            if (left) { ended = Ending.LAWSUIT; return false }  // dava aç → adalet
+            drawNext(); return true                              // devam
+        }
         val c = current ?: return false
         val ch = if (left) c.l else c.r
-        // fx + hafif rastgele sapma (±2) → aynı kart bile her oyunda farklı hissettirir
         val fx = ch.fx.map { it + if (it != 0) rng.nextInt(-2, 3) else 0 }
+
         meters.b = clamp(meters.b + fx[0]); meters.v = clamp(meters.v + fx[1])
         meters.e = clamp(meters.e + fx[2]); meters.k = clamp(meters.k + fx[3])
+
+        // 2. KANIT: mağduriyet kartında direniş (baskıyı düşüren) tarafı → belge
+        if (c.cat in victimCats && fx[0] < 0) evidence += 1
+
+        // 3. İLİŞKİ HAFIZASI
+        if (fx[2] > 0) relationships[c.ch] = (relationships[c.ch] ?: 0) + 1
+        else if (fx[2] < 0) relationships[c.ch] = (relationships[c.ch] ?: 0) - 1
+
+        // 4. GERÇEK KARŞILIK: "ezen" karar → kategori sayacı
+        if (fx[0] > 0 && c.cat != "YOU") legalTally[c.cat] = (legalTally[c.cat] ?: 0) + 1
+
+        // 5. SENDİKA kalkanı
+        if (c.id == "sendika" && fx[0] < 0) { solidarityShield = 5; evidence += 2 }
+
         ch.next?.let { if (it !in queue) queue.addLast(it) }
         day++
-        // Sistem yorulmaz: balayı bitince üst yönetim baskısı her gün kendiliğinden artar
-        val creep = when { day < 10 -> 0; day < 50 -> 1; else -> 2 }
-        meters.b = clamp(meters.b + creep)
+
+        // 1. SAĞLIK: baskı ve vicdana bağlı otomatik erime
+        var hd = 0
+        if (meters.b > 65) hd -= 3 else if (meters.b > 45) hd -= 1
+        if (meters.v < 25) hd -= 2
+        if (fx[0] < 0 && fx[2] > 0) hd += 1
+        meters.h = clamp(meters.h + hd)
+
+        // Baskı creep (sendika kalkanı varsa durur)
+        if (solidarityShield > 0) solidarityShield--
+        else {
+            val creep = when { day < 10 -> 0; day < 50 -> 1; else -> 2 }
+            meters.b = clamp(meters.b + creep)
+        }
+
         ended = checkEnd()
         if (ended != null) return false
+
+        // 2b. Dava teklifi
+        if (!lawsuitOffered && evidence >= 12) {
+            lawsuitOffered = true
+            showLawsuitOffer = true
+            resolveTexts()
+            return true
+        }
         drawNext()
         return true
     }
 
     private fun clamp(x: Int) = max(0, min(100, x))
 
-    /** Rüşvet: seni bitiren göstergeyi güvenli bölgeye çeker, oyun kaldığı günden sürer. */
     fun revive() {
         when (ended) {
             Ending.B0 -> meters.b = 30
@@ -158,6 +214,8 @@ class GameEngine(context: Context, private val lang: String) {
             Ending.E100 -> meters.e = 70
             Ending.K0 -> meters.k = 30
             Ending.K100 -> meters.k = 70
+            Ending.H0 -> meters.h = 40
+            Ending.LAWSUIT -> return  // adalet sonu geri alınmaz
             null -> return
         }
         ended = null
@@ -165,10 +223,25 @@ class GameEngine(context: Context, private val lang: String) {
     }
 
     private fun checkEnd(): Ending? = when {
+        meters.h <= 0 -> Ending.H0
         meters.b <= 0 -> Ending.B0;   meters.b >= 100 -> Ending.B100
         meters.v <= 0 -> Ending.V0;   meters.v >= 100 -> Ending.V100
         meters.e <= 0 -> Ending.E0;   meters.e >= 100 -> Ending.E100
         meters.k <= 0 -> Ending.K0;   meters.k >= 100 -> Ending.K100
         else -> null
+    }
+
+    // ----- Oyun sonu özetleri (UI için) -----
+    val lovedCount: Int get() = relationships.values.count { it >= 3 }
+    val hatedCount: Int get() = relationships.values.count { it <= -3 }
+
+    /** Gerçek karşılık satırları */
+    fun legalConsequences(): List<String> {
+        val out = mutableListOf<String>()
+        for (cat in listOf("SAG", "IZO", "ITB", "IS")) {
+            val n = legalTally[cat] ?: 0
+            if (n > 0) out.add(String.format(Loc.s("legal_${cat.lowercase()}"), n))
+        }
+        return out
     }
 }

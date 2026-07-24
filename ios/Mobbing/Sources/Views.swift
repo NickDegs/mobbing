@@ -72,6 +72,10 @@ struct GameView: View {
 
     var body: some View {
         VStack(spacing: 0) {
+            // Sağlık şeridi (tam genişlik) + kanıt rozeti
+            HealthBar(value: engine.meters.h, evidence: engine.evidence)
+                .padding(.horizontal, 26).padding(.top, 6)
+
             // Göstergeler
             HStack {
                 MeterView(icon: "m_baski", label: "meter_b", value: engine.meters.b, fx: activeFx(0))
@@ -82,7 +86,7 @@ struct GameView: View {
                 Spacer()
                 MeterView(icon: "m_kariyer", label: "meter_k", value: engine.meters.k, fx: activeFx(3))
             }
-            .padding(.horizontal, 26).padding(.top, 8)
+            .padding(.horizontal, 26).padding(.top, 6)
 
             Text(String(format: L("day_fmt"), engine.day))
                 .font(.system(size: 12)).tracking(3)
@@ -91,12 +95,14 @@ struct GameView: View {
             GeometryReader { geo in
                 if let card = engine.current {
                     CardView(engine: engine, card: card, dragX: $dragX,
+                             lawsuit: engine.showLawsuitOffer,
                              cardW: geo.size.width * 0.94,
                              cardH: geo.size.height * 0.97) { left in
                         engine.choose(left: left)
                         if engine.ended != nil { onEnd() }
                     }
                     .frame(width: geo.size.width, height: geo.size.height)
+                    .id(engine.showLawsuitOffer ? "lawsuit" : card.id)
                 }
             }
             .padding(.top, 8)
@@ -142,11 +148,56 @@ struct MeterView: View {
     }
 }
 
+// ── Sağlık şeridi + kanıt rozeti ─────────────────────────────────────────────
+struct HealthBar: View {
+    let value: Int
+    let evidence: Int
+    private var panic: Bool { value < 30 }
+    private var barColor: Color {
+        if value < 30 { return Color(red: 1, green: 0.30, blue: 0.37) }
+        if value < 55 { return Color(red: 1, green: 0.68, blue: 0.26) }
+        return Color(red: 0.22, green: 0.85, blue: 0.54)
+    }
+
+    var body: some View {
+        HStack(spacing: 8) {
+            Image(systemName: panic ? "heart.slash.fill" : "heart.fill")
+                .font(.system(size: 15))
+                .foregroundStyle(barColor)
+                .symbolEffect(.pulse, options: panic ? .repeating : .nonRepeating, isActive: panic)
+            ZStack(alignment: .leading) {
+                GeometryReader { g in
+                    Capsule().fill(Color.steel.opacity(0.35))
+                    Capsule().fill(barColor)
+                        .frame(width: max(0, g.size.width * CGFloat(value) / 100))
+                        .animation(.easeOut(duration: 0.5), value: value)
+                }
+            }
+            .frame(height: 8)
+            if panic {
+                Text(L("health_panic"))
+                    .font(.system(size: 9, weight: .heavy)).tracking(1)
+                    .foregroundStyle(barColor)
+            }
+            if evidence > 0 {
+                HStack(spacing: 3) {
+                    Image(systemName: "folder.fill").font(.system(size: 11))
+                    Text("\(evidence)").font(.system(size: 12, weight: .bold))
+                }
+                .foregroundStyle(Color.iceSoft)
+                .padding(.horizontal, 7).padding(.vertical, 2)
+                .background(Color.navyPanel.opacity(0.9), in: Capsule())
+            }
+        }
+    }
+}
+
 // ── Kart ───────────────────────────────────────────────────────────────────
 struct CardView: View {
     @ObservedObject var engine: GameEngine
     let card: Card
     @Binding var dragX: CGFloat
+    var lawsuit: Bool = false
     var cardW: CGFloat = 350
     var cardH: CGFloat = 500
     let onChoose: (Bool) -> Void
@@ -155,17 +206,33 @@ struct CardView: View {
         ZStack {
             VStack(spacing: 0) {
                 ZStack(alignment: .topLeading) {
-                    Image("c_\(card.ch)").resizable().scaledToFill()
+                    if lawsuit {
+                        ZStack {
+                            LinearGradient(colors: [Color(red: 0.10, green: 0.32, blue: 0.22),
+                                                    Color(red: 0.05, green: 0.16, blue: 0.13)],
+                                           startPoint: .top, endPoint: .bottom)
+                            Text("⚖️").font(.system(size: 88))
+                        }
                         .frame(maxWidth: .infinity).frame(height: cardH * 0.52).clipped()
-                    Text(catEmoji(card.cat) + " " + catLabel(card.cat))
-                        .font(.system(size: 9, weight: .semibold)).tracking(2)
-                        .foregroundStyle(Color.dim)
-                        .padding(.horizontal, 8).padding(.vertical, 3)
-                        .background(Color.navy.opacity(0.65), in: RoundedRectangle(cornerRadius: 10))
-                        .padding(10)
+                        Text("⚖️ " + L("lawsuit_cat"))
+                            .font(.system(size: 9, weight: .semibold)).tracking(2)
+                            .foregroundStyle(Color.iceSoft)
+                            .padding(.horizontal, 8).padding(.vertical, 3)
+                            .background(Color.navy.opacity(0.65), in: RoundedRectangle(cornerRadius: 10))
+                            .padding(10)
+                    } else {
+                        Image("c_\(card.ch)").resizable().scaledToFill()
+                            .frame(maxWidth: .infinity).frame(height: cardH * 0.52).clipped()
+                        Text(catEmoji(card.cat) + " " + catLabel(card.cat))
+                            .font(.system(size: 9, weight: .semibold)).tracking(2)
+                            .foregroundStyle(Color.dim)
+                            .padding(.horizontal, 8).padding(.vertical, 3)
+                            .background(Color.navy.opacity(0.65), in: RoundedRectangle(cornerRadius: 10))
+                            .padding(10)
+                    }
                 }
                 VStack(alignment: .leading, spacing: 6) {
-                    Text(charName(card.ch))
+                    Text(lawsuit ? L("lawsuit_head") : charName(card.ch))
                         .font(.system(size: 12, weight: .bold)).tracking(1.5)
                         .foregroundStyle(Color.iceSoft)
                     Text(engine.text)
@@ -245,6 +312,7 @@ struct OverView: View {
         ZStack {
             Image("gameover_bg").resizable().scaledToFill().ignoresSafeArea()
             Color.navy.opacity(0.55).ignoresSafeArea()
+            ScrollView {
             VStack(spacing: 16) {
                 if let end = engine.ended {
                     Text(L("end_\(end.rawValue)_t"))
@@ -256,6 +324,44 @@ struct OverView: View {
                 }
                 Text(String(format: L("lasted_fmt"), engine.day))
                     .font(.system(size: 13)).foregroundStyle(Color.dim)
+
+                // İlişki özeti — kaç kişi seni sevdi / nefret etti
+                if engine.lovedCount > 0 || engine.hatedCount > 0 {
+                    HStack(spacing: 18) {
+                        if engine.lovedCount > 0 {
+                            Label(String(format: L("summary_loved"), engine.lovedCount), systemImage: "heart.fill")
+                                .foregroundStyle(Color(red: 0.22, green: 0.85, blue: 0.54))
+                        }
+                        if engine.hatedCount > 0 {
+                            Label(String(format: L("summary_hated"), engine.hatedCount), systemImage: "bolt.fill")
+                                .foregroundStyle(Color(red: 1, green: 0.30, blue: 0.37))
+                        }
+                    }
+                    .font(.system(size: 12, weight: .semibold))
+                }
+
+                // Gerçek karşılık — verdiğin "ezen" kararların iş hukuku karşılığı
+                let consequences = engine.legalConsequences()
+                if !consequences.isEmpty {
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text(L("legal_intro"))
+                            .font(.system(size: 11, weight: .bold)).tracking(1)
+                            .foregroundStyle(Color.iceSoft)
+                        ForEach(consequences, id: \.self) { line in
+                            Text("• " + line)
+                                .font(.system(size: 11)).lineSpacing(2)
+                                .foregroundStyle(Color.ink)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
+                        Text(L("legal_outro"))
+                            .font(.system(size: 10)).italic()
+                            .foregroundStyle(Color.dim).padding(.top, 2)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    .padding(12)
+                    .frame(maxWidth: 320, alignment: .leading)
+                    .background(Color.navyPanel.opacity(0.6), in: RoundedRectangle(cornerRadius: 12))
+                }
 
                 // 💼 Rüşvet — kaldığın yerden devam (consumable IAP)
                 if store.product != nil || ShotMode.mode != nil {
@@ -291,7 +397,9 @@ struct OverView: View {
                 .foregroundStyle(Color.dim)
                 .padding(.top, 10)
             }
+            .frame(maxWidth: .infinity, minHeight: UIScreen.main.bounds.height - 40)
             .padding(36)
+            }
         }
         .onAppear {
             if engine.day > UserDefaults.standard.integer(forKey: "best") {
