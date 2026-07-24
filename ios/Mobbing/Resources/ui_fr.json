@@ -81,5 +81,7 @@
   "legal_is": "%1$d pratiques de travail abusives — mauvaise foi, traitement injuste",
   "legal_outro": "Le harcèlement moral est un vrai délit au travail. Si tu le subis : garde des traces — et connais tes droits.",
   "summary_loved": "%1$d étaient à tes côtés",
-  "summary_hated": "%1$d se sont retournés contre toi"
+  "summary_hated": "%1$d se sont retournés contre toi",
+  "end_caught_t": "DÉMASQUÉ",
+  "end_caught_b": "L'informatique surveillait depuis le début. Ils ont trouvé les captures d'écran, les e-mails sauvegardés, les enregistrements. La sécurité t'a raccompagné en moins d'une heure — et chaque fichier réuni s'est 'volatilisé' du serveur. Pas de preuve, pas de procès. Juste un nom sur une liste noire."
 }

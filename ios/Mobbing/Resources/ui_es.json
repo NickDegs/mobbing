@@ -81,5 +81,7 @@
   "legal_is": "%1$d prácticas laborales abusivas — mala fe, trato injusto",
   "legal_outro": "El acoso laboral es un delito real. Si te está pasando: guarda pruebas — y conoce tus derechos.",
   "summary_loved": "%1$d te apoyaron",
-  "summary_hated": "%1$d se volvieron contra ti"
+  "summary_hated": "%1$d se volvieron contra ti",
+  "end_caught_t": "TE PILLARON",
+  "end_caught_b": "Sistemas vigilaba desde el principio. Encontraron las capturas, los correos guardados, las grabaciones. Seguridad te sacó en menos de una hora — y cada archivo que reuniste 'desapareció' del servidor. Sin pruebas, sin caso. Solo un nombre en una lista negra."
 }

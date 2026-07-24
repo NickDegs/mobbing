@@ -37,6 +37,7 @@ enum Ending: String {
     case b0, b100, v0, v100, e0, e100, k0, k100
     case h0        // YENİ: sağlık çöküşü (tükenmişlik)
     case lawsuit   // YENİ: dava zaferi (adalet)
+    case caught    // YENİ: kanıt toplarken yakalandın (mahvoldun)
 }
 
 // ---------------------------------------------------------------------------
@@ -169,11 +170,23 @@ final class GameEngine: ObservableObject {
 
         // 2. KANIT: mağduriyet kartında direniş → belge. AĞIRLIKLI: sıradan direniş az,
         //    nitelikli/ağır ihlal (sağlık, sistematik) çok değer. Firma büyük — küçük kanıt yetmez.
+        //    RİSKLİ: firma seni izliyor. Kanıt biriktikçe iz artar, yakalanabilirsin.
         if victimCats.contains(c.cat) && fx[0] < 0 {
-            var w = evidenceWeight(c.cat)
-            if meters.e > 60 { w += 1 }                // yanında tanıklar var
-            if fx[0] <= -4 { w += 1 }                  // güçlü, net bir karşı koyuş
-            evidence += w
+            let riskP = 0.015 + Double(evidence) * 0.0015
+            if Double.random(in: 0...1) < riskP {
+                meters.b = clamp(meters.b + 15)        // gözetim/şüphe → baskı sıçraması
+                if evidence >= 30 && Double.random(in: 0...1) < 0.3 {
+                    evidence = 0
+                    ended = .caught                    // yakalandın → belgeler imha, mahvoldun
+                    return
+                }
+                evidence /= 2                          // belgelerinin bir kısmı ele geçti
+            } else {
+                var w = evidenceWeight(c.cat)
+                if meters.e > 60 { w += 1 }            // yanında tanıklar var
+                if fx[0] <= -4 { w += 1 }             // güçlü, net bir karşı koyuş
+                evidence += w
+            }
         }
 
         // 3. İLİŞKİ HAFIZASI: karaktere yönelik ekip etkisi
@@ -211,7 +224,7 @@ final class GameEngine: ObservableObject {
         if ended != nil { return }
         // Büyük firma: dava eşiği yüksek ve gün geçtikçe daha da yükselir (firma avukatları güçlenir).
         // Ancak yeterince AĞIR ve NİTELİKLİ kanıt biriktirdiysen teklif gelir — kazanacağın davadır.
-        let threshold = max(lawsuitFloor, 55 + day / 3)
+        let threshold = max(lawsuitFloor, 45 + day / 3)
         if evidence >= threshold {
             showLawsuitOffer = true
             resolveTexts()
@@ -242,6 +255,7 @@ final class GameEngine: ObservableObject {
         case .e0: meters.e = 30;  case .e100: meters.e = 70
         case .k0: meters.k = 30;  case .k100: meters.k = 70
         case .h0: meters.h = 40
+        case .caught: meters.b = 45; evidence = 0   // rüşvetle kovulmaktan döndün, kanıt yok
         case .lawsuit: return   // adalet sonu geri alınmaz
         }
         ended = nil

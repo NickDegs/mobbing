@@ -26,7 +26,8 @@ data class Meters(var b: Int = 50, var v: Int = 50, var e: Int = 50, var k: Int 
 enum class Ending(val key: String) {
     B0("end_b0"), B100("end_b100"), V0("end_v0"), V100("end_v100"),
     E0("end_e0"), E100("end_e100"), K0("end_k0"), K100("end_k100"),
-    H0("end_h0"), LAWSUIT("end_lawsuit")   // YENİ: sağlık çöküşü + dava zaferi
+    H0("end_h0"), LAWSUIT("end_lawsuit"),  // YENİ: sağlık çöküşü + dava zaferi
+    CAUGHT("end_caught")                    // YENİ: kanıt toplarken yakalandın (mahvoldun)
 }
 
 // ---------------------------------------------------------------------------
@@ -160,11 +161,23 @@ class GameEngine(context: Context, private val lang: String) {
 
         // 2. KANIT: mağduriyet kartında direniş → belge. AĞIRLIKLI: sıradan direniş az,
         //    nitelikli/ağır ihlal (sağlık, sistematik) çok değer. Firma büyük — küçük kanıt yetmez.
+        //    RİSKLİ: firma seni izliyor. Kanıt biriktikçe iz artar, yakalanabilirsin.
         if (c.cat in victimCats && fx[0] < 0) {
-            var w = evidenceWeight(c.cat)
-            if (meters.e > 60) w += 1                 // yanında tanıklar var
-            if (fx[0] <= -4) w += 1                    // güçlü, net bir karşı koyuş
-            evidence += w
+            val riskP = 0.015 + evidence * 0.0015
+            if (rng.nextDouble() < riskP) {
+                meters.b = clamp(meters.b + 15)        // gözetim/şüphe → baskı sıçraması
+                if (evidence >= 30 && rng.nextDouble() < 0.3) {
+                    evidence = 0
+                    ended = Ending.CAUGHT              // yakalandın → belgeler imha, mahvoldun
+                    return false
+                }
+                evidence /= 2                          // belgelerinin bir kısmı ele geçti
+            } else {
+                var w = evidenceWeight(c.cat)
+                if (meters.e > 60) w += 1              // yanında tanıklar var
+                if (fx[0] <= -4) w += 1                // güçlü, net bir karşı koyuş
+                evidence += w
+            }
         }
 
         // 3. İLİŞKİ HAFIZASI
@@ -201,7 +214,7 @@ class GameEngine(context: Context, private val lang: String) {
 
         // 2b. Dava teklifi: büyük firma — eşik yüksek ve gün geçtikçe daha da yükselir.
         //     Ancak yeterince AĞIR ve NİTELİKLİ kanıt biriktirdiysen teklif gelir → kazanacağın davadır.
-        val threshold = maxOf(lawsuitFloor, 55 + day / 3)
+        val threshold = maxOf(lawsuitFloor, 45 + day / 3)
         if (evidence >= threshold) {
             showLawsuitOffer = true
             resolveTexts()
@@ -231,6 +244,7 @@ class GameEngine(context: Context, private val lang: String) {
             Ending.K0 -> meters.k = 30
             Ending.K100 -> meters.k = 70
             Ending.H0 -> meters.h = 40
+            Ending.CAUGHT -> meters.b = 45   // rüşvetle kovulmaktan döndün, kanıt yok
             Ending.LAWSUIT -> return  // adalet sonu geri alınmaz
             null -> return
         }

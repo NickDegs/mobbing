@@ -307,14 +307,20 @@ fun HealthBar(value: Int, evidence: Int, modifier: Modifier = Modifier) {
         }
         if (panic) Text(Loc.s("health_panic"), color = barColor,
             fontSize = 9.sp, fontWeight = FontWeight.Black, letterSpacing = 1.sp)
-        if (evidence > 0) Row(
-            Modifier.background(NavyPanel.copy(alpha = .9f), RoundedCornerShape(50))
-                .padding(horizontal = 7.dp, vertical = 2.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(3.dp)
-        ) {
-            Text("📁", fontSize = 11.sp)
-            Text("$evidence", color = IceSoft, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+        if (evidence > 0) {
+            // Kanıt biriktikçe iz bırakırsın — rozet risk rengine döner
+            val risky = evidence >= 25
+            val badge = if (risky) Color(0xFFFF8C4D) else IceSoft
+            Row(
+                Modifier.background(NavyPanel.copy(alpha = .9f), RoundedCornerShape(50))
+                    .then(if (risky) Modifier.border(1.dp, Color(0xFFFF734D).copy(alpha = .7f), RoundedCornerShape(50)) else Modifier)
+                    .padding(horizontal = 7.dp, vertical = 2.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(3.dp)
+            ) {
+                Text(if (risky) "🕵️" else "📁", fontSize = 11.sp)
+                Text("$evidence", color = badge, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+            }
         }
     }
 }

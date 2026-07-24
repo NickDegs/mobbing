@@ -81,5 +81,7 @@
   "legal_is": "%1$d nadużyć w pracy — zła wiara, niesprawiedliwe traktowanie",
   "legal_outro": "Mobbing to realne przestępstwo w miejscu pracy. Jeśli cię to spotyka: dokumentuj — i znaj swoje prawa.",
   "summary_loved": "%1$d stanęło po twojej stronie",
-  "summary_hated": "%1$d obróciło się przeciw tobie"
+  "summary_hated": "%1$d obróciło się przeciw tobie",
+  "end_caught_t": "PRZYŁAPANY",
+  "end_caught_b": "IT obserwował od początku. Znaleźli zrzuty ekranu, zapisane e-maile, nagrania. Ochrona wyprowadziła cię w godzinę — a każdy zebrany plik 'zniknął' z serwera. Bez dowodów, bez sprawy. Tylko nazwisko na czarnej liście."
 }

@@ -81,5 +81,7 @@
   "legal_is": "%1$d práticas de trabalho abusivas — má-fé, tratamento injusto",
   "legal_outro": "Assédio moral é um crime real no trabalho. Se está a acontecer contigo: guarda registros — e conhece teus direitos.",
   "summary_loved": "%1$d ficaram ao teu lado",
-  "summary_hated": "%1$d viraram contra ti"
+  "summary_hated": "%1$d viraram contra ti",
+  "end_caught_t": "APANHADO",
+  "end_caught_b": "A TI vigiava desde o início. Encontraram as capturas de tela, os e-mails guardados, as gravações. A segurança te pôs para fora em uma hora — e cada arquivo que reuniste 'sumiu' do servidor. Sem provas, sem processo. Só um nome numa lista negra."
 }

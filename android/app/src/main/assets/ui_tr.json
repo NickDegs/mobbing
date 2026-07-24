@@ -81,5 +81,7 @@
   "legal_is": "%1$d kötüniyetli iş uygulaması — dürüstlük kuralına aykırı davranış",
   "legal_outro": "Mobbing gerçek bir işyeri suçudur. Sana da oluyorsa: kayıt tut ve haklarını bil.",
   "summary_loved": "%1$d kişi arkanda durdu",
-  "summary_hated": "%1$d kişi sana sırt çevirdi"
+  "summary_hated": "%1$d kişi sana sırt çevirdi",
+  "end_caught_t": "YAKALANDIN",
+  "end_caught_b": "Bilgi işlem baştan beri izliyormuş. Ekran görüntülerini, sakladığın e-postaları, kayıtları buldular. Bir saat içinde güvenlik seni kapıya koydu — topladığın her dosya sunucudan 'kayboldu'. Kanıt yok, dava yok. Sadece kara listede bir isim."
 }

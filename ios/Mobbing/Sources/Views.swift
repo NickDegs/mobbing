@@ -180,13 +180,17 @@ struct HealthBar: View {
                     .foregroundStyle(barColor)
             }
             if evidence > 0 {
+                // Kanıt biriktikçe iz bırakırsın — rozet risk rengine döner
+                let risky = evidence >= 25
                 HStack(spacing: 3) {
-                    Image(systemName: "folder.fill").font(.system(size: 11))
+                    Image(systemName: risky ? "folder.fill.badge.person.crop" : "folder.fill")
+                        .font(.system(size: 11))
                     Text("\(evidence)").font(.system(size: 12, weight: .bold))
                 }
-                .foregroundStyle(Color.iceSoft)
+                .foregroundStyle(risky ? Color(red: 1, green: 0.55, blue: 0.30) : Color.iceSoft)
                 .padding(.horizontal, 7).padding(.vertical, 2)
                 .background(Color.navyPanel.opacity(0.9), in: Capsule())
+                .overlay(Capsule().stroke(risky ? Color(red: 1, green: 0.45, blue: 0.30).opacity(0.7) : .clear, lineWidth: 1))
             }
         }
     }

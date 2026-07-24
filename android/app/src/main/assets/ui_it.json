@@ -81,5 +81,7 @@
   "legal_is": "%1$d pratiche lavorative abusive — malafede, trattamento ingiusto",
   "legal_outro": "Il mobbing è un vero illecito sul lavoro. Se sta capitando a te: conserva le prove — e conosci i tuoi diritti.",
   "summary_loved": "%1$d ti sono stati vicini",
-  "summary_hated": "%1$d si sono rivoltati contro di te"
+  "summary_hated": "%1$d si sono rivoltati contro di te",
+  "end_caught_t": "SCOPERTO",
+  "end_caught_b": "L'IT osservava fin dall'inizio. Hanno trovato gli screenshot, le e-mail salvate, le registrazioni. La sicurezza ti ha accompagnato fuori entro un'ora — e ogni file che avevi raccolto è 'sparito' dal server. Niente prove, niente causa. Solo un nome su una lista nera."
 }

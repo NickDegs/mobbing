@@ -81,5 +81,7 @@
   "legal_is": "%1$d abusive work practices — bad-faith conduct, unjust treatment",
   "legal_outro": "Mobbing is a real workplace offense. If it's happening to you, keep records — and know your rights.",
   "summary_loved": "%1$d stood by you",
-  "summary_hated": "%1$d turned against you"
+  "summary_hated": "%1$d turned against you",
+  "end_caught_t": "CAUGHT",
+  "end_caught_b": "IT was watching all along. They found the screenshots, the saved emails, the recordings. Security walked you out within the hour — and every file you'd gathered vanished from the server. No evidence, no case. Just a name on a blacklist."
 }
