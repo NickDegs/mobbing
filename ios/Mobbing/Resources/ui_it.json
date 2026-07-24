@@ -83,5 +83,6 @@
   "summary_loved": "%1$d ti sono stati vicini",
   "summary_hated": "%1$d si sono rivoltati contro di te",
   "end_caught_t": "SCOPERTO",
-  "end_caught_b": "L'IT osservava fin dall'inizio. Hanno trovato gli screenshot, le e-mail salvate, le registrazioni. La sicurezza ti ha accompagnato fuori entro un'ora — e ogni file che avevi raccolto è 'sparito' dal server. Niente prove, niente causa. Solo un nome su una lista nera."
+  "end_caught_b": "L'IT osservava fin dall'inizio. Hanno trovato gli screenshot, le e-mail salvate, le registrazioni. La sicurezza ti ha accompagnato fuori entro un'ora — e ogni file che avevi raccolto è 'sparito' dal server. Niente prove, niente causa. Solo un nome su una lista nera.",
+  "end_advice": "Questo era un gioco. Se per te è reale — non te lo stai immaginando, e non sei solo. Annota ciò che accade, con le date. Conservalo al sicuro. Parlane con una persona di cui ti fidi. Conosci i tuoi diritti. La ruota è reale — ma lo sei anche tu."
 }

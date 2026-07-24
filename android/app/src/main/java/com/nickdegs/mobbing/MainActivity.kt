@@ -412,6 +412,15 @@ fun OverScreen(
                 }
             }
 
+            // Her oyun sonunda: gerçek hayat için samimi tavsiye notu
+            Spacer(Modifier.height(16.dp))
+            Text(Loc.s("end_advice"), color = IceSoft, fontSize = 12.sp,
+                lineHeight = 17.sp, textAlign = TextAlign.Center,
+                fontStyle = androidx.compose.ui.text.font.FontStyle.Italic,
+                modifier = Modifier.fillMaxWidth(.86f)
+                    .border(1.dp, IceSoft.copy(alpha = .3f), RoundedCornerShape(12.dp))
+                    .padding(horizontal = 10.dp, vertical = 12.dp))
+
             Spacer(Modifier.height(28.dp))
             // 💼 Rüşvet — kaldığın yerden devam
             if (bribeAvailable) {

@@ -83,5 +83,6 @@
   "summary_loved": "%1$d kişi arkanda durdu",
   "summary_hated": "%1$d kişi sana sırt çevirdi",
   "end_caught_t": "YAKALANDIN",
-  "end_caught_b": "Bilgi işlem baştan beri izliyormuş. Ekran görüntülerini, sakladığın e-postaları, kayıtları buldular. Bir saat içinde güvenlik seni kapıya koydu — topladığın her dosya sunucudan 'kayboldu'. Kanıt yok, dava yok. Sadece kara listede bir isim."
+  "end_caught_b": "Bilgi işlem baştan beri izliyormuş. Ekran görüntülerini, sakladığın e-postaları, kayıtları buldular. Bir saat içinde güvenlik seni kapıya koydu — topladığın her dosya sunucudan 'kayboldu'. Kanıt yok, dava yok. Sadece kara listede bir isim.",
+  "end_advice": "Bu bir oyundu. Ama senin için gerçekse — kafanda kurmuyorsun ve yalnız değilsin. Yaşadıklarını tarihiyle yaz. Güvenli bir yerde sakla. Güvendiğin bir kişiye anlat. Haklarını öğren. Çark gerçek — ama sen de gerçeksin."
 }

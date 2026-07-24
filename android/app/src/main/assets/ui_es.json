@@ -83,5 +83,6 @@
   "summary_loved": "%1$d te apoyaron",
   "summary_hated": "%1$d se volvieron contra ti",
   "end_caught_t": "TE PILLARON",
-  "end_caught_b": "Sistemas vigilaba desde el principio. Encontraron las capturas, los correos guardados, las grabaciones. Seguridad te sacó en menos de una hora — y cada archivo que reuniste 'desapareció' del servidor. Sin pruebas, sin caso. Solo un nombre en una lista negra."
+  "end_caught_b": "Sistemas vigilaba desde el principio. Encontraron las capturas, los correos guardados, las grabaciones. Seguridad te sacó en menos de una hora — y cada archivo que reuniste 'desapareció' del servidor. Sin pruebas, sin caso. Solo un nombre en una lista negra.",
+  "end_advice": "Esto era un juego. Si para ti es real — no te lo estás imaginando, y no estás solo. Anota lo que pasa, con fechas. Guárdalo en un lugar seguro. Cuéntaselo a alguien de confianza. Conoce tus derechos. La rueda es real — pero tú también."
 }

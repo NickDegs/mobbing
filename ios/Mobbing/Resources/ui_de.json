@@ -83,5 +83,6 @@
   "summary_loved": "%1$d hielten zu dir",
   "summary_hated": "%1$d wandten sich gegen dich",
   "end_caught_t": "ERWISCHT",
-  "end_caught_b": "Die IT hat die ganze Zeit zugesehen. Sie fanden die Screenshots, die gespeicherten E-Mails, die Aufnahmen. Der Sicherheitsdienst begleitete dich binnen einer Stunde hinaus — und jede Datei, die du gesammelt hattest, verschwand vom Server. Keine Beweise, kein Fall. Nur ein Name auf einer schwarzen Liste."
+  "end_caught_b": "Die IT hat die ganze Zeit zugesehen. Sie fanden die Screenshots, die gespeicherten E-Mails, die Aufnahmen. Der Sicherheitsdienst begleitete dich binnen einer Stunde hinaus — und jede Datei, die du gesammelt hattest, verschwand vom Server. Keine Beweise, kein Fall. Nur ein Name auf einer schwarzen Liste.",
+  "end_advice": "Das war ein Spiel. Wenn es für dich real ist — du bildest es dir nicht ein, und du bist nicht allein. Schreib auf, was passiert, mit Datum. Bewahr es sicher auf. Erzähl es einer Person, der du vertraust. Kenne deine Rechte. Das Rad ist real — aber du auch."
 }

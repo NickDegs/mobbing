@@ -367,6 +367,15 @@ struct OverView: View {
                     .background(Color.navyPanel.opacity(0.6), in: RoundedRectangle(cornerRadius: 12))
                 }
 
+                // Her oyun sonunda: gerçek hayat için samimi tavsiye notu
+                Text(L("end_advice"))
+                    .font(.system(size: 12)).italic().lineSpacing(4)
+                    .foregroundStyle(Color.iceSoft).multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.horizontal, 10).padding(.vertical, 12)
+                    .frame(maxWidth: 330)
+                    .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color.iceSoft.opacity(0.3), lineWidth: 1))
+
                 // 💼 Rüşvet — kaldığın yerden devam (consumable IAP)
                 if store.product != nil || ShotMode.mode != nil {
                     Button {
