@@ -194,7 +194,7 @@ fun GameScreen(e: GameEngine, onEnd: () -> Unit) {
     Column(Modifier.fillMaxSize().statusBarsPadding()) {
         // Sağlık şeridi (tam genişlik) + kanıt rozeti
         HealthBar(e.meters.h, e.evidence,
-            Modifier.fillMaxWidth().padding(horizontal = 22.dp, top = 8.dp))
+            Modifier.fillMaxWidth().padding(start = 22.dp, end = 22.dp, top = 8.dp))
         // Göstergeler
         Row(
             Modifier.fillMaxWidth().padding(horizontal = 22.dp, vertical = 8.dp),

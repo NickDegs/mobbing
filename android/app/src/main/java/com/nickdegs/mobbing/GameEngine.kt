@@ -49,7 +49,7 @@ class GameEngine(context: Context, private val lang: String) {
     val relationships = mutableMapOf<String, Int>()  // karakter ilişki hafızası
     val legalTally = mutableMapOf<String, Int>()     // kategori bazlı "ezen karar" sayısı
     private var solidarityShield = 0
-    private var lawsuitOffered = false
+    private var lawsuitFloor = 0
     private var unionTriggered = false
 
     private val projects = listOf("Atlas", "Phoenix", "Nova", "Titan", "Orion", "Vega", "Zenith", "Delta-9")
@@ -148,8 +148,8 @@ class GameEngine(context: Context, private val lang: String) {
         // Dava teklifi ekranındaki seçim
         if (showLawsuitOffer) {
             showLawsuitOffer = false
-            if (left) { ended = Ending.LAWSUIT; return false }  // dava aç → adalet
-            drawNext(); return true                              // devam
+            if (left) { ended = Ending.LAWSUIT; return false }        // dava aç → adalet (kanıt sağlam)
+            lawsuitFloor = evidence + 8; drawNext(); return true      // devam: daha çok kanıt topla
         }
         val c = current ?: return false
         val ch = if (left) c.l else c.r
@@ -158,8 +158,14 @@ class GameEngine(context: Context, private val lang: String) {
         meters.b = clamp(meters.b + fx[0]); meters.v = clamp(meters.v + fx[1])
         meters.e = clamp(meters.e + fx[2]); meters.k = clamp(meters.k + fx[3])
 
-        // 2. KANIT: mağduriyet kartında direniş (baskıyı düşüren) tarafı → belge
-        if (c.cat in victimCats && fx[0] < 0) evidence += 1
+        // 2. KANIT: mağduriyet kartında direniş → belge. AĞIRLIKLI: sıradan direniş az,
+        //    nitelikli/ağır ihlal (sağlık, sistematik) çok değer. Firma büyük — küçük kanıt yetmez.
+        if (c.cat in victimCats && fx[0] < 0) {
+            var w = evidenceWeight(c.cat)
+            if (meters.e > 60) w += 1                 // yanında tanıklar var
+            if (fx[0] <= -4) w += 1                    // güçlü, net bir karşı koyuş
+            evidence += w
+        }
 
         // 3. İLİŞKİ HAFIZASI
         if (fx[2] > 0) relationships[c.ch] = (relationships[c.ch] ?: 0) + 1
@@ -168,32 +174,35 @@ class GameEngine(context: Context, private val lang: String) {
         // 4. GERÇEK KARŞILIK: "ezen" karar → kategori sayacı
         if (fx[0] > 0 && c.cat != "YOU") legalTally[c.cat] = (legalTally[c.cat] ?: 0) + 1
 
-        // 5. SENDİKA kalkanı
-        if (c.id == "sendika" && fx[0] < 0) { solidarityShield = 5; evidence += 2 }
+        // 5. SENDİKA kalkanı → güçlü toplu kanıt
+        if (c.id == "sendika" && fx[0] < 0) { solidarityShield = 5; evidence += 4 }
 
         ch.next?.let { if (it !in queue) queue.addLast(it) }
         day++
 
-        // 1. SAĞLIK: baskı ve vicdana bağlı otomatik erime
+        // 1. SAĞLIK: gün geçtikçe beden daha az dayanır
+        val worn = day > 30
         var hd = 0
-        if (meters.b > 65) hd -= 3 else if (meters.b > 45) hd -= 1
+        if (meters.b > (if (worn) 55 else 65)) hd -= 3 else if (meters.b > 45) hd -= 1
         if (meters.v < 25) hd -= 2
+        if (day > 45) hd -= 1                          // kronik yorgunluk
         if (fx[0] < 0 && fx[2] > 0) hd += 1
         meters.h = clamp(meters.h + hd)
 
-        // Baskı creep (sendika kalkanı varsa durur)
+        // Baskı creep gün geçtikçe hızlanır (sendika kalkanı varsa durur)
         if (solidarityShield > 0) solidarityShield--
         else {
-            val creep = when { day < 10 -> 0; day < 50 -> 1; else -> 2 }
+            val creep = when { day < 7 -> 0; day < 18 -> 1; day < 35 -> 2; else -> 3 }
             meters.b = clamp(meters.b + creep)
         }
 
         ended = checkEnd()
         if (ended != null) return false
 
-        // 2b. Dava teklifi
-        if (!lawsuitOffered && evidence >= 12) {
-            lawsuitOffered = true
+        // 2b. Dava teklifi: büyük firma — eşik yüksek ve gün geçtikçe daha da yükselir.
+        //     Ancak yeterince AĞIR ve NİTELİKLİ kanıt biriktirdiysen teklif gelir → kazanacağın davadır.
+        val threshold = maxOf(lawsuitFloor, 55 + day / 3)
+        if (evidence >= threshold) {
             showLawsuitOffer = true
             resolveTexts()
             return true
@@ -203,6 +212,13 @@ class GameEngine(context: Context, private val lang: String) {
     }
 
     private fun clamp(x: Int) = max(0, min(100, x))
+
+    /** Kanıtın ağırlığı — hangi ihlal türü mahkemede ne kadar ağır basar */
+    private fun evidenceWeight(cat: String): Int = when (cat) {
+        "SAG" -> 3                    // sağlık ihlali / rapor reddi — en ağır belge
+        "IS", "IZO", "ITB" -> 2
+        else -> 1                     // YOU — tek başına zayıf
+    }
 
     fun revive() {
         when (ended) {

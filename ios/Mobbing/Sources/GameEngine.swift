@@ -54,7 +54,7 @@ final class GameEngine: ObservableObject {
     private(set) var relationships: [String: Int] = [:]   // karakter ilişki hafızası
     private(set) var legalTally: [String: Int] = [:]      // kategori bazlı "ezen karar" sayısı
     private var solidarityShield = 0            // sendika kalkanı (tur sayısı)
-    private var lawsuitOffered = false          // dava teklifi bir kez sunulsun
+    private var lawsuitFloor = 0                 // dava teklifi eşik tabanı (reddedilince yükselir)
     private var unionTriggered = false          // sendika olayı bir kez
 
     private let lang: String
@@ -156,8 +156,8 @@ final class GameEngine: ObservableObject {
         // Dava teklifi ekranındaki seçim
         if showLawsuitOffer {
             showLawsuitOffer = false
-            if left { ended = .lawsuit }   // dava aç → adalet sonu
-            else { drawNext() }            // devam
+            if left { ended = .lawsuit }               // dava aç → adalet sonu (kanıt yeterince güçlü)
+            else { lawsuitFloor = evidence + 8; drawNext() }  // devam: dava için daha çok kanıt topla
             return
         }
         guard let c = current else { return }
@@ -167,8 +167,14 @@ final class GameEngine: ObservableObject {
         meters.b = clamp(meters.b + fx[0]); meters.v = clamp(meters.v + fx[1])
         meters.e = clamp(meters.e + fx[2]); meters.k = clamp(meters.k + fx[3])
 
-        // 2. KANIT: mağduriyet kartında direniş (baskıyı düşüren) tarafı → belge
-        if victimCats.contains(c.cat) && fx[0] < 0 { evidence += 1 }
+        // 2. KANIT: mağduriyet kartında direniş → belge. AĞIRLIKLI: sıradan direniş az,
+        //    nitelikli/ağır ihlal (sağlık, sistematik) çok değer. Firma büyük — küçük kanıt yetmez.
+        if victimCats.contains(c.cat) && fx[0] < 0 {
+            var w = evidenceWeight(c.cat)
+            if meters.e > 60 { w += 1 }                // yanında tanıklar var
+            if fx[0] <= -4 { w += 1 }                  // güçlü, net bir karşı koyuş
+            evidence += w
+        }
 
         // 3. İLİŞKİ HAFIZASI: karaktere yönelik ekip etkisi
         if fx[2] > 0 { relationships[c.ch, default: 0] += 1 }
@@ -177,31 +183,36 @@ final class GameEngine: ObservableObject {
         // 4. GERÇEK KARŞILIK: "ezen" (baskı artıran) karar → kategori sayacı
         if fx[0] > 0 && c.cat != "YOU" { legalTally[c.cat, default: 0] += 1 }
 
-        // 5. SENDİKA kalkanı: sendika kartında birlik (baskı düşür) seçilirse
-        if c.id == "sendika" && fx[0] < 0 { solidarityShield = 5; evidence += 2 }
+        // 5. SENDİKA kalkanı: sendika kartında birlik (baskı düşür) seçilirse → güçlü toplu kanıt
+        if c.id == "sendika" && fx[0] < 0 { solidarityShield = 5; evidence += 4 }
 
         if let nx = ch.next, !queue.contains(nx) { queue.append(nx) }
         day += 1
 
-        // 1. SAĞLIK: baskı ve vicdana bağlı otomatik erime
+        // 1. SAĞLIK: baskı ve vicdana bağlı otomatik erime — gün geçtikçe beden daha az dayanır
+        let worn = day > 30                            // uzun süre = yıpranmış eşik
         var hd = 0
-        if meters.b > 65 { hd -= 3 } else if meters.b > 45 { hd -= 1 }
+        if meters.b > (worn ? 55 : 65) { hd -= 3 } else if meters.b > 45 { hd -= 1 }
         if meters.v < 25 { hd -= 2 }
-        if fx[0] < 0 && fx[2] > 0 { hd += 1 }   // insani karar = nefes
+        if day > 45 { hd -= 1 }                        // kronik yorgunluk
+        if fx[0] < 0 && fx[2] > 0 { hd += 1 }          // insani karar = nefes
         meters.h = clamp(meters.h + hd)
 
-        // Sistem yorulmaz: baskı creep (sendika kalkanı varsa durur)
+        // Sistem yorulmaz: baskı creep gün geçtikçe hızlanır (sendika kalkanı varsa durur)
         if solidarityShield > 0 { solidarityShield -= 1 }
         else {
-            let creep = day < 10 ? 0 : (day < 50 ? 1 : 2)
+            let creep = day < 7 ? 0 : (day < 18 ? 1 : (day < 35 ? 2 : 3))
             meters.b = clamp(meters.b + creep)
         }
 
-        // 2b. Dava teklifi: yeterli kanıt bir kez sunulur
+        // 2b. Dava teklifi: eşik gün geçtikçe yükselir (firma avukatları güçlenir).
+        //     Ancak yeterince SAĞLAM kanıt biriktirdiysen teklif gelir → kazanacağın davadır.
         ended = checkEnd()
         if ended != nil { return }
-        if !lawsuitOffered && evidence >= 12 {
-            lawsuitOffered = true
+        // Büyük firma: dava eşiği yüksek ve gün geçtikçe daha da yükselir (firma avukatları güçlenir).
+        // Ancak yeterince AĞIR ve NİTELİKLİ kanıt biriktirdiysen teklif gelir — kazanacağın davadır.
+        let threshold = max(lawsuitFloor, 55 + day / 3)
+        if evidence >= threshold {
             showLawsuitOffer = true
             resolveTexts()
             return
@@ -210,6 +221,15 @@ final class GameEngine: ObservableObject {
     }
 
     private func clamp(_ x: Int) -> Int { max(0, min(100, x)) }
+
+    /// Kanıtın ağırlığı — hangi ihlal türü mahkemede ne kadar ağır basar
+    private func evidenceWeight(_ cat: String) -> Int {
+        switch cat {
+        case "SAG": return 3          // sağlık ihlali / rapor reddi — en ağır belge
+        case "IS", "IZO", "ITB": return 2
+        default: return 1             // YOU (sana yönelik) — tek başına zayıf
+        }
+    }
 
     func forceEnd(_ e: Ending) { ended = e }
 
