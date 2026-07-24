@@ -1,0 +1,40 @@
+APP REVIEW NOTES — MOBBING v1.1.0
+
+Dear Review Team,
+
+This is a content/gameplay update to an already-approved app (v1.0.0). No new
+data is collected, the app remains fully offline, has no ads, and no account
+or login is required.
+
+WHAT CHANGED IN THIS UPDATE
+• A new "Health" stat and a burnout ending were added.
+• An "evidence & lawsuit" system: the player can gather in-game proof against
+  the fictional company and, if strong enough, pursue a fictional court case.
+  Collecting evidence carries an in-game risk of being "caught."
+• Difficulty now scales with in-game days; the fictional company grows harder.
+• End-of-game summaries reflect the player's choices and their meaning under
+  general labor-law concepts (educational/awareness framing, no legal advice).
+• At the end of every game a short, supportive message is shown for anyone who
+  may be experiencing workplace harassment in real life, encouraging them to
+  document incidents, confide in someone they trust, and learn their rights.
+
+ABOUT THE THEME
+MOBBING is a satirical card game about workplace psychological harassment,
+based on the solo developer's own real experience. All companies, characters,
+and events in the game are fictional. The tone is critical/satirical of abusive
+workplace practices and is intended to build empathy and awareness. It does not
+target, name, or defame any real person or organization.
+
+IN-APP PURCHASE
+The existing consumable IAP ("Pay a Bribe" — continue after an ending) is
+unchanged from the approved version. Nothing about pricing or purchase flow
+was modified.
+
+LOCALIZATION & DEVICES
+The update is fully localized in 16 languages. All new UI (health bar, evidence
+badge, lawsuit card, end-of-game screens) uses adaptive layouts and has been
+verified to fit every supported iPhone screen size, including the latest models;
+end-of-game screens are scrollable to avoid any clipping on smaller devices.
+
+Thank you for reviewing.
+— Barış (solo developer)
