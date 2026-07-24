@@ -1,0 +1,109 @@
+{
+ "cards": {
+  "ai_skor": {
+   "t": "Le nouvel outil d'IA de productivité a noté Deniz 34/100. Il compte les frappes au clavier. Lui, il conçoit d'abord sur papier. L'algorithme, lui, l'ignore.",
+   "l": "\"Ce sont des humains qui évaluent des humains. Pas des compteurs.\"",
+   "r": "\"Les données ont parlé.\""
+  },
+  "deepfake_ses": {
+   "t": "Quelqu'un a fabriqué un extrait vocal par IA où j'« insulte » le client {C}. C'est faux. Ça se propage. L'informatique dit que c'est « impossible à tracer ».",
+   "l": "Communiqué à toute l'entreprise : c'est un faux. Point.",
+   "r": "\"Fais profil bas jusqu'à ce que ça se tasse.\""
+  },
+  "quiet_firing1": {
+   "t": "\"Ne licencie pas Selin. Simplement... ne lui donne plus rien. Aucun projet, aucune réunion, aucun contact visuel. Elle comprendra le message.\"",
+   "l": "\"S'il y a un problème, on le dit. Ouvertement.\"",
+   "r": "Amorcer l'effacement progressif"
+  },
+  "quiet_firing2": {
+   "t": "Trois semaines. Zéro tâche. Mon agenda est un désert. On m'a virée et personne ne me l'a dit ? Dis-moi juste la vérité.",
+   "l": "Lui dire la vérité et défendre son poste",
+   "r": "\"Profite du calme. L'hiver arrive de toute façon.\""
+  },
+  "maske_tukenmis": {
+   "t": "Les chiffres d'Ece sont parfaits. Sa caméra est toujours allumée, toujours souriante. Hier, je l'ai trouvée en train de pleurer dans le parking. Elle m'a supplié de ne rien te dire.",
+   "l": "Parle-lui. Allège sa charge discrètement.",
+   "r": "\"Des chiffres parfaits sont des chiffres parfaits.\""
+  },
+  "sikayet_misilleme": {
+   "t": "Mehmet a déposé une plainte formelle pour harcèlement le mois dernier. Aujourd'hui, la direction a ordonné son « évaluation de performance ». Hors cycle. Devine le résultat visé.",
+   "l": "Refuser cette évaluation truquée. Documenter pourquoi.",
+   "r": "La mener « en toute objectivité »"
+  },
+  "terapi_izni": {
+   "t": "J'ai demandé à décaler mon heure du jeudi pour une thérapie. Les RH veulent une « justification médicale détaillée » — partagée avec la direction. Pour une heure.",
+   "l": "Approuve-le toi-même. Aucune justification nécessaire.",
+   "r": "\"Le règlement, c'est le règlement. Remets le rapport.\""
+  },
+  "dijital_dislama": {
+   "t": "Depuis deux semaines, les décisions « urgentes » du groupe se prennent dans une conversation où je ne suis pas. J'apprends mes propres tâches par les captures d'écran des autres.",
+   "l": "Fusionner les conversations. Une équipe, un canal.",
+   "r": "\"Tu n'as qu'à mériter d'y revenir.\""
+  },
+  "ofise_donus": {
+   "t": "Nouvelle règle de retour au bureau : 5 jours, tout le monde. Sauf les « performeurs stratégiques ». La liste des exceptions est exactement celle des membres du club de golf.",
+   "l": "Exiger une seule règle pour tous",
+   "r": "Demander une adhésion au club de golf"
+  },
+  "toplanti_kayit": {
+   "t": "Toutes les réunions sont désormais enregistrées et résumées par IA. Premier usage des RH : une compilation des « moments de sentiment négatif ». Avec ton équipe en vedette.",
+   "l": "\"Un ressenti n'est pas un délit.\"",
+   "r": "Entraîner l'équipe à parler d'un ton monocorde"
+  },
+  "deneme_suresi": {
+   "t": "\"Tu es en période d'essai\", répètent-ils à la nouvelle recrue. \"Tu n'as encore aucun droit.\" Elle a même peur de tomber malade. C'est sa deuxième semaine.",
+   "l": "\"La période d'essai limite le préavis, pas l'humanité.\"",
+   "r": "\"C'est à ça que sert une période d'essai.\""
+  },
+  "istifa_geri": {
+   "t": "Kerem a démissionné ce matin. La direction l'a enfermé dans une salle de réunion « jusqu'à ce qu'il revienne sur sa décision ». Ça fait quatre heures.",
+   "l": "Ouvre la porte. Raccompagne-le toi-même.",
+   "r": "Apporte du café. Rejoins la « persuasion »."
+  },
+  "maas_seffaflik": {
+   "t": "J'ai publié les salaires moyens du secteur — des données publiques — dans le canal de l'équipe. La direction veut un avertissement contre moi pour « avoir semé le trouble ».",
+   "l": "\"Des données publiques, ce n'est pas du trouble.\"",
+   "r": "Colle-lui un avertissement. Supprime le message."
+  },
+  "wellness_zorunlu": {
+   "t": "« Programme de bien-être » obligatoire : méditation à 7 h, suivie par une appli. La rater affecte ta prime. Le stress que ça provoque, lui, n'est pas couvert.",
+   "l": "\"Le bien-être forcé, ce n'est que... du travail en plus.\"",
+   "r": "Fais installer l'appli. Programme les alarmes."
+  },
+  "genc_damga": {
+   "t": "Chaque fois que les juniors soulèvent un problème, il balaie ça d'un revers de main : « Génération susceptible. » Hier, l'un d'eux a signalé une vraie faille de sécurité. Balayée aussi.",
+   "l": "Remonte la faille toi-même. Attribue-leur le mérite.",
+   "r": "\"Les jeunes de nos jours...\""
+  },
+  "vardiya_sondakika": {
+   "t": "La « planification flexible » en pratique : les plannings de service publiés la veille à 22 h. Impossible d'organiser la garde des enfants, l'école, la vie.",
+   "l": "Fixe un planning sur 2 semaines. Assume les protestations.",
+   "r": "\"La flexibilité est un avantage. C'est écrit dans l'annonce.\""
+  },
+  "ai_isten_cikarma": {
+   "t": "\"Le modèle d'optimisation a sélectionné 12 noms pour un licenciement. Ne les examine pas - examiner, c'est douter. Le modèle a coûté cher.\"",
+   "l": "Examine chaque nom toi-même, un par un",
+   "r": "Transfère la liste aux RH sans la lire"
+  },
+  "kamera_zorunlu": {
+   "t": "Nouvelle règle en télétravail : caméra allumée à CHAQUE appel. Mon appartement est mon espace privé. Hier, le DG a commenté mes « rideaux déprimants ».",
+   "l": "Caméra facultative sauf pour les appels clients",
+   "r": "\"Achète des rideaux plus gais.\""
+  },
+  "gaslight_hafiza": {
+   "t": "\"Je ne t'ai jamais dit de sauter cette étape. Tu as dû mal te souvenir.\" Il l'a fait. Par écrit, même. Mais l'e-mail « a été supprimé du serveur ».",
+   "l": "Tiens désormais tes propres archives datées",
+   "r": "\"Vous avez raison, c'est ma faute.\" (ce ne l'était pas)"
+  },
+  "gaslight_hassas": {
+   "t": "Chaque fois que quelqu'un signale un vrai problème, la réponse est la même : \"Tu es trop sensible. Tu exagères.\" Les problèmes ne sont jamais réglés. Les gens finissent juste par ne plus rien signaler.",
+   "l": "Traite chaque signalement comme valable jusqu'à preuve du contraire",
+   "r": "\"Endurcissez-vous un peu, tout le monde.\""
+  },
+  "gunah_kecisi": {
+   "t": "Chaque échec du département finit, on ne sait comment, avec le nom de Deniz dessus. Même ceux d'avant son embauche. Il est devenu l'explication officielle de tout ce qui tourne mal.",
+   "l": "Remonte chaque échec à sa vraie cause, publiquement",
+   "r": "\"Au moins, on sait toujours qui blâmer.\""
+  }
+ }
+}

@@ -1,0 +1,109 @@
+{
+ "cards": {
+  "ai_skor": {
+   "t": "De nieuwe AI-productiviteitstool gaf Deniz een 34/100. Hij telt toetsaanslagen. Deniz ontwerpt eerst op papier. Dat weet het algoritme niet.",
+   "l": "\"Mensen beoordelen mensen. Geen tellers.\"",
+   "r": "\"De data heeft gesproken.\""
+  },
+  "deepfake_ses": {
+   "t": "Iemand heeft met AI een spraakfragment van mij gemaakt waarin ik de klant {C} 'beledig'. Het is nep. Het verspreidt zich. IT zegt 'onmogelijk te traceren'.",
+   "l": "Bedrijfsbrede verklaring: het is nep. Punt.",
+   "r": "\"Hou je gedeisd tot het overwaait.\""
+  },
+  "quiet_firing1": {
+   "t": "\"Ontsla Selin niet. Geef haar gewoon... niets meer. Geen projecten, geen vergaderingen, geen oogcontact. Ze snapt de boodschap wel.\"",
+   "l": "\"Als er een probleem is, zeggen we het. Open.\"",
+   "r": "Begin de langzame verdwijning"
+  },
+  "quiet_firing2": {
+   "t": "Drie weken. Nul taken. Mijn agenda is een woestijn. Ben ik ontslagen en heeft niemand het me verteld? Zeg gewoon de waarheid.",
+   "l": "Vertel haar de waarheid en vecht voor haar functie",
+   "r": "\"Geniet van de rust. De winter komt toch wel.\""
+  },
+  "maske_tukenmis": {
+   "t": "Ece's cijfers zijn perfect. Haar camera staat altijd aan, altijd een glimlach. Gisteren vond ik haar huilend in de parkeergarage. Ze smeekte me het jou niet te vertellen.",
+   "l": "Praat met haar. Verlicht stilletjes haar last.",
+   "r": "\"Perfecte cijfers zijn perfecte cijfers.\""
+  },
+  "sikayet_misilleme": {
+   "t": "Mehmet heeft vorige maand een formele klacht wegens intimidatie ingediend. Vandaag beval het management zijn 'functioneringsgesprek'. Buiten de cyclus om. Raad eens wat de bedoelde uitkomst is.",
+   "l": "Weiger de schijnbeoordeling. Documenteer waarom.",
+   "r": "Voer het 'objectief' uit"
+  },
+  "terapi_izni": {
+   "t": "Ik vroeg of ik mijn donderdaguur kon verschuiven voor therapie. HR wil een 'gedetailleerde medische onderbouwing' — gedeeld met het management. Voor één uur.",
+   "l": "Keur het zelf goed. Geen onderbouwing nodig.",
+   "r": "\"Regels zijn regels. Lever het rapport in.\""
+  },
+  "dijital_dislama": {
+   "t": "Al twee weken worden de 'urgente' groepsbesluiten genomen in een chat waar ik niet in zit. Mijn eigen taken hoor ik via screenshots van anderen.",
+   "l": "Voeg de chats samen. Eén team, één kanaal.",
+   "r": "\"Misschien moet je je terugkeer verdienen.\""
+  },
+  "ofise_donus": {
+   "t": "Nieuwe terug-naar-kantoorregel: 5 dagen, iedereen. Behalve 'strategische presteerders'. De uitzonderingslijst is exact de ledenlijst van de golfclub.",
+   "l": "Eis één regel voor iedereen",
+   "r": "Vraag een golflidmaatschap aan"
+  },
+  "toplanti_kayit": {
+   "t": "Alle vergaderingen worden nu door AI opgenomen en samengevat. HR's eerste toepassing: een compilatie van 'momenten met negatief sentiment'. In de hoofdrol: jouw team.",
+   "l": "\"Sentiment is geen misdaad.\"",
+   "r": "Leer het team monotoon te praten"
+  },
+  "deneme_suresi": {
+   "t": "\"Je zit in de proeftijd,\" blijven ze de nieuwe medewerker vertellen. \"Je hebt nog geen rechten.\" Ze is zelfs bang om ziek te worden. Het is pas week twee.",
+   "l": "\"Proeftijd beperkt de opzegtermijn, niet je menselijkheid.\"",
+   "r": "\"Daar is de proeftijd nou juist voor.\""
+  },
+  "istifa_geri": {
+   "t": "Kerem heeft vanochtend ontslag genomen. Het management heeft hem opgesloten in een vergaderruimte 'tot hij zich bedenkt'. Het duurt nu al vier uur.",
+   "l": "Doe de deur open. Begeleid hem zelf naar buiten.",
+   "r": "Breng koffie. Doe mee aan de 'overtuiging'."
+  },
+  "maas_seffaflik": {
+   "t": "Ik heb de gemiddelde marktsalarissen — openbare data — in het teamkanaal gezet. Het management wil een officiële waarschuwing voor mij wegens 'onrust stoken'.",
+   "l": "\"Openbare data is geen onrust.\"",
+   "r": "Geef haar een waarschuwing. Verwijder het bericht."
+  },
+  "wellness_zorunlu": {
+   "t": "Verplicht 'welzijnsprogramma': meditatie om 7 uur, bijgehouden via een app. Overslaan raakt je bonus. De stress die het veroorzaakt wordt niet gedekt.",
+   "l": "\"Welzijn onder dwang is gewoon... extra werk.\"",
+   "r": "Laat de app downloaden. Laat wekkers zetten."
+  },
+  "genc_damga": {
+   "t": "Elke keer als de junioren een probleem aankaarten, wuift hij het weg: \"Gevoelige generatie.\" Gisteren kaartte er een een echt veiligheidsgebrek aan. Ook weggewuifd.",
+   "l": "Meld het veiligheidsgebrek zelf hogerop. Geef hun de eer.",
+   "r": "\"De jeugd van tegenwoordig...\""
+  },
+  "vardiya_sondakika": {
+   "t": "'Flexibele planning' in de praktijk: dienstroosters verschijnen om 22:00 de avond ervoor. Niemand kan opvang, school of leven plannen.",
+   "l": "Maak een rooster voor 2 weken. Vang de kritiek op.",
+   "r": "\"Flexibiliteit is een extraatje. Staat zo in de vacature.\""
+  },
+  "ai_isten_cikarma": {
+   "t": "\"Het optimalisatiemodel selecteerde 12 namen voor ontslag. Controleer ze niet — controleren impliceert twijfel. Het model was duur.\"",
+   "l": "Controleer elke naam zelf, stuk voor stuk",
+   "r": "Stuur de lijst ongelezen door naar HR"
+  },
+  "kamera_zorunlu": {
+   "t": "Nieuwe thuiswerkregel: camera aan in ELKE call. Mijn appartement is mijn privéruimte. Gisteren maakte de directeur een opmerking over mijn 'deprimerende gordijnen'.",
+   "l": "Camera optioneel, behalve bij klantgesprekken",
+   "r": "\"Koop vrolijkere gordijnen.\""
+  },
+  "gaslight_hafiza": {
+   "t": "\"Ik heb je nooit gezegd die stap over te slaan. Je herinnert het je vast verkeerd.\" Dat deed hij wel. Zelfs op schrift. Maar de e-mail 'is van de server verwijderd'.",
+   "l": "Houd vanaf nu je eigen gedateerde aantekeningen bij",
+   "r": "\"U heeft gelijk, mijn fout.\" (was het niet)"
+  },
+  "gaslight_hassas": {
+   "t": "Elke keer als iemand een echt probleem meldt, is het antwoord hetzelfde: \"Je bent te gevoelig. Je overdrijft.\" De problemen worden nooit opgelost. De melders stoppen gewoon met melden.",
+   "l": "Behandel elke melding als geldig tot het tegendeel bewezen is",
+   "r": "\"Kweek allemaal een dikkere huid.\""
+  },
+  "gunah_kecisi": {
+   "t": "Elke mislukking op de afdeling eindigt op de een of andere manier met Deniz' naam erop. Zelfs die van vóór hij werd aangenomen. Hij is de vaste verklaring geworden voor alles wat misgaat.",
+   "l": "Herleid elke mislukking publiekelijk tot de echte oorzaak",
+   "r": "\"We weten tenminste altijd wie we de schuld kunnen geven.\""
+  }
+ }
+}

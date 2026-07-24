@@ -1,0 +1,109 @@
+{
+ "cards": {
+  "ai_skor": {
+   "t": "Nowe narzędzie AI do produktywności wystawiło Denizowi 34/100. Liczy naciśnięcia klawiszy. A on najpierw projektuje na papierze. Algorytm o tym nie wie.",
+   "l": "\"Ludzi oceniają ludzie. Nie liczniki.\"",
+   "r": "\"Dane powiedziały swoje.\""
+  },
+  "deepfake_ses": {
+   "t": "Ktoś zrobił za pomocą AI nagranie, na którym rzekomo „obrażam” klienta {C}. To fałszywka. Ale się rozchodzi. IT mówi, że „nie da się namierzyć”.",
+   "l": "Oświadczenie dla całej firmy: nagranie jest fałszywe. Kropka.",
+   "r": "\"Przyczaj się, aż ucichnie.\""
+  },
+  "quiet_firing1": {
+   "t": "\"Nie zwalniaj Selin. Po prostu... przestań jej cokolwiek dawać. Żadnych projektów, żadnych spotkań, żadnego kontaktu wzrokowego. Sama zrozumie.\"",
+   "l": "\"Jeśli jest problem, mówimy o nim. Otwarcie.\"",
+   "r": "Rozpocznij powolne wygaszanie"
+  },
+  "quiet_firing2": {
+   "t": "Trzy tygodnie. Zero zadań. Mój kalendarz to pustynia. Zwolnili mnie i nikt nie raczył powiedzieć? Po prostu powiedz mi prawdę.",
+   "l": "Powiedz jej prawdę i walcz o jej stanowisko",
+   "r": "\"Ciesz się spokojem. Zima i tak nadchodzi.\""
+  },
+  "maske_tukenmis": {
+   "t": "Wyniki Ece są nienaganne. Kamera zawsze włączona, uśmiech nie schodzi z twarzy. Wczoraj zastałem ją płaczącą w podziemnym parkingu. Błagała, żebym ci nie mówił.",
+   "l": "Porozmawiaj z nią. Po cichu zmniejsz jej obciążenie.",
+   "r": "\"Nienaganne wyniki to nienaganne wyniki.\""
+  },
+  "sikayet_misilleme": {
+   "t": "Mehmet w zeszłym miesiącu złożył formalną skargę o mobbing. Dziś zarząd zlecił jego „ocenę wyników”. Poza cyklem. Zgadnij, jaki ma być rezultat.",
+   "l": "Odmów udziału w pozorowanej ocenie. Udokumentuj dlaczego.",
+   "r": "Przeprowadź ją „obiektywnie”"
+  },
+  "terapi_izni": {
+   "t": "Poprosiłem o przesunięcie mojej czwartkowej godziny na terapię. HR żąda „szczegółowego uzasadnienia medycznego” — do wglądu dla zarządu. Za jedną godzinę.",
+   "l": "Zatwierdź to sam. Żadne uzasadnienie nie jest potrzebne.",
+   "r": "\"Przepisy to przepisy. Złóż zaświadczenie.\""
+  },
+  "dijital_dislama": {
+   "t": "Od dwóch tygodni „pilne” decyzje zespołu zapadają na czacie, do którego nie należę. O własnych zadaniach dowiaduję się ze zrzutów ekranu innych ludzi.",
+   "l": "Połącz czaty. Jeden zespół, jeden kanał.",
+   "r": "\"Może najpierw zasłuż, żeby cię z powrotem dopuścić.\""
+  },
+  "ofise_donus": {
+   "t": "Nowa zasada powrotu do biura: 5 dni, wszyscy. Poza „strategicznymi pracownikami”. Lista wyjątków pokrywa się co do jednego z listą członków klubu golfowego.",
+   "l": "Zażądaj jednej zasady dla wszystkich",
+   "r": "Złóż wniosek o członkostwo w klubie golfowym"
+  },
+  "toplanti_kayit": {
+   "t": "Wszystkie spotkania są teraz nagrywane i streszczane przez AI. Pierwsze zastosowanie HR: kompilacja „momentów negatywnego nastawienia”. W roli głównej twój zespół.",
+   "l": "\"Nastrój to nie przestępstwo.\"",
+   "r": "Naucz zespół mówić monotonnie"
+  },
+  "deneme_suresi": {
+   "t": "„Jesteś na okresie próbnym” — powtarzają nowej pracownicy. „Jeszcze nie masz żadnych praw”. Boi się nawet zachorować. To dopiero drugi tydzień.",
+   "l": "\"Okres próbny skraca okres wypowiedzenia, a nie człowieczeństwo.\"",
+   "r": "\"Od tego jest okres próbny.\""
+  },
+  "istifa_geri": {
+   "t": "Kerem złożył dziś rano wypowiedzenie. Zarząd zamknął go w sali konferencyjnej „dopóki nie zmieni zdania”. Minęły już cztery godziny.",
+   "l": "Otwórz drzwi. Odprowadź go osobiście.",
+   "r": "Przynieś kawę. Dołącz do „perswazji”."
+  },
+  "maas_seffaflik": {
+   "t": "Wrzuciłem na kanał zespołu średnie zarobki w branży — dane publiczne. Zarząd chce mi wlepić naganę za „sianie niepokoju”.",
+   "l": "\"Dane publiczne to nie sianie niepokoju.\"",
+   "r": "Wlep jej naganę. Usuń wpis."
+  },
+  "wellness_zorunlu": {
+   "t": "Obowiązkowy „program dobrostanu”: medytacja o 7 rano, monitorowana aplikacją. Opuszczanie wpływa na premię. Stres, który to wywołuje, nie jest objęty programem.",
+   "l": "\"Dobrostan na siłę to po prostu... dodatkowa praca.\"",
+   "r": "Każ pobrać aplikację. Nastaw budziki."
+  },
+  "genc_damga": {
+   "t": "Za każdym razem, gdy młodsi zgłaszają problem, on macha ręką: „Przewrażliwione pokolenie”. Wczoraj jeden zgłosił prawdziwą wadę bezpieczeństwa. Też zbył.",
+   "l": "Zgłoś wadę bezpieczeństwa wyżej osobiście. Przyznaj im zasługę.",
+   "r": "\"Ta dzisiejsza młodzież...\""
+  },
+  "vardiya_sondakika": {
+   "t": "„Elastyczny grafik” w praktyce: listy zmian publikowane o 22:00 dnia poprzedniego. Ludzie nie mogą zaplanować opieki nad dzieckiem, szkoły, życia.",
+   "l": "Ustal grafik na 2 tygodnie. Weź na siebie niezadowolenie.",
+   "r": "\"Elastyczność to przywilej. Tak było w ogłoszeniu.\""
+  },
+  "ai_isten_cikarma": {
+   "t": "\"Model optymalizacyjny wybrał 12 nazwisk do zwolnienia. Nie sprawdzaj ich - sprawdzanie oznacza wątpliwości. Model był drogi.\"",
+   "l": "Sprawdź każde nazwisko osobiście",
+   "r": "Prześlij listę do HR bez czytania"
+  },
+  "kamera_zorunlu": {
+   "t": "Nowa zasada pracy zdalnej: kamery włączone na KAŻDEJ rozmowie. Moje mieszkanie to moja prywatna przestrzeń. Wczoraj dyrektor skomentował moje „przygnębiające zasłony”.",
+   "l": "Kamery dobrowolne, poza rozmowami z klientem",
+   "r": "\"Kup weselsze zasłony.\""
+  },
+  "gaslight_hafiza": {
+   "t": "\"Nigdy nie kazałem ci pominąć tego kroku. Musiało ci się pomylić.\" Kazał. Na piśmie. Ale e-mail „został usunięty z serwera”.",
+   "l": "Od teraz prowadź własne zapiski z datami",
+   "r": "\"Ma pan rację, mój błąd.\" (nie był)"
+  },
+  "gaslight_hassas": {
+   "t": "Za każdym razem, gdy ktoś zgłasza prawdziwy problem, odpowiedź jest ta sama: „Jesteś przewrażliwiony. Przesadzasz”. Problemy nigdy nie zostają rozwiązane. Zgłaszający po prostu przestają zgłaszać.",
+   "l": "Traktuj każde zgłoszenie jako zasadne, dopóki nie udowodniono inaczej",
+   "r": "\"Niech wszyscy zapuszczą grubszą skórę.\""
+  },
+  "gunah_kecisi": {
+   "t": "Każda porażka w dziale jakimś cudem kończy się z nazwiskiem Deniza. Nawet te sprzed jego zatrudnienia. Stał się wyznaczonym wytłumaczeniem wszystkiego, co idzie nie tak.",
+   "l": "Prześledź każdą porażkę do jej prawdziwej przyczyny, publicznie",
+   "r": "\"Przynajmniej zawsze wiadomo, kogo winić.\""
+  }
+ }
+}

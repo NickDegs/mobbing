@@ -1,0 +1,109 @@
+{
+ "cards": {
+  "ai_skor": {
+   "t": "Alat produktivitas AI baru memberi Deniz nilai 34/100. Alat itu menghitung ketukan tombol. Deniz merancang di kertas dulu. Algoritmanya tak tahu itu.",
+   "l": "\"Manusia dinilai oleh manusia. Bukan oleh penghitung.\"",
+   "r": "\"Data sudah berbicara.\""
+  },
+  "deepfake_ses": {
+   "t": "Ada yang membuat klip suara AI seolah aku 'menghina' klien {C}. Itu palsu. Menyebar. IT bilang 'mustahil dilacak'.",
+   "l": "Pernyataan ke seluruh perusahaan: itu palsu. Titik.",
+   "r": "\"Diam saja sampai keadaan reda.\""
+  },
+  "quiet_firing1": {
+   "t": "\"Jangan pecat Selin. Cukup... berhenti memberinya apa pun. Tak ada proyek, tak ada rapat, tak ada kontak mata. Dia akan mengerti sendiri.\"",
+   "l": "\"Kalau ada masalah, kita katakan. Terus terang.\"",
+   "r": "Mulai menyingkirkannya perlahan"
+  },
+  "quiet_firing2": {
+   "t": "Tiga minggu. Nol tugas. Kalenderku seperti gurun. Apa aku dipecat tapi tak ada yang memberitahu? Katakan saja yang sebenarnya.",
+   "l": "Katakan yang sebenarnya dan perjuangkan posisinya",
+   "r": "\"Nikmati ketenangannya. Toh masa sulit pasti datang.\""
+  },
+  "maske_tukenmis": {
+   "t": "Angka-angka Ece sempurna. Kameranya selalu menyala, selalu tersenyum. Kemarin kutemukan dia menangis di parkiran. Dia memohon agar aku tak memberitahumu.",
+   "l": "Bicara dengannya. Kurangi bebannya diam-diam.",
+   "r": "\"Angka sempurna ya angka sempurna.\""
+  },
+  "sikayet_misilleme": {
+   "t": "Mehmet mengajukan keluhan pelecehan resmi bulan lalu. Hari ini manajemen memerintahkan 'evaluasi kinerja'-nya. Di luar jadwal. Tebak hasil yang diinginkan.",
+   "l": "Tolak evaluasi palsu itu. Catat alasannya.",
+   "r": "Lakukan secara 'objektif'"
+  },
+  "terapi_izni": {
+   "t": "Aku minta menggeser jam Kamisku untuk terapi. HRD minta 'justifikasi medis terperinci' — yang dibagikan ke manajemen. Untuk satu jam.",
+   "l": "Setujui sendiri. Tak perlu justifikasi.",
+   "r": "\"Aturan tetap aturan. Serahkan laporannya.\""
+  },
+  "dijital_dislama": {
+   "t": "Sudah dua minggu keputusan 'mendesak' grup dibuat di obrolan yang aku tak ada di dalamnya. Aku tahu tugasku sendiri dari tangkapan layar orang lain.",
+   "l": "Gabungkan obrolannya. Satu tim, satu kanal.",
+   "r": "\"Mungkin usahakan dulu agar layak masuk lagi.\""
+  },
+  "ofise_donus": {
+   "t": "Aturan kembali ke kantor yang baru: 5 hari, semua orang. Kecuali 'performer strategis'. Daftar pengecualiannya persis sama dengan daftar anggota klub golf.",
+   "l": "Tuntut satu aturan untuk semua",
+   "r": "Daftar keanggotaan golf"
+  },
+  "toplanti_kayit": {
+   "t": "Semua rapat kini direkam dan diringkas AI. Penggunaan pertama HRD: kompilasi 'momen sentimen negatif'. Dibintangi timmu.",
+   "l": "\"Sentimen bukan kejahatan.\"",
+   "r": "Latih tim agar bicara datar tanpa nada"
+  },
+  "deneme_suresi": {
+   "t": "\"Kamu masih masa percobaan,\" begitu terus mereka bilang ke karyawan baru. \"Kamu belum punya hak apa pun.\" Dia bahkan takut jatuh sakit. Ini baru minggu kedua.",
+   "l": "\"Masa percobaan membatasi masa pemberitahuan, bukan kemanusiaan.\"",
+   "r": "\"Memang untuk itulah masa percobaan ada.\""
+  },
+  "istifa_geri": {
+   "t": "Kerem mengundurkan diri pagi ini. Manajemen menguncinya di ruang rapat 'sampai dia berpikir ulang'. Sudah empat jam.",
+   "l": "Buka pintunya. Antar dia keluar sendiri.",
+   "r": "Bawakan kopi. Ikut 'membujuk'."
+  },
+  "maas_seffaflik": {
+   "t": "Aku memposting rata-rata gaji industri — data publik — di kanal tim. Manajemen ingin aku ditegur resmi karena 'menimbulkan keresahan'.",
+   "l": "\"Data publik bukan keresahan.\"",
+   "r": "Tegur dia resmi. Hapus postingannya."
+  },
+  "wellness_zorunlu": {
+   "t": "'Program kesehatan' wajib: meditasi jam 7 pagi, dipantau aplikasi. Bolos memengaruhi bonusmu. Stres yang ditimbulkannya tidak ditanggung.",
+   "l": "\"Kesehatan yang dipaksakan hanyalah... kerja tambahan.\"",
+   "r": "Suruh unduh aplikasinya. Suruh pasang alarm."
+  },
+  "genc_damga": {
+   "t": "Setiap kali para junior mengangkat masalah, dia mengabaikannya: \"Generasi baperan.\" Kemarin salah satu menunjukkan cacat keselamatan nyata. Diabaikan juga.",
+   "l": "Naikkan sendiri laporan cacat keselamatannya. Beri kredit ke mereka.",
+   "r": "\"Anak zaman sekarang...\""
+  },
+  "vardiya_sondakika": {
+   "t": "'Penjadwalan fleksibel' dalam praktik: daftar shift terbit pukul 22.00 malam sebelumnya. Orang tak bisa merencanakan pengasuhan anak, sekolah, hidup.",
+   "l": "Buat jadwal tetap 2 minggu. Hadapi protesnya.",
+   "r": "\"Fleksibilitas itu keuntungan. Tertulis di iklannya.\""
+  },
+  "ai_isten_cikarma": {
+   "t": "\"Model optimasi memilih 12 nama untuk dipecat. Jangan tinjau mereka — meninjau berarti ragu. Model ini mahal.\"",
+   "l": "Tinjau setiap nama sendiri",
+   "r": "Teruskan daftarnya ke HRD tanpa dibaca"
+  },
+  "kamera_zorunlu": {
+   "t": "Aturan kerja jarak jauh baru: kamera menyala di SETIAP panggilan. Apartemenku adalah ruang pribadiku. Kemarin GM mengomentari 'gorden suramku'.",
+   "l": "Kamera opsional kecuali panggilan klien",
+   "r": "\"Beli gorden yang lebih cerah.\""
+  },
+  "gaslight_hafiza": {
+   "t": "\"Aku tak pernah menyuruhmu melewati langkah itu. Kamu pasti salah ingat.\" Padahal dia menyuruh. Tertulis. Tapi emailnya 'terhapus dari server'.",
+   "l": "Mulai sekarang simpan catatanmu sendiri yang bertanggal",
+   "r": "\"Anda benar, salah saya.\" (padahal bukan)"
+  },
+  "gaslight_hassas": {
+   "t": "Setiap kali seseorang melaporkan masalah nyata, jawabannya sama: \"Kamu terlalu baperan. Kamu berlebihan.\" Masalahnya tak pernah dibereskan. Para pelapor akhirnya berhenti melapor.",
+   "l": "Anggap setiap laporan sahih sampai terbukti sebaliknya",
+   "r": "\"Semuanya, jadilah lebih tahan banting.\""
+  },
+  "gunah_kecisi": {
+   "t": "Setiap kegagalan di departemen entah bagaimana selalu berujung pada nama Deniz. Bahkan yang terjadi sebelum dia direkrut. Dia telah menjadi kambing hitam resmi untuk segala hal yang salah.",
+   "l": "Lacak setiap kegagalan ke penyebab aslinya, secara terbuka",
+   "r": "\"Setidaknya kita selalu tahu siapa yang harus disalahkan.\""
+  }
+ }
+}

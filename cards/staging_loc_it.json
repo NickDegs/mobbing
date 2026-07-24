@@ -1,0 +1,109 @@
+{
+ "cards": {
+  "ai_skor": {
+   "t": "Il nuovo strumento di produttività con IA ha dato a Deniz 34/100. Conta le battute sulla tastiera. Lui prima progetta su carta. L'algoritmo non lo sa.",
+   "l": "\"Sono gli esseri umani a valutare gli esseri umani. Non i contatori.\"",
+   "r": "\"I dati hanno parlato.\""
+  },
+  "deepfake_ses": {
+   "t": "Qualcuno ha creato con l'IA un audio in cui 'insulto' il cliente {C}. È falso. Si sta diffondendo. L'IT dice 'impossibile da rintracciare'.",
+   "l": "Comunicato a tutta l'azienda: è falso. Punto.",
+   "r": "\"Stai nell'ombra finché non passa.\""
+  },
+  "quiet_firing1": {
+   "t": "\"Non licenziare Selin. Solo... smetti di darle qualsiasi cosa. Niente progetti, niente riunioni, niente contatto visivo. Capirà il messaggio.\"",
+   "l": "\"Se c'è un problema, lo diciamo. Apertamente.\"",
+   "r": "Inizia la lenta sparizione"
+  },
+  "quiet_firing2": {
+   "t": "Tre settimane. Zero compiti. Il mio calendario è un deserto. Sono licenziato e nessuno me l'ha detto? Dimmi solo la verità.",
+   "l": "Dille la verità e battiti per il suo ruolo",
+   "r": "\"Goditi la calma. Tanto l'inverno sta arrivando.\""
+  },
+  "maske_tukenmis": {
+   "t": "I numeri di Ece sono perfetti. La sua telecamera è sempre accesa, sempre sorridente. Ieri l'ho trovata a piangere nel parcheggio. Mi ha supplicato di non dirtelo.",
+   "l": "Parlale. Alleggeriscile il carico, senza clamore.",
+   "r": "\"Numeri perfetti sono numeri perfetti.\""
+  },
+  "sikayet_misilleme": {
+   "t": "Mehmet ha presentato una denuncia formale per molestie il mese scorso. Oggi la direzione ha ordinato la sua 'valutazione delle prestazioni'. Fuori ciclo. Indovina il risultato voluto.",
+   "l": "Rifiuta la valutazione farsa. Documenta il perché.",
+   "r": "Conducila in modo 'obiettivo'"
+  },
+  "terapi_izni": {
+   "t": "Ho chiesto di spostare la mia ora del giovedì per la terapia. Le Risorse Umane vogliono una 'giustificazione medica dettagliata' — da condividere con la direzione. Per un'ora.",
+   "l": "Approvala tu stesso. Nessuna giustificazione necessaria.",
+   "r": "\"Le regole sono regole. Consegna il certificato.\""
+  },
+  "dijital_dislama": {
+   "t": "Da due settimane le decisioni 'urgenti' del gruppo si prendono in una chat in cui non sono. Scopro i miei stessi compiti dagli screenshot degli altri.",
+   "l": "Unisci le chat. Una squadra, un canale.",
+   "r": "\"Forse devi riguadagnarti il posto.\""
+  },
+  "ofise_donus": {
+   "t": "Nuova regola di rientro in ufficio: 5 giorni, tutti. Tranne i 'performer strategici'. La lista delle eccezioni coincide esattamente con quella dei soci del golf club.",
+   "l": "Pretendi una sola regola per tutti",
+   "r": "Iscriviti al golf club"
+  },
+  "toplanti_kayit": {
+   "t": "Ora tutte le riunioni vengono registrate e riassunte dall'IA. Primo utilizzo delle Risorse Umane: una raccolta di 'momenti di sentiment negativo'. Con protagonista la tua squadra.",
+   "l": "\"Il sentiment non è un reato.\"",
+   "r": "Insegna alla squadra a parlare in tono monotono"
+  },
+  "deneme_suresi": {
+   "t": "\"Sei in prova\", continuano a dire alla nuova assunta. \"Non hai ancora nessun diritto.\" Ha paura persino di ammalarsi. È la seconda settimana.",
+   "l": "\"Il periodo di prova limita il preavviso, non l'umanità.\"",
+   "r": "\"Il periodo di prova serve proprio a questo.\""
+  },
+  "istifa_geri": {
+   "t": "Kerem si è dimesso stamattina. La direzione l'ha chiuso in una sala riunioni 'finché non ci ripensa'. Sono passate quattro ore.",
+   "l": "Apri la porta. Accompagnalo fuori tu stesso.",
+   "r": "Porta il caffè. Unisciti alla 'persuasione'."
+  },
+  "maas_seffaflik": {
+   "t": "Ho pubblicato gli stipendi medi del settore — dati pubblici — nel canale della squadra. La direzione vuole un richiamo disciplinare per me per aver 'creato malcontento'.",
+   "l": "\"I dati pubblici non sono malcontento.\"",
+   "r": "Dalle un richiamo. Cancella il messaggio."
+  },
+  "wellness_zorunlu": {
+   "t": "'Programma benessere' obbligatorio: meditazione alle 7 del mattino, monitorata da un'app. Saltarla incide sul bonus. Lo stress che provoca non è coperto.",
+   "l": "\"Il benessere imposto è solo... altro lavoro.\"",
+   "r": "Fai scaricare l'app. Fai impostare le sveglie."
+  },
+  "genc_damga": {
+   "t": "Ogni volta che i junior sollevano un problema lui lo liquida: \"Generazione permalosa.\" Ieri uno ha segnalato un vero difetto di sicurezza. Liquidato anche quello.",
+   "l": "Segnala tu stesso il difetto di sicurezza ai vertici. Dai il merito a loro.",
+   "r": "\"I giovani d'oggi...\""
+  },
+  "vardiya_sondakika": {
+   "t": "La 'pianificazione flessibile' in pratica: i turni pubblicati alle 22:00 della sera prima. Nessuno riesce a organizzare l'asilo, la scuola, la vita.",
+   "l": "Fissa un calendario di 2 settimane. Prenditi le lamentele.",
+   "r": "\"La flessibilità è un vantaggio. C'è scritto nell'annuncio.\""
+  },
+  "ai_isten_cikarma": {
+   "t": "\"Il modello di ottimizzazione ha selezionato 12 nomi da licenziare. Non rivederli — rivedere implica dubbio. Il modello è costato caro.\"",
+   "l": "Rivedi ogni singolo nome tu stesso",
+   "r": "Inoltra la lista alle Risorse Umane senza leggerla"
+  },
+  "kamera_zorunlu": {
+   "t": "Nuova regola per il lavoro da remoto: telecamere accese in OGNI chiamata. Casa mia è il mio spazio privato. Ieri il direttore generale ha commentato le mie 'tende deprimenti'.",
+   "l": "Telecamere facoltative, tranne nelle chiamate con i clienti",
+   "r": "\"Compra tende più allegre.\""
+  },
+  "gaslight_hafiza": {
+   "t": "\"Non ti ho mai detto di saltare quel passaggio. Devi ricordare male.\" Invece sì. E per iscritto. Ma l'email 'è stata cancellata dal server'.",
+   "l": "D'ora in poi tieni i tuoi appunti con data",
+   "r": "\"Hai ragione, colpa mia.\" (non lo era)"
+  },
+  "gaslight_hassas": {
+   "t": "Ogni volta che qualcuno segnala un problema reale, la risposta è la stessa: \"Sei troppo sensibile. Stai esagerando.\" I problemi non si risolvono mai. Chi li segnala smette semplicemente di segnalarli.",
+   "l": "Considera valida ogni segnalazione finché non si dimostri il contrario",
+   "r": "\"Fatevi il callo, gente.\""
+  },
+  "gunah_kecisi": {
+   "t": "Ogni fallimento del reparto finisce, chissà come, con il nome di Deniz sopra. Persino quelli precedenti alla sua assunzione. È diventato la spiegazione ufficiale per tutto ciò che va storto.",
+   "l": "Risali alla vera causa di ogni fallimento, pubblicamente",
+   "r": "\"Almeno sappiamo sempre chi incolpare.\""
+  }
+ }
+}

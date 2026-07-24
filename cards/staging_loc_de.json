@@ -1,0 +1,109 @@
+{
+ "cards": {
+  "ai_skor": {
+   "t": "Das neue KI-Produktivitätstool hat Deniz mit 34/100 bewertet. Es zählt Tastenanschläge. Er entwirft erst auf Papier. Das weiß der Algorithmus nicht.",
+   "l": "\"Menschen beurteilen Menschen. Keine Zähler.\"",
+   "r": "\"Die Daten haben gesprochen.\""
+  },
+  "deepfake_ses": {
+   "t": "Jemand hat mit KI einen Sprachclip gefälscht, in dem ich den Kunden {C} 'beleidige'. Er ist fake. Er verbreitet sich. Die IT sagt 'nicht zurückverfolgbar'.",
+   "l": "Firmenweite Erklärung: Der Clip ist gefälscht. Punkt.",
+   "r": "\"Kopf einziehen, bis Gras darüber gewachsen ist.\""
+  },
+  "quiet_firing1": {
+   "t": "\"Feuere Selin nicht. Gib ihr einfach... nichts mehr. Keine Projekte, keine Meetings, keinen Blickkontakt. Sie wird schon verstehen.\"",
+   "l": "\"Wenn es ein Problem gibt, sprechen wir es an. Offen.\"",
+   "r": "Das langsame Verblassen einleiten"
+  },
+  "quiet_firing2": {
+   "t": "Drei Wochen. Null Aufgaben. Mein Kalender ist eine Wüste. Bin ich gefeuert und keiner hat es mir gesagt? Sag mir einfach die Wahrheit.",
+   "l": "Sag ihr die Wahrheit und kämpfe für ihre Stelle",
+   "r": "\"Genieß die Ruhe. Der Winter kommt sowieso.\""
+  },
+  "maske_tukenmis": {
+   "t": "Eces Zahlen sind perfekt. Ihre Kamera ist immer an, immer ein Lächeln. Gestern habe ich sie weinend im Parkhaus gefunden. Sie hat mich angefleht, es dir nicht zu sagen.",
+   "l": "Sprich mit ihr. Nimm ihr still etwas Last ab.",
+   "r": "\"Perfekte Zahlen sind perfekte Zahlen.\""
+  },
+  "sikayet_misilleme": {
+   "t": "Mehmet hat letzten Monat eine formelle Belästigungsbeschwerde eingereicht. Heute hat die Geschäftsleitung seine 'Leistungsbeurteilung' angeordnet. Außer der Reihe. Rate mal, was dabei herauskommen soll.",
+   "l": "Verweigere die Scheinbeurteilung. Dokumentiere warum.",
+   "r": "Führe sie 'objektiv' durch"
+  },
+  "terapi_izni": {
+   "t": "Ich wollte meine Donnerstagsstunde für die Therapie verschieben. Die Personalabteilung will eine 'detaillierte medizinische Begründung' — geteilt mit der Geschäftsleitung. Für eine Stunde.",
+   "l": "Genehmige es selbst. Keine Begründung nötig.",
+   "r": "\"Regeln sind Regeln. Reich den Bericht ein.\""
+  },
+  "dijital_dislama": {
+   "t": "Seit zwei Wochen fallen die 'dringenden' Gruppenentscheidungen in einem Chat, in dem ich nicht bin. Meine eigenen Aufgaben erfahre ich aus Screenshots anderer Leute.",
+   "l": "Führe die Chats zusammen. Ein Team, ein Kanal.",
+   "r": "\"Vielleicht musst du dir den Weg zurück verdienen.\""
+  },
+  "ofise_donus": {
+   "t": "Neue Rückkehrpflicht ins Büro: 5 Tage, für alle. Außer 'strategische Leistungsträger'. Die Ausnahmeliste ist exakt die Mitgliederliste des Golfclubs.",
+   "l": "Fordere eine Regel für alle",
+   "r": "Beantrage eine Golfmitgliedschaft"
+  },
+  "toplanti_kayit": {
+   "t": "Alle Meetings werden jetzt per KI aufgezeichnet und zusammengefasst. Erste Anwendung der Personalabteilung: eine Zusammenstellung von 'Momenten negativer Stimmung'. In der Hauptrolle: dein Team.",
+   "l": "\"Stimmung ist kein Verbrechen.\"",
+   "r": "Bring dem Team bei, monoton zu sprechen"
+  },
+  "deneme_suresi": {
+   "t": "\"Du bist in der Probezeit\", sagen sie der neuen Kollegin ständig. \"Du hast noch keine Rechte.\" Sie hat sogar Angst, krank zu werden. Es ist erst die zweite Woche.",
+   "l": "\"Probezeit begrenzt die Kündigungsfrist, nicht die Menschlichkeit.\"",
+   "r": "\"Genau dafür ist die Probezeit da.\""
+  },
+  "istifa_geri": {
+   "t": "Kerem hat heute Morgen gekündigt. Die Geschäftsleitung hat ihn in einem Besprechungsraum eingesperrt, 'bis er es sich anders überlegt'. Das dauert jetzt schon vier Stunden.",
+   "l": "Mach die Tür auf. Begleite ihn selbst hinaus.",
+   "r": "Bring Kaffee. Beteilige dich an der 'Überzeugungsarbeit'."
+  },
+  "maas_seffaflik": {
+   "t": "Ich habe die durchschnittlichen Branchengehälter — öffentliche Daten — im Teamkanal gepostet. Die Geschäftsleitung will eine Abmahnung gegen mich wegen 'Stiftung von Unruhe'.",
+   "l": "\"Öffentliche Daten sind keine Unruhe.\"",
+   "r": "Mahn sie ab. Lösch den Post."
+  },
+  "wellness_zorunlu": {
+   "t": "Verpflichtendes 'Wellness-Programm': Meditation um 7 Uhr, per App überwacht. Wer schwänzt, muss beim Bonus bluten. Der dadurch entstehende Stress ist nicht abgedeckt.",
+   "l": "\"Wellness unter Zwang ist einfach... mehr Arbeit.\"",
+   "r": "App runterladen lassen. Wecker stellen lassen."
+  },
+  "genc_damga": {
+   "t": "Jedes Mal, wenn die Jüngeren ein Problem ansprechen, winkt er ab: \"Sensible Generation.\" Gestern hat einer einen echten Sicherheitsmangel gemeldet. Auch weggewunken.",
+   "l": "Trag den Sicherheitsmangel selbst weiter. Gib ihnen die Anerkennung.",
+   "r": "\"Die Jugend von heute...\""
+  },
+  "vardiya_sondakika": {
+   "t": "'Flexible Planung' in der Praxis: Schichtpläne werden um 22 Uhr am Vorabend veröffentlicht. Keiner kann Kinderbetreuung, Schule, Leben planen.",
+   "l": "Erstelle einen 2-Wochen-Plan. Steh zum Gegenwind.",
+   "r": "\"Flexibilität ist ein Vorteil. Steht so in der Stellenanzeige.\""
+  },
+  "ai_isten_cikarma": {
+   "t": "\"Das Optimierungsmodell hat 12 Namen zur Kündigung ausgewählt. Prüf sie nicht — Prüfen bedeutet Zweifel. Das Modell war teuer.\"",
+   "l": "Prüfe jeden einzelnen Namen selbst",
+   "r": "Leite die Liste ungelesen an die Personalabteilung weiter"
+  },
+  "kamera_zorunlu": {
+   "t": "Neue Homeoffice-Regel: Kamera an in JEDEM Call. Meine Wohnung ist mein privater Raum. Gestern hat der Geschäftsführer meine 'deprimierenden Vorhänge' kommentiert.",
+   "l": "Kamera freiwillig, außer bei Kundengesprächen",
+   "r": "\"Kauf hellere Vorhänge.\""
+  },
+  "gaslight_hafiza": {
+   "t": "\"Ich habe dir nie gesagt, dass du diesen Schritt überspringen sollst. Du erinnerst dich falsch.\" Hat er doch. Sogar schriftlich. Aber die E-Mail 'wurde vom Server gelöscht'.",
+   "l": "Führe ab jetzt deine eigenen datierten Aufzeichnungen",
+   "r": "\"Sie haben recht, mein Fehler.\" (war er nicht)"
+  },
+  "gaslight_hassas": {
+   "t": "Jedes Mal, wenn jemand ein echtes Problem meldet, ist die Antwort dieselbe: \"Du bist zu empfindlich. Du übertreibst.\" Die Probleme werden nie behoben. Die Melder hören einfach auf zu melden.",
+   "l": "Behandle jede Meldung als berechtigt, bis das Gegenteil bewiesen ist",
+   "r": "\"Legt euch alle ein dickeres Fell zu.\""
+  },
+  "gunah_kecisi": {
+   "t": "Jeder Fehlschlag in der Abteilung landet irgendwie unter Deniz' Namen. Sogar die von vor seiner Einstellung. Er ist zur offiziellen Erklärung für alles geworden, was schiefgeht.",
+   "l": "Führe jeden Fehlschlag öffentlich auf seine wahre Ursache zurück",
+   "r": "\"Wenigstens wissen wir immer, wem wir die Schuld geben.\""
+  }
+ }
+}

@@ -1,0 +1,109 @@
+{
+ "cards": {
+  "ai_skor": {
+   "t": "A nova ferramenta de produtividade com IA deu 34/100 ao Deniz. Ela conta as teclas digitadas. Ele projeta primeiro no papel. O algoritmo não sabe disso.",
+   "l": "\"Quem avalia humanos são humanos. Não contadores.\"",
+   "r": "\"Os dados falaram.\""
+  },
+  "deepfake_ses": {
+   "t": "Alguém criou com IA um áudio meu 'xingando' o cliente {C}. É falso. Está se espalhando. O TI diz que é 'impossível de rastrear'.",
+   "l": "Comunicado para toda a empresa: é falso. Ponto.",
+   "r": "\"Fique na sua até a poeira baixar.\""
+  },
+  "quiet_firing1": {
+   "t": "\"Não demita a Selin. Só... pare de dar qualquer coisa a ela. Nada de projetos, nada de reuniões, nada de contato visual. Ela vai captar o recado.\"",
+   "l": "\"Se há um problema, a gente fala. Abertamente.\"",
+   "r": "Comece o sumiço aos poucos"
+  },
+  "quiet_firing2": {
+   "t": "Três semanas. Zero tarefas. Minha agenda é um deserto. Fui demitido e ninguém me contou? Só me diga a verdade.",
+   "l": "Conte a verdade a ela e lute pelo cargo dela",
+   "r": "\"Aproveite a calmaria. O inverno vem de qualquer jeito.\""
+  },
+  "maske_tukenmis": {
+   "t": "Os números da Ece são perfeitos. A câmera dela vive ligada, sempre sorrindo. Ontem eu a encontrei chorando no estacionamento. Ela me implorou para não te contar.",
+   "l": "Converse com ela. Reduza a carga dela, sem alarde.",
+   "r": "\"Números perfeitos são números perfeitos.\""
+  },
+  "sikayet_misilleme": {
+   "t": "O Mehmet registrou uma denúncia formal de assédio mês passado. Hoje a diretoria ordenou a 'avaliação de desempenho' dele. Fora do ciclo. Adivinhe o resultado pretendido.",
+   "l": "Recuse a avaliação de fachada. Documente o porquê.",
+   "r": "Conduza-a de forma 'objetiva'"
+  },
+  "terapi_izni": {
+   "t": "Pedi para deslocar minha hora de quinta para a terapia. O RH quer uma 'justificativa médica detalhada' — para compartilhar com a diretoria. Por uma hora.",
+   "l": "Aprove você mesmo. Sem necessidade de justificativa.",
+   "r": "\"Regras são regras. Entregue o laudo.\""
+  },
+  "dijital_dislama": {
+   "t": "Há duas semanas as decisões 'urgentes' do grupo acontecem num chat em que eu não estou. Descubro minhas próprias tarefas pelos prints dos outros.",
+   "l": "Junte os chats. Um time, um canal.",
+   "r": "\"Talvez você tenha que reconquistar seu lugar.\""
+  },
+  "ofise_donus": {
+   "t": "Nova regra de volta ao escritório: 5 dias, todo mundo. Menos os 'performers estratégicos'. A lista de exceções é idêntica à lista de sócios do clube de golfe.",
+   "l": "Exija uma regra só para todos",
+   "r": "Peça para entrar no clube de golfe"
+  },
+  "toplanti_kayit": {
+   "t": "Agora todas as reuniões são gravadas e resumidas por IA. Primeiro uso do RH: uma compilação de 'momentos de sentimento negativo'. Estrelando o seu time.",
+   "l": "\"Sentimento não é crime.\"",
+   "r": "Treine o time para falar em tom monótono"
+  },
+  "deneme_suresi": {
+   "t": "\"Você está em período de experiência\", ficam dizendo à nova contratada. \"Ainda não tem nenhum direito.\" Ela tem medo até de ficar doente. É a segunda semana.",
+   "l": "\"O período de experiência limita o aviso prévio, não a humanidade.\"",
+   "r": "\"É pra isso que serve o período de experiência.\""
+  },
+  "istifa_geri": {
+   "t": "O Kerem pediu demissão hoje de manhã. A diretoria o trancou numa sala de reunião 'até ele repensar'. Já faz quatro horas.",
+   "l": "Abra a porta. Acompanhe-o até a saída você mesmo.",
+   "r": "Leve café. Junte-se à 'persuasão'."
+  },
+  "maas_seffaflik": {
+   "t": "Postei os salários médios do setor — dados públicos — no canal do time. A diretoria quer me dar uma advertência por 'criar agitação'.",
+   "l": "\"Dado público não é agitação.\"",
+   "r": "Dê uma advertência a ela. Apague a postagem."
+  },
+  "wellness_zorunlu": {
+   "t": "'Programa de bem-estar' obrigatório: meditação às 7h, monitorada por app. Faltar afeta seu bônus. O estresse que isso causa não está coberto.",
+   "l": "\"Bem-estar na marra é só... mais trabalho.\"",
+   "r": "Baixe o app. Configure os alarmes."
+  },
+  "genc_damga": {
+   "t": "Toda vez que os juniores levantam um problema ele descarta: \"Geração sensível.\" Ontem um apontou uma falha de segurança real. Descartada também.",
+   "l": "Leve a falha de segurança para cima você mesmo. Dê o crédito a eles.",
+   "r": "\"Essa juventude de hoje...\""
+  },
+  "vardiya_sondakika": {
+   "t": "A 'escala flexível' na prática: as listas de turnos saem às 22h da noite anterior. Ninguém consegue organizar creche, escola, vida.",
+   "l": "Fixe uma escala de 2 semanas. Assuma as reclamações.",
+   "r": "\"Flexibilidade é uma vantagem. Está escrito no anúncio.\""
+  },
+  "ai_isten_cikarma": {
+   "t": "\"O modelo de otimização selecionou 12 nomes para demissão. Não os revise — revisar implica dúvida. O modelo custou caro.\"",
+   "l": "Revise cada nome, um por um, você mesmo",
+   "r": "Encaminhe a lista ao RH sem ler"
+  },
+  "kamera_zorunlu": {
+   "t": "Nova regra do trabalho remoto: câmeras ligadas em TODA chamada. Meu apartamento é meu espaço privado. Ontem o diretor-geral comentou sobre minhas 'cortinas deprimentes'.",
+   "l": "Câmeras opcionais, exceto em chamadas com clientes",
+   "r": "\"Compre cortinas mais alegres.\""
+  },
+  "gaslight_hafiza": {
+   "t": "\"Nunca te falei para pular aquela etapa. Você deve ter lembrado errado.\" Falou, sim. E por escrito. Mas o e-mail 'foi apagado do servidor'.",
+   "l": "De agora em diante, mantenha seus próprios registros com data",
+   "r": "\"Você tem razão, culpa minha.\" (não era)"
+  },
+  "gaslight_hassas": {
+   "t": "Toda vez que alguém relata um problema real, a resposta é a mesma: \"Você é sensível demais. Está exagerando.\" Os problemas nunca são resolvidos. Quem relata simplesmente para de relatar.",
+   "l": "Trate todo relato como válido até que se prove o contrário",
+   "r": "\"Criem uma casca mais grossa, pessoal.\""
+  },
+  "gunah_kecisi": {
+   "t": "Todo fracasso do departamento acaba, de algum jeito, com o nome do Deniz nele. Até os anteriores à contratação dele. Ele virou a explicação oficial para tudo que dá errado.",
+   "l": "Rastreie a verdadeira causa de cada fracasso, publicamente",
+   "r": "\"Pelo menos sempre sabemos quem culpar.\""
+  }
+ }
+}
